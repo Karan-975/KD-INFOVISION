@@ -9,6 +9,7 @@ import IndustriesSection from '@/components/public/IndustriesSection';
 import CaseStudiesSection from '@/components/public/CaseStudiesSection';
 import ProcessSection from '@/components/public/ProcessSection';
 import TestimonialsSection from '@/components/public/TestimonialsSection';
+import ClientsMarquee from '@/components/public/ClientsMarquee';
 import InsightsSection from '@/components/public/InsightsSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
@@ -52,6 +53,7 @@ export default async function HomePage() {
       <CaseStudiesSection caseStudies={caseStudies} />
       <ProcessSection processSteps={processSteps} />
       <TestimonialsSection testimonials={testimonials} />
+      <ClientsMarquee />
       <InsightsSection insights={insights} />
       <ContactSection settings={settings} />
       <Footer settings={settings} />
