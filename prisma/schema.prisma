@@ -1,0 +1,167 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SiteSetting {
+  id             Int      @id @default(autoincrement())
+  siteName       String   @default("KD INFOVISION")
+  tagline        String   @default("Data. AI. Digital Transformation.")
+  logoUrl        String?  @db.LongText
+  email          String   @default("hello@kdinfovision.com")
+  phone          String   @default("+91 98765 43210")
+  address        String?  @db.Text
+  primaryColor   String   @default("#1B3A6B")
+  accentColor    String   @default("#3D9BE9")
+  metaTitle      String?  @db.Text
+  metaDesc       String?  @db.Text
+  socialLinkedin String?  @default("#")
+  socialTwitter  String?  @default("#")
+  socialGithub   String?  @default("#")
+  updatedAt      DateTime @updatedAt
+}
+
+model HeroSlide {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  tag         String
+  headline    String
+  headlineEmp String?
+  subtext     String   @db.Text
+  primaryBtn  String   @default("Explore Services")
+  primaryUrl  String   @default("#solutions")
+  secBtn      String?  @default("Talk to an Expert →")
+  secUrl      String?  @default("#contact")
+  bgGradient  String?  @db.Text
+  svgType     String   @default("analytics") // analytics, neural, cloud
+  imageUrl    String?  @db.Text
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  num         String   // "01", "02", etc.
+  title       String
+  description String   @db.Text
+  icon        String   @default("Cpu")
+  details     String?  @db.LongText
+  linkUrl     String   @default("#contact")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CaseStudy {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  tag         String   // BFSI, Manufacturing, E-commerce, Retail
+  resultNum   String   // "60%", "30%", "8 wk", "3×"
+  resultLabel String   // "Faster Reporting", "Better Forecast Accuracy"
+  title       String
+  summary     String   @db.Text
+  fullStory   String?  @db.LongText
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Industry {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  title       String
+  description String   @db.Text
+  icon        String   @default("Building2")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ProcessStep {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  stepNum     String   // "01", "02", "03", "04"
+  title       String   // Discover, Design, Build & Deliver, Support & Scale
+  description String   @db.Text
+  icon        String   @default("Search")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model StatCounter {
+  id        Int      @id @default(autoincrement())
+  order     Int      @default(0)
+  target    Int      // 50, 25, 8, 100
+  suffix    String   // "+", "%"
+  label     String   // Projects Delivered, Enterprise Clients, etc.
+  isActive  Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  quote       String   @db.Text
+  name        String
+  role        String
+  company     String?
+  avatarInit  String?  // "RK", "PS", "AM"
+  avatarUrl   String?  @db.Text
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Partner {
+  id        Int      @id @default(autoincrement())
+  order     Int      @default(0)
+  name      String   // Microsoft Azure, AWS, Databricks, etc.
+  logoUrl   String?  @db.Text
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Insight {
+  id          Int      @id @default(autoincrement())
+  order       Int      @default(0)
+  category    String   @default("Blog") // Blog, Trend, Guide
+  title       String
+  summary     String   @db.Text
+  content     String?  @db.LongText
+  dateLabel   String   @default("August 2026")
+  isFeatured  Boolean  @default(false)
+  isTrending  Boolean  @default(false)
+  imageUrl    String?  @db.Text
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  company   String?
+  email     String
+  phone     String?
+  service   String?
+  message   String   @db.Text
+  status    String   @default("NEW") // NEW, IN_PROGRESS, CONTACTED, ARCHIVED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AdminUser {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String   // Bcrypt hash
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
