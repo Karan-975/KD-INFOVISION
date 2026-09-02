@@ -30,25 +30,25 @@ export default function Footer({ settings }) {
         >
           {/* Brand Column */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.25rem' }}>
-              <div
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '1.25rem' }}>
+              <img
+                src="/logo-mark.png"
+                alt="KD Infovision Logo"
                 style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, #3D9BE9 0%, #1B3A6B 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#FFFFFF',
-                  fontWeight: 800,
+                  height: '44px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
                 }}
-              >
-                KD
+              />
+              <div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.3px', lineHeight: 1.1 }}>
+                  {settings?.siteName || 'KD INFOVISION'}
+                </div>
+                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--blue)', letterSpacing: '1.2px', textTransform: 'uppercase', marginTop: '2px' }}>
+                  Data • AI • Transformation
+                </div>
               </div>
-              <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF' }}>
-                {settings?.siteName || 'KD INFOVISION'}
-              </span>
             </div>
             <p
               style={{

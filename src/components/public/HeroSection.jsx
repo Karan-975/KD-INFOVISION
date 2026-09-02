@@ -33,170 +33,194 @@ export default function HeroSection({ slides = [] }) {
   const renderVisualizer = (type) => {
     if (type === 'neural') {
       return (
-        <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px' }}>
-          <rect x="20" y="20" width="460" height="360" rx="24" fill="rgba(15, 35, 71, 0.6)" stroke="rgba(61, 155, 233, 0.25)" strokeWidth="1.5" />
+        <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px', filter: 'drop-shadow(0 20px 40px rgba(5, 45, 93, 0.08))' }}>
+          <rect x="20" y="20" width="460" height="360" rx="24" fill="#FFFFFF" stroke="rgba(21, 138, 226, 0.22)" strokeWidth="1.5" />
           
           {/* Top Badge */}
-          <rect x="44" y="44" width="160" height="36" rx="10" fill="rgba(74, 222, 128, 0.12)" stroke="rgba(74, 222, 128, 0.3)" strokeWidth="1" />
-          <circle cx="62" cy="62" r="5" fill="#4ADE80" />
-          <text x="76" y="66" fill="#4ADE80" fontSize="13" fontFamily="Plus Jakarta Sans" fontWeight="800">94.7% ML Accuracy</text>
+          <rect x="44" y="44" width="165" height="36" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.25)" strokeWidth="1" />
+          <circle cx="62" cy="62" r="5" fill="#10B981" />
+          <text x="76" y="66" fill="#059669" fontSize="13" fontFamily="Plus Jakarta Sans" fontWeight="800">94.7% ML Accuracy</text>
           
           {/* Neural Nodes - Input */}
-          <circle cx="90" cy="140" r="18" fill="rgba(61, 155, 233, 0.15)" stroke="#3D9BE9" strokeWidth="2" />
-          <circle cx="90" cy="215" r="18" fill="rgba(61, 155, 233, 0.15)" stroke="#3D9BE9" strokeWidth="2" />
-          <circle cx="90" cy="290" r="18" fill="rgba(61, 155, 233, 0.15)" stroke="#3D9BE9" strokeWidth="2" />
+          <circle cx="90" cy="140" r="18" fill="rgba(21, 138, 226, 0.12)" stroke="#158AE2" strokeWidth="2" />
+          <circle cx="90" cy="215" r="18" fill="rgba(21, 138, 226, 0.12)" stroke="#158AE2" strokeWidth="2" />
+          <circle cx="90" cy="290" r="18" fill="rgba(21, 138, 226, 0.12)" stroke="#158AE2" strokeWidth="2" />
           
           {/* Hidden Layer 1 */}
-          <circle cx="210" cy="115" r="18" fill="rgba(61, 155, 233, 0.25)" stroke="#5EC3F5" strokeWidth="2" />
-          <circle cx="210" cy="180" r="18" fill="rgba(61, 155, 233, 0.25)" stroke="#5EC3F5" strokeWidth="2" />
-          <circle cx="210" cy="245" r="18" fill="rgba(61, 155, 233, 0.25)" stroke="#5EC3F5" strokeWidth="2" />
-          <circle cx="210" cy="310" r="18" fill="rgba(61, 155, 233, 0.25)" stroke="#5EC3F5" strokeWidth="2" />
+          <circle cx="210" cy="115" r="18" fill="rgba(5, 45, 93, 0.08)" stroke="#052D5D" strokeWidth="2" />
+          <circle cx="210" cy="180" r="18" fill="rgba(5, 45, 93, 0.08)" stroke="#052D5D" strokeWidth="2" />
+          <circle cx="210" cy="245" r="18" fill="rgba(5, 45, 93, 0.08)" stroke="#052D5D" strokeWidth="2" />
+          <circle cx="210" cy="310" r="18" fill="rgba(5, 45, 93, 0.08)" stroke="#052D5D" strokeWidth="2" />
 
           {/* Hidden Layer 2 */}
-          <circle cx="330" cy="140" r="18" fill="rgba(61, 155, 233, 0.3)" stroke="#3D9BE9" strokeWidth="2" />
-          <circle cx="330" cy="215" r="18" fill="rgba(61, 155, 233, 0.3)" stroke="#3D9BE9" strokeWidth="2" />
-          <circle cx="330" cy="290" r="18" fill="rgba(61, 155, 233, 0.3)" stroke="#3D9BE9" strokeWidth="2" />
+          <circle cx="330" cy="140" r="18" fill="rgba(21, 138, 226, 0.18)" stroke="#158AE2" strokeWidth="2" />
+          <circle cx="330" cy="215" r="18" fill="rgba(21, 138, 226, 0.18)" stroke="#158AE2" strokeWidth="2" />
+          <circle cx="330" cy="290" r="18" fill="rgba(21, 138, 226, 0.18)" stroke="#158AE2" strokeWidth="2" />
 
           {/* Output Layer */}
-          <circle cx="430" cy="175" r="22" fill="url(#neuralOutGrad1)" stroke="#5EC3F5" strokeWidth="2.5" />
-          <circle cx="430" cy="255" r="22" fill="url(#neuralOutGrad2)" stroke="#4ADE80" strokeWidth="2.5" />
+          <circle cx="430" cy="175" r="22" fill="url(#neuralOutGrad1)" stroke="#158AE2" strokeWidth="2.5" />
+          <circle cx="430" cy="255" r="22" fill="url(#neuralOutGrad2)" stroke="#10B981" strokeWidth="2.5" />
 
           {/* Connections */}
-          <line x1="108" y1="140" x2="192" y2="115" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="108" y1="140" x2="192" y2="180" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="108" y1="215" x2="192" y2="180" stroke="rgba(94, 195, 245, 0.6)" strokeWidth="2" />
-          <line x1="108" y1="215" x2="192" y2="245" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="108" y1="290" x2="192" y2="245" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="108" y1="290" x2="192" y2="310" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
+          <line x1="108" y1="140" x2="192" y2="115" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1.5" />
+          <line x1="108" y1="140" x2="192" y2="180" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1.5" />
+          <line x1="108" y1="215" x2="192" y2="180" stroke="#158AE2" strokeWidth="2" />
+          <line x1="108" y1="215" x2="192" y2="245" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1.5" />
+          <line x1="108" y1="290" x2="192" y2="245" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1.5" />
+          <line x1="108" y1="290" x2="192" y2="310" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1.5" />
 
-          <line x1="228" y1="115" x2="312" y2="140" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="228" y1="180" x2="312" y2="140" stroke="rgba(94, 195, 245, 0.6)" strokeWidth="2" />
-          <line x1="228" y1="180" x2="312" y2="215" stroke="rgba(94, 195, 245, 0.6)" strokeWidth="2" />
-          <line x1="228" y1="245" x2="312" y2="215" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <line x1="228" y1="310" x2="312" y2="290" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
+          <line x1="228" y1="115" x2="312" y2="140" stroke="rgba(5, 45, 93, 0.25)" strokeWidth="1.5" />
+          <line x1="228" y1="180" x2="312" y2="140" stroke="#158AE2" strokeWidth="2" />
+          <line x1="228" y1="180" x2="312" y2="215" stroke="#158AE2" strokeWidth="2" />
+          <line x1="228" y1="245" x2="312" y2="215" stroke="rgba(5, 45, 93, 0.25)" strokeWidth="1.5" />
+          <line x1="228" y1="310" x2="312" y2="290" stroke="rgba(5, 45, 93, 0.25)" strokeWidth="1.5" />
 
-          <line x1="348" y1="140" x2="408" y2="175" stroke="rgba(94, 195, 245, 0.8)" strokeWidth="2.5" />
-          <line x1="348" y1="215" x2="408" y2="175" stroke="rgba(94, 195, 245, 0.6)" strokeWidth="2" />
-          <line x1="348" y1="215" x2="408" y2="255" stroke="rgba(74, 222, 128, 0.8)" strokeWidth="2.5" />
-          <line x1="348" y1="290" x2="408" y2="255" stroke="rgba(74, 222, 128, 0.6)" strokeWidth="2" />
+          <line x1="348" y1="140" x2="408" y2="175" stroke="#158AE2" strokeWidth="2.5" />
+          <line x1="348" y1="215" x2="408" y2="175" stroke="#158AE2" strokeWidth="2" />
+          <line x1="348" y1="215" x2="408" y2="255" stroke="#10B981" strokeWidth="2.5" />
+          <line x1="348" y1="290" x2="408" y2="255" stroke="rgba(16, 185, 129, 0.5)" strokeWidth="2" />
 
           <defs>
-            <radialGradient id="neuralOutGrad1"><stop offset="0%" stopColor="#5EC3F5" /><stop offset="100%" stopColor="#3D9BE9" /></radialGradient>
-            <radialGradient id="neuralOutGrad2"><stop offset="0%" stopColor="#4ADE80" /><stop offset="100%" stopColor="#16A34A" /></radialGradient>
+            <radialGradient id="neuralOutGrad1"><stop offset="0%" stopColor="#3DA5F5" /><stop offset="100%" stopColor="#158AE2" /></radialGradient>
+            <radialGradient id="neuralOutGrad2"><stop offset="0%" stopColor="#34D399" /><stop offset="100%" stopColor="#059669" /></radialGradient>
           </defs>
 
-          <text x="75" y="356" fill="rgba(255, 255, 255, 0.45)" fontSize="11" fontFamily="Inter" fontWeight="600">Features</text>
-          <text x="250" y="356" fill="rgba(255, 255, 255, 0.45)" fontSize="11" fontFamily="Inter" fontWeight="600">Deep Layers</text>
-          <text x="408" y="356" fill="rgba(255, 255, 255, 0.45)" fontSize="11" fontFamily="Inter" fontWeight="600">Insights</text>
+          <text x="75" y="356" fill="#64748B" fontSize="11" fontFamily="Inter" fontWeight="600">Features</text>
+          <text x="250" y="356" fill="#64748B" fontSize="11" fontFamily="Inter" fontWeight="600">Deep Layers</text>
+          <text x="408" y="356" fill="#64748B" fontSize="11" fontFamily="Inter" fontWeight="600">Insights</text>
         </svg>
       );
     }
 
     if (type === 'cloud') {
       return (
-        <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px' }}>
-          <rect x="20" y="20" width="460" height="360" rx="24" fill="rgba(15, 35, 71, 0.6)" stroke="rgba(61, 155, 233, 0.25)" strokeWidth="1.5" />
+        <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px', filter: 'drop-shadow(0 20px 40px rgba(5, 45, 93, 0.08))' }}>
+          <rect x="20" y="20" width="460" height="360" rx="24" fill="#FFFFFF" stroke="rgba(21, 138, 226, 0.22)" strokeWidth="1.5" />
           
           {/* Stats Bar Top */}
-          <rect x="44" y="44" width="120" height="42" rx="10" fill="rgba(74, 222, 128, 0.1)" stroke="rgba(74, 222, 128, 0.25)" strokeWidth="1" />
-          <text x="58" y="62" fill="rgba(255,255,255,0.45)" fontSize="10" fontFamily="Inter" fontWeight="600">UPTIME</text>
-          <text x="58" y="78" fill="#4ADE80" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">99.99%</text>
+          <rect x="48" y="50" width="115" height="42" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.25)" strokeWidth="1" />
+          <text x="62" y="68" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">UPTIME SLA</text>
+          <text x="62" y="84" fill="#059669" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">99.9%</text>
 
-          <rect x="180" y="44" width="130" height="42" rx="10" fill="rgba(61, 155, 233, 0.1)" stroke="rgba(61, 155, 233, 0.25)" strokeWidth="1" />
-          <text x="194" y="62" fill="rgba(255,255,255,0.45)" fontSize="10" fontFamily="Inter" fontWeight="600">COST REDUCTION</text>
-          <text x="194" y="78" fill="#5EC3F5" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">-45% Saved</text>
+          <rect x="175" y="50" width="130" height="42" rx="10" fill="rgba(21, 138, 226, 0.1)" stroke="rgba(21, 138, 226, 0.25)" strokeWidth="1" />
+          <text x="189" y="68" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">COST REDUCE</text>
+          <text x="189" y="84" fill="#158AE2" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">-45%</text>
 
-          <rect x="326" y="44" width="130" height="42" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)" strokeWidth="1" />
-          <text x="340" y="62" fill="rgba(255,255,255,0.45)" fontSize="10" fontFamily="Inter" fontWeight="600">VELOCITY</text>
-          <text x="340" y="78" fill="#FFFFFF" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">3× Faster</text>
+          <rect x="317" y="50" width="130" height="42" rx="10" fill="rgba(5, 45, 93, 0.08)" stroke="rgba(5, 45, 93, 0.2)" strokeWidth="1" />
+          <text x="331" y="68" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">PIPELINE SPEED</text>
+          <text x="331" y="84" fill="#052D5D" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">3× Faster</text>
 
-          {/* Central Cloud Visualizer */}
-          <ellipse cx="250" cy="165" rx="95" ry="55" fill="rgba(61, 155, 233, 0.14)" stroke="#3D9BE9" strokeWidth="2" />
-          <ellipse cx="195" cy="180" rx="60" ry="42" fill="rgba(61, 155, 233, 0.1)" stroke="#3D9BE9" strokeWidth="1.5" />
-          <ellipse cx="310" cy="180" rx="60" ry="42" fill="rgba(61, 155, 233, 0.1)" stroke="#3D9BE9" strokeWidth="1.5" />
-          <text x="210" y="172" fill="#FFFFFF" fontSize="16" fontFamily="Plus Jakarta Sans" fontWeight="800">Enterprise Cloud</text>
+          {/* Central Cloud Node */}
+          <rect x="185" y="125" width="130" height="70" rx="16" fill="url(#cloudGrad)" stroke="#158AE2" strokeWidth="2" />
+          <text x="222" y="156" fill="#FFFFFF" fontSize="15" fontFamily="Plus Jakarta Sans" fontWeight="800">Cloud</text>
+          <text x="210" y="174" fill="rgba(255, 255, 255, 0.85)" fontSize="11" fontFamily="Inter">Architecture</text>
 
-          {/* Migration Nodes */}
-          <rect x="44" y="270" width="115" height="60" rx="12" fill="rgba(27, 58, 107, 0.7)" stroke="rgba(61, 155, 233, 0.3)" strokeWidth="1.5" />
-          <text x="60" y="296" fill="rgba(255,255,255,0.85)" fontSize="12" fontFamily="Plus Jakarta Sans" fontWeight="700">Legacy Core</text>
-          <text x="60" y="315" fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="Inter">On-Premises</text>
+          {/* Flow Nodes Bottom */}
+          <rect x="50" y="240" width="95" height="52" rx="12" fill="#F8FAFC" stroke="rgba(5, 45, 93, 0.2)" strokeWidth="1.5" />
+          <text x="72" y="263" fill="#052D5D" fontSize="11" fontFamily="Inter" fontWeight="700">Legacy</text>
+          <text x="68" y="279" fill="#64748B" fontSize="10" fontFamily="Inter">Databases</text>
 
-          <rect x="192" y="270" width="115" height="60" rx="12" fill="rgba(61, 155, 233, 0.25)" stroke="#3D9BE9" strokeWidth="1.5" />
-          <text x="210" y="296" fill="#FFFFFF" fontSize="12" fontFamily="Plus Jakarta Sans" fontWeight="700">Modern Lake</text>
-          <text x="210" y="315" fill="#5EC3F5" fontSize="11" fontFamily="Inter">Azure / AWS</text>
+          <rect x="195" y="240" width="110" height="52" rx="12" fill="#EDF5FD" stroke="rgba(21, 138, 226, 0.4)" strokeWidth="1.5" />
+          <text x="220" y="263" fill="#052D5D" fontSize="11" fontFamily="Inter" fontWeight="700">Modern</text>
+          <text x="226" y="279" fill="#158AE2" fontSize="10" fontFamily="Inter" fontWeight="600">Lakehouse</text>
 
-          <rect x="340" y="270" width="115" height="60" rx="12" fill="rgba(74, 222, 128, 0.15)" stroke="#4ADE80" strokeWidth="1.5" />
-          <text x="356" y="296" fill="#FFFFFF" fontSize="12" fontFamily="Plus Jakarta Sans" fontWeight="700">AI Platform</text>
-          <text x="356" y="315" fill="#4ADE80" fontSize="11" fontFamily="Inter">Real-time APIs</text>
+          <rect x="345" y="240" width="105" height="52" rx="12" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.35)" strokeWidth="1.5" />
+          <text x="365" y="263" fill="#052D5D" fontSize="11" fontFamily="Inter" fontWeight="700">AI-Ready</text>
+          <text x="372" y="279" fill="#059669" fontSize="10" fontFamily="Inter" fontWeight="700">Platform</text>
 
-          {/* Flow Arrows */}
-          <line x1="160" y1="300" x2="190" y2="300" stroke="#3D9BE9" strokeWidth="2" strokeDasharray="4 4" />
-          <line x1="308" y1="300" x2="338" y2="300" stroke="#4ADE80" strokeWidth="2" strokeDasharray="4 4" />
+          {/* Connecting Arrows */}
+          <line x1="145" y1="266" x2="195" y2="266" stroke="#158AE2" strokeWidth="2" strokeDasharray="4,3" />
+          <line x1="305" y1="266" x2="345" y2="266" stroke="#10B981" strokeWidth="2" />
+          <line x1="250" y1="195" x2="250" y2="240" stroke="#158AE2" strokeWidth="2" />
+
+          <defs>
+            <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#158AE2" />
+              <stop offset="100%" stopColor="#052D5D" />
+            </linearGradient>
+          </defs>
+
+          <text x="48" y="335" fill="#64748B" fontSize="11" fontFamily="Inter" fontWeight="600">
+            Discover → Architecture → Migration → AI Enablement
+          </text>
         </svg>
       );
     }
 
-    // Default Analytics Visualizer
+    // Default: 'analytics'
     return (
-      <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px' }}>
-        <rect x="20" y="20" width="460" height="360" rx="24" fill="rgba(15, 35, 71, 0.6)" stroke="rgba(61, 155, 233, 0.25)" strokeWidth="1.5" />
+      <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', maxWidth: '520px', filter: 'drop-shadow(0 20px 40px rgba(5, 45, 93, 0.08))' }}>
+        <rect x="20" y="20" width="460" height="360" rx="24" fill="#FFFFFF" stroke="rgba(21, 138, 226, 0.22)" strokeWidth="1.5" />
         
-        {/* Metric Header */}
-        <text x="48" y="65" fill="rgba(255,255,255,0.5)" fontSize="11" fontFamily="Inter" fontWeight="700" letterSpacing="1.5">REVENUE BUSINESS INTELLIGENCE</text>
-        <text x="48" y="100" fill="#FFFFFF" fontSize="32" fontFamily="Plus Jakarta Sans" fontWeight="800">₹4.2 Cr</text>
-        <text x="180" y="98" fill="#4ADE80" fontSize="14" fontFamily="Inter" fontWeight="700">↑ 28% Growth</text>
+        {/* Metric Cards Top */}
+        <rect x="44" y="44" width="125" height="52" rx="12" fill="#EDF5FD" stroke="rgba(21, 138, 226, 0.3)" strokeWidth="1" />
+        <text x="58" y="64" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">LIVE DATA FEEDS</text>
+        <text x="58" y="85" fill="#052D5D" fontSize="17" fontFamily="Plus Jakarta Sans" fontWeight="800">1.2M req/s</text>
 
-        {/* Dynamic Bar Charts */}
-        <rect x="48" y="140" width="36" height="110" rx="8" fill="rgba(61,155,233,0.18)" />
-        <rect x="100" y="120" width="36" height="130" rx="8" fill="rgba(61,155,233,0.28)" />
-        <rect x="152" y="155" width="36" height="95" rx="8" fill="rgba(61,155,233,0.22)" />
-        <rect x="204" y="110" width="36" height="140" rx="8" fill="rgba(61,155,233,0.38)" />
-        <rect x="256" y="130" width="36" height="120" rx="8" fill="rgba(61,155,233,0.25)" />
-        <rect x="308" y="80" width="40" height="170" rx="8" fill="url(#analyticsBarGrad)" />
-        <rect x="364" y="115" width="36" height="135" rx="8" fill="rgba(61,155,233,0.22)" />
-        <rect x="416" y="95" width="36" height="155" rx="8" fill="rgba(61,155,233,0.3)" />
+        <rect x="180" y="44" width="125" height="52" rx="12" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.25)" strokeWidth="1" />
+        <text x="194" y="64" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">ACCELERATION</text>
+        <text x="194" y="85" fill="#059669" fontSize="17" fontFamily="Plus Jakarta Sans" fontWeight="800">+340% ROI</text>
 
-        {/* Glow on highest bar */}
-        <rect x="308" y="80" width="40" height="12" rx="4" fill="#5EC3F5" opacity="0.8" />
-        <line x1="40" y1="252" x2="460" y2="252" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+        <rect x="316" y="44" width="138" height="52" rx="12" fill="rgba(5, 45, 93, 0.06)" stroke="rgba(5, 45, 93, 0.15)" strokeWidth="1" />
+        <text x="330" y="64" fill="#64748B" fontSize="9" fontFamily="Inter" fontWeight="700">ACCURACY SCORE</text>
+        <text x="330" y="85" fill="#052D5D" fontSize="17" fontFamily="Plus Jakarta Sans" fontWeight="800">99.8% Conf.</text>
 
-        {/* Bottom Metric Cards */}
-        <rect x="48" y="275" width="185" height="70" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(61,155,233,0.2)" strokeWidth="1" />
-        <text x="68" y="302" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="Inter" fontWeight="600">AI ACCURACY</text>
-        <text x="68" y="328" fill="#FFFFFF" fontSize="24" fontFamily="Plus Jakarta Sans" fontWeight="800">94.7%</text>
+        {/* Analytics Bar Chart Grid & Axis */}
+        <line x1="50" y1="280" x2="450" y2="280" stroke="#E2EAF4" strokeWidth="1.5" />
+        <line x1="50" y1="245" x2="450" y2="245" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="4,4" />
+        <line x1="50" y1="210" x2="450" y2="210" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="4,4" />
+        <line x1="50" y1="175" x2="450" y2="175" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="4,4" />
+        <line x1="50" y1="140" x2="450" y2="140" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="4,4" />
 
-        <rect x="250" y="275" width="200" height="70" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(74,222,128,0.2)" strokeWidth="1" />
-        <text x="270" y="302" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="Inter" fontWeight="600">COST SAVED</text>
-        <text x="270" y="328" fill="#4ADE80" fontSize="24" fontFamily="Plus Jakarta Sans" fontWeight="800">₹1.8 Cr</text>
+        {/* Resized Vertical Bars (Plenty of clearance below top metric cards) */}
+        <rect x="75" y="242" width="34" height="38" rx="6" fill="#CBD5E1" />
+        <rect x="135" y="220" width="34" height="60" rx="6" fill="#94A3B8" />
+        <rect x="195" y="200" width="34" height="80" rx="6" fill="#158AE2" fillOpacity="0.45" />
+        <rect x="255" y="178" width="34" height="102" rx="6" fill="#158AE2" />
+        <rect x="315" y="158" width="34" height="122" rx="6" fill="url(#heroBarGrad)" />
+        <rect x="375" y="142" width="34" height="138" rx="6" fill="#052D5D" />
+
+        {/* Trend Polyline Adjusted */}
+        <path d="M92 238 L152 216 L212 196 L272 174 L332 154 L392 138" stroke="#158AE2" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <circle cx="392" cy="138" r="5" fill="#158AE2" stroke="#FFFFFF" strokeWidth="2" />
 
         <defs>
-          <linearGradient id="analyticsBarGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#5EC3F5" />
-            <stop offset="100%" stopColor="#3D9BE9" />
+          <linearGradient id="heroBarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#158AE2" />
+            <stop offset="100%" stopColor="#052D5D" />
           </linearGradient>
         </defs>
+
+        <text x="80" y="300" fill="#64748B" fontSize="10" fontFamily="Inter" fontWeight="600">Q1</text>
+        <text x="140" y="300" fill="#64748B" fontSize="10" fontFamily="Inter" fontWeight="600">Q2</text>
+        <text x="200" y="300" fill="#64748B" fontSize="10" fontFamily="Inter" fontWeight="600">Q3</text>
+        <text x="260" y="300" fill="#64748B" fontSize="10" fontFamily="Inter" fontWeight="600">Q4</text>
+        <text x="320" y="300" fill="#158AE2" fontSize="10" fontFamily="Inter" fontWeight="700">YTD</text>
+        <text x="380" y="300" fill="#052D5D" fontSize="10" fontFamily="Inter" fontWeight="800">TARGET</text>
+
+        <text x="44" y="340" fill="#64748B" fontSize="11" fontFamily="Inter" fontWeight="600">
+          Integrated Power BI &amp; Azure Synapse Live Analytics
+        </text>
       </svg>
     );
   };
 
   return (
     <section
-      id="home"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: '94vh',
+        background: '#FFFFFF',
         display: 'flex',
         alignItems: 'center',
-        background: activeSlide.bgGradient || 'linear-gradient(135deg,#0F2347 0%,#1B3A6B 55%,#0D2B5E 100%)',
-        paddingTop: '110px',
-        paddingBottom: '80px',
+        paddingTop: '115px',
+        paddingBottom: '70px',
         overflow: 'hidden',
-        transition: 'background 0.8s ease',
       }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Subtle Data Constellation & Ambient Particle Background */}
+      {/* Animated Constellation & Ambient Mesh on White */}
       <HeroBackgroundAnimation />
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
@@ -211,17 +235,41 @@ export default function HeroSection({ slides = [] }) {
         >
           {/* Left Content */}
           <div>
-            <div className="pulse-badge" style={{ marginBottom: '1.75rem' }}>
-              <span className="pulse-dot" />
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 14px',
+                borderRadius: '30px',
+                background: 'rgba(21, 138, 226, 0.08)',
+                border: '1px solid rgba(21, 138, 226, 0.25)',
+                color: '#158AE2',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                letterSpacing: '0.8px',
+                textTransform: 'uppercase',
+                marginBottom: '1.75rem',
+              }}
+            >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#158AE2',
+                  display: 'inline-block',
+                }}
+              />
               {activeSlide.tag}
             </div>
 
             <h1
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                fontSize: 'clamp(2.5rem, 5vw, 4.1rem)',
                 fontWeight: 800,
-                lineHeight: 1.08,
-                color: '#FFFFFF',
+                lineHeight: 1.1,
+                color: '#052D5D',
                 letterSpacing: '-1.5px',
                 marginBottom: '1.5rem',
               }}
@@ -230,7 +278,7 @@ export default function HeroSection({ slides = [] }) {
               {activeSlide.headlineEmp && (
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #5EC3F5 0%, #3D9BE9 100%)',
+                    background: 'linear-gradient(135deg, #158AE2 0%, #052D5D 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     display: 'inline-block',
@@ -245,7 +293,7 @@ export default function HeroSection({ slides = [] }) {
               style={{
                 fontSize: '1.15rem',
                 lineHeight: 1.75,
-                color: 'rgba(255, 255, 255, 0.72)',
+                color: '#475569',
                 maxWidth: '540px',
                 marginBottom: '2.5rem',
               }}
@@ -254,12 +302,65 @@ export default function HeroSection({ slides = [] }) {
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href={activeSlide.primaryUrl || '#solutions'} className="btn-secondary" style={{ padding: '0.95rem 2rem' }}>
+              <a
+                href={activeSlide.primaryUrl || '#solutions'}
+                style={{
+                  background: '#158AE2',
+                  color: '#FFFFFF',
+                  padding: '0.95rem 2rem',
+                  borderRadius: '10px',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 8px 24px rgba(21, 138, 226, 0.35)',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#052D5D';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#158AE2';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
                 {activeSlide.primaryBtn || 'Explore Services'}
                 <ArrowRight size={18} />
               </a>
+
               {activeSlide.secBtn && (
-                <a href={activeSlide.secUrl || '#contact'} className="btn-outline" style={{ padding: '0.95rem 2rem' }}>
+                <a
+                  href={activeSlide.secUrl || '#contact'}
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1.5px solid #CBD5E1',
+                    color: '#052D5D',
+                    padding: '0.95rem 2rem',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#158AE2';
+                    e.currentTarget.style.color = '#158AE2';
+                    e.currentTarget.style.background = 'rgba(21, 138, 226, 0.04)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#CBD5E1';
+                    e.currentTarget.style.color = '#052D5D';
+                    e.currentTarget.style.background = '#FFFFFF';
+                    e.currentTarget.style.transform = 'none';
+                  }}
+                >
                   {activeSlide.secBtn}
                 </a>
               )}
@@ -288,7 +389,7 @@ export default function HeroSection({ slides = [] }) {
               justifyContent: 'space-between',
               marginTop: '4rem',
               paddingTop: '2rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              borderTop: '1px solid #E2EAF4',
             }}
           >
             {/* Dots */}
@@ -302,7 +403,7 @@ export default function HeroSection({ slides = [] }) {
                     height: '8px',
                     width: current === idx ? '32px' : '8px',
                     borderRadius: '4px',
-                    background: current === idx ? '#FFFFFF' : 'rgba(255, 255, 255, 0.25)',
+                    background: current === idx ? '#158AE2' : '#CBD5E1',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -320,17 +421,25 @@ export default function HeroSection({ slides = [] }) {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  background: '#F8FAFC',
+                  border: '1.5px solid #CBD5E1',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF',
+                  color: '#052D5D',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--blue)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#158AE2';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = '#158AE2';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#F8FAFC';
+                  e.currentTarget.style.color = '#052D5D';
+                  e.currentTarget.style.borderColor = '#CBD5E1';
+                }}
               >
                 <ChevronLeft size={20} />
               </button>
@@ -341,17 +450,25 @@ export default function HeroSection({ slides = [] }) {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  background: '#F8FAFC',
+                  border: '1.5px solid #CBD5E1',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF',
+                  color: '#052D5D',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--blue)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#158AE2';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = '#158AE2';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#F8FAFC';
+                  e.currentTarget.style.color = '#052D5D';
+                  e.currentTarget.style.borderColor = '#CBD5E1';
+                }}
               >
                 <ChevronRight size={20} />
               </button>

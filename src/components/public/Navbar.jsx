@@ -10,7 +10,7 @@ export default function Navbar({ settings }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 25);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -21,6 +21,7 @@ export default function Navbar({ settings }) {
     { name: 'Case Studies', href: '#cases' },
     { name: 'Industries', href: '#industry' },
     { name: 'Process', href: '#process' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Insights', href: '#insights' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -33,13 +34,13 @@ export default function Navbar({ settings }) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        height: isScrolled ? '66px' : '80px',
-        background: isScrolled ? 'rgba(15, 35, 71, 0.94)' : 'rgba(15, 35, 71, 0.8)',
+        height: isScrolled ? '68px' : '82px',
+        background: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.92)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        borderBottom: '1px solid rgba(5, 45, 93, 0.08)',
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-        boxShadow: isScrolled ? '0 10px 30px rgba(0, 0, 0, 0.25)' : 'none',
+        boxShadow: isScrolled ? '0 10px 30px rgba(5, 45, 93, 0.08)' : '0 2px 10px rgba(5, 45, 93, 0.02)',
       }}
     >
       <div
@@ -51,7 +52,7 @@ export default function Navbar({ settings }) {
           height: '100%',
         }}
       >
-        {/* Logo */}
+        {/* Flexible Logo with Transparent Background */}
         <Link
           href="/"
           style={{
@@ -59,34 +60,32 @@ export default function Navbar({ settings }) {
             alignItems: 'center',
             gap: '12px',
             textDecoration: 'none',
+            flexShrink: 0,
           }}
         >
-          <div
+          {/* Logo Mark */}
+          <img
+            src="/logo-mark.png"
+            alt="KD Infovision Logo"
             style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #3D9BE9 0%, #1B3A6B 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#FFFFFF',
-              fontFamily: 'var(--font-heading)',
-              fontWeight: 800,
-              fontSize: '18px',
-              boxShadow: '0 4px 15px rgba(61, 155, 233, 0.4)',
+              height: 'clamp(36px, 4vw, 44px)',
+              width: 'auto',
+              maxHeight: '48px',
+              objectFit: 'contain',
+              display: 'block',
+              transition: 'transform 0.2s ease',
             }}
-          >
-            KD
-          </div>
-          <div>
+          />
+
+          {/* Logo Wordmark */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '1.25rem',
+                fontSize: 'clamp(1.15rem, 2vw, 1.35rem)',
                 fontWeight: 800,
-                color: '#FFFFFF',
-                letterSpacing: '-0.5px',
+                color: 'var(--navy)',
+                letterSpacing: '-0.3px',
                 lineHeight: 1.1,
               }}
             >
@@ -95,10 +94,11 @@ export default function Navbar({ settings }) {
             <div
               style={{
                 fontSize: '0.65rem',
-                fontWeight: 600,
-                color: 'var(--blue-cyan)',
+                fontWeight: 700,
+                color: 'var(--blue)',
                 letterSpacing: '1.2px',
                 textTransform: 'uppercase',
+                marginTop: '2px',
               }}
             >
               Data • AI • Transformation
@@ -120,14 +120,15 @@ export default function Navbar({ settings }) {
               key={link.name}
               href={link.href}
               style={{
-                color: 'rgba(255, 255, 255, 0.78)',
+                color: '#334155',
                 fontSize: '0.925rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
+                position: 'relative',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.78)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--blue)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#334155')}
             >
               {link.name}
             </a>
@@ -143,28 +144,54 @@ export default function Navbar({ settings }) {
               width: '38px',
               height: '38px',
               borderRadius: '8px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              background: '#F1F5F9',
+              border: '1px solid #CBD5E1',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'var(--navy)',
               textDecoration: 'none',
               transition: 'all 0.2s',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'var(--blue)';
               e.currentTarget.style.color = '#FFFFFF';
+              e.currentTarget.style.borderColor = 'var(--blue)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-              e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
+              e.currentTarget.style.background = '#F1F5F9';
+              e.currentTarget.style.color = 'var(--navy)';
+              e.currentTarget.style.borderColor = '#CBD5E1';
             }}
           >
             <Shield size={16} />
           </Link>
 
-          <a href="#contact" className="btn-primary" style={{ padding: '0.65rem 1.4rem', fontSize: '0.875rem' }}>
+          <a
+            href="#contact"
+            style={{
+              background: 'var(--blue)',
+              color: '#FFFFFF',
+              padding: '0.65rem 1.4rem',
+              borderRadius: '8px',
+              fontSize: '0.875rem',
+              fontWeight: 700,
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '0 4px 14px rgba(21, 138, 226, 0.35)',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'var(--navy)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'var(--blue)';
+              e.currentTarget.style.transform = 'none';
+            }}
+          >
             Free Consultation
             <ArrowUpRight size={16} />
           </a>
@@ -176,7 +203,7 @@ export default function Navbar({ settings }) {
               display: 'none',
               background: 'transparent',
               border: 'none',
-              color: '#FFFFFF',
+              color: 'var(--navy)',
               cursor: 'pointer',
               padding: '6px',
             }}
@@ -196,14 +223,14 @@ export default function Navbar({ settings }) {
             top: '100%',
             left: 0,
             right: 0,
-            background: 'rgba(15, 35, 71, 0.98)',
+            background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(20px)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            borderBottom: '1px solid rgba(5, 45, 93, 0.1)',
             padding: '1.5rem 2rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+            boxShadow: '0 20px 40px rgba(5, 45, 93, 0.15)',
           }}
         >
           {navLinks.map((link) => (
@@ -212,9 +239,9 @@ export default function Navbar({ settings }) {
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
-                color: '#FFFFFF',
+                color: 'var(--navy)',
                 fontSize: '1.1rem',
-                fontWeight: 600,
+                fontWeight: 700,
                 textDecoration: 'none',
               }}
             >
@@ -224,8 +251,16 @@ export default function Navbar({ settings }) {
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="btn-primary"
-            style={{ width: '100%', marginTop: '0.5rem' }}
+            style={{
+              background: 'var(--blue)',
+              color: '#FFFFFF',
+              padding: '0.85rem',
+              borderRadius: '8px',
+              textAlign: 'center',
+              fontWeight: 700,
+              textDecoration: 'none',
+              marginTop: '0.5rem',
+            }}
           >
             Free Consultation
           </a>
@@ -238,7 +273,7 @@ export default function Navbar({ settings }) {
             display: none !important;
           }
           :global(.mobile-toggle) {
-            display: flex !important;
+            display: block !important;
           }
         }
       `}</style>

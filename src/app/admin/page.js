@@ -276,21 +276,16 @@ export default function AdminDashboardPage() {
       >
         {/* Brand */}
         <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div
+          <img
+            src="/logo-mark.png"
+            alt="KD Logo Mark"
             style={{
-              width: '38px',
               height: '38px',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #3D9BE9 0%, #1B3A6B 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 800,
-              fontSize: '16px',
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
             }}
-          >
-            KD
-          </div>
+          />
           <div>
             <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.05rem', color: '#FFFFFF' }}>
               KD INFOVISION

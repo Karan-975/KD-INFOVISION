@@ -7,17 +7,17 @@
 }
 
 :root {
-  --navy: #1B3A6B;
-  --navy-dark: #0F2347;
-  --navy-deep: #060E1C;
-  --navy-slate: #122850;
-  --blue: #3D9BE9;
-  --blue-mid: #2D86D4;
-  --blue-cyan: #5EC3F5;
-  --blue-light: #EBF5FD;
-  --blue-xlight: #F4FAFF;
-  --emerald: #4ADE80;
-  --emerald-dark: #16A34A;
+  --navy: #052D5D;
+  --navy-dark: #032042;
+  --navy-deep: #02142B;
+  --navy-slate: #0A376E;
+  --blue: #158AE2;
+  --blue-mid: #0D7CD4;
+  --blue-cyan: #3DA5F5;
+  --blue-light: #EDF5FD;
+  --blue-xlight: #F4F9FE;
+  --emerald: #10B981;
+  --emerald-dark: #059669;
   
   --white: #FFFFFF;
   --gray-50: #F8FAFC;
@@ -25,12 +25,12 @@
   --gray-200: #E2EAF4;
   --gray-300: #CBD5E1;
   --gray-400: #94A3B8;
-  --muted: #6B82A0;
-  --body: #374B6B;
+  --muted: #64748B;
+  --body: #334155;
   
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-card: rgba(15, 35, 71, 0.85);
+  --glass-card: rgba(5, 45, 93, 0.85);
   
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -38,10 +38,10 @@
   --radius-xl: 28px;
   --radius-full: 9999px;
   
-  --shadow-sm: 0 2px 8px rgba(15, 35, 71, 0.04);
-  --shadow-md: 0 8px 24px rgba(15, 35, 71, 0.08);
-  --shadow-lg: 0 16px 48px rgba(15, 35, 71, 0.12);
-  --shadow-glow: 0 0 30px rgba(61, 155, 233, 0.25);
+  --shadow-sm: 0 2px 8px rgba(5, 45, 93, 0.04);
+  --shadow-md: 0 8px 24px rgba(5, 45, 93, 0.08);
+  --shadow-lg: 0 16px 48px rgba(5, 45, 93, 0.12);
+  --shadow-glow: 0 0 30px rgba(21, 138, 226, 0.25);
   
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;

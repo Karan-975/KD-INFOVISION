@@ -80,27 +80,23 @@ export default function AdminLoginPage() {
       >
         {/* Brand Header */}
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <div
+          <img
+            src="/logo.png"
+            alt="KD Infovision Logo"
             style={{
-              width: '56px',
-              height: '56px',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, #3D9BE9 0%, #1B3A6B 100%)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#FFFFFF',
-              marginBottom: '1rem',
-              boxShadow: '0 8px 24px rgba(61, 155, 233, 0.4)',
+              height: '75px',
+              width: 'auto',
+              margin: '0 auto 1.25rem auto',
+              display: 'block',
+              objectFit: 'contain',
+              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))',
             }}
-          >
-            <ShieldCheck size={30} />
-          </div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.5px' }}>
-            KD Infovision CMS
+          />
+          <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.5px' }}>
+            Admin Management Portal
           </h1>
-          <p style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.55)', marginTop: '0.35rem' }}>
-            Sign in to access admin management portal
+          <p style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.65)', marginTop: '0.35rem' }}>
+            Sign in to manage KD Infovision CMS &amp; content
           </p>
         </div>
 
