@@ -9,10 +9,20 @@ export default function MediaLibraryModal({ isOpen, onClose, onSelect }) {
   const [uploading, setUploading] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState('');
 
+  const getAuthHeaders = (extraHeaders = {}) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('admin_token') : null;
+    return {
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...extraHeaders,
+    };
+  };
+
   const fetchMedia = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/upload');
+      const res = await fetch('/api/upload', {
+        headers: getAuthHeaders(),
+      });
       const data = await res.json();
       if (data.success) {
         setMediaList(data.files || []);
@@ -41,6 +51,7 @@ export default function MediaLibraryModal({ isOpen, onClose, onSelect }) {
     try {
       const res = await fetch('/api/upload', {
         method: 'POST',
+        headers: getAuthHeaders(),
         body: formData,
       });
 
@@ -61,7 +72,7 @@ export default function MediaLibraryModal({ isOpen, onClose, onSelect }) {
     try {
       const res = await fetch('/api/upload', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ fileName }),
       });
 

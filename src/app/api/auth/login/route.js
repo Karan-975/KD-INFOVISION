@@ -46,9 +46,14 @@ export async function POST(request) {
       token,
     });
 
+    // Only enable Secure cookie if requested over HTTPS
+    const isHttps =
+      request.headers.get('x-forwarded-proto') === 'https' ||
+      request.nextUrl.protocol === 'https:';
+
     response.cookies.set('admin_token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isHttps,
       sameSite: 'lax',
       path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7 days

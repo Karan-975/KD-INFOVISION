@@ -28,6 +28,12 @@ export default function AdminLoginPage() {
         throw new Error(data.error || 'Invalid credentials');
       }
 
+      if (data.token) {
+        try {
+          localStorage.setItem('admin_token', data.token);
+        } catch (e) {}
+      }
+
       router.push('/admin');
       router.refresh();
     } catch (err) {

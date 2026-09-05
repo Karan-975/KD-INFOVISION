@@ -71,9 +71,19 @@ export default function AdminDashboardPage() {
     setTimeout(() => setMessage({ text: '', type: 'success' }), 4000);
   };
 
+  const getAuthHeaders = (extraHeaders = {}) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('admin_token') : null;
+    return {
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...extraHeaders,
+    };
+  };
+
   const checkAuthAndFetchData = async () => {
     try {
-      const authRes = await fetch('/api/auth/me');
+      const authRes = await fetch('/api/auth/me', {
+        headers: getAuthHeaders(),
+      });
       const authData = await authRes.json();
       if (!authData.success) {
         router.push('/admin/login');
@@ -95,17 +105,17 @@ export default function AdminDashboardPage() {
         insRes,
         inqRes,
       ] = await Promise.all([
-        fetch('/api/admin/settings').then((r) => r.json()),
-        fetch('/api/admin/slides').then((r) => r.json()),
-        fetch('/api/admin/services').then((r) => r.json()),
-        fetch('/api/admin/cases').then((r) => r.json()),
-        fetch('/api/admin/industries').then((r) => r.json()),
-        fetch('/api/admin/process').then((r) => r.json()),
-        fetch('/api/admin/stats').then((r) => r.json()),
-        fetch('/api/admin/testimonials').then((r) => r.json()),
-        fetch('/api/admin/partners').then((r) => r.json()),
-        fetch('/api/admin/insights').then((r) => r.json()),
-        fetch('/api/admin/inquiries').then((r) => r.json()),
+        fetch('/api/admin/settings', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/slides', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/services', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/cases', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/industries', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/process', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/stats', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/testimonials', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/partners', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/insights', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/inquiries', { headers: getAuthHeaders() }).then((r) => r.json()),
       ]);
 
       if (setRes.success) setSettings(setRes.settings || {});
@@ -131,7 +141,10 @@ export default function AdminDashboardPage() {
   }, []);
 
   const handleLogout = async () => {
-    await fetch('/api/auth/me', { method: 'POST' });
+    try {
+      localStorage.removeItem('admin_token');
+    } catch (e) {}
+    await fetch('/api/auth/me', { method: 'POST', headers: getAuthHeaders() });
     router.push('/admin/login');
   };
 
@@ -142,7 +155,7 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch('/api/admin/settings', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(settings),
       });
       const data = await res.json();
@@ -168,7 +181,7 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch(endpoint, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(item),
       });
       const data = await res.json();
@@ -189,7 +202,10 @@ export default function AdminDashboardPage() {
   const handleDeleteGeneric = async (type, id) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
     try {
-      const res = await fetch(`/api/admin/${type}?id=${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin/${type}?id=${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+      });
       const data = await res.json();
       if (data.success) {
         showNotification('Item deleted successfully!');
@@ -207,7 +223,7 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch('/api/admin/inquiries', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ id, status }),
       });
       const data = await res.json();
