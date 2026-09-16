@@ -17,24 +17,21 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  Play,
-  Pause,
 } from 'lucide-react';
-import HeroBackgroundAnimation from './HeroBackgroundAnimation';
 
 export default function HeroSection({ slides = [] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  // 3 Multi-Colored, Realistic Photography Slides
+  // 3 Multi-Colored, Realistic Photography Slides (Background Carousel)
   const defaultCarouselSlides = [
     {
       id: 'lakehouse',
       tag: 'ENTERPRISE DATA & CLOUD PLATFORMS',
       themeColor: '#158AE2',
-      themeBg: 'rgba(21, 138, 226, 0.08)',
-      themeBorder: 'rgba(21, 138, 226, 0.25)',
+      themeBg: 'rgba(21, 138, 226, 0.15)',
+      themeBorder: 'rgba(21, 138, 226, 0.4)',
       headline: 'Engineering Resilient Cloud Lakehouses for',
       headlineEmp: 'Enterprise Scale.',
       subtext:
@@ -55,8 +52,8 @@ export default function HeroSection({ slides = [] }) {
       id: 'ai-mlops',
       tag: 'PRODUCTION AI & MACHINE LEARNING',
       themeColor: '#10B981',
-      themeBg: 'rgba(16, 185, 129, 0.08)',
-      themeBorder: 'rgba(16, 185, 129, 0.25)',
+      themeBg: 'rgba(16, 185, 129, 0.15)',
+      themeBorder: 'rgba(16, 185, 129, 0.4)',
       headline: 'Deploying Production-Grade AI Systems with',
       headlineEmp: 'Measurable ROI.',
       subtext:
@@ -77,8 +74,8 @@ export default function HeroSection({ slides = [] }) {
       id: 'executive-bi',
       tag: 'EXECUTIVE BI & MODERN ANALYTICS',
       themeColor: '#F59E0B',
-      themeBg: 'rgba(245, 158, 11, 0.08)',
-      themeBorder: 'rgba(245, 158, 11, 0.25)',
+      themeBg: 'rgba(245, 158, 11, 0.15)',
+      themeBorder: 'rgba(245, 158, 11, 0.4)',
       headline: 'Empowering C-Suite Decision Making with',
       headlineEmp: 'Real-Time Power BI.',
       subtext:
@@ -152,15 +149,15 @@ export default function HeroSection({ slides = [] }) {
 
   // Enterprise Technology Ecosystem
   const techEcosystem = [
-    { name: 'Microsoft Azure', icon: Server, color: '#0078D4' },
-    { name: 'Amazon Web Services', icon: Cloud, color: '#FF9900' },
-    { name: 'Google Cloud Platform', icon: Cloud, color: '#4285F4' },
-    { name: 'Snowflake', icon: Database, color: '#29B5E8' },
-    { name: 'Databricks', icon: Layers, color: '#FF3621' },
-    { name: 'Power BI', icon: BarChart3, color: '#F2C811' },
-    { name: 'Tableau', icon: BarChart3, color: '#E97627' },
-    { name: 'Apache Kafka', icon: Zap, color: '#231F20' },
-    { name: 'Enterprise AI & MLOps', icon: Cpu, color: '#10B981' },
+    { name: 'Microsoft Azure', icon: Server, color: '#38BDF8' },
+    { name: 'Amazon Web Services', icon: Cloud, color: '#FBBF24' },
+    { name: 'Google Cloud Platform', icon: Cloud, color: '#60A5FA' },
+    { name: 'Snowflake', icon: Database, color: '#38BDF8' },
+    { name: 'Databricks', icon: Layers, color: '#F87171' },
+    { name: 'Power BI', icon: BarChart3, color: '#FCD34D' },
+    { name: 'Tableau', icon: BarChart3, color: '#FB923C' },
+    { name: 'Apache Kafka', icon: Zap, color: '#E2E8F0' },
+    { name: 'Enterprise AI & MLOps', icon: Cpu, color: '#34D399' },
   ];
 
   return (
@@ -168,35 +165,101 @@ export default function HeroSection({ slides = [] }) {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '90vh',
+        minHeight: '88vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        background: '#FFFFFF',
-        paddingTop: '110px',
+        background: '#031838',
+        paddingTop: '120px',
         paddingBottom: '3.5rem',
         overflow: 'hidden',
+        color: '#FFFFFF',
       }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Harmonic Ambient Background Wavefield */}
-      <HeroBackgroundAnimation />
+      {/* BACKGROUND SLIDING CAROUSEL TRACK (Realistic Images with subtle opacity) */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          width: `${total * 100}%`,
+          height: '100%',
+          transform: `translateX(-${currentSlide * (100 / total)}%)`,
+          transition: 'transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        {carouselSlides.map((slide, idx) => (
+          <div
+            key={slide.id}
+            style={{
+              position: 'relative',
+              width: `${100 / total}%`,
+              height: '100%',
+              flexShrink: 0,
+              overflow: 'hidden',
+              background: '#031838',
+            }}
+          >
+            {/* Realistic Enterprise Photograph with Low Opacity */}
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.24,
+                transform: currentSlide === idx ? 'scale(1.05)' : 'scale(1)',
+                transition: 'transform 6s ease-out, opacity 0.5s ease',
+                display: 'block',
+              }}
+            />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-        {/* Main Hero Split Grid: Airy, spacious, Team Computers-inspired */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1.08fr 0.92fr',
-            gap: '3.5rem',
-            alignItems: 'center',
-          }}
-          className="hero-grid"
-        >
-          {/* LEFT COLUMN: Clean Authoritative Enterprise Typography with Slide Transitions */}
-          <div key={active.id} style={{ animation: 'hero-fade-in 0.45s ease forwards' }}>
-            {/* Tag Badge */}
+            {/* Gradient Mask for Optimal Contrast & Text Legibility */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'linear-gradient(90deg, rgba(3, 24, 56, 0.94) 0%, rgba(3, 24, 56, 0.76) 55%, rgba(3, 24, 56, 0.88) 100%)',
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Subtle Bottom Vignette */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '100px',
+          background: 'linear-gradient(to top, #031838 0%, transparent 100%)',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
+      <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+        <div style={{ maxWidth: '820px' }}>
+          {/* Tag Badge & Telemetry Row */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '1.5rem',
+            }}
+          >
+            {/* Category Tag Badge */}
             <div
               style={{
                 display: 'inline-flex',
@@ -207,11 +270,10 @@ export default function HeroSection({ slides = [] }) {
                 background: active.themeBg,
                 border: `1px solid ${active.themeBorder}`,
                 color: active.themeColor,
-                fontSize: '0.785rem',
+                fontSize: '0.8rem',
                 fontWeight: 700,
                 letterSpacing: '0.8px',
                 textTransform: 'uppercase',
-                marginBottom: '1.25rem',
                 transition: 'all 0.3s ease',
               }}
             >
@@ -219,413 +281,375 @@ export default function HeroSection({ slides = [] }) {
               <span>{active.tag}</span>
             </div>
 
-            {/* Headline */}
-            <h1
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.3rem, 3.7vw, 3.65rem)',
-                fontWeight: 800,
-                color: 'var(--navy)',
-                lineHeight: 1.15,
-                letterSpacing: '-0.025em',
-                marginBottom: '1.25rem',
-              }}
-            >
-              {active.headline}{' '}
-              <span
-                style={{
-                  color: active.themeColor,
-                  position: 'relative',
-                  display: 'inline-block',
-                  transition: 'color 0.3s ease',
-                }}
-              >
-                {active.headlineEmp}
-              </span>
-            </h1>
-
-            {/* Concise Quality Subtext: 2 sentences, zero clutter */}
-            <p
-              style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.75,
-                color: '#475569',
-                maxWidth: '560px',
-                marginBottom: '2rem',
-              }}
-            >
-              {active.subtext}
-            </p>
-
-            {/* Dual CTAs */}
+            {/* Live Telemetry Pill */}
             <div
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '1rem',
-                flexWrap: 'wrap',
-                marginBottom: '2.5rem',
+                gap: '8px',
+                padding: '6px 14px',
+                borderRadius: '30px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#E2E8F0',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '0.5px',
               }}
             >
-              <Link
-                href={active.primaryUrl}
+              <div
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
                   background: active.themeColor,
-                  color: '#FFFFFF',
-                  fontSize: '0.975rem',
-                  fontWeight: 700,
-                  padding: '0.85rem 1.75rem',
-                  borderRadius: '10px',
-                  textDecoration: 'none',
-                  boxShadow: `0 6px 20px ${active.themeColor}55`,
-                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  boxShadow: `0 0 10px ${active.themeColor}`,
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <span>{active.primaryBtn}</span>
-                <ArrowRight size={18} />
-              </Link>
-
-              <Link
-                href={active.secUrl}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: '#FFFFFF',
-                  color: 'var(--navy)',
-                  fontSize: '0.975rem',
-                  fontWeight: 700,
-                  padding: '0.85rem 1.6rem',
-                  borderRadius: '10px',
-                  border: '1.5px solid #CBD5E1',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = active.themeColor;
-                  e.currentTarget.style.color = active.themeColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#CBD5E1';
-                  e.currentTarget.style.color = 'var(--navy)';
-                }}
-              >
-                <span>{active.secBtn}</span>
-              </Link>
+              />
+              <span>{active.telemetry}</span>
             </div>
 
-            {/* Credibility Telemetry Strip */}
+            {/* Slide Counter */}
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1.5rem',
-                flexWrap: 'wrap',
-                paddingTop: '1.25rem',
-                borderTop: '1px solid #E2E8F0',
+                fontSize: '0.775rem',
+                fontWeight: 700,
+                color: 'rgba(255, 255, 255, 0.55)',
+                letterSpacing: '1px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-                <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
-                  <strong>150+</strong> Enterprise Deployments
-                </span>
+              0{currentSlide + 1} / 0{total}
+            </div>
+          </div>
+
+          {/* Headline */}
+          <h1
+            key={active.id + '-headline'}
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2.4rem, 4.4vw, 3.85rem)',
+              fontWeight: 800,
+              color: '#FFFFFF',
+              lineHeight: 1.14,
+              letterSpacing: '-0.025em',
+              marginBottom: '1.25rem',
+              animation: 'hero-text-in 0.4s ease forwards',
+            }}
+          >
+            {active.headline}{' '}
+            <span
+              style={{
+                color: active.themeColor,
+                position: 'relative',
+                display: 'inline-block',
+                transition: 'color 0.3s ease',
+              }}
+            >
+              {active.headlineEmp}
+            </span>
+          </h1>
+
+          {/* Concise Quality Subtext */}
+          <p
+            key={active.id + '-subtext'}
+            style={{
+              fontSize: '1.125rem',
+              lineHeight: 1.8,
+              color: 'rgba(255, 255, 255, 0.82)',
+              maxWidth: '680px',
+              marginBottom: '2.25rem',
+              animation: 'hero-text-in 0.4s ease forwards',
+            }}
+          >
+            {active.subtext}
+          </p>
+
+          {/* Dual CTAs & Metric Highlight */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1.25rem',
+              flexWrap: 'wrap',
+              marginBottom: '2.75rem',
+            }}
+          >
+            <Link
+              href={active.primaryUrl}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: active.themeColor,
+                color: '#FFFFFF',
+                fontSize: '1rem',
+                fontWeight: 700,
+                padding: '0.9rem 1.85rem',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                boxShadow: `0 8px 24px ${active.themeColor}55`,
+                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = `0 12px 28px ${active.themeColor}77`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = `0 8px 24px ${active.themeColor}55`;
+              }}
+            >
+              <span>{active.primaryBtn}</span>
+              <ArrowRight size={18} />
+            </Link>
+
+            <Link
+              href={active.secUrl}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                color: '#FFFFFF',
+                fontSize: '1rem',
+                fontWeight: 700,
+                padding: '0.9rem 1.75rem',
+                borderRadius: '10px',
+                border: '1.5px solid rgba(255, 255, 255, 0.3)',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = active.themeColor;
+                e.currentTarget.style.color = active.themeColor;
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              }}
+            >
+              <span>{active.secBtn}</span>
+            </Link>
+
+            {/* Inline Key Metric Highlight Pill */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                background: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+              }}
+            >
+              <div style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 600 }}>
+                {active.subMetric}:
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-                <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
-                  <strong>99.9%</strong> Production SLA Uptime
-                </span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-                <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
-                  <strong>SOC2 &amp; ISO</strong> Ready
-                </span>
+              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#FFFFFF' }}>
+                {active.metric}
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Realistic Enterprise Photography Carousel Showcase */}
+          {/* Credibility Telemetry Strip */}
           <div
             style={{
-              position: 'relative',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
+              gap: '1.75rem',
+              flexWrap: 'wrap',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid rgba(255, 255, 255, 0.12)',
             }}
           >
-            {/* Main Image Showcase Container with Carousel Animation */}
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                maxWidth: '560px',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                boxShadow: '0 24px 60px rgba(5, 45, 93, 0.14)',
-                border: `1.5px solid ${active.themeColor}40`,
-                background: '#052D5D',
-                aspectRatio: '16 / 10',
-                transition: 'border-color 0.4s ease',
-              }}
-            >
-              {/* Authentic Corporate Photography */}
-              <img
-                key={active.id}
-                src={active.image}
-                alt={active.alt}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                  animation: 'ken-burns 12s ease-out infinite alternate',
-                }}
-              />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
+                <strong>150+</strong> Enterprise Deployments
+              </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
+                <strong>99.9%</strong> Production SLA Uptime
+              </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
+                <strong>SOC2 &amp; ISO</strong> Ready
+              </span>
+            </div>
+          </div>
+        </div>
 
-              {/* Subtle Gradient Vignette */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'linear-gradient(180deg, rgba(5, 45, 93, 0.25) 0%, rgba(5, 45, 93, 0.05) 40%, rgba(5, 45, 93, 0.85) 100%)',
-                  pointerEvents: 'none',
-                }}
-              />
-
-              {/* Top Floating Telemetry Glass Chip */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  left: '16px',
-                  background: 'rgba(5, 45, 93, 0.85)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: '10px',
-                  padding: '7px 13px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: '#FFFFFF',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                <div
+        {/* BOTTOM SLIDE SELECTOR & ARROW CONTROLS */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            width: '100%',
+            maxWidth: '820px',
+            marginTop: '3.5rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          {/* 3 Tabs */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '12px',
+              flex: 1,
+              minWidth: '320px',
+            }}
+            className="hero-tabs-grid"
+          >
+            {carouselSlides.map((slide, idx) => {
+              const isSelected = idx === currentSlide;
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => handleSelectSlide(idx)}
                   style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: active.themeColor,
-                    boxShadow: `0 0 10px ${active.themeColor}`,
-                  }}
-                />
-                <span style={{ fontSize: '0.725rem', fontWeight: 700, letterSpacing: '0.5px' }}>
-                  {active.telemetry}
-                </span>
-              </div>
-
-              {/* Slide Counter Indicator (e.g. 01 / 03) */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '16px',
-                  background: 'rgba(5, 45, 93, 0.85)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: '10px',
-                  padding: '5px 12px',
-                  color: '#FFFFFF',
-                  fontSize: '0.75rem',
-                  fontWeight: 800,
-                  letterSpacing: '1px',
-                }}
-              >
-                0{currentSlide + 1} / 0{total}
-              </div>
-
-              {/* Prev / Next Circular Navigation Arrows */}
-              <button
-                onClick={handlePrev}
-                aria-label="Previous Slide"
-                style={{
-                  position: 'absolute',
-                  left: '14px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '50%',
-                  background: 'rgba(5, 45, 93, 0.75)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  zIndex: 2,
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = active.themeColor)}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(5, 45, 93, 0.75)')}
-              >
-                <ChevronLeft size={20} />
-              </button>
-
-              <button
-                onClick={handleNext}
-                aria-label="Next Slide"
-                style={{
-                  position: 'absolute',
-                  right: '14px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '50%',
-                  background: 'rgba(5, 45, 93, 0.75)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  zIndex: 2,
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = active.themeColor)}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(5, 45, 93, 0.75)')}
-              >
-                <ChevronRight size={20} />
-              </button>
-
-              {/* Bottom Glass Card Highlight */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '16px',
-                  left: '16px',
-                  right: '16px',
-                  background: 'rgba(5, 45, 93, 0.9)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: `1px solid ${active.themeColor}50`,
-                  borderRadius: '12px',
-                  padding: '12px 18px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: '0.675rem', color: '#94A3B8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
-                    {active.subMetric}
-                  </div>
-                  <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2, marginTop: '2px' }}>
-                    {active.metric}
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    fontSize: '0.725rem',
-                    fontWeight: 700,
-                    color: active.themeColor,
-                    background: `${active.themeColor}22`,
-                    padding: '4px 10px',
-                    borderRadius: '6px',
-                    border: `1px solid ${active.themeColor}40`,
+                    padding: '12px 16px',
+                    borderRadius: '10px',
+                    background: isSelected ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.04)',
+                    backdropFilter: 'blur(10px)',
+                    border: `1.5px solid ${isSelected ? slide.themeColor : 'rgba(255, 255, 255, 0.12)'}`,
+                    boxShadow: isSelected ? `0 4px 16px ${slide.themeColor}33` : 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.25s ease',
                   }}
                 >
-                  {active.stack.slice(0, 2).join(' + ')}
-                </div>
-              </div>
-            </div>
+                  {/* Active Progress Bar Countdown Line */}
+                  {isSelected && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        bottom: 0,
+                        width: `${progress}%`,
+                        background: `${slide.themeColor}22`,
+                        transition: 'width 0.05s linear',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  )}
 
-            {/* Slide Navigation Progress Tabs (3 Pills Below Showcase) */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '10px',
-                width: '100%',
-                maxWidth: '560px',
-                marginTop: '1.25rem',
-              }}
-            >
-              {carouselSlides.map((slide, idx) => {
-                const isSelected = idx === currentSlide;
-                return (
-                  <button
-                    key={slide.id}
-                    onClick={() => handleSelectSlide(idx)}
+                  <div
                     style={{
-                      padding: '10px 12px',
-                      borderRadius: '10px',
-                      background: isSelected ? '#FFFFFF' : '#F8FAFC',
-                      border: `1.5px solid ${isSelected ? slide.themeColor : '#E2E8F0'}`,
-                      boxShadow: isSelected ? '0 4px 14px rgba(5, 45, 93, 0.08)' : 'none',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      transition: 'all 0.25s ease',
+                      fontSize: '0.675rem',
+                      fontWeight: 700,
+                      color: isSelected ? slide.themeColor : 'rgba(255, 255, 255, 0.5)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                      marginBottom: '2px',
                     }}
                   >
-                    {/* Active Progress Bar Fill */}
-                    {isSelected && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          bottom: 0,
-                          width: `${progress}%`,
-                          background: `${slide.themeColor}18`,
-                          transition: 'width 0.05s linear',
-                          pointerEvents: 'none',
-                        }}
-                      />
-                    )}
+                    Slide 0{idx + 1}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.85rem',
+                      fontWeight: 800,
+                      color: isSelected ? '#FFFFFF' : 'rgba(255, 255, 255, 0.75)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {slide.shortTitle}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-                    <div style={{ fontSize: '0.65rem', fontWeight: 700, color: isSelected ? slide.themeColor : '#94A3B8', textTransform: 'uppercase' }}>
-                      Slide 0{idx + 1}
-                    </div>
-                    <div style={{ fontSize: '0.775rem', fontWeight: 800, color: isSelected ? 'var(--navy)' : '#64748B', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {slide.shortTitle}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+          {/* Prev / Next Arrows right next to the tabs */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous Slide"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '10px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#FFFFFF',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = active.themeColor;
+                e.currentTarget.style.borderColor = active.themeColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+              }}
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next Slide"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '10px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#FFFFFF',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = active.themeColor;
+                e.currentTarget.style.borderColor = active.themeColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+              }}
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
 
         {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
         <div
           style={{
-            marginTop: '3.5rem',
+            marginTop: '2.5rem',
             padding: '1.25rem 2rem',
             borderRadius: '14px',
-            background: '#F8FAFC',
-            border: '1px solid #E2E8F0',
+            background: 'rgba(255, 255, 255, 0.04)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
           }}
         >
           <div
@@ -634,12 +658,12 @@ export default function HeroSection({ slides = [] }) {
               fontWeight: 800,
               letterSpacing: '1.5px',
               textTransform: 'uppercase',
-              color: '#64748B',
+              color: 'rgba(255, 255, 255, 0.6)',
               marginBottom: '0.85rem',
               textAlign: 'center',
             }}
           >
-            UNITED BY TECHNOLOGY • ENTERPRISE PARTNER ECOSYSTEM
+            UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
           </div>
 
           <div
@@ -654,7 +678,23 @@ export default function HeroSection({ slides = [] }) {
             {techEcosystem.map((tech, idx) => {
               const TechIcon = tech.icon;
               return (
-                <div key={idx} className="tech-pill">
+                <div
+                  key={idx}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 14px',
+                    borderRadius: '9999px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#FFFFFF',
+                    fontSize: '0.775rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.2px',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
                   <TechIcon size={14} style={{ color: tech.color }} />
                   <span>{tech.name}</span>
                 </div>
@@ -665,28 +705,19 @@ export default function HeroSection({ slides = [] }) {
       </div>
 
       <style jsx>{`
-        @keyframes hero-fade-in {
+        @keyframes hero-text-in {
           from {
             opacity: 0;
-            transform: translateY(8px);
+            transform: translateY(10px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
-        @keyframes ken-burns {
-          0% {
-            transform: scale(1);
-          }
-          100% {
-            transform: scale(1.08);
-          }
-        }
-        @media (max-width: 960px) {
-          :global(.hero-grid) {
+        @media (max-width: 900px) {
+          :global(.hero-tabs-grid) {
             grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
           }
         }
       `}</style>
