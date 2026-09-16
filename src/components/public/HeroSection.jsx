@@ -115,13 +115,13 @@ export default function HeroSection({ slides = [] }) {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '82vh',
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         background: '#031838',
         paddingTop: 'clamp(96px, 12vh, 120px)',
-        paddingBottom: '2.5rem',
+        paddingBottom: '2rem',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
@@ -148,7 +148,7 @@ export default function HeroSection({ slides = [] }) {
               zIndex: currentSlide === idx ? 1 : 0,
             }}
           >
-            {/* Realistic Enterprise Photograph with High Visibility */}
+            {/* Realistic Enterprise Photograph - Full Picture Visible */}
             <img
               src={slide.image}
               alt={slide.alt}
@@ -156,20 +156,21 @@ export default function HeroSection({ slides = [] }) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.75,
-                transform: currentSlide === idx ? 'scale(1.05)' : 'scale(1)',
+                objectPosition: 'center 35%',
+                opacity: 0.85,
+                transform: currentSlide === idx ? 'scale(1.03)' : 'scale(1)',
                 transition: 'transform 7s ease-out, opacity 1.2s ease-in-out',
                 display: 'block',
               }}
             />
 
-            {/* Directional Contrast Mask: Left preserves text legibility, Right reveals image clearly */}
+            {/* Directional Contrast Mask: Preserves text legibility on left while keeping complete picture clear on right */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'linear-gradient(90deg, rgba(3, 24, 56, 0.92) 0%, rgba(3, 24, 56, 0.80) 38%, rgba(3, 24, 56, 0.40) 70%, rgba(3, 24, 56, 0.18) 100%)',
+                  'linear-gradient(90deg, rgba(3, 24, 56, 0.90) 0%, rgba(3, 24, 56, 0.72) 38%, rgba(3, 24, 56, 0.25) 68%, rgba(3, 24, 56, 0.08) 100%)',
               }}
             />
           </div>
@@ -183,15 +184,26 @@ export default function HeroSection({ slides = [] }) {
           bottom: 0,
           left: 0,
           right: 0,
-          height: '100px',
-          background: 'linear-gradient(to top, rgba(3, 24, 56, 0.95) 0%, transparent 100%)',
+          height: '70px',
+          background: 'linear-gradient(to top, rgba(3, 24, 56, 0.85) 0%, transparent 100%)',
           zIndex: 1,
           pointerEvents: 'none',
         }}
       />
 
       {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
-      <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+      <div
+        className="container"
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          flex: 1,
+        }}
+      >
         <div style={{ maxWidth: '820px' }}>
           {/* Headline */}
           <h1
@@ -273,12 +285,13 @@ export default function HeroSection({ slides = [] }) {
         {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
         <div
           style={{
-            marginTop: '2.5rem',
-            padding: '1.25rem 2rem',
+            marginTop: 'clamp(4.5rem, 10vh, 7rem)',
+            padding: '0.95rem 1.75rem',
             borderRadius: '14px',
-            background: 'rgba(255, 255, 255, 0.04)',
+            background: 'rgba(3, 24, 56, 0.55)',
             backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
           }}
         >
           <div

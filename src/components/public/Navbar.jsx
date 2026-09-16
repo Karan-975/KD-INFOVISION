@@ -34,12 +34,12 @@ export default function Navbar({ settings }) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        height: isScrolled ? '68px' : '82px',
-        background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.94)',
+        height: '76px',
+        background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(5, 45, 93, 0.08)',
-        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+        borderBottom: isScrolled ? '1px solid rgba(5, 45, 93, 0.12)' : '1px solid rgba(5, 45, 93, 0.08)',
+        transition: 'background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
         boxShadow: isScrolled ? '0 10px 30px rgba(5, 45, 93, 0.08)' : '0 2px 10px rgba(5, 45, 93, 0.02)',
       }}
     >
