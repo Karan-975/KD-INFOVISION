@@ -13,7 +13,6 @@ import {
   ArrowRight,
   ChevronRight,
   CheckCircle2,
-  Sparkles,
   X,
 } from 'lucide-react';
 
@@ -110,25 +109,8 @@ export default function ServicesSection({ services = [] }) {
   return (
     <section id="solutions" style={{ background: '#FFFFFF', padding: '6.5rem 0' }}>
       <div className="container">
-        {/* Section Header: Team Computers-inspired clean hierarchy */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '1.5px',
-              color: 'var(--blue)',
-              marginBottom: '0.75rem',
-            }}
-          >
-            <Sparkles size={14} />
-            <span>EXPLORE OUR TECH SOLUTIONS</span>
-          </div>
-
+        {/* Section Header: Clean Enterprise */}
+        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 4rem auto' }}>
           <h2
             style={{
               fontFamily: 'var(--font-heading)',

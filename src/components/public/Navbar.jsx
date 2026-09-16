@@ -63,12 +63,12 @@ export default function Navbar({ settings }) {
             flexShrink: 0,
           }}
         >
-          {/* Logo Mark */}
+          {/* Logo Mark Only */}
           <img
             src="/logo-mark.png"
-            alt="KD Infovision Logo"
+            alt="KD Infovision"
             style={{
-              height: 'clamp(36px, 4vw, 44px)',
+              height: 'clamp(38px, 4vw, 44px)',
               width: 'auto',
               maxHeight: '48px',
               objectFit: 'contain',
@@ -76,40 +76,6 @@ export default function Navbar({ settings }) {
               transition: 'transform 0.2s ease',
             }}
           />
-
-          {/* Logo Wordmark */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.15rem, 2vw, 1.35rem)',
-                fontWeight: 800,
-                color: 'var(--navy)',
-                letterSpacing: '-0.3px',
-                lineHeight: 1.1,
-              }}
-            >
-              {settings?.siteName || 'KD INFOVISION'}
-            </div>
-            <div
-              style={{
-                fontSize: '0.65rem',
-                fontWeight: 700,
-                color: 'var(--blue)',
-                letterSpacing: '1.2px',
-                textTransform: 'uppercase',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-              }}
-            >
-              <span>DATA</span>
-              <span>•</span>
-              <span>AI</span>
-              <span>•</span>
-              <span>TRANSFORMATION</span>
-            </div>
-          </div>
         </Link>
 
         {/* Desktop Navigation Links */}

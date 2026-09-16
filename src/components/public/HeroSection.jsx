@@ -115,12 +115,12 @@ export default function HeroSection({ slides = [] }) {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: 'clamp(840px, 94vh, 1100px)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         background: '#031838',
-        paddingTop: 'clamp(96px, 12vh, 120px)',
+        paddingTop: 'clamp(92px, 11vh, 115px)',
         paddingBottom: '2rem',
         overflow: 'hidden',
         color: '#FFFFFF',
@@ -156,8 +156,8 @@ export default function HeroSection({ slides = [] }) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                objectPosition: 'center 35%',
-                opacity: 0.85,
+                objectPosition: 'center 40%',
+                opacity: 0.88,
                 transform: currentSlide === idx ? 'scale(1.03)' : 'scale(1)',
                 transition: 'transform 7s ease-out, opacity 1.2s ease-in-out',
                 display: 'block',
@@ -170,7 +170,7 @@ export default function HeroSection({ slides = [] }) {
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'linear-gradient(90deg, rgba(3, 24, 56, 0.90) 0%, rgba(3, 24, 56, 0.72) 38%, rgba(3, 24, 56, 0.25) 68%, rgba(3, 24, 56, 0.08) 100%)',
+                  'linear-gradient(90deg, rgba(3, 24, 56, 0.88) 0%, rgba(3, 24, 56, 0.68) 36%, rgba(3, 24, 56, 0.20) 68%, rgba(3, 24, 56, 0.05) 100%)',
               }}
             />
           </div>
@@ -204,13 +204,12 @@ export default function HeroSection({ slides = [] }) {
           flex: 1,
         }}
       >
-        {/* Middle Vertically Positioned Content */}
+        {/* Content with Generous Gap to Bottom Box */}
         <div
           style={{
-            maxWidth: '840px',
-            margin: 'auto 0',
-            paddingTop: '2rem',
-            paddingBottom: '2rem',
+            maxWidth: '820px',
+            marginTop: 'clamp(1.5rem, 4vh, 3rem)',
+            marginBottom: 'clamp(5.5rem, 12vh, 10rem)',
           }}
         >
           {/* Headline */}
@@ -218,12 +217,12 @@ export default function HeroSection({ slides = [] }) {
             key={active.id + '-headline'}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2.5rem, 4.8vw, 4.2rem)',
+              fontSize: 'clamp(2.35rem, 4.4vw, 4rem)',
               fontWeight: 800,
               color: '#FFFFFF',
               lineHeight: 1.15,
               letterSpacing: '-0.025em',
-              marginBottom: '1.5rem',
+              marginBottom: '1.25rem',
               textShadow: '0 2px 16px rgba(0, 0, 0, 0.8)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
@@ -246,10 +245,10 @@ export default function HeroSection({ slides = [] }) {
           <p
             key={active.id + '-subtext'}
             style={{
-              fontSize: '1.2rem',
-              lineHeight: 1.85,
+              fontSize: '1.15rem',
+              lineHeight: 1.8,
               color: 'rgba(255, 255, 255, 0.95)',
-              maxWidth: '720px',
+              maxWidth: '700px',
               marginBottom: '0',
               textShadow: '0 2px 10px rgba(0, 0, 0, 0.85)',
               animation: 'hero-text-in 0.4s ease forwards',
@@ -264,7 +263,7 @@ export default function HeroSection({ slides = [] }) {
           {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
           <div
             style={{
-              padding: '0.85rem 1.75rem',
+              padding: '0.8rem 1.5rem',
               borderRadius: '14px',
               background: 'rgba(3, 24, 56, 0.65)',
               backdropFilter: 'blur(16px)',

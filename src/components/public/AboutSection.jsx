@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 function CounterItem({ target, suffix, label, context }) {
   const [count, setCount] = useState(0);
@@ -150,24 +150,6 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-left-pane"
         >
-          {/* Kicker */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '1.2px',
-              color: 'var(--blue)',
-              marginBottom: '1rem',
-            }}
-          >
-            <Sparkles size={14} />
-            <span>OUR STORY • ABOUT US</span>
-          </div>
-
           <h2
             style={{
               fontFamily: 'var(--font-heading)',

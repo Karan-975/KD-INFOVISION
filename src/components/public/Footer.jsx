@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   Mail,
   MapPin,
-  Sparkles,
 } from 'lucide-react';
 
 export default function Footer({ settings }) {
@@ -74,26 +73,6 @@ export default function Footer({ settings }) {
           className="footer-cta-card"
         >
           <div style={{ maxWidth: '640px' }}>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                background: 'rgba(21, 138, 226, 0.2)',
-                border: '1px solid rgba(21, 138, 226, 0.4)',
-                color: '#60A5FA',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                marginBottom: '1rem',
-              }}
-            >
-              <Sparkles size={13} />
-              <span>Partner with Enterprise Specialists</span>
-            </div>
             <h3
               style={{
                 fontSize: 'clamp(1.5rem, 2.8vw, 2.1rem)',
@@ -187,25 +166,17 @@ export default function Footer({ settings }) {
         >
           {/* Brand Column */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.25rem' }}>
               <img
                 src="/logo-mark.png"
-                alt="KD Infovision Logo"
+                alt="KD Infovision"
                 style={{
-                  height: '46px',
+                  height: '48px',
                   width: 'auto',
                   objectFit: 'contain',
                   display: 'block',
                 }}
               />
-              <div>
-                <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.3px', lineHeight: 1.1 }}>
-                  {settings?.siteName || 'KD INFOVISION'}
-                </div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#38BDF8', letterSpacing: '1.2px', textTransform: 'uppercase', marginTop: '3px' }}>
-                  DATA • AI • TRANSFORMATION
-                </div>
-              </div>
             </div>
 
             <p

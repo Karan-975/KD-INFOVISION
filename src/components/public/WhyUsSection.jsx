@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   GitBranch,
   ArrowRight,
-  Sparkles,
 } from 'lucide-react';
 
 export default function WhyUsSection() {
@@ -62,25 +61,8 @@ export default function WhyUsSection() {
   return (
     <section id="why" style={{ background: '#F8FAFC', padding: '6.5rem 0' }}>
       <div className="container">
-        {/* Section Header: Team Computers-inspired */}
+        {/* Section Header: Clean Enterprise */}
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '1.5px',
-              color: 'var(--blue)',
-              marginBottom: '0.75rem',
-            }}
-          >
-            <Sparkles size={14} />
-            <span>ENGINEERING EXCELLENCE &amp; PRINCIPLES</span>
-          </div>
-
           <h2
             style={{
               fontFamily: 'var(--font-heading)',
