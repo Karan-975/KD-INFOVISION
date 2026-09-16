@@ -190,35 +190,6 @@ export default function Navbar({ settings }) {
             <Shield size={16} />
           </Link>
 
-          <Link
-            href="/contact"
-            style={{
-              background: 'var(--blue)',
-              color: '#FFFFFF',
-              padding: '0.65rem 1.4rem',
-              borderRadius: '8px',
-              fontSize: '0.875rem',
-              fontWeight: 700,
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              boxShadow: '0 4px 14px rgba(21, 138, 226, 0.25)',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#0E70BA';
-              e.currentTarget.style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'var(--blue)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            <span>Schedule Consultation</span>
-            <ArrowUpRight size={15} />
-          </Link>
-
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
