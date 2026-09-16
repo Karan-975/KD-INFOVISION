@@ -53,11 +53,27 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, ...data } = body;
+    const { id } = body;
+    if (!id) return NextResponse.json({ success: false, error: 'ID is required' }, { status: 400 });
+
+    const allowed = {};
+    if (body.order !== undefined) allowed.order = Number(body.order);
+    if (body.tag !== undefined) allowed.tag = body.tag;
+    if (body.headline !== undefined) allowed.headline = body.headline;
+    if (body.headlineEmp !== undefined) allowed.headlineEmp = body.headlineEmp;
+    if (body.subtext !== undefined) allowed.subtext = body.subtext;
+    if (body.primaryBtn !== undefined) allowed.primaryBtn = body.primaryBtn;
+    if (body.primaryUrl !== undefined) allowed.primaryUrl = body.primaryUrl;
+    if (body.secBtn !== undefined) allowed.secBtn = body.secBtn;
+    if (body.secUrl !== undefined) allowed.secUrl = body.secUrl;
+    if (body.bgGradient !== undefined) allowed.bgGradient = body.bgGradient;
+    if (body.svgType !== undefined) allowed.svgType = body.svgType;
+    if (body.imageUrl !== undefined) allowed.imageUrl = body.imageUrl;
+    if (body.isActive !== undefined) allowed.isActive = Boolean(body.isActive);
 
     const slide = await prisma.heroSlide.update({
       where: { id: Number(id) },
-      data,
+      data: allowed,
     });
 
     return NextResponse.json({ success: true, slide });

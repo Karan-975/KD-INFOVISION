@@ -94,43 +94,64 @@ export default function HeroSection({ slides = [] }) {
     },
   ];
 
-  // Merge with database slides if they exist, or use default rich slides
-  const carouselSlides = slides.length >= 3
-    ? slides.slice(0, 3).map((s, idx) => ({
-        ...defaultCarouselSlides[idx % defaultCarouselSlides.length],
-        tag: s.tag || defaultCarouselSlides[idx % defaultCarouselSlides.length].tag,
-        headline: s.headline || defaultCarouselSlides[idx % defaultCarouselSlides.length].headline,
-        headlineEmp: s.headlineEmp || defaultCarouselSlides[idx % defaultCarouselSlides.length].headlineEmp,
-        subtext: s.subtext || defaultCarouselSlides[idx % defaultCarouselSlides.length].subtext,
-        primaryBtn: s.primaryBtn || defaultCarouselSlides[idx % defaultCarouselSlides.length].primaryBtn,
-        primaryUrl: s.primaryUrl || defaultCarouselSlides[idx % defaultCarouselSlides.length].primaryUrl,
-        secBtn: s.secBtn || defaultCarouselSlides[idx % defaultCarouselSlides.length].secBtn,
-        secUrl: s.secUrl || defaultCarouselSlides[idx % defaultCarouselSlides.length].secUrl,
-      }))
+  // Fully Dynamic Database Slides: support any number of slides managed by the Admin
+  const activeDbSlides = Array.isArray(slides) && slides.length > 0
+    ? slides.filter((s) => s.isActive !== false)
+    : [];
+
+  const carouselSlides = activeDbSlides.length > 0
+    ? activeDbSlides.map((s, idx) => {
+        const fallback = defaultCarouselSlides[idx % defaultCarouselSlides.length];
+        return {
+          id: s.id || `slide-${idx}`,
+          tag: s.tag || fallback.tag,
+          headline: s.headline || fallback.headline,
+          headlineEmp: s.headlineEmp || fallback.headlineEmp,
+          subtext: s.subtext || fallback.subtext,
+          primaryBtn: s.primaryBtn || fallback.primaryBtn,
+          primaryUrl: s.primaryUrl || fallback.primaryUrl,
+          secBtn: s.secBtn || fallback.secBtn,
+          secUrl: s.secUrl || fallback.secUrl,
+          image: s.imageUrl || fallback.image,
+          alt: `${s.headline || ''} ${s.headlineEmp || ''}`.trim() || fallback.alt,
+          metric: fallback.metric,
+          subMetric: fallback.subMetric,
+          telemetry: fallback.telemetry,
+          themeColor: fallback.themeColor,
+          themeBg: fallback.themeBg,
+          themeBorder: fallback.themeBorder,
+          shortTitle: s.tag ? s.tag.split('&')[0].trim() : fallback.shortTitle,
+        };
+      })
     : defaultCarouselSlides;
 
   const total = carouselSlides.length;
-  const active = carouselSlides[currentSlide];
+  const active = carouselSlides[currentSlide] || carouselSlides[0];
 
-  // Auto-play timer with progress animation (6000ms per slide)
+  // Automatic sliding: advance every 5.5s reliably
   useEffect(() => {
-    if (isPaused) return;
-
-    const interval = 50; // update progress every 50ms
-    const step = 100 / (6000 / interval);
-
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setCurrentSlide((curr) => (curr + 1) % total);
-          return 0;
-        }
-        return prev + step;
-      });
-    }, interval);
+      setCurrentSlide((curr) => (curr + 1) % total);
+      setProgress(0);
+    }, 5500);
 
     return () => clearInterval(timer);
-  }, [isPaused, total, currentSlide]);
+  }, [total, currentSlide]);
+
+  // Live progress bar fill animation (0% -> 100% over 5.5s)
+  useEffect(() => {
+    setProgress(0);
+    const start = Date.now();
+    const duration = 5500;
+    const progressTimer = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min(100, (elapsed / duration) * 100);
+      setProgress(pct);
+      if (pct >= 100) clearInterval(progressTimer);
+    }, 50);
+
+    return () => clearInterval(progressTimer);
+  }, [currentSlide]);
 
   const handleNext = () => {
     setProgress(0);
@@ -175,10 +196,8 @@ export default function HeroSection({ slides = [] }) {
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* BACKGROUND SLIDING CAROUSEL TRACK (Realistic Images with subtle opacity) */}
+      {/* BACKGROUND SLIDING CAROUSEL TRACK (Properly Visible Realistic Photography) */}
       <div
         style={{
           position: 'absolute',
@@ -204,7 +223,7 @@ export default function HeroSection({ slides = [] }) {
               background: '#031838',
             }}
           >
-            {/* Realistic Enterprise Photograph with Low Opacity */}
+            {/* Realistic Enterprise Photograph with Enhanced Visibility */}
             <img
               src={slide.image}
               alt={slide.alt}
@@ -212,20 +231,20 @@ export default function HeroSection({ slides = [] }) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.24,
-                transform: currentSlide === idx ? 'scale(1.05)' : 'scale(1)',
+                opacity: 0.72,
+                transform: currentSlide === idx ? 'scale(1.04)' : 'scale(1)',
                 transition: 'transform 6s ease-out, opacity 0.5s ease',
                 display: 'block',
               }}
             />
 
-            {/* Gradient Mask for Optimal Contrast & Text Legibility */}
+            {/* Directional Contrast Mask: Left preserves text legibility, Right reveals image clearly */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'linear-gradient(90deg, rgba(3, 24, 56, 0.94) 0%, rgba(3, 24, 56, 0.76) 55%, rgba(3, 24, 56, 0.88) 100%)',
+                  'linear-gradient(90deg, rgba(3, 24, 56, 0.92) 0%, rgba(3, 24, 56, 0.80) 38%, rgba(3, 24, 56, 0.40) 70%, rgba(3, 24, 56, 0.22) 100%)',
               }}
             />
           </div>
@@ -240,7 +259,7 @@ export default function HeroSection({ slides = [] }) {
           left: 0,
           right: 0,
           height: '100px',
-          background: 'linear-gradient(to top, #031838 0%, transparent 100%)',
+          background: 'linear-gradient(to top, rgba(3, 24, 56, 0.95) 0%, transparent 100%)',
           zIndex: 1,
           pointerEvents: 'none',
         }}
@@ -289,8 +308,9 @@ export default function HeroSection({ slides = [] }) {
                 gap: '8px',
                 padding: '6px 14px',
                 borderRadius: '30px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                background: 'rgba(3, 24, 56, 0.65)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#E2E8F0',
                 fontSize: '0.75rem',
                 fontWeight: 700,
@@ -314,7 +334,7 @@ export default function HeroSection({ slides = [] }) {
               style={{
                 fontSize: '0.775rem',
                 fontWeight: 700,
-                color: 'rgba(255, 255, 255, 0.55)',
+                color: 'rgba(255, 255, 255, 0.7)',
                 letterSpacing: '1px',
               }}
             >
@@ -333,6 +353,7 @@ export default function HeroSection({ slides = [] }) {
               lineHeight: 1.15,
               letterSpacing: '-0.025em',
               marginBottom: '1rem',
+              textShadow: '0 2px 14px rgba(0, 0, 0, 0.65)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
@@ -343,6 +364,7 @@ export default function HeroSection({ slides = [] }) {
                 position: 'relative',
                 display: 'inline-block',
                 transition: 'color 0.3s ease',
+                textShadow: `0 0 24px ${active.themeColor}77`,
               }}
             >
               {active.headlineEmp}
@@ -355,9 +377,10 @@ export default function HeroSection({ slides = [] }) {
             style={{
               fontSize: '1.1rem',
               lineHeight: 1.75,
-              color: 'rgba(255, 255, 255, 0.85)',
+              color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '680px',
               marginBottom: '1.5rem',
+              textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >

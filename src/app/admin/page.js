@@ -693,12 +693,28 @@ export default function AdminDashboardPage() {
                       </span>
                     </div>
 
+                    {slide.imageUrl && (
+                      <div style={{ position: 'relative', width: '100%', height: '130px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-200)', background: '#0F2347' }}>
+                        <img
+                          src={slide.imageUrl}
+                          alt={slide.headline}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />
+                        <div style={{ position: 'absolute', bottom: '6px', right: '8px', background: 'rgba(3, 24, 56, 0.75)', color: '#fff', fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>
+                          Background Image
+                        </div>
+                      </div>
+                    )}
+
                     <div style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>Tag: {slide.tag}</div>
                     <h4 style={{ fontSize: '1.15rem', color: 'var(--navy)', lineHeight: 1.3 }}>
                       {slide.headline} <span style={{ color: 'var(--blue)' }}>{slide.headlineEmp}</span>
                     </h4>
                     <p style={{ fontSize: '0.85rem', color: 'var(--body)', lineHeight: 1.6, flex: 1 }}>{slide.subtext}</p>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Visualizer: <strong>{slide.svgType}</strong></div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+                      CTAs: <strong>{slide.primaryBtn}</strong> ({slide.primaryUrl}) • <strong>{slide.secBtn}</strong> ({slide.secUrl})
+                    </div>
 
                     <div style={{ display: 'flex', gap: '8px', borderTop: '1px solid var(--gray-200)', paddingTop: '1rem', marginTop: 'auto' }}>
                       <button
@@ -1391,6 +1407,51 @@ export default function AdminDashboardPage() {
                         onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
                         style={{ width: '100%', padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem', resize: 'none' }}
                       />
+                    ) : ['imageUrl', 'logoUrl', 'avatarUrl'].includes(key) || key.toLowerCase().includes('image') ? (
+                      <div>
+                        <div style={{ display: 'flex', gap: '8px', marginBottom: editingItem[key] ? '8px' : '0' }}>
+                          <input
+                            type="text"
+                            placeholder="/images/example.jpg or https://..."
+                            value={editingItem[key] || ''}
+                            onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                            style={{ flex: 1, padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem' }}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setMediaTargetField(key);
+                              setMediaModalOpen(true);
+                            }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              padding: '0.7rem 1rem',
+                              borderRadius: '8px',
+                              background: 'var(--navy)',
+                              color: '#fff',
+                              border: 'none',
+                              fontSize: '0.825rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            <ImageIcon size={16} /> Choose / Upload
+                          </button>
+                        </div>
+                        {editingItem[key] && (
+                          <div style={{ position: 'relative', width: '100%', height: '120px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-200)', background: '#0F2347' }}>
+                            <img
+                              src={editingItem[key]}
+                              alt="Preview"
+                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                          </div>
+                        )}
+                      </div>
                     ) : (
                       <input
                         type={typeof editingItem[key] === 'number' ? 'number' : 'text'}
