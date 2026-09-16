@@ -204,7 +204,15 @@ export default function HeroSection({ slides = [] }) {
           flex: 1,
         }}
       >
-        <div style={{ maxWidth: '820px' }}>
+        {/* Middle Vertically Positioned Content */}
+        <div
+          style={{
+            maxWidth: '840px',
+            margin: 'auto 0',
+            paddingTop: '2rem',
+            paddingBottom: '2rem',
+          }}
+        >
           {/* Headline */}
           <h1
             key={active.id + '-headline'}
@@ -216,7 +224,7 @@ export default function HeroSection({ slides = [] }) {
               lineHeight: 1.15,
               letterSpacing: '-0.025em',
               marginBottom: '1.5rem',
-              textShadow: '0 2px 14px rgba(0, 0, 0, 0.65)',
+              textShadow: '0 2px 16px rgba(0, 0, 0, 0.8)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
@@ -227,7 +235,7 @@ export default function HeroSection({ slides = [] }) {
                 position: 'relative',
                 display: 'inline-block',
                 transition: 'color 0.3s ease',
-                textShadow: `0 0 24px ${active.themeColor}77`,
+                textShadow: `0 0 28px ${active.themeColor}88`,
               }}
             >
               {active.headlineEmp}
@@ -242,22 +250,88 @@ export default function HeroSection({ slides = [] }) {
               lineHeight: 1.85,
               color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '720px',
-              marginBottom: '2rem',
-              textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
+              marginBottom: '0',
+              textShadow: '0 2px 10px rgba(0, 0, 0, 0.85)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
             {active.subtext}
           </p>
+        </div>
 
-          {/* Minimalist Slide Progress Indicators (Non-intrusive) */}
+        {/* BOTTOM DOCKED AREA: Ecosystem Ribbon & Slide Indicators */}
+        <div style={{ width: '100%', marginTop: 'auto' }}>
+          {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
+          <div
+            style={{
+              padding: '0.85rem 1.75rem',
+              borderRadius: '14px',
+              background: 'rgba(3, 24, 56, 0.65)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+            }}
+          >
+            <div
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 800,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                color: 'rgba(255, 255, 255, 0.6)',
+                marginBottom: '0.85rem',
+                textAlign: 'center',
+              }}
+            >
+              UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '12px',
+                flexWrap: 'wrap',
+              }}
+            >
+              {techEcosystem.map((tech, idx) => {
+                const TechIcon = tech.icon;
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '5px 14px',
+                      borderRadius: '9999px',
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#FFFFFF',
+                      fontSize: '0.775rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.2px',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <TechIcon size={14} style={{ color: tech.color }} />
+                    <span>{tech.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Minimalist Slide Progress Indicators (Positioned at Bottom-Left as marked in Image-2) */}
           {total > 1 && (
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                marginTop: '1.75rem',
+                gap: '10px',
+                marginTop: '1.25rem',
+                paddingLeft: '4px',
               }}
             >
               {carouselSlides.map((_, idx) => (
@@ -267,82 +341,20 @@ export default function HeroSection({ slides = [] }) {
                   onClick={() => setCurrentSlide(idx)}
                   aria-label={`Slide ${idx + 1}`}
                   style={{
-                    width: currentSlide === idx ? '32px' : '10px',
+                    width: currentSlide === idx ? '40px' : '16px',
                     height: '5px',
                     borderRadius: '4px',
-                    background: currentSlide === idx ? active.themeColor : 'rgba(255, 255, 255, 0.3)',
+                    background: currentSlide === idx ? active.themeColor : 'rgba(255, 255, 255, 0.35)',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.35s ease',
                     padding: 0,
+                    boxShadow: currentSlide === idx ? `0 0 10px ${active.themeColor}88` : 'none',
                   }}
                 />
               ))}
             </div>
           )}
-        </div>
-
-        {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
-        <div
-          style={{
-            marginTop: 'clamp(4.5rem, 10vh, 7rem)',
-            padding: '0.95rem 1.75rem',
-            borderRadius: '14px',
-            background: 'rgba(3, 24, 56, 0.55)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.7rem',
-              fontWeight: 800,
-              letterSpacing: '1.5px',
-              textTransform: 'uppercase',
-              color: 'rgba(255, 255, 255, 0.6)',
-              marginBottom: '0.85rem',
-              textAlign: 'center',
-            }}
-          >
-            UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              flexWrap: 'wrap',
-            }}
-          >
-            {techEcosystem.map((tech, idx) => {
-              const TechIcon = tech.icon;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '5px 14px',
-                    borderRadius: '9999px',
-                    background: 'rgba(255, 255, 255, 0.06)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: '#FFFFFF',
-                    fontSize: '0.775rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.2px',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  <TechIcon size={14} style={{ color: tech.color }} />
-                  <span>{tech.name}</span>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
 
