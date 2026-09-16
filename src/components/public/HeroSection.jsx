@@ -195,91 +195,17 @@ export default function HeroSection({ slides = [] }) {
       {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
       <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
         <div style={{ maxWidth: '820px' }}>
-          {/* Tag Badge & Telemetry Row */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              flexWrap: 'wrap',
-              marginBottom: '1.25rem',
-            }}
-          >
-            {/* Category Tag Badge */}
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 14px',
-                borderRadius: '30px',
-                background: active.themeBg,
-                border: `1px solid ${active.themeBorder}`,
-                color: active.themeColor,
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                letterSpacing: '0.8px',
-                textTransform: 'uppercase',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <ShieldCheck size={15} />
-              <span>{active.tag}</span>
-            </div>
-
-            {/* Live Telemetry Pill */}
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 14px',
-                borderRadius: '30px',
-                background: 'rgba(3, 24, 56, 0.65)',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#E2E8F0',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.5px',
-              }}
-            >
-              <div
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: active.themeColor,
-                  boxShadow: `0 0 10px ${active.themeColor}`,
-                }}
-              />
-              <span>{active.telemetry}</span>
-            </div>
-
-            {/* Slide Counter */}
-            <div
-              style={{
-                fontSize: '0.775rem',
-                fontWeight: 700,
-                color: 'rgba(255, 255, 255, 0.7)',
-                letterSpacing: '1px',
-              }}
-            >
-              0{currentSlide + 1} / 0{total}
-            </div>
-          </div>
-
           {/* Headline */}
           <h1
             key={active.id + '-headline'}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2.3rem, 4.4vw, 3.85rem)',
+              fontSize: 'clamp(2.5rem, 4.8vw, 4.2rem)',
               fontWeight: 800,
               color: '#FFFFFF',
               lineHeight: 1.15,
               letterSpacing: '-0.025em',
-              marginBottom: '1.25rem',
+              marginBottom: '1.5rem',
               textShadow: '0 2px 14px rgba(0, 0, 0, 0.65)',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
@@ -302,10 +228,10 @@ export default function HeroSection({ slides = [] }) {
           <p
             key={active.id + '-subtext'}
             style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.8,
+              fontSize: '1.2rem',
+              lineHeight: 1.85,
               color: 'rgba(255, 255, 255, 0.95)',
-              maxWidth: '700px',
+              maxWidth: '720px',
               marginBottom: '2rem',
               textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
               animation: 'hero-text-in 0.4s ease forwards',
@@ -313,37 +239,6 @@ export default function HeroSection({ slides = [] }) {
           >
             {active.subtext}
           </p>
-
-          {/* Credibility Telemetry Strip */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.75rem',
-              flexWrap: 'wrap',
-              paddingTop: '1.25rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.15)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
-                <strong>150+</strong> Enterprise Deployments
-              </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
-                <strong>99.9%</strong> Production SLA Uptime
-              </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={16} style={{ color: active.themeColor }} />
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.85)' }}>
-                <strong>SOC2 &amp; ISO</strong> Ready
-              </span>
-            </div>
-          </div>
 
           {/* Minimalist Slide Progress Indicators (Non-intrusive) */}
           {total > 1 && (
