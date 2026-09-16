@@ -2,24 +2,22 @@
 
 import React from 'react';
 import {
-  Database,
   Cpu,
   Layers,
   ShieldCheck,
   CheckCircle2,
-  Lock,
   GitBranch,
-  Workflow,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
 } from 'lucide-react';
 
 export default function WhyUsSection() {
   const pillars = [
     {
       icon: Layers,
-      title: 'Architectural Rigor & Cloud Scalability',
+      title: 'Architectural Rigor & Scalability',
       badge: 'Zero Technical Debt',
-      desc: 'We design decoupled cloud lakehouses (Snowflake, Databricks, BigQuery) with automated CI/CD pipelines, modular microservices, and elastic compute that scales effortlessly with your workload.',
+      desc: 'Decoupled cloud lakehouses (Snowflake, Databricks, BigQuery) with automated CI/CD and elastic multi-cloud compute designed for long-term scalability.',
       points: [
         'Decoupled storage and compute topology',
         'Automated dbt & Airflow data transformations',
@@ -29,8 +27,8 @@ export default function WhyUsSection() {
     {
       icon: Cpu,
       title: 'Production-Grade AI & MLOps',
-      badge: 'Measurable Enterprise ROI',
-      desc: 'We move beyond experimental Jupyter notebooks. We engineer containerized, low-latency AI inference pipelines, hardened RAG architectures with deterministic guardrails, and automated drift monitoring.',
+      badge: 'Measurable ROI',
+      desc: 'Containerized, low-latency AI inference pipelines, hardened RAG architectures with deterministic guardrails, and continuous model drift monitoring.',
       points: [
         'Secure Retrieval-Augmented Generation (RAG)',
         'Automated model drift & latency monitoring',
@@ -39,20 +37,20 @@ export default function WhyUsSection() {
     },
     {
       icon: GitBranch,
-      title: 'Zero Vendor Lock-in & Total IP Ownership',
-      badge: '100% Client-Owned Code',
-      desc: 'All data pipelines, infrastructure as code (Terraform), model weights, and custom BI dashboards remain 100% your intellectual property. Zero proprietary wrappers or hidden vendor dependencies.',
+      title: '100% Client IP Ownership',
+      badge: 'Zero Vendor Lock-in',
+      desc: 'All pipelines, Terraform infrastructure, model weights, and custom BI dashboards remain 100% your intellectual property with full repository handover.',
       points: [
-        'Open-source & standard cloud native tooling',
-        'Comprehensive handover & architecture documentation',
-        'Complete repository & container ownership',
+        'Standard cloud-native open tooling',
+        'Comprehensive handover & architecture specs',
+        'Complete source code & container ownership',
       ],
     },
     {
       icon: ShieldCheck,
-      title: 'Enterprise Security, Compliance & Governance',
+      title: 'Enterprise Security & Governance',
       badge: 'SOC2 & ISO Ready',
-      desc: 'Security is engineered into the foundation, not bolted on as an afterthought. We implement granular Role-Based Access Control (RBAC), end-to-end data encryption, and audit-ready data lineage.',
+      desc: 'Security is engineered into the foundation with granular Role-Based Access Control (RBAC), end-to-end encryption, and audit-ready data lineage.',
       points: [
         'Granular RBAC & zero-trust network policies',
         'End-to-end encryption (at-rest & in-transit)',
@@ -64,7 +62,7 @@ export default function WhyUsSection() {
   return (
     <section id="why" style={{ background: '#F8FAFC', padding: '6.5rem 0' }}>
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header: Team Computers-inspired */}
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
           <div
             style={{
@@ -79,10 +77,13 @@ export default function WhyUsSection() {
               marginBottom: '0.75rem',
             }}
           >
-            ENGINEERING EXCELLENCE &amp; PRINCIPLES
+            <Sparkles size={14} />
+            <span>ENGINEERING EXCELLENCE &amp; PRINCIPLES</span>
           </div>
+
           <h2
             style={{
+              fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2rem, 3.2vw, 2.75rem)',
               fontWeight: 800,
               color: 'var(--navy)',
@@ -93,6 +94,7 @@ export default function WhyUsSection() {
           >
             Why Industry Leaders Partner with KD Infovision
           </h2>
+
           <p
             style={{
               fontSize: '1.05rem',
@@ -100,8 +102,7 @@ export default function WhyUsSection() {
               lineHeight: 1.7,
             }}
           >
-            We eliminate the high failure rate of enterprise data and AI initiatives through battle-tested
-            software engineering standards, predictable delivery milestones, and uncompromising governance.
+            We eliminate the high failure rate of enterprise IT and AI initiatives through battle-tested engineering standards, predictable delivery milestones, and uncompromising governance.
           </p>
         </div>
 
@@ -127,7 +128,9 @@ export default function WhyUsSection() {
                   justifyContent: 'space-between',
                   borderRadius: '16px',
                   background: '#FFFFFF',
-                  position: 'relative',
+                  border: '1px solid #E2E8F0',
+                  boxShadow: '0 4px 20px rgba(5, 45, 93, 0.04)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               >
                 <div>
@@ -141,8 +144,8 @@ export default function WhyUsSection() {
                   >
                     <div
                       style={{
-                        width: '54px',
-                        height: '54px',
+                        width: '52px',
+                        height: '52px',
                         borderRadius: '12px',
                         background: 'rgba(21, 138, 226, 0.08)',
                         border: '1.5px solid rgba(21, 138, 226, 0.2)',
@@ -152,7 +155,7 @@ export default function WhyUsSection() {
                         color: 'var(--blue)',
                       }}
                     >
-                      <IconComp size={26} />
+                      <IconComp size={24} />
                     </div>
 
                     <span
@@ -173,6 +176,7 @@ export default function WhyUsSection() {
 
                   <h3
                     style={{
+                      fontFamily: 'var(--font-heading)',
                       fontSize: '1.3rem',
                       fontWeight: 800,
                       color: 'var(--navy)',
@@ -187,7 +191,7 @@ export default function WhyUsSection() {
                     style={{
                       fontSize: '0.95rem',
                       color: '#64748B',
-                      lineHeight: 1.7,
+                      lineHeight: 1.65,
                       marginBottom: '1.5rem',
                     }}
                   >
@@ -226,7 +230,7 @@ export default function WhyUsSection() {
           })}
         </div>
 
-        {/* Bottom Consultation Banner */}
+        {/* Consultation Banner */}
         <div
           style={{
             marginTop: '3.5rem',
@@ -238,13 +242,14 @@ export default function WhyUsSection() {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '1.5rem',
+            boxShadow: '0 12px 30px rgba(5, 45, 93, 0.15)',
           }}
         >
           <div>
-            <h4 style={{ color: '#FFFFFF', fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.25rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-heading)', color: '#FFFFFF', fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.25rem' }}>
               Have an upcoming Data or AI modernization initiative?
             </h4>
-            <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem', margin: 0 }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.9rem', margin: 0 }}>
               Speak directly with our Lead Enterprise Solutions Architect for an initial feasibility review.
             </p>
           </div>
@@ -258,10 +263,11 @@ export default function WhyUsSection() {
               color: '#FFFFFF',
               fontSize: '0.9rem',
               fontWeight: 700,
-              padding: '0.75rem 1.4rem',
+              padding: '0.8rem 1.5rem',
               borderRadius: '8px',
               textDecoration: 'none',
               transition: 'all 0.2s ease',
+              boxShadow: '0 4px 14px rgba(21, 138, 226, 0.35)',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.background = '#0E70BA')}
             onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--blue)')}

@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   ShieldCheck,
   Cpu,
@@ -16,8 +14,7 @@ import {
   Activity,
   Zap,
   Lock,
-  Play,
-  Maximize2
+  ChevronRight,
 } from 'lucide-react';
 import HeroBackgroundAnimation from './HeroBackgroundAnimation';
 
@@ -37,31 +34,31 @@ export default function HeroSection({ slides = [] }) {
   }, [isPaused, total]);
 
   const activeSlide = slides[current] || {
-    tag: 'Enterprise Data, Cloud & AI Systems',
-    headline: 'Engineering Intelligent Data Ecosystems for',
-    headlineEmp: 'Enterprise Scale',
+    tag: 'Enterprise IT Solutions & AI Systems',
+    headline: 'Empowering Enterprises with AI-First Solutions &',
+    headlineEmp: 'Resilient Infrastructure.',
     subtext:
-      'From modern lakehouses on Snowflake and Databricks to production AI workflows and executive Power BI, KD Infovision builds scalable, secure software architectures that deliver quantifiable business ROI.',
+      'From modern cloud lakehouses and real-time streaming architectures to production AI and executive Power BI dashboards, KD Infovision delivers scalable IT excellence with quantifiable business ROI.',
     primaryBtn: 'Schedule Consultation',
     primaryUrl: '#contact',
     secBtn: 'Explore Solutions',
     secUrl: '#solutions',
   };
 
-  // Cloud & Tech ecosystem icons
+  // Enterprise Cloud & Technology Ecosystem
   const techEcosystem = [
-    { name: 'Amazon Web Services', icon: Cloud },
     { name: 'Microsoft Azure', icon: Server },
+    { name: 'Amazon Web Services', icon: Cloud },
     { name: 'Google Cloud Platform', icon: Cloud },
     { name: 'Snowflake', icon: Database },
     { name: 'Databricks', icon: Layers },
     { name: 'Power BI', icon: BarChart3 },
     { name: 'Tableau', icon: BarChart3 },
     { name: 'Apache Kafka', icon: Zap },
-    { name: 'Enterprise AI & LLMs', icon: Cpu },
+    { name: 'Enterprise AI & MLOps', icon: Cpu },
   ];
 
-  // Realistic visual modes linked to authentic enterprise photography
+  // Authentic enterprise photography showcase modes
   const visualModes = {
     lakehouse: {
       label: 'Cloud Lakehouse',
@@ -102,18 +99,18 @@ export default function HeroSection({ slides = [] }) {
         flexDirection: 'column',
         justifyContent: 'center',
         background: '#FFFFFF',
-        paddingTop: '100px',
-        paddingBottom: '3rem',
+        paddingTop: '110px',
+        paddingBottom: '3.5rem',
         overflow: 'hidden',
       }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Unique Harmonic Ambient Wavefield Animation */}
+      {/* Harmonic Ambient Background Wavefield */}
       <HeroBackgroundAnimation />
 
       <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-        {/* Main Hero Split Grid: Airy, spacious, non-congested */}
+        {/* Main Hero Split Grid: Airy, spacious, Team Computers-inspired */}
         <div
           style={{
             display: 'grid',
@@ -144,17 +141,17 @@ export default function HeroSection({ slides = [] }) {
               }}
             >
               <ShieldCheck size={15} />
-              <span>{activeSlide.tag || 'ENTERPRISE DATA & AI SYSTEMS'}</span>
+              <span>{activeSlide.tag || 'ENTERPRISE IT SOLUTIONS & AI SYSTEMS'}</span>
             </div>
 
             {/* Headline */}
             <h1
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.4rem, 3.8vw, 3.75rem)',
+                fontSize: 'clamp(2.4rem, 3.8vw, 3.65rem)',
                 fontWeight: 800,
                 color: 'var(--navy)',
-                lineHeight: 1.14,
+                lineHeight: 1.15,
                 letterSpacing: '-0.025em',
                 marginBottom: '1.25rem',
               }}
@@ -167,14 +164,14 @@ export default function HeroSection({ slides = [] }) {
                   display: 'inline-block',
                 }}
               >
-                {activeSlide.headlineEmp || 'Enterprise Scale.'}
+                {activeSlide.headlineEmp || 'Resilient Infrastructure.'}
               </span>
             </h1>
 
-            {/* Subtext */}
+            {/* Concise Quality Subtext: 2 sentences, zero clutter */}
             <p
               style={{
-                fontSize: '1.1rem',
+                fontSize: '1.05rem',
                 lineHeight: 1.75,
                 color: '#475569',
                 maxWidth: '560px',
@@ -252,7 +249,7 @@ export default function HeroSection({ slides = [] }) {
               </a>
             </div>
 
-            {/* Credibility Telemetry Row */}
+            {/* Credibility Telemetry Strip */}
             <div
               style={{
                 display: 'flex',
@@ -266,7 +263,7 @@ export default function HeroSection({ slides = [] }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
                 <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
-                  <strong>50+</strong> Enterprise Deployments
+                  <strong>150+</strong> Enterprise Deployments
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -284,7 +281,7 @@ export default function HeroSection({ slides = [] }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Creative Visual Centerpiece with Real Enterprise Imagery & Floating Glass Telemetry */}
+          {/* RIGHT COLUMN: Realistic Enterprise Photography Showcase with Live Telemetry */}
           <div
             style={{
               position: 'relative',
@@ -292,7 +289,7 @@ export default function HeroSection({ slides = [] }) {
               justifyContent: 'center',
             }}
           >
-            {/* Main Creative Enterprise Showcase Container */}
+            {/* Main Image Showcase Container */}
             <div
               style={{
                 position: 'relative',
@@ -320,13 +317,13 @@ export default function HeroSection({ slides = [] }) {
                 }}
               />
 
-              {/* Soft Gradient Vignette for Readability of Text Badges */}
+              {/* Subtle Gradient Vignette */}
               <div
                 style={{
                   position: 'absolute',
                   inset: 0,
                   background:
-                    'linear-gradient(180deg, rgba(5, 45, 93, 0.15) 0%, rgba(5, 45, 93, 0.1) 40%, rgba(5, 45, 93, 0.75) 100%)',
+                    'linear-gradient(180deg, rgba(5, 45, 93, 0.2) 0%, rgba(5, 45, 93, 0.05) 40%, rgba(5, 45, 93, 0.8) 100%)',
                   pointerEvents: 'none',
                 }}
               />
@@ -337,12 +334,12 @@ export default function HeroSection({ slides = [] }) {
                   position: 'absolute',
                   top: '16px',
                   left: '16px',
-                  background: 'rgba(5, 45, 93, 0.78)',
+                  background: 'rgba(5, 45, 93, 0.82)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',
-                  padding: '8px 14px',
+                  padding: '7px 13px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -359,23 +356,23 @@ export default function HeroSection({ slides = [] }) {
                     boxShadow: '0 0 10px #22C55E',
                   }}
                 />
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.5px' }}>
+                <span style={{ fontSize: '0.725rem', fontWeight: 700, letterSpacing: '0.5px' }}>
                   ACTIVE TELEMETRY • 32ms LATENCY
                 </span>
               </div>
 
-              {/* Interactive Visual Mode Switcher (Pills inside the visualizer) */}
+              {/* Interactive Visual Mode Switcher Tabs */}
               <div
                 style={{
                   position: 'absolute',
                   top: '16px',
                   right: '16px',
                   display: 'flex',
-                  gap: '6px',
-                  background: 'rgba(5, 45, 93, 0.78)',
+                  gap: '5px',
+                  background: 'rgba(5, 45, 93, 0.82)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',
                   padding: '4px',
                 }}
@@ -411,7 +408,7 @@ export default function HeroSection({ slides = [] }) {
                   bottom: '16px',
                   left: '16px',
                   right: '16px',
-                  background: 'rgba(5, 45, 93, 0.85)',
+                  background: 'rgba(5, 45, 93, 0.88)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   border: '1px solid rgba(21, 138, 226, 0.35)',
@@ -424,7 +421,7 @@ export default function HeroSection({ slides = [] }) {
                 }}
               >
                 <div>
-                  <div style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                  <div style={{ fontSize: '0.675rem', color: '#94A3B8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
                     {visualModes[activeVisualMode].sub}
                   </div>
                   <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2, marginTop: '2px' }}>
@@ -447,94 +444,10 @@ export default function HeroSection({ slides = [] }) {
                 </div>
               </div>
             </div>
-
-            {/* Creative Floating Accent Card 1: Top Left Offset */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '-16px',
-                left: '-16px',
-                background: '#FFFFFF',
-                borderRadius: '12px',
-                padding: '9px 15px',
-                boxShadow: '0 12px 30px rgba(5, 45, 93, 0.12)',
-                border: '1px solid #E2E8F0',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                zIndex: 2,
-              }}
-              className="floating-accent-1"
-            >
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'rgba(21, 138, 226, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--blue)',
-                }}
-              >
-                <Database size={16} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>
-                  Unified Architecture
-                </div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy)' }}>
-                  AWS • Azure • Snowflake
-                </div>
-              </div>
-            </div>
-
-            {/* Creative Floating Accent Card 2: Bottom Right Offset */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '-18px',
-                right: '-16px',
-                background: '#FFFFFF',
-                borderRadius: '12px',
-                padding: '9px 15px',
-                boxShadow: '0 12px 30px rgba(5, 45, 93, 0.12)',
-                border: '1px solid #E2E8F0',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                zIndex: 2,
-              }}
-              className="floating-accent-2"
-            >
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'rgba(34, 197, 94, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#16A34A',
-                }}
-              >
-                <Activity size={16} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase' }}>
-                  Enterprise SLA
-                </div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--navy)' }}>
-                  99.9% Production Support
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Enterprise Cloud & Technology Ecosystem Ribbon */}
+        {/* Enterprise Cloud & Technology Ecosystem Ribbon ("United by Technology") */}
         <div
           style={{
             marginTop: '3.5rem',
@@ -555,7 +468,7 @@ export default function HeroSection({ slides = [] }) {
               textAlign: 'center',
             }}
           >
-            ENTERPRISE PLATFORMS &amp; CLOUD ECOSYSTEM ARCHITECTED BY KD INFOVISION
+            UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
           </div>
 
           <div
@@ -585,10 +498,6 @@ export default function HeroSection({ slides = [] }) {
           :global(.hero-grid) {
             grid-template-columns: 1fr !important;
             gap: 2.5rem !important;
-          }
-          :global(.floating-accent-1),
-          :global(.floating-accent-2) {
-            display: none !important;
           }
         }
       `}</style>

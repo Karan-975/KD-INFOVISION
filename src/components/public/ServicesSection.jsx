@@ -5,914 +5,475 @@ import {
   BrainCircuit,
   BarChart3,
   Code2,
-  Compass,
-  Layers,
-  Database,
   Cloud,
+  ShieldCheck,
+  Server,
+  Layers,
   Activity,
   ArrowRight,
   ChevronRight,
-  Sparkles,
   CheckCircle2,
-  LineChart,
-  Eye,
-  Bot,
-  ShieldCheck,
-  Cpu,
-  Table,
-  PieChart,
-  Network,
-  Zap,
-  Lock,
-  Workflow,
-  Server,
-  RefreshCw,
-  GitBranch,
-  Settings,
-  HardDrive,
-  Users,
-  Clock,
-  ExternalLink,
+  Sparkles,
+  X,
 } from 'lucide-react';
 
-// Icon mapper for dynamic services
-const iconMap = {
-  BrainCircuit,
-  BarChart3,
-  Code2,
-  Compass,
-  Layers,
-  Database,
-  Cloud,
-  Activity,
-};
-
-// Enterprise technology stacks powering each service
-const serviceTechStack = {
-  'AI & Machine Learning': ['PyTorch', 'LangChain', 'OpenAI / Anthropic', 'MLflow', 'Triton Server', 'vLLM'],
-  'Data Analytics & BI': ['Power BI', 'Tableau', 'Qlik Sense', 'DAX Studio', 'Azure Synapse', 'Looker'],
-  'Software Development': ['Next.js 14', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'GraphQL'],
-  'IT Consulting': ['Enterprise TOGAF', 'Zero Trust IAM', 'Cloud FinOps', 'ISO 27001', 'SOC2 Type II'],
-  'Digital Transformation': ['Microsoft Power Platform', 'Azure Modernization', 'SAP & Salesforce Integration', 'Kubernetes'],
-  'Data Engineering': ['Snowflake', 'Databricks Delta', 'Apache Kafka', 'dbt Core', 'Apache Airflow', 'PySpark'],
-  'Cloud Solutions': ['AWS Well-Architected', 'Microsoft Azure', 'Google Cloud', 'Terraform (IaC)', 'Kubernetes (EKS/AKS)'],
-  'Managed Services': ['Datadog', 'Prometheus & Grafana', '24/7 SRE Incident Response', 'PagerDuty', 'SLA 99.9%'],
-};
-
-// Authentic enterprise photography mapping for each service practice
-const serviceImages = {
-  'AI & Machine Learning': {
-    src: '/images/service_software_real.jpg',
-    caption: 'Production Machine Learning Pipelines & Scalable Architecture Mapping',
-    tag: 'MLOps & Inference Pods',
-  },
-  'Data Analytics & BI': {
-    src: '/images/service_analytics_real.jpg',
-    caption: 'Executive Power BI Operational Analytics & Boardroom KPI Delivery',
-    tag: 'Executive Reporting in Action',
-  },
-  'Software Development': {
-    src: '/images/service_software_real.jpg',
-    caption: 'Full-Stack Modern Microservices Engineering & Agile Sprint Pods',
-    tag: 'Next.js, Node.js & Cloud Native',
-  },
-  'IT Consulting': {
-    src: '/images/about_enterprise_team.jpg',
-    caption: 'Strategic Cloud Architecture Audits & Enterprise Modernization Advisory',
-    tag: 'Enterprise Architecture Practice',
-  },
-  'Digital Transformation': {
-    src: '/images/about_enterprise_team.jpg',
-    caption: 'Cross-Functional Digital Modernization, ERP Integrations & Migration',
-    tag: 'Enterprise Scale Execution',
-  },
-  'Data Engineering': {
-    src: '/images/hero_realistic_analytics.jpg',
-    caption: 'Automated High-Throughput Lakehouses on Snowflake, Databricks & dbt',
-    tag: 'Data Architecture Workstation',
-  },
-  'Cloud Solutions': {
-    src: '/images/service_cloud_real.jpg',
-    caption: 'Tier-4 Cloud Infrastructure, Kubernetes Clusters & SRE Reliability',
-    tag: 'Cloud & Infrastructure Operations',
-  },
-  'Managed Services': {
-    src: '/images/service_cloud_real.jpg',
-    caption: '24/7 Platform Health Telemetry, Automated Incident Alerts & 99.9% SLA',
-    tag: 'Managed SRE Operations',
-  },
-};
-
-// Rich capabilities matrix matching Algoscale layout pattern, mapped to KD Infovision services
-const capabilitiesData = {
-  'AI & Machine Learning': [
-    {
-      icon: LineChart,
-      title: 'Predictive Analytics',
-      desc: 'Forecast market trends, customer behavior, and operational variables with custom-trained machine learning models.',
-    },
-    {
-      icon: Sparkles,
-      title: 'NLP & Generative AI',
-      desc: 'Build enterprise LLM solutions, intelligent document processing, and contextual enterprise search pipelines.',
-    },
-    {
-      icon: Eye,
-      title: 'Computer Vision',
-      desc: 'Automated visual inspection, defect detection, OCR, and real-time image and video intelligence.',
-    },
-    {
-      icon: Bot,
-      title: 'Conversational AI',
-      desc: 'Custom enterprise AI agents and automated support workflows integrated directly with your internal data sources.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Risk & Fraud Scoring',
-      desc: 'Real-time anomaly detection and risk scoring engines that identify fraudulent activity before impact.',
-    },
-    {
-      icon: Cpu,
-      title: 'MLOps & Model Monitoring',
-      desc: 'Automated CI/CD pipelines for machine learning, drift detection, and continuous model performance tuning.',
-    },
-  ],
-  'Data Analytics & BI': [
-    {
-      icon: BarChart3,
-      title: 'Power BI Solutions',
-      desc: 'Enterprise Power BI report engineering, scalable DAX modeling, row-level security, and workspace governance.',
-    },
-    {
-      icon: PieChart,
-      title: 'Tableau Dashboards',
-      desc: 'Interactive executive visualization platforms and exploratory dashboards designed for rapid business discovery.',
-    },
-    {
-      icon: Table,
-      title: 'Qlik Analytics',
-      desc: 'Associative data models and multi-source Qlik Sense deployments that uncover hidden business relationships.',
-    },
-    {
-      icon: LineChart,
-      title: 'Executive KPI Portals',
-      desc: 'Centralized C-suite dashboards aggregating real-time metrics across finance, operations, sales, and supply chain.',
-    },
-    {
-      icon: Zap,
-      title: 'Real-Time Streaming Analytics',
-      desc: 'Live telemetry monitors and sub-second dashboards delivering actionable situational awareness.',
-    },
-    {
-      icon: Network,
-      title: 'Self-Service BI Enablement',
-      desc: 'Curated semantic layers and governed data marts that empower business teams to build trusted reports.',
-    },
-  ],
-  'Software Development': [
-    {
-      icon: Code2,
-      title: 'Custom Web Applications',
-      desc: 'Fast, scalable web platforms engineered with Next.js, React, and modern micro-frontend architectures.',
-    },
-    {
-      icon: Network,
-      title: 'Enterprise APIs & Microservices',
-      desc: 'Secure REST and GraphQL API gateways with comprehensive rate limiting, documentation, and versioning.',
-    },
-    {
-      icon: Layers,
-      title: 'SaaS Platform Engineering',
-      desc: 'Multi-tenant cloud architectures engineered for horizontal scale, recurring billing, and high concurrency.',
-    },
-    {
-      icon: Server,
-      title: 'Robust Backend Systems',
-      desc: 'High-throughput backends built on Node.js, Python, and modern scalable database persistence layers.',
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud-Native Architecture',
-      desc: 'Containerized services deployed via Docker and Kubernetes with automated zero-downtime rollouts.',
-    },
-    {
-      icon: RefreshCw,
-      title: 'Legacy Modernization',
-      desc: 'Refactoring fragile legacy monoliths into clean, maintainable, and decoupled modern services.',
-    },
-  ],
-  'IT Consulting': [
-    {
-      icon: Compass,
-      title: 'Technology Strategy & Advisory',
-      desc: 'Aligning software and data architectures with concrete, measurable quarterly business milestones.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Architecture & Security Audits',
-      desc: 'Comprehensive code, infrastructure, and security assessments to eliminate technical debt and risk.',
-    },
-    {
-      icon: Settings,
-      title: 'Vendor & Stack Evaluation',
-      desc: 'Unbiased evaluation and benchmarking of enterprise software tools, platforms, and third-party vendors.',
-    },
-    {
-      icon: GitBranch,
-      title: 'Digital Roadmap Planning',
-      desc: 'Phased, prioritized modernization roadmaps from proof-of-concept to enterprise-wide rollout.',
-    },
-    {
-      icon: Zap,
-      title: 'Cost & License Optimization',
-      desc: 'Rationalizing software licenses and cloud architectures to significantly reduce recurring operating costs.',
-    },
-    {
-      icon: Lock,
-      title: 'Compliance & Governance',
-      desc: 'Structuring digital workflows to comply with ISO 27001, GDPR, and industry regulatory frameworks.',
-    },
-  ],
-  'Digital Transformation': [
-    {
-      icon: Workflow,
-      title: 'Business Process Digitization',
-      desc: 'Transforming manual paper and spreadsheet workflows into automated, transparent digital platforms.',
-    },
-    {
-      icon: Layers,
-      title: 'ERP & CRM Implementation',
-      desc: 'Custom implementation, migration, and integration of enterprise ERP and CRM platforms across departments.',
-    },
-    {
-      icon: Zap,
-      title: 'Workflow & RPA Automation',
-      desc: 'Eliminating repetitive manual bottlenecks with intelligent robotic process automation and event triggers.',
-    },
-    {
-      icon: Cloud,
-      title: 'Enterprise Cloud Migration',
-      desc: 'Relocating legacy on-premise workloads into agile, auto-scaling cloud environments with zero data loss.',
-    },
-    {
-      icon: Users,
-      title: 'Digital Change Management',
-      desc: 'Comprehensive user onboarding, training programs, and workflow documentation ensuring team adoption.',
-    },
-    {
-      icon: LineChart,
-      title: 'Operational Benchmarking',
-      desc: 'Tracking post-transformation cycle times, error reductions, and quantifiable ROI across all business units.',
-    },
-  ],
-  'Data Engineering': [
-    {
-      icon: Workflow,
-      title: 'Automated ETL/ELT Pipelines',
-      desc: 'Robust automated data pipelines that extract, transform, and load massive data volumes reliably.',
-    },
-    {
-      icon: Database,
-      title: 'Modern Data Warehouses',
-      desc: 'High-speed analytical repositories built on Snowflake, BigQuery, and Azure Synapse for instant querying.',
-    },
-    {
-      icon: HardDrive,
-      title: 'Lakehouse Architectures',
-      desc: 'Unified storage platforms powered by Databricks Delta Lake, blending data lake scale with warehouse ACID control.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Data Quality & Lineage',
-      desc: 'Automated schema validation, anomaly checking, and end-to-end lineage mapping across all pipelines.',
-    },
-    {
-      icon: Zap,
-      title: 'Real-Time Streaming Pipelines',
-      desc: 'Event-driven streaming architectures using Apache Kafka and Azure Event Hubs for live data ingestion.',
-    },
-    {
-      icon: Settings,
-      title: 'Data Orchestration',
-      desc: 'Fault-tolerant orchestration and automated retry workflows using Airflow, dbt, and Azure Data Factory.',
-    },
-  ],
-  'Cloud Solutions': [
-    {
-      icon: Cloud,
-      title: 'Microsoft Azure Architecture',
-      desc: 'Well-Architected Azure enterprise landing zones, serverless microservices, and hybrid cloud networking.',
-    },
-    {
-      icon: Server,
-      title: 'AWS Cloud Infrastructure',
-      desc: 'Scalable AWS deployments utilizing ECS/EKS, Lambda, S3, RDS, and automated CloudFormation/Terraform.',
-    },
-    {
-      icon: Lock,
-      title: 'Cloud Security & IAM',
-      desc: 'Zero-trust network segmentation, role-based access control, and automated encryption at rest and in transit.',
-    },
-    {
-      icon: Zap,
-      title: 'Cloud FinOps & Cost Tuning',
-      desc: 'Continuous resource sizing, reserved instance planning, and automated cleanup to slash cloud waste.',
-    },
-    {
-      icon: RefreshCw,
-      title: 'Disaster Recovery & High Availability',
-      desc: 'Multi-region failover, geo-redundant data replication, and sub-minute recovery time objectives (RTO).',
-    },
-    {
-      icon: Workflow,
-      title: 'Cloud Migration Frameworks',
-      desc: 'Proven lift-and-shift, re-platforming, and cloud-native refactoring methodologies with minimal downtime.',
-    },
-  ],
-  'Managed Services': [
-    {
-      icon: Activity,
-      title: '24/7 Platform Monitoring',
-      desc: 'Continuous telemetry monitoring of data pipelines, web services, database health, and uptime.',
-    },
-    {
-      icon: Clock,
-      title: 'SLA-Backed Technical Support',
-      desc: 'Guaranteed rapid response and resolution times backed by formal service level agreements and escalation tiers.',
-    },
-    {
-      icon: Zap,
-      title: 'Proactive Performance Tuning',
-      desc: 'Regular query plan reviews, database indexing, cache optimization, and capacity forecasting.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Rapid Incident Remediation',
-      desc: 'Dedicated on-call engineering pods conducting root cause analyses and automated self-healing recoveries.',
-    },
-    {
-      icon: RefreshCw,
-      title: 'Continuous Maintenance & Patches',
-      desc: 'Scheduled dependency updates, security vulnerability patching, and database maintenance windows.',
-    },
-    {
-      icon: Users,
-      title: 'Dedicated Engineering Pods',
-      desc: 'A dedicated team of KD Infovision experts acting as a seamless extension of your internal technical staff.',
-    },
-  ],
-};
-
 export default function ServicesSection({ services = [] }) {
-  // Default list of services fallback if database prop is empty
-  const defaultServicesList = [
+  const [activeModal, setActiveModal] = useState(null);
+
+  // Core Practice Definitions inspired by Team Computers "Explore Our Tech Solutions"
+  const defaultPractices = [
     {
-      num: '01',
-      title: 'AI & Machine Learning',
-      description: 'Custom ML models, predictive analytics, NLP, GenAI, computer vision — intelligent automation with real ROI.',
-      details: 'We build production-grade machine learning algorithms and GenAI solutions tailored for enterprise workflows, risk scoring, predictive maintenance, and conversational intelligence.',
-      icon: 'BrainCircuit',
+      id: 'data-ai',
+      title: 'Data & AI Solutions',
+      kicker: 'Intelligent Enterprise',
+      icon: BrainCircuit,
+      image: '/images/service_analytics_real.jpg',
+      alt: 'Enterprise executive analytics and Power BI dashboard presentation',
+      desc: 'Unlock actionable business intelligence with modern cloud lakehouses, automated data pipelines, and production machine learning models built for measurable ROI.',
+      capabilities: [
+        'Snowflake & Databricks Lakehouses',
+        'Executive Power BI & Tableau Dashboards',
+        'Production MLOps & GenAI Pipelines',
+        'Real-Time Streaming via Apache Kafka',
+      ],
+      detail:
+        'KD Infovision designs and deploys unified modern data architectures that bridge fragmented source systems into high-speed analytical layers. From medallion architecture on Databricks to automated DAX semantic models in Power BI and secure LLM inference endpoints, we ensure your data assets drive strategic executive decisions.',
     },
     {
-      num: '02',
-      title: 'Data Analytics & BI',
-      description: 'Power BI, Qlik, Tableau — transform raw data into executive-ready dashboards and actionable intelligence.',
-      details: 'Centralize fragmented databases into interactive visual analytics platforms that give executive leadership real-time visibility across operational KPIs, sales, and financial performance.',
-      icon: 'BarChart3',
+      id: 'cloud-infra',
+      title: 'Cloud & Infrastructure Solutions',
+      kicker: 'Scalable & Resilient',
+      icon: Cloud,
+      image: '/images/service_cloud_real.jpg',
+      alt: 'Tier-4 enterprise cloud datacenter server rack inspection',
+      desc: 'Leverage secure, scalable multi-cloud architectures across AWS, Microsoft Azure, and GCP designed for high availability, automated elasticity, and zero downtime.',
+      capabilities: [
+        'Multi-Cloud Architecture (AWS, Azure, GCP)',
+        'Kubernetes (EKS / AKS) & Containerization',
+        'Infrastructure as Code (IaC / Terraform)',
+        'Zero-Downtime Cloud Migration',
+      ],
+      detail:
+        'We help enterprises modernize legacy monolithic workloads into cloud-native microservices. Our certified cloud architects implement infrastructure as code with Terraform, container orchestration with Kubernetes, and robust FinOps strategies that optimize cloud expenditure while maximizing uptime.',
     },
     {
-      num: '03',
-      title: 'Software Development',
-      description: 'Scalable web apps, APIs, SaaS platforms with Next.js & Laravel. MVP to enterprise-grade — fast and production-ready.',
-      details: 'End-to-end full-stack software engineering from high-scale SaaS architectures and microservices to intuitive customer-facing web and mobile applications.',
-      icon: 'Code2',
+      id: 'software-engineering',
+      title: 'Software & Digital Engineering',
+      kicker: 'Modern Architecture',
+      icon: Code2,
+      image: '/images/service_software_real.jpg',
+      alt: 'Software and ML engineering team collaborating at workstation',
+      desc: 'Modernize enterprise workflows with custom high-performance web applications, resilient backend microservices, and secure API integrations.',
+      capabilities: [
+        'Next.js 14 & React Full-Stack Platforms',
+        'Microservices & Node.js Backend Engines',
+        'Enterprise REST & GraphQL APIs',
+        'Agile Engineering Pods & CI/CD Pipelines',
+      ],
+      detail:
+        'From customer-facing digital portals to internal mission-critical ERP integrations, our software engineering practice delivers clean, maintainable code with zero technical debt. Every solution is delivered with 100% client intellectual property ownership and comprehensive documentation.',
     },
     {
-      num: '04',
-      title: 'IT Consulting',
-      description: 'Technology strategy, architecture reviews, vendor selection, and digital roadmap planning for every stage.',
-      details: 'Strategic technology advisory that aligns technical investments with concrete business objectives, eliminating architectural debt and maximizing technology ROI.',
-      icon: 'Compass',
-    },
-    {
-      num: '05',
-      title: 'Digital Transformation',
-      description: 'Process digitization, ERP/CRM implementation, workflow automation, and cloud migration — fully modernize operations.',
-      details: 'Transform legacy operations into streamlined digital workflows with modern ERP, CRM integrations, and robotic process automation that eliminate manual bottlenecks.',
-      icon: 'Layers',
-    },
-    {
-      num: '06',
-      title: 'Data Engineering',
-      description: 'Data pipelines, warehouses, lakes, and ETL workflows — robust infrastructure that powers every AI initiative.',
-      details: 'Build scalable data lakehouses and automated ETL/ELT pipelines using Databricks, Snowflake, and Azure Data Factory to ensure high data quality and low latency.',
-      icon: 'Database',
-    },
-    {
-      num: '07',
-      title: 'Cloud Solutions',
-      description: 'Azure, AWS architecture, migration, and managed services — secure, scalable cloud tailored to your business.',
-      details: 'Cloud architecture design, cloud-native modernization, multi-cloud management, and enterprise-grade security on Microsoft Azure and AWS.',
-      icon: 'Cloud',
-    },
-    {
-      num: '08',
-      title: 'Managed Services',
-      description: '24/7 monitoring, support, and optimization for your analytics and data stack — focus on outcomes, not operations.',
-      details: 'Round-the-clock infrastructure monitoring, proactive performance tuning, SLA-backed uptime, and continuous pipeline maintenance.',
-      icon: 'Activity',
+      id: 'managed-services',
+      title: 'Enterprise Managed Services & Security',
+      kicker: 'Proactive Reliability',
+      icon: ShieldCheck,
+      image: '/images/hero_realistic_analytics.jpg',
+      alt: 'IT Consultant monitoring telemetry and enterprise cloud architecture',
+      desc: 'Optimize and safeguard your mission-critical systems with 24/7 proactive monitoring, rapid incident response, zero-trust IAM, and compliance governance.',
+      capabilities: [
+        '24/7 SRE Incident Response & Monitoring',
+        'Zero-Trust Security & Granular RBAC',
+        'SOC2 Type II & ISO 27001 Readiness',
+        '99.9% Production SLA Reliability',
+      ],
+      detail:
+        'Our Site Reliability Engineering (SRE) and cybersecurity teams provide continuous platform monitoring, automated alert triage, and preventative maintenance. We safeguard your data assets with end-to-end encryption, regular penetration audits, and strict compliance alignment.',
     },
   ];
 
-  const activeServices = services && services.length > 0 ? services : defaultServicesList;
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const selectedService = activeServices[selectedIndex] || activeServices[0];
-  const MainIcon = iconMap[selectedService.icon] || BrainCircuit;
-
-  // Retrieve matching capabilities for the selected service
-  const currentCapabilities = capabilitiesData[selectedService.title] || [
-    {
-      icon: Sparkles,
-      title: 'Custom Architecture',
-      desc: selectedService.description || 'Enterprise-grade implementation built for scale and reliability.',
-    },
-    {
-      icon: CheckCircle2,
-      title: 'Implementation & Delivery',
-      desc: selectedService.details || 'End-to-end execution from discovery to deployment and post-launch support.',
-    },
-    {
-      icon: ArrowRight,
-      title: 'Continuous Optimization',
-      desc: 'Proactive performance monitoring, optimization, and SLA-backed maintenance.',
-    },
-  ];
+  // Merge with dynamic Prisma services if present
+  const practices = services.length >= 4
+    ? services.slice(0, 4).map((s, idx) => ({
+        id: `service-${s.id}`,
+        title: s.title,
+        kicker: defaultPractices[idx % defaultPractices.length].kicker,
+        icon: defaultPractices[idx % defaultPractices.length].icon,
+        image: s.image || defaultPractices[idx % defaultPractices.length].image,
+        alt: s.title,
+        desc: s.description || defaultPractices[idx % defaultPractices.length].desc,
+        capabilities: defaultPractices[idx % defaultPractices.length].capabilities,
+        detail: s.content || defaultPractices[idx % defaultPractices.length].detail,
+      }))
+    : defaultPractices;
 
   return (
-    <section id="solutions" style={{ background: '#F8FAFC', padding: '6rem 0', position: 'relative' }}>
+    <section id="solutions" style={{ background: '#FFFFFF', padding: '6.5rem 0' }}>
       <div className="container">
-        {/* Section Header */}
-        <div style={{ marginBottom: '3.5rem' }}>
-          <div className="sec-eye" style={{ marginBottom: '0.75rem' }}>
-            What We Do
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
-            <div>
-              <h2 className="sec-title" style={{ marginBottom: '0.5rem' }}>
-                Explore Our Tech Solutions
-              </h2>
-              <p className="sec-sub" style={{ margin: 0, maxWidth: '680px' }}>
-                Eight powerful specializations built for enterprise-scale impact. Select any domain below to explore specific capabilities and technical deliverables.
-              </p>
-            </div>
-            <a
-              href="#contact"
-              className="btn-primary"
-              style={{
-                padding: '0.75rem 1.75rem',
-                fontSize: '0.9rem',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              Discuss a Project <ArrowRight size={16} />
-            </a>
-          </div>
-        </div>
-
-        {/* Algoscale-Pattern Split Interactive Showcase Container */}
-        <div
-          style={{
-            background: '#FFFFFF',
-            borderRadius: '20px',
-            border: '1.5px solid var(--gray-200)',
-            boxShadow: '0 12px 36px rgba(15, 35, 71, 0.05)',
-            display: 'grid',
-            gridTemplateColumns: '320px 1fr',
-            overflow: 'hidden',
-            minHeight: '620px',
-          }}
-          className="what-we-do-container"
-        >
-          {/* LEFT SIDEBAR: Category Tabs */}
+        {/* Section Header: Team Computers-inspired clean hierarchy */}
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
           <div
             style={{
-              background: '#FFFFFF',
-              borderRight: '1.5px solid var(--gray-200)',
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '1.25rem 0.85rem',
-              gap: '4px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
             }}
-            className="services-sidebar"
           >
-            {activeServices.map((service, index) => {
-              const IconComp = iconMap[service.icon] || BrainCircuit;
-              const isSelected = selectedIndex === index;
-              const count = capabilitiesData[service.title]?.length || 6;
+            <Sparkles size={14} />
+            <span>EXPLORE OUR TECH SOLUTIONS</span>
+          </div>
 
-              return (
-                <button
-                  key={service.id || index}
-                  onClick={() => setSelectedIndex(index)}
-                  onMouseEnter={() => setSelectedIndex(index)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '1rem 1.15rem',
-                    borderRadius: '12px',
-                    background: isSelected ? 'rgba(61, 155, 233, 0.08)' : 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    textAlign: 'left',
-                    position: 'relative',
-                  }}
-                  onMouseEnterCapture={(e) => {
-                    if (!isSelected) e.currentTarget.style.background = 'var(--gray-100)';
-                  }}
-                  onMouseLeaveCapture={(e) => {
-                    if (!isSelected) e.currentTarget.style.background = 'transparent';
-                  }}
-                >
-                  {/* Left Accent Bar on Active */}
-                  {isSelected && (
+          <h2
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2rem, 3.2vw, 2.85rem)',
+              fontWeight: 800,
+              color: 'var(--navy)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+            }}
+          >
+            End-to-End Enterprise Technology Practices
+          </h2>
+
+          <p
+            style={{
+              fontSize: '1.05rem',
+              color: 'var(--muted)',
+              lineHeight: 1.7,
+            }}
+          >
+            Scalable, high-performance IT solutions engineered to accelerate digital transformation, modernize infrastructure, and deliver quantifiable business agility.
+          </p>
+        </div>
+
+        {/* 4 Clean Solution Practice Cards (2x2 Grid) */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '2.5rem',
+          }}
+          className="practices-grid"
+        >
+          {practices.map((item) => {
+            const IconComp = item.icon;
+            return (
+              <div
+                key={item.id}
+                className="solution-practice-card"
+                style={{
+                  background: '#FFFFFF',
+                  borderRadius: '16px',
+                  border: '1px solid #E2E8F0',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 4px 20px rgba(5, 45, 93, 0.04)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <div>
+                  {/* High-Resolution Photography Header */}
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      height: '210px',
+                      overflow: 'hidden',
+                      background: '#052D5D',
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                      className="practice-img"
+                    />
+                    {/* Subtle Overlay Vignette */}
                     <div
                       style={{
                         position: 'absolute',
-                        left: 0,
-                        top: '18%',
-                        bottom: '18%',
-                        width: '3.5px',
-                        background: 'linear-gradient(to bottom, #3D9BE9, #1B3A6B)',
-                        borderRadius: '0 4px 4px 0',
+                        inset: 0,
+                        background: 'linear-gradient(180deg, rgba(5, 45, 93, 0.1) 0%, rgba(5, 45, 93, 0.75) 100%)',
                       }}
                     />
-                  )}
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    {/* Floating Practice Category Chip */}
                     <div
                       style={{
-                        width: '36px',
-                        height: '36px',
-                        borderRadius: '10px',
-                        background: isSelected ? 'var(--blue)' : 'var(--gray-100)',
-                        color: isSelected ? '#FFFFFF' : 'var(--navy)',
+                        position: 'absolute',
+                        top: '14px',
+                        left: '14px',
+                        background: 'rgba(5, 45, 93, 0.85)',
+                        backdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '8px',
+                        padding: '5px 12px',
+                        color: '#FFFFFF',
+                        fontSize: '0.725rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.6px',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'all 0.2s ease',
-                        flexShrink: 0,
+                        gap: '6px',
                       }}
                     >
-                      <IconComp size={18} />
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontWeight: isSelected ? 800 : 600,
-                          fontSize: '0.925rem',
-                          color: isSelected ? 'var(--navy)' : 'var(--body)',
-                          fontFamily: 'var(--font-heading)',
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {service.title}
-                      </div>
+                      <IconComp size={14} style={{ color: 'var(--blue)' }} />
+                      <span>{item.kicker}</span>
                     </div>
                   </div>
 
-                  {/* Badge & Arrow */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span
+                  {/* Card Body */}
+                  <div style={{ padding: '2rem' }}>
+                    <h3
                       style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        color: isSelected ? 'var(--blue)' : 'var(--muted)',
-                      }}
-                    >
-                      {count}
-                    </span>
-                    <ChevronRight
-                      size={16}
-                      color={isSelected ? 'var(--blue)' : 'var(--gray-300)'}
-                      style={{
-                        transform: isSelected ? 'translateX(2px)' : 'none',
-                        transition: 'transform 0.2s',
-                      }}
-                    />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* RIGHT MAIN PANEL: Algoscale Multi-Column Capabilities Grid */}
-          <div
-            style={{
-              padding: '2.75rem 3rem',
-              display: 'flex',
-              flexDirection: 'column',
-              background: '#FFFFFF',
-            }}
-            className="services-content-panel"
-          >
-            {/* Header of Active Service */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'space-between',
-                paddingBottom: '2rem',
-                borderBottom: '1px solid var(--gray-200)',
-                marginBottom: '2.5rem',
-                flexWrap: 'wrap',
-                gap: '1rem',
-              }}
-            >
-              <div style={{ maxWidth: '680px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
-                  <span
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 800,
-                      color: 'var(--blue)',
-                      letterSpacing: '1px',
-                      textTransform: 'uppercase',
-                      background: 'rgba(21, 138, 226, 0.1)',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                    }}
-                  >
-                    SPECIALIZATION #{selectedService.num}
-                  </span>
-                  <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 600 }}>
-                    {currentCapabilities.length} Enterprise Capabilities
-                  </span>
-                </div>
-                <h3 style={{ fontSize: '1.85rem', fontWeight: 800, color: 'var(--navy)', lineHeight: 1.2, marginBottom: '0.75rem' }}>
-                  {selectedService.title}
-                </h3>
-                <p style={{ fontSize: '0.975rem', color: '#475569', lineHeight: 1.65, marginBottom: '1.25rem' }}>
-                  {selectedService.details || selectedService.description}
-                </p>
-
-                {/* Tech Stack Chips for this Service */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.725rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginRight: '4px' }}>
-                    Engineered With:
-                  </span>
-                  {(serviceTechStack[selectedService.title] || ['Cloud Native', 'Enterprise Architecture', 'Production Ready']).map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        fontSize: '0.725rem',
-                        fontWeight: 600,
-                        color: 'var(--navy)',
-                        background: '#F1F5F9',
-                        padding: '3px 8px',
-                        borderRadius: '4px',
-                        border: '1px solid #E2E8F0',
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <a
-                href="#contact"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  fontWeight: 700,
-                  fontSize: '0.875rem',
-                  color: '#FFFFFF',
-                  background: 'var(--blue)',
-                  textDecoration: 'none',
-                  padding: '10px 18px',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s ease',
-                  alignSelf: 'flex-start',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#0E70BA')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--blue)')}
-              >
-                Inquire for {selectedService.title} <ArrowRight size={15} />
-              </a>
-            </div>
-
-            {/* Authentic Practice in Action Photography Banner */}
-            {serviceImages[selectedService.title] && (
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '210px',
-                  borderRadius: '14px',
-                  overflow: 'hidden',
-                  marginBottom: '2.5rem',
-                  border: '1px solid var(--gray-200)',
-                  boxShadow: '0 8px 24px rgba(5, 45, 93, 0.06)',
-                }}
-              >
-                <img
-                  key={selectedService.title}
-                  src={serviceImages[selectedService.title].src}
-                  alt={serviceImages[selectedService.title].caption}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background:
-                      'linear-gradient(180deg, rgba(5, 45, 93, 0.1) 0%, rgba(5, 45, 93, 0.8) 100%)',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    padding: '1.25rem 1.5rem',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '8px',
-                  }}
-                >
-                  <div style={{ color: '#FFFFFF' }}>
-                    <div
-                      style={{
-                        fontSize: '0.675rem',
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '1.4rem',
                         fontWeight: 800,
-                        letterSpacing: '1px',
-                        textTransform: 'uppercase',
-                        color: 'var(--blue)',
-                        marginBottom: '2px',
+                        color: 'var(--navy)',
+                        marginBottom: '0.75rem',
+                        lineHeight: 1.25,
                       }}
                     >
-                      {serviceImages[selectedService.title].tag}
-                    </div>
-                    <div style={{ fontSize: '0.925rem', fontWeight: 700, color: '#FFFFFF' }}>
-                      {serviceImages[selectedService.title].caption}
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '0.725rem',
-                      fontWeight: 700,
-                      color: '#FFFFFF',
-                      background: 'rgba(255, 255, 255, 0.18)',
-                      backdropFilter: 'blur(10px)',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      border: '1px solid rgba(255, 255, 255, 0.25)',
-                    }}
-                  >
-                    KD Infovision Practice
-                  </div>
-                </div>
-              </div>
-            )}
+                      {item.title}
+                    </h3>
 
-            {/* 3-COLUMN CAPABILITIES GRID (Direct Algoscale Pattern) */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '2.5rem 2rem',
-                flex: 1,
-              }}
-              className="capabilities-grid"
-            >
-              {currentCapabilities.map((cap, idx) => {
-                const CapIcon = cap.icon || Sparkles;
-                return (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.65rem',
-                      position: 'relative',
-                    }}
-                    className="capability-item"
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div
-                        style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '8px',
-                          background: 'rgba(61, 155, 233, 0.1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'var(--blue)',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <CapIcon size={18} />
-                      </div>
-                      <h4
-                        style={{
-                          fontSize: '1.05rem',
-                          fontWeight: 700,
-                          color: 'var(--navy)',
-                          margin: 0,
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {cap.title}
-                      </h4>
-                    </div>
+                    {/* Short, high-impact description: zero fluff */}
                     <p
                       style={{
-                        fontSize: '0.875rem',
-                        color: 'var(--muted)',
-                        lineHeight: 1.6,
-                        margin: 0,
+                        fontSize: '0.95rem',
+                        color: '#64748B',
+                        lineHeight: 1.65,
+                        marginBottom: '1.5rem',
                       }}
                     >
-                      {cap.desc}
+                      {item.desc}
                     </p>
-                  </div>
-                );
-              })}
-            </div>
 
-            {/* Bottom Enterprise Strip */}
-            <div
-              style={{
-                marginTop: '3rem',
-                paddingTop: '1.75rem',
-                borderTop: '1px solid var(--gray-200)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: '1rem',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--muted)' }}>
-                <CheckCircle2 size={16} color="#16A34A" />
-                <span>Production-ready architectures backed by enterprise SLA and dedicated engineering pods</span>
+                    {/* 4 Clean Capability Tags */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '8px',
+                        marginBottom: '1rem',
+                      }}
+                    >
+                      {item.capabilities.map((cap, cIdx) => (
+                        <span
+                          key={cIdx}
+                          style={{
+                            fontSize: '0.75rem',
+                            fontWeight: 600,
+                            color: '#334155',
+                            background: '#F8FAFC',
+                            border: '1px solid #E2E8F0',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                          }}
+                        >
+                          {cap}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Footer with Direct CTA */}
+                <div
+                  style={{
+                    padding: '1.25rem 2rem',
+                    borderTop: '1px solid #F1F5F9',
+                    background: '#FAFAFC',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <button
+                    onClick={() => setActiveModal(item)}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      background: 'none',
+                      border: 'none',
+                      color: 'var(--blue)',
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'gap 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.gap = '10px')}
+                    onMouseLeave={(e) => (e.currentTarget.style.gap = '6px')}
+                  >
+                    <span>Explore Practice Architecture</span>
+                    <ArrowRight size={16} />
+                  </button>
+
+                  <a
+                    href="#contact"
+                    style={{
+                      fontSize: '0.775rem',
+                      fontWeight: 600,
+                      color: '#64748B',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Consult an Architect &rarr;
+                  </a>
+                </div>
               </div>
-              <a
-                href="#contact"
-                style={{
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  color: 'var(--navy)',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                }}
-              >
-                Schedule Architecture Consultation <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Responsive Styles */}
+      {/* Practice Architecture Detail Modal */}
+      {activeModal && (
+        <div className="modal-overlay" onClick={() => setActiveModal(null)}>
+          <div
+            className="modal-content"
+            style={{ maxWidth: '640px', padding: '2.5rem', borderRadius: '16px' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: '1.5rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: 'rgba(21, 138, 226, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--blue)',
+                  }}
+                >
+                  <activeModal.icon size={22} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--blue)', textTransform: 'uppercase' }}>
+                    {activeModal.kicker}
+                  </div>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--navy)' }}>
+                    {activeModal.title}
+                  </h3>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setActiveModal(null)}
+                style={{
+                  background: '#F1F5F9',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '36px',
+                  height: '36px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: '#64748B',
+                }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <p style={{ fontSize: '1rem', color: '#475569', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              {activeModal.detail}
+            </p>
+
+            <div style={{ marginBottom: '2rem' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--navy)', marginBottom: '0.75rem' }}>
+                Core Engineered Capabilities:
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {activeModal.capabilities.map((cap, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: '#334155' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
+                    <span>{cap}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <a
+                href="#contact"
+                onClick={() => setActiveModal(null)}
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  background: 'var(--blue)',
+                  color: '#FFFFFF',
+                  padding: '0.85rem',
+                  borderRadius: '8px',
+                  fontWeight: 700,
+                  fontSize: '0.925rem',
+                  textDecoration: 'none',
+                }}
+              >
+                Schedule Technical Consultation
+              </a>
+              <button
+                onClick={() => setActiveModal(null)}
+                style={{
+                  padding: '0.85rem 1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid #CBD5E1',
+                  background: '#FFFFFF',
+                  color: '#475569',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <style jsx>{`
-        @media (max-width: 1080px) {
-          :global(.capabilities-grid) {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem 1.5rem !important;
-          }
+        :global(.solution-practice-card:hover) {
+          border-color: rgba(21, 138, 226, 0.4) !important;
+          box-shadow: 0 16px 36px rgba(5, 45, 93, 0.1) !important;
+          transform: translateY(-4px);
         }
-        @media (max-width: 860px) {
-          :global(.what-we-do-container) {
-            grid-template-columns: 1fr !important;
-          }
-          :global(.services-sidebar) {
-            border-right: none !important;
-            border-bottom: 1.5px solid var(--gray-200) !important;
-            flex-direction: row !important;
-            overflow-x: auto !important;
-            padding: 1rem !important;
-          }
-          :global(.services-sidebar button) {
-            white-space: nowrap !important;
-            flex-shrink: 0 !important;
-          }
-          :global(.services-content-panel) {
-            padding: 2rem 1.5rem !important;
-          }
+        :global(.solution-practice-card:hover .practice-img) {
+          transform: scale(1.04);
         }
-        @media (max-width: 600px) {
-          :global(.capabilities-grid) {
+        @media (max-width: 960px) {
+          :global(.practices-grid) {
             grid-template-columns: 1fr !important;
+            gap: 2rem !important;
           }
         }
       `}</style>

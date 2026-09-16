@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Award, Layers, Sparkles, MapPin } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 
 function CounterItem({ target, suffix, label, context }) {
   const [count, setCount] = useState(0);
@@ -41,7 +41,7 @@ function CounterItem({ target, suffix, label, context }) {
     <div
       ref={ref}
       style={{
-        padding: '1.75rem 1.5rem',
+        padding: '1.5rem 1.25rem',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         display: 'flex',
         flexDirection: 'column',
@@ -64,7 +64,7 @@ function CounterItem({ target, suffix, label, context }) {
       <div
         style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(2.2rem, 2.8vw, 3rem)',
+          fontSize: 'clamp(2rem, 2.6vw, 2.75rem)',
           fontWeight: 800,
           color: '#FFFFFF',
           lineHeight: 1,
@@ -77,12 +77,12 @@ function CounterItem({ target, suffix, label, context }) {
       </div>
       <div
         style={{
-          fontSize: '0.825rem',
+          fontSize: '0.8rem',
           fontWeight: 700,
           color: '#FFFFFF',
           textTransform: 'uppercase',
           letterSpacing: '0.6px',
-          marginBottom: '0.25rem',
+          marginBottom: '0.2rem',
         }}
       >
         {label}
@@ -91,7 +91,7 @@ function CounterItem({ target, suffix, label, context }) {
         <div
           style={{
             fontSize: '0.725rem',
-            color: 'rgba(255, 255, 255, 0.55)',
+            color: 'rgba(255, 255, 255, 0.6)',
             lineHeight: 1.35,
           }}
         >
@@ -138,11 +138,11 @@ export default function AboutSection({ statCounters = [] }) {
         }}
         className="about-split-grid"
       >
-        {/* Left Story & Narrative */}
+        {/* Left Story & Narrative: Team Computers-inspired concise layout */}
         <div
           style={{
             background: 'var(--navy-dark)',
-            padding: '5.5rem 4.5rem',
+            padding: '5rem 4.5rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -150,6 +150,7 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-left-pane"
         >
+          {/* Kicker */}
           <div
             style={{
               display: 'inline-flex',
@@ -164,34 +165,33 @@ export default function AboutSection({ statCounters = [] }) {
             }}
           >
             <Sparkles size={14} />
-            <span>WHO WE ARE &amp; OUR CAPABILITIES</span>
+            <span>OUR STORY • ABOUT US</span>
           </div>
 
           <h2
             style={{
-              fontSize: 'clamp(2rem, 3.2vw, 2.85rem)',
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2rem, 3vw, 2.75rem)',
               color: '#FFFFFF',
-              lineHeight: 1.16,
+              lineHeight: 1.18,
               marginBottom: '1.25rem',
               fontWeight: 800,
               letterSpacing: '-0.02em',
             }}
           >
-            Engineering High-Performance <span style={{ color: 'var(--blue)' }}>Data &amp; AI</span> Architectures
+            Transforming Ideas into Action with <span style={{ color: 'var(--blue)' }}>End-to-End IT</span> &amp; Analytics Solutions
           </h2>
 
           <p
             style={{
               fontSize: '1.05rem',
-              lineHeight: 1.8,
-              color: 'rgba(255, 255, 255, 0.72)',
+              lineHeight: 1.75,
+              color: 'rgba(255, 255, 255, 0.75)',
               marginBottom: '1.75rem',
               maxWidth: '560px',
             }}
           >
-            KD Infovision is an Indian technology consulting and software engineering enterprise specializing in
-            Data Analytics, Cloud Platforms, and Production AI. We bridge the gap between fragmented raw data systems
-            and executive decision-making, designing secure, resilient architectures built for measurable enterprise scale.
+            We are the technology architects behind your digital journey. Over the years, we have become more than a service provider—we are a trusted partner in enterprise digital transformation, engineering scalable cloud lakehouses, production AI systems, and robust software that turn complex challenges into quantifiable business growth.
           </p>
 
           <div
@@ -255,7 +255,7 @@ export default function AboutSection({ statCounters = [] }) {
         <div
           style={{
             background: 'var(--navy)',
-            padding: '3.5rem',
+            padding: '4rem 3.5rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -284,71 +284,47 @@ export default function AboutSection({ statCounters = [] }) {
                 display: 'block',
               }}
             />
-            {/* Gradient Overlay & Badge */}
+            {/* Subtle Gradient & Tag */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, transparent 40%, rgba(5, 45, 93, 0.88) 100%)',
-                display: 'flex',
-                alignItems: 'flex-end',
-                padding: '1.25rem 1.5rem',
+                background: 'linear-gradient(180deg, transparent 40%, rgba(5, 45, 93, 0.85) 100%)',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '12px',
+                left: '16px',
+                color: '#FFFFFF',
+                fontSize: '0.775rem',
+                fontWeight: 600,
+                letterSpacing: '0.4px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFFFFF' }}>
-                <MapPin size={16} style={{ color: 'var(--blue)' }} />
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.5px' }}>
-                  KD Infovision Delivery Pods • Bangalore &amp; Mumbai
-                </span>
-              </div>
+              Enterprise Engineering Leadership &amp; Solution Architecture Practice
             </div>
           </div>
 
-          {/* 4 Stats Grid */}
+          {/* 4 Quantitative Metric Counters (2x2 Grid) */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '1rem',
             }}
           >
-            {stats.map((stat, i) => (
+            {stats.slice(0, 4).map((stat, idx) => (
               <CounterItem
-                key={i}
-                target={stat.target}
-                suffix={stat.suffix}
+                key={idx}
+                target={stat.target || stat.count || 50}
+                suffix={stat.suffix || '+'}
                 label={stat.label}
                 context={stat.context}
               />
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Engineering Standards Strip */}
-      <div
-        style={{
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(5, 45, 93, 0.8)',
-          padding: '1.25rem 2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          flexWrap: 'wrap',
-          gap: '1.5rem',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
-          <ShieldCheck size={18} style={{ color: 'var(--blue)' }} />
-          <span><strong>Security by Design:</strong> SOC2 &amp; GDPR Compliant Pipeline Standards</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
-          <Award size={18} style={{ color: 'var(--blue)' }} />
-          <span><strong>Certified Practitioners:</strong> AWS, Azure, Snowflake &amp; Databricks Credentials</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
-          <Layers size={18} style={{ color: 'var(--blue)' }} />
-          <span><strong>Guaranteed SLA:</strong> 99.9% High Availability Production Support</span>
         </div>
       </div>
 
@@ -358,9 +334,9 @@ export default function AboutSection({ statCounters = [] }) {
             grid-template-columns: 1fr !important;
           }
           :global(.about-left-pane) {
-            padding: 4rem 2rem !important;
+            padding: 3rem 1.5rem !important;
             border-right: none !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           }
           :global(.about-right-pane) {
             padding: 3rem 1.5rem !important;
