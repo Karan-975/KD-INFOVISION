@@ -140,11 +140,11 @@ export default function Footer({ settings }) {
               Solutions
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="#solutions" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>AI & Machine Learning</a></li>
-              <li><a href="#solutions" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Data Analytics & BI</a></li>
-              <li><a href="#solutions" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Software Engineering</a></li>
-              <li><a href="#solutions" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Cloud Architecture</a></li>
-              <li><a href="#solutions" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Data Engineering</a></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>AI &amp; Machine Learning</Link></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Data Analytics &amp; BI</Link></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Software Engineering</Link></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Cloud Architecture</Link></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Managed SRE Services</Link></li>
             </ul>
           </div>
 
@@ -154,11 +154,11 @@ export default function Footer({ settings }) {
               Industries
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="#industry" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>BFSI & Banking</a></li>
-              <li><a href="#industry" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Manufacturing & Supply Chain</a></li>
-              <li><a href="#industry" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Retail & Consumer Goods</a></li>
-              <li><a href="#industry" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Healthcare & Pharma</a></li>
-              <li><a href="#industry" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>E-Commerce & Startups</a></li>
+              <li><Link href="/industries" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>BFSI &amp; Banking</Link></li>
+              <li><Link href="/industries" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Manufacturing &amp; Supply Chain</Link></li>
+              <li><Link href="/industries" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Retail &amp; E-Commerce</Link></li>
+              <li><Link href="/industries" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Healthcare &amp; Pharma</Link></li>
+              <li><Link href="/industries" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>IT &amp; High-Tech</Link></li>
             </ul>
           </div>
 
@@ -168,11 +168,11 @@ export default function Footer({ settings }) {
               Company
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="#about" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Our Story</a></li>
-              <li><a href="#cases" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Case Studies</a></li>
-              <li><a href="#process" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>How We Work</a></li>
-              <li><a href="#insights" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontSize: '0.925rem' }}>Insights & Trends</a></li>
-              <li><Link href="/admin" style={{ color: 'var(--blue-cyan)', textDecoration: 'none', fontSize: '0.925rem', fontWeight: 600 }}>Admin CMS Portal</Link></li>
+              <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Our Story &amp; Leadership</Link></li>
+              <li><Link href="/case-studies" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Proven Case Studies</Link></li>
+              <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Practice Blueprints</Link></li>
+              <li><Link href="/contact" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', fontSize: '0.925rem' }}>Contact &amp; Consultation</Link></li>
+              <li><Link href="/admin" style={{ color: 'var(--blue)', textDecoration: 'none', fontSize: '0.925rem', fontWeight: 700 }}>Admin CMS Portal</Link></li>
             </ul>
           </div>
         </div>

@@ -1,26 +1,18 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
-import ServicesSection from '@/components/public/ServicesSection';
-import PartnersMarquee from '@/components/public/PartnersMarquee';
-import ProcessSection from '@/components/public/ProcessSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Services & Practice Areas | KD Infovision — Enterprise IT Solutions',
+  title: 'Contact Us | Schedule Architecture Consultation — KD Infovision',
   description:
-    'Explore our enterprise services across Data & AI, Cloud & Infrastructure, Software & Digital Engineering, and Enterprise Managed Services.',
+    'Connect with KD Infovision enterprise architects for cloud modernization, Power BI analytics, and production AI system feasibility.',
 };
 
-export default async function ServicesPage() {
-  const [settings, services, partners, processSteps] = await Promise.all([
-    prisma.siteSetting.findFirst(),
-    prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-  ]);
+export default async function ContactPage() {
+  const settings = await prisma.siteSetting.findFirst();
 
   return (
     <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
@@ -55,7 +47,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            PRACTICE ARCHITECTURES &amp; CAPABILITIES
+            START YOUR TRANSFORMATION
           </div>
           <h1
             style={{
@@ -67,7 +59,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            Connect with Our <span style={{ color: 'var(--blue)' }}>Lead Architects</span>
           </h1>
           <p
             style={{
@@ -78,22 +70,15 @@ export default async function ServicesPage() {
               lineHeight: 1.7,
             }}
           >
-            From modern cloud lakehouses and real-time streaming architectures to production AI pipelines and 24/7 managed infrastructure.
+            Schedule a technical feasibility assessment or discuss your upcoming Data Lakehouse, Cloud Migration, or AI modernization roadmap.
           </p>
         </div>
       </div>
 
-      {/* Partner Marquee */}
-      <PartnersMarquee partners={partners} />
-
-      {/* Services Practices Grid */}
-      <ServicesSection services={services} />
-
-      {/* Delivery Process */}
-      <ProcessSection processSteps={processSteps} />
-
-      {/* Contact Section & Footer */}
+      {/* Contact Section */}
       <ContactSection settings={settings} />
+
+      {/* Footer */}
       <Footer settings={settings} />
     </main>
   );

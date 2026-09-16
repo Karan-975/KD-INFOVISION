@@ -1,25 +1,23 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
-import ServicesSection from '@/components/public/ServicesSection';
-import PartnersMarquee from '@/components/public/PartnersMarquee';
-import ProcessSection from '@/components/public/ProcessSection';
+import IndustriesSection from '@/components/public/IndustriesSection';
+import CaseStudiesSection from '@/components/public/CaseStudiesSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Services & Practice Areas | KD Infovision — Enterprise IT Solutions',
+  title: 'Industries We Serve | KD Infovision',
   description:
-    'Explore our enterprise services across Data & AI, Cloud & Infrastructure, Software & Digital Engineering, and Enterprise Managed Services.',
+    'Tailored enterprise technology solutions for Banking, Healthcare, Retail, Manufacturing, Logistics, and High-Tech.',
 };
 
-export default async function ServicesPage() {
-  const [settings, services, partners, processSteps] = await Promise.all([
+export default async function IndustriesPage() {
+  const [settings, industries, caseStudies] = await Promise.all([
     prisma.siteSetting.findFirst(),
-    prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.industry.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
   return (
@@ -55,7 +53,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            PRACTICE ARCHITECTURES &amp; CAPABILITIES
+            SOLUTIONS ACROSS SECTORS
           </div>
           <h1
             style={{
@@ -67,7 +65,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            Deep Vertical &amp; <span style={{ color: 'var(--blue)' }}>Industry Domain Reach</span>
           </h1>
           <p
             style={{
@@ -78,21 +76,18 @@ export default async function ServicesPage() {
               lineHeight: 1.7,
             }}
           >
-            From modern cloud lakehouses and real-time streaming architectures to production AI pipelines and 24/7 managed infrastructure.
+            Purpose-built compliance, telemetry, and analytics architectures engineered to meet rigorous regulatory standards across sectors.
           </p>
         </div>
       </div>
 
-      {/* Partner Marquee */}
-      <PartnersMarquee partners={partners} />
+      {/* Industries Section */}
+      <IndustriesSection industries={industries} />
 
-      {/* Services Practices Grid */}
-      <ServicesSection services={services} />
+      {/* Associated Case Studies */}
+      <CaseStudiesSection caseStudies={caseStudies} />
 
-      {/* Delivery Process */}
-      <ProcessSection processSteps={processSteps} />
-
-      {/* Contact Section & Footer */}
+      {/* Contact & Footer */}
       <ContactSection settings={settings} />
       <Footer settings={settings} />
     </main>

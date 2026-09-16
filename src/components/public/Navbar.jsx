@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight, Shield } from 'lucide-react';
 
 export default function Navbar({ settings }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,13 +19,11 @@ export default function Navbar({ settings }) {
   }, []);
 
   const navLinks = [
-    { name: 'Services', href: '#solutions' },
-    { name: 'Case Studies', href: '#cases' },
-    { name: 'Industries', href: '#industry' },
-    { name: 'Process', href: '#process' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Insights', href: '#insights' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Services', href: '/services' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Industries', href: '/industries' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -35,7 +35,7 @@ export default function Navbar({ settings }) {
         right: 0,
         zIndex: 1000,
         height: isScrolled ? '68px' : '82px',
-        background: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.92)',
+        background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.94)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(5, 45, 93, 0.08)',
@@ -98,15 +98,21 @@ export default function Navbar({ settings }) {
                 color: 'var(--blue)',
                 letterSpacing: '1.2px',
                 textTransform: 'uppercase',
-                marginTop: '2px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
               }}
             >
-              Data • AI • Transformation
+              <span>DATA</span>
+              <span>•</span>
+              <span>AI</span>
+              <span>•</span>
+              <span>TRANSFORMATION</span>
             </div>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Navigation Links */}
         <nav
           style={{
             display: 'flex',
@@ -115,31 +121,48 @@ export default function Navbar({ settings }) {
           }}
           className="desktop-nav"
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              style={{
-                color: '#334155',
-                fontSize: '0.925rem',
-                fontWeight: 600,
-                textDecoration: 'none',
-                transition: 'color 0.2s ease',
-                position: 'relative',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--blue)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#334155')}
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                style={{
+                  color: isActive ? 'var(--blue)' : '#334155',
+                  fontSize: '0.925rem',
+                  fontWeight: isActive ? 700 : 600,
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                  position: 'relative',
+                  padding: '4px 0',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--blue)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? 'var(--blue)' : '#334155')}
+              >
+                {link.name}
+                {isActive && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '2px',
+                      background: 'var(--blue)',
+                      borderRadius: '2px',
+                    }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Actions */}
+        {/* Action Buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Link
             href="/admin"
-            title="Admin Portal"
+            title="Admin CMS Portal"
             style={{
               width: '38px',
               height: '38px',
@@ -167,8 +190,8 @@ export default function Navbar({ settings }) {
             <Shield size={16} />
           </Link>
 
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             style={{
               background: 'var(--blue)',
               color: '#FFFFFF',
@@ -180,23 +203,23 @@ export default function Navbar({ settings }) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              boxShadow: '0 4px 14px rgba(21, 138, 226, 0.35)',
+              boxShadow: '0 4px 14px rgba(21, 138, 226, 0.25)',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--navy)';
+              e.currentTarget.style.background = '#0E70BA';
               e.currentTarget.style.transform = 'translateY(-1px)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = 'var(--blue)';
-              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Schedule Consultation
-            <ArrowUpRight size={16} />
-          </a>
+            <span>Schedule Consultation</span>
+            <ArrowUpRight size={15} />
+          </Link>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
@@ -234,7 +257,7 @@ export default function Navbar({ settings }) {
           }}
         >
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
@@ -246,10 +269,10 @@ export default function Navbar({ settings }) {
               }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
             style={{
               background: 'var(--blue)',
@@ -262,8 +285,8 @@ export default function Navbar({ settings }) {
               marginTop: '0.5rem',
             }}
           >
-            Free Consultation
-          </a>
+            Schedule Consultation
+          </Link>
         </div>
       )}
 

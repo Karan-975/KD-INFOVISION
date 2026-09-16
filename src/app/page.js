@@ -1,16 +1,12 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
 import HeroSection from '@/components/public/HeroSection';
-import AboutSection from '@/components/public/AboutSection';
 import PartnersMarquee from '@/components/public/PartnersMarquee';
-import WhyUsSection from '@/components/public/WhyUsSection';
+import AboutSection from '@/components/public/AboutSection';
 import ServicesSection from '@/components/public/ServicesSection';
-import IndustriesSection from '@/components/public/IndustriesSection';
+import WhyUsSection from '@/components/public/WhyUsSection';
 import CaseStudiesSection from '@/components/public/CaseStudiesSection';
-import ProcessSection from '@/components/public/ProcessSection';
-import TestimonialsSection from '@/components/public/TestimonialsSection';
 import ClientsMarquee from '@/components/public/ClientsMarquee';
-import InsightsSection from '@/components/public/InsightsSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
 
@@ -23,39 +19,45 @@ export default async function HomePage() {
     statCounters,
     partners,
     services,
-    industries,
     caseStudies,
-    processSteps,
-    testimonials,
-    insights,
   ] = await Promise.all([
     prisma.siteSetting.findFirst(),
     prisma.heroSlide.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.statCounter.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.industry.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.testimonial.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.insight.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
   return (
     <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
       <Navbar settings={settings} />
+      
+      {/* Dynamic 3-Slide Hero Carousel with Realistic Photography & Multi-Color Accents */}
       <HeroSection slides={heroSlides} />
-      <AboutSection statCounters={statCounters} />
+
+      {/* Technology Partners Marquee */}
       <PartnersMarquee partners={partners} />
-      <WhyUsSection />
+
+      {/* About Us / Our Story with Team Photo & 4 Metric Counters */}
+      <AboutSection statCounters={statCounters} />
+
+      {/* Explore Our Tech Solutions (4 Clean Practice Cards) */}
       <ServicesSection services={services} />
-      <IndustriesSection industries={industries} />
-      <CaseStudiesSection caseStudies={caseStudies} />
-      <ProcessSection processSteps={processSteps} />
-      <TestimonialsSection testimonials={testimonials} />
+
+      {/* Engineering Excellence & Why Us */}
+      <WhyUsSection />
+
+      {/* Featured Proven Enterprise Case Studies */}
+      <CaseStudiesSection caseStudies={caseStudies.slice(0, 2)} />
+
+      {/* Client Enterprise Trust Marquee */}
       <ClientsMarquee />
-      <InsightsSection insights={insights} />
+
+      {/* Architecture Consultation Contact Form */}
       <ContactSection settings={settings} />
+
+      {/* Polished Corporate Footer */}
       <Footer settings={settings} />
     </main>
   );

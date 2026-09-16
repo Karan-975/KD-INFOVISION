@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   ArrowRight,
   ShieldCheck,
@@ -13,88 +14,161 @@ import {
   CheckCircle2,
   Activity,
   Zap,
-  Lock,
+  ChevronLeft,
   ChevronRight,
+  Sparkles,
+  Play,
+  Pause,
 } from 'lucide-react';
 import HeroBackgroundAnimation from './HeroBackgroundAnimation';
 
 export default function HeroSection({ slides = [] }) {
-  const [current, setCurrent] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [activeVisualMode, setActiveVisualMode] = useState('lakehouse'); // 'lakehouse' | 'ai' | 'bi'
+  const [progress, setProgress] = useState(0);
 
-  const total = slides.length || 1;
-
-  useEffect(() => {
-    if (isPaused || total <= 1) return;
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 8000);
-    return () => clearInterval(timer);
-  }, [isPaused, total]);
-
-  const activeSlide = slides[current] || {
-    tag: 'Enterprise IT Solutions & AI Systems',
-    headline: 'Empowering Enterprises with AI-First Solutions &',
-    headlineEmp: 'Resilient Infrastructure.',
-    subtext:
-      'From modern cloud lakehouses and real-time streaming architectures to production AI and executive Power BI dashboards, KD Infovision delivers scalable IT excellence with quantifiable business ROI.',
-    primaryBtn: 'Schedule Consultation',
-    primaryUrl: '#contact',
-    secBtn: 'Explore Solutions',
-    secUrl: '#solutions',
-  };
-
-  // Enterprise Cloud & Technology Ecosystem
-  const techEcosystem = [
-    { name: 'Microsoft Azure', icon: Server },
-    { name: 'Amazon Web Services', icon: Cloud },
-    { name: 'Google Cloud Platform', icon: Cloud },
-    { name: 'Snowflake', icon: Database },
-    { name: 'Databricks', icon: Layers },
-    { name: 'Power BI', icon: BarChart3 },
-    { name: 'Tableau', icon: BarChart3 },
-    { name: 'Apache Kafka', icon: Zap },
-    { name: 'Enterprise AI & MLOps', icon: Cpu },
-  ];
-
-  // Authentic enterprise photography showcase modes
-  const visualModes = {
-    lakehouse: {
-      label: 'Cloud Lakehouse',
+  // 3 Multi-Colored, Realistic Photography Slides
+  const defaultCarouselSlides = [
+    {
+      id: 'lakehouse',
+      tag: 'ENTERPRISE DATA & CLOUD PLATFORMS',
+      themeColor: '#158AE2',
+      themeBg: 'rgba(21, 138, 226, 0.08)',
+      themeBorder: 'rgba(21, 138, 226, 0.25)',
+      headline: 'Engineering Resilient Cloud Lakehouses for',
+      headlineEmp: 'Enterprise Scale.',
+      subtext:
+        'Unify disparate operational systems into modern Snowflake and Databricks lakehouses with automated dbt transformations and real-time streaming telemetry.',
+      primaryBtn: 'Explore Cloud Solutions',
+      primaryUrl: '/services',
+      secBtn: 'Schedule Consultation',
+      secUrl: '/contact',
       image: '/images/hero_realistic_analytics.jpg',
       alt: 'KD Infovision Data Architect analyzing cloud lakehouse and Power BI dashboards in Bangalore',
       metric: '4.8 TB/s Ingestion',
-      sub: 'Decoupled Compute & Storage',
-      tag: 'Snowflake + Databricks',
-      caption: 'Production Cloud Lakehouse & BI Workstation',
+      subMetric: 'Decoupled Storage & Compute',
+      telemetry: 'ACTIVE TELEMETRY • 32ms LATENCY',
+      stack: ['Snowflake', 'Databricks', 'AWS', 'Azure'],
+      shortTitle: 'Cloud Lakehouse',
     },
-    ai: {
-      label: 'Production AI / MLOps',
+    {
+      id: 'ai-mlops',
+      tag: 'PRODUCTION AI & MACHINE LEARNING',
+      themeColor: '#10B981',
+      themeBg: 'rgba(16, 185, 129, 0.08)',
+      themeBorder: 'rgba(16, 185, 129, 0.25)',
+      headline: 'Deploying Production-Grade AI Systems with',
+      headlineEmp: 'Measurable ROI.',
+      subtext:
+        'Move beyond experimental Jupyter notebooks. We build hardened RAG architectures, low-latency LLM inference pipelines, and automated drift monitoring.',
+      primaryBtn: 'Explore AI Services',
+      primaryUrl: '/services',
+      secBtn: 'Book Architecture Review',
+      secUrl: '/contact',
       image: '/images/service_software_real.jpg',
-      alt: 'KD Infovision ML engineers architecting scalable prediction pipelines',
+      alt: 'KD Infovision ML and software engineers collaborating at workstation',
       metric: '2.1 ms Latency',
-      sub: '98% Model Accuracy SLA',
-      tag: 'AWS + PyTorch + PostgreSQL',
-      caption: 'Scalable ML & Cloud Engineering Pods',
+      subMetric: '98% Model Accuracy SLA',
+      telemetry: 'INFERENCE PIPELINE ACTIVE • 99.9% SLA',
+      stack: ['PyTorch', 'OpenAI', 'LangChain', 'vLLM'],
+      shortTitle: 'Production AI / MLOps',
     },
-    bi: {
-      label: 'Executive BI & Dashboards',
+    {
+      id: 'executive-bi',
+      tag: 'EXECUTIVE BI & MODERN ANALYTICS',
+      themeColor: '#F59E0B',
+      themeBg: 'rgba(245, 158, 11, 0.08)',
+      themeBorder: 'rgba(245, 158, 11, 0.25)',
+      headline: 'Empowering C-Suite Decision Making with',
+      headlineEmp: 'Real-Time Power BI.',
+      subtext:
+        'Replace manual spreadsheets with executive Power BI semantic layers, automated DAX model caching, and board-ready operational KPI dashboards.',
+      primaryBtn: 'View Case Studies',
+      primaryUrl: '/case-studies',
+      secBtn: 'Request Live Demo',
+      secUrl: '/contact',
       image: '/images/service_analytics_real.jpg',
       alt: 'KD Infovision consultant presenting executive Power BI dashboard in boardroom',
-      metric: 'Sub-second DAX Caching',
-      sub: 'Row-Level Enterprise Security',
-      tag: 'Power BI + Microsoft Fabric',
-      caption: 'Executive Strategy & Operational Analytics',
+      metric: 'Sub-Second Caching',
+      subMetric: 'Row-Level Enterprise Security',
+      telemetry: 'LIVE BI FEED • ₹14.5 CR METRICS',
+      stack: ['Power BI', 'Fabric', 'Tableau', 'Qlik'],
+      shortTitle: 'Executive BI & Strategy',
     },
+  ];
+
+  // Merge with database slides if they exist, or use default rich slides
+  const carouselSlides = slides.length >= 3
+    ? slides.slice(0, 3).map((s, idx) => ({
+        ...defaultCarouselSlides[idx % defaultCarouselSlides.length],
+        tag: s.tag || defaultCarouselSlides[idx % defaultCarouselSlides.length].tag,
+        headline: s.headline || defaultCarouselSlides[idx % defaultCarouselSlides.length].headline,
+        headlineEmp: s.headlineEmp || defaultCarouselSlides[idx % defaultCarouselSlides.length].headlineEmp,
+        subtext: s.subtext || defaultCarouselSlides[idx % defaultCarouselSlides.length].subtext,
+        primaryBtn: s.primaryBtn || defaultCarouselSlides[idx % defaultCarouselSlides.length].primaryBtn,
+        primaryUrl: s.primaryUrl || defaultCarouselSlides[idx % defaultCarouselSlides.length].primaryUrl,
+        secBtn: s.secBtn || defaultCarouselSlides[idx % defaultCarouselSlides.length].secBtn,
+        secUrl: s.secUrl || defaultCarouselSlides[idx % defaultCarouselSlides.length].secUrl,
+      }))
+    : defaultCarouselSlides;
+
+  const total = carouselSlides.length;
+  const active = carouselSlides[currentSlide];
+
+  // Auto-play timer with progress animation (6000ms per slide)
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = 50; // update progress every 50ms
+    const step = 100 / (6000 / interval);
+
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentSlide((curr) => (curr + 1) % total);
+          return 0;
+        }
+        return prev + step;
+      });
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [isPaused, total, currentSlide]);
+
+  const handleNext = () => {
+    setProgress(0);
+    setCurrentSlide((prev) => (prev + 1) % total);
   };
+
+  const handlePrev = () => {
+    setProgress(0);
+    setCurrentSlide((prev) => (prev - 1 + total) % total);
+  };
+
+  const handleSelectSlide = (idx) => {
+    setProgress(0);
+    setCurrentSlide(idx);
+  };
+
+  // Enterprise Technology Ecosystem
+  const techEcosystem = [
+    { name: 'Microsoft Azure', icon: Server, color: '#0078D4' },
+    { name: 'Amazon Web Services', icon: Cloud, color: '#FF9900' },
+    { name: 'Google Cloud Platform', icon: Cloud, color: '#4285F4' },
+    { name: 'Snowflake', icon: Database, color: '#29B5E8' },
+    { name: 'Databricks', icon: Layers, color: '#FF3621' },
+    { name: 'Power BI', icon: BarChart3, color: '#F2C811' },
+    { name: 'Tableau', icon: BarChart3, color: '#E97627' },
+    { name: 'Apache Kafka', icon: Zap, color: '#231F20' },
+    { name: 'Enterprise AI & MLOps', icon: Cpu, color: '#10B981' },
+  ];
 
   return (
     <section
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '88vh',
+        minHeight: '90vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -120,8 +194,8 @@ export default function HeroSection({ slides = [] }) {
           }}
           className="hero-grid"
         >
-          {/* LEFT COLUMN: Clean Authoritative Enterprise Typography */}
-          <div>
+          {/* LEFT COLUMN: Clean Authoritative Enterprise Typography with Slide Transitions */}
+          <div key={active.id} style={{ animation: 'hero-fade-in 0.45s ease forwards' }}>
             {/* Tag Badge */}
             <div
               style={{
@@ -130,25 +204,26 @@ export default function HeroSection({ slides = [] }) {
                 gap: '8px',
                 padding: '6px 14px',
                 borderRadius: '30px',
-                background: 'rgba(21, 138, 226, 0.08)',
-                border: '1px solid rgba(21, 138, 226, 0.22)',
-                color: 'var(--blue)',
+                background: active.themeBg,
+                border: `1px solid ${active.themeBorder}`,
+                color: active.themeColor,
                 fontSize: '0.785rem',
                 fontWeight: 700,
                 letterSpacing: '0.8px',
                 textTransform: 'uppercase',
                 marginBottom: '1.25rem',
+                transition: 'all 0.3s ease',
               }}
             >
               <ShieldCheck size={15} />
-              <span>{activeSlide.tag || 'ENTERPRISE IT SOLUTIONS & AI SYSTEMS'}</span>
+              <span>{active.tag}</span>
             </div>
 
             {/* Headline */}
             <h1
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.4rem, 3.8vw, 3.65rem)',
+                fontSize: 'clamp(2.3rem, 3.7vw, 3.65rem)',
                 fontWeight: 800,
                 color: 'var(--navy)',
                 lineHeight: 1.15,
@@ -156,15 +231,16 @@ export default function HeroSection({ slides = [] }) {
                 marginBottom: '1.25rem',
               }}
             >
-              {activeSlide.headline}{' '}
+              {active.headline}{' '}
               <span
                 style={{
-                  color: 'var(--blue)',
+                  color: active.themeColor,
                   position: 'relative',
                   display: 'inline-block',
+                  transition: 'color 0.3s ease',
                 }}
               >
-                {activeSlide.headlineEmp || 'Resilient Infrastructure.'}
+                {active.headlineEmp}
               </span>
             </h1>
 
@@ -178,7 +254,7 @@ export default function HeroSection({ slides = [] }) {
                 marginBottom: '2rem',
               }}
             >
-              {activeSlide.subtext}
+              {active.subtext}
             </p>
 
             {/* Dual CTAs */}
@@ -191,37 +267,35 @@ export default function HeroSection({ slides = [] }) {
                 marginBottom: '2.5rem',
               }}
             >
-              <a
-                href={activeSlide.primaryUrl || '#contact'}
+              <Link
+                href={active.primaryUrl}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: 'var(--blue)',
+                  background: active.themeColor,
                   color: '#FFFFFF',
                   fontSize: '0.975rem',
                   fontWeight: 700,
                   padding: '0.85rem 1.75rem',
                   borderRadius: '10px',
                   textDecoration: 'none',
-                  boxShadow: '0 6px 20px rgba(21, 138, 226, 0.35)',
+                  boxShadow: `0 6px 20px ${active.themeColor}55`,
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#0E70BA';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'var(--blue)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                <span>{activeSlide.primaryBtn || 'Schedule Consultation'}</span>
+                <span>{active.primaryBtn}</span>
                 <ArrowRight size={18} />
-              </a>
+              </Link>
 
-              <a
-                href={activeSlide.secUrl || '#solutions'}
+              <Link
+                href={active.secUrl}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -237,16 +311,16 @@ export default function HeroSection({ slides = [] }) {
                   transition: 'all 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--blue)';
-                  e.currentTarget.style.color = 'var(--blue)';
+                  e.currentTarget.style.borderColor = active.themeColor;
+                  e.currentTarget.style.color = active.themeColor;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#CBD5E1';
                   e.currentTarget.style.color = 'var(--navy)';
                 }}
               >
-                <span>{activeSlide.secBtn || 'Explore Solutions'}</span>
-              </a>
+                <span>{active.secBtn}</span>
+              </Link>
             </div>
 
             {/* Credibility Telemetry Strip */}
@@ -261,19 +335,19 @@ export default function HeroSection({ slides = [] }) {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
+                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
                 <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
                   <strong>150+</strong> Enterprise Deployments
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
+                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
                 <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
                   <strong>99.9%</strong> Production SLA Uptime
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
+                <CheckCircle2 size={16} style={{ color: active.themeColor }} />
                 <span style={{ fontSize: '0.825rem', fontWeight: 600, color: '#334155' }}>
                   <strong>SOC2 &amp; ISO</strong> Ready
                 </span>
@@ -281,15 +355,16 @@ export default function HeroSection({ slides = [] }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Realistic Enterprise Photography Showcase with Live Telemetry */}
+          {/* RIGHT COLUMN: Realistic Enterprise Photography Carousel Showcase */}
           <div
             style={{
               position: 'relative',
               display: 'flex',
-              justifyContent: 'center',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            {/* Main Image Showcase Container */}
+            {/* Main Image Showcase Container with Carousel Animation */}
             <div
               style={{
                 position: 'relative',
@@ -298,22 +373,23 @@ export default function HeroSection({ slides = [] }) {
                 borderRadius: '20px',
                 overflow: 'hidden',
                 boxShadow: '0 24px 60px rgba(5, 45, 93, 0.14)',
-                border: '1px solid rgba(21, 138, 226, 0.25)',
+                border: `1.5px solid ${active.themeColor}40`,
                 background: '#052D5D',
                 aspectRatio: '16 / 10',
+                transition: 'border-color 0.4s ease',
               }}
             >
-              {/* Authentic High-Resolution Corporate Photography */}
+              {/* Authentic Corporate Photography */}
               <img
-                key={activeVisualMode}
-                src={visualModes[activeVisualMode].image}
-                alt={visualModes[activeVisualMode].alt}
+                key={active.id}
+                src={active.image}
+                alt={active.alt}
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
                   display: 'block',
-                  transition: 'opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                  animation: 'ken-burns 12s ease-out infinite alternate',
                 }}
               />
 
@@ -323,7 +399,7 @@ export default function HeroSection({ slides = [] }) {
                   position: 'absolute',
                   inset: 0,
                   background:
-                    'linear-gradient(180deg, rgba(5, 45, 93, 0.2) 0%, rgba(5, 45, 93, 0.05) 40%, rgba(5, 45, 93, 0.8) 100%)',
+                    'linear-gradient(180deg, rgba(5, 45, 93, 0.25) 0%, rgba(5, 45, 93, 0.05) 40%, rgba(5, 45, 93, 0.85) 100%)',
                   pointerEvents: 'none',
                 }}
               />
@@ -334,7 +410,7 @@ export default function HeroSection({ slides = [] }) {
                   position: 'absolute',
                   top: '16px',
                   left: '16px',
-                  background: 'rgba(5, 45, 93, 0.82)',
+                  background: 'rgba(5, 45, 93, 0.85)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -352,54 +428,92 @@ export default function HeroSection({ slides = [] }) {
                     width: '8px',
                     height: '8px',
                     borderRadius: '50%',
-                    background: '#22C55E',
-                    boxShadow: '0 0 10px #22C55E',
+                    background: active.themeColor,
+                    boxShadow: `0 0 10px ${active.themeColor}`,
                   }}
                 />
                 <span style={{ fontSize: '0.725rem', fontWeight: 700, letterSpacing: '0.5px' }}>
-                  ACTIVE TELEMETRY • 32ms LATENCY
+                  {active.telemetry}
                 </span>
               </div>
 
-              {/* Interactive Visual Mode Switcher Tabs */}
+              {/* Slide Counter Indicator (e.g. 01 / 03) */}
               <div
                 style={{
                   position: 'absolute',
                   top: '16px',
                   right: '16px',
-                  display: 'flex',
-                  gap: '5px',
-                  background: 'rgba(5, 45, 93, 0.82)',
+                  background: 'rgba(5, 45, 93, 0.85)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   borderRadius: '10px',
-                  padding: '4px',
+                  padding: '5px 12px',
+                  color: '#FFFFFF',
+                  fontSize: '0.75rem',
+                  fontWeight: 800,
+                  letterSpacing: '1px',
                 }}
               >
-                {Object.keys(visualModes).map((key) => {
-                  const isActive = activeVisualMode === key;
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => setActiveVisualMode(key)}
-                      style={{
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                        border: 'none',
-                        background: isActive ? 'var(--blue)' : 'transparent',
-                        color: '#FFFFFF',
-                        fontSize: '0.7rem',
-                        fontWeight: isActive ? 700 : 500,
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                      }}
-                    >
-                      {visualModes[key].label}
-                    </button>
-                  );
-                })}
+                0{currentSlide + 1} / 0{total}
               </div>
+
+              {/* Prev / Next Circular Navigation Arrows */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Slide"
+                style={{
+                  position: 'absolute',
+                  left: '14px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '50%',
+                  background: 'rgba(5, 45, 93, 0.75)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  zIndex: 2,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = active.themeColor)}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(5, 45, 93, 0.75)')}
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              <button
+                onClick={handleNext}
+                aria-label="Next Slide"
+                style={{
+                  position: 'absolute',
+                  right: '14px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '50%',
+                  background: 'rgba(5, 45, 93, 0.75)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  zIndex: 2,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = active.themeColor)}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(5, 45, 93, 0.75)')}
+              >
+                <ChevronRight size={20} />
+              </button>
 
               {/* Bottom Glass Card Highlight */}
               <div
@@ -408,10 +522,10 @@ export default function HeroSection({ slides = [] }) {
                   bottom: '16px',
                   left: '16px',
                   right: '16px',
-                  background: 'rgba(5, 45, 93, 0.88)',
+                  background: 'rgba(5, 45, 93, 0.9)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(21, 138, 226, 0.35)',
+                  border: `1px solid ${active.themeColor}50`,
                   borderRadius: '12px',
                   padding: '12px 18px',
                   display: 'flex',
@@ -422,10 +536,10 @@ export default function HeroSection({ slides = [] }) {
               >
                 <div>
                   <div style={{ fontSize: '0.675rem', color: '#94A3B8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>
-                    {visualModes[activeVisualMode].sub}
+                    {active.subMetric}
                   </div>
                   <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2, marginTop: '2px' }}>
-                    {visualModes[activeVisualMode].metric}
+                    {active.metric}
                   </div>
                 </div>
 
@@ -433,16 +547,73 @@ export default function HeroSection({ slides = [] }) {
                   style={{
                     fontSize: '0.725rem',
                     fontWeight: 700,
-                    color: 'var(--blue)',
-                    background: 'rgba(21, 138, 226, 0.15)',
+                    color: active.themeColor,
+                    background: `${active.themeColor}22`,
                     padding: '4px 10px',
                     borderRadius: '6px',
-                    border: '1px solid rgba(21, 138, 226, 0.3)',
+                    border: `1px solid ${active.themeColor}40`,
                   }}
                 >
-                  {visualModes[activeVisualMode].tag}
+                  {active.stack.slice(0, 2).join(' + ')}
                 </div>
               </div>
+            </div>
+
+            {/* Slide Navigation Progress Tabs (3 Pills Below Showcase) */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '10px',
+                width: '100%',
+                maxWidth: '560px',
+                marginTop: '1.25rem',
+              }}
+            >
+              {carouselSlides.map((slide, idx) => {
+                const isSelected = idx === currentSlide;
+                return (
+                  <button
+                    key={slide.id}
+                    onClick={() => handleSelectSlide(idx)}
+                    style={{
+                      padding: '10px 12px',
+                      borderRadius: '10px',
+                      background: isSelected ? '#FFFFFF' : '#F8FAFC',
+                      border: `1.5px solid ${isSelected ? slide.themeColor : '#E2E8F0'}`,
+                      boxShadow: isSelected ? '0 4px 14px rgba(5, 45, 93, 0.08)' : 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'all 0.25s ease',
+                    }}
+                  >
+                    {/* Active Progress Bar Fill */}
+                    {isSelected && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          bottom: 0,
+                          width: `${progress}%`,
+                          background: `${slide.themeColor}18`,
+                          transition: 'width 0.05s linear',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    )}
+
+                    <div style={{ fontSize: '0.65rem', fontWeight: 700, color: isSelected ? slide.themeColor : '#94A3B8', textTransform: 'uppercase' }}>
+                      Slide 0{idx + 1}
+                    </div>
+                    <div style={{ fontSize: '0.775rem', fontWeight: 800, color: isSelected ? 'var(--navy)' : '#64748B', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {slide.shortTitle}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -468,7 +639,7 @@ export default function HeroSection({ slides = [] }) {
               textAlign: 'center',
             }}
           >
-            UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
+            UNITED BY TECHNOLOGY • ENTERPRISE PARTNER ECOSYSTEM
           </div>
 
           <div
@@ -484,7 +655,7 @@ export default function HeroSection({ slides = [] }) {
               const TechIcon = tech.icon;
               return (
                 <div key={idx} className="tech-pill">
-                  <TechIcon size={14} style={{ color: 'var(--blue)' }} />
+                  <TechIcon size={14} style={{ color: tech.color }} />
                   <span>{tech.name}</span>
                 </div>
               );
@@ -494,6 +665,24 @@ export default function HeroSection({ slides = [] }) {
       </div>
 
       <style jsx>{`
+        @keyframes hero-fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes ken-burns {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.08);
+          }
+        }
         @media (max-width: 960px) {
           :global(.hero-grid) {
             grid-template-columns: 1fr !important;

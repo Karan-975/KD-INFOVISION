@@ -1,32 +1,32 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
-import ServicesSection from '@/components/public/ServicesSection';
-import PartnersMarquee from '@/components/public/PartnersMarquee';
+import AboutSection from '@/components/public/AboutSection';
 import ProcessSection from '@/components/public/ProcessSection';
+import TestimonialsSection from '@/components/public/TestimonialsSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Services & Practice Areas | KD Infovision — Enterprise IT Solutions',
+  title: 'About Us | KD Infovision — Enterprise Technology & AI Partner',
   description:
-    'Explore our enterprise services across Data & AI, Cloud & Infrastructure, Software & Digital Engineering, and Enterprise Managed Services.',
+    'Learn about KD Infovision, our enterprise engineering culture, leadership team, and track record in delivering scalable Data, Cloud, and AI architectures.',
 };
 
-export default async function ServicesPage() {
-  const [settings, services, partners, processSteps] = await Promise.all([
+export default async function AboutPage() {
+  const [settings, statCounters, processSteps, testimonials] = await Promise.all([
     prisma.siteSetting.findFirst(),
-    prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.statCounter.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.testimonial.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
   return (
     <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
       <Navbar settings={settings} />
 
-      {/* Page Header Banner */}
+      {/* Hero Page Header */}
       <div
         style={{
           paddingTop: '140px',
@@ -55,7 +55,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            PRACTICE ARCHITECTURES &amp; CAPABILITIES
+            WHO WE ARE • OUR STORY
           </div>
           <h1
             style={{
@@ -67,30 +67,30 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            Pioneering Enterprise <span style={{ color: 'var(--blue)' }}>Data &amp; AI</span> Excellence
           </h1>
           <p
             style={{
-              maxWidth: '660px',
+              maxWidth: '640px',
               margin: '0 auto',
               fontSize: '1.05rem',
               color: 'rgba(255, 255, 255, 0.75)',
               lineHeight: 1.7,
             }}
           >
-            From modern cloud lakehouses and real-time streaming architectures to production AI pipelines and 24/7 managed infrastructure.
+            Bridging complex raw enterprise datasets into actionable C-suite intelligence with scalable architectures and zero vendor lock-in.
           </p>
         </div>
       </div>
 
-      {/* Partner Marquee */}
-      <PartnersMarquee partners={partners} />
+      {/* About Section with Team Photo and Counters */}
+      <AboutSection statCounters={statCounters} />
 
-      {/* Services Practices Grid */}
-      <ServicesSection services={services} />
-
-      {/* Delivery Process */}
+      {/* Engineering Delivery Process */}
       <ProcessSection processSteps={processSteps} />
+
+      {/* Client Testimonials */}
+      <TestimonialsSection testimonials={testimonials} />
 
       {/* Contact Section & Footer */}
       <ContactSection settings={settings} />

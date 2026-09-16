@@ -1,25 +1,24 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
-import ServicesSection from '@/components/public/ServicesSection';
-import PartnersMarquee from '@/components/public/PartnersMarquee';
-import ProcessSection from '@/components/public/ProcessSection';
+import CaseStudiesSection from '@/components/public/CaseStudiesSection';
+import ClientsMarquee from '@/components/public/ClientsMarquee';
+import TestimonialsSection from '@/components/public/TestimonialsSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Services & Practice Areas | KD Infovision — Enterprise IT Solutions',
+  title: 'Case Studies & Enterprise Impact | KD Infovision',
   description:
-    'Explore our enterprise services across Data & AI, Cloud & Infrastructure, Software & Digital Engineering, and Enterprise Managed Services.',
+    'Explore real-world case studies across BFSI, Retail, Healthcare, and Logistics demonstrating measurable ROI with KD Infovision architectures.',
 };
 
-export default async function ServicesPage() {
-  const [settings, services, partners, processSteps] = await Promise.all([
+export default async function CaseStudiesPage() {
+  const [settings, caseStudies, testimonials] = await Promise.all([
     prisma.siteSetting.findFirst(),
-    prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.testimonial.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
   return (
@@ -55,7 +54,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            PRACTICE ARCHITECTURES &amp; CAPABILITIES
+            PROVEN ENTERPRISE OUTCOMES
           </div>
           <h1
             style={{
@@ -67,7 +66,7 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            Real Architectures. <span style={{ color: 'var(--blue)' }}>Quantifiable ROI.</span>
           </h1>
           <p
             style={{
@@ -78,21 +77,21 @@ export default async function ServicesPage() {
               lineHeight: 1.7,
             }}
           >
-            From modern cloud lakehouses and real-time streaming architectures to production AI pipelines and 24/7 managed infrastructure.
+            Explore how enterprise clients accelerate reporting speed by 60%, improve demand forecast precision by 3.2×, and achieve 99.9% uptime with our systems.
           </p>
         </div>
       </div>
 
-      {/* Partner Marquee */}
-      <PartnersMarquee partners={partners} />
+      {/* Case Studies Grid */}
+      <CaseStudiesSection caseStudies={caseStudies} />
 
-      {/* Services Practices Grid */}
-      <ServicesSection services={services} />
+      {/* Client Logos Marquee */}
+      <ClientsMarquee />
 
-      {/* Delivery Process */}
-      <ProcessSection processSteps={processSteps} />
+      {/* Testimonials */}
+      <TestimonialsSection testimonials={testimonials} />
 
-      {/* Contact Section & Footer */}
+      {/* Contact & Footer */}
       <ContactSection settings={settings} />
       <Footer settings={settings} />
     </main>
