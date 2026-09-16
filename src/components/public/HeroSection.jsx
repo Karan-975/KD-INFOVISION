@@ -165,13 +165,13 @@ export default function HeroSection({ slides = [] }) {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '88vh',
+        minHeight: '85vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         background: '#031838',
-        paddingTop: '120px',
-        paddingBottom: '3.5rem',
+        paddingTop: 'clamp(96px, 12vh, 115px)',
+        paddingBottom: '2.5rem',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
@@ -256,7 +256,7 @@ export default function HeroSection({ slides = [] }) {
               alignItems: 'center',
               gap: '12px',
               flexWrap: 'wrap',
-              marginBottom: '1.5rem',
+              marginBottom: '1rem',
             }}
           >
             {/* Category Tag Badge */}
@@ -327,12 +327,12 @@ export default function HeroSection({ slides = [] }) {
             key={active.id + '-headline'}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2.4rem, 4.4vw, 3.85rem)',
+              fontSize: 'clamp(2.3rem, 4.2vw, 3.75rem)',
               fontWeight: 800,
               color: '#FFFFFF',
-              lineHeight: 1.14,
+              lineHeight: 1.15,
               letterSpacing: '-0.025em',
-              marginBottom: '1.25rem',
+              marginBottom: '1rem',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
@@ -353,11 +353,11 @@ export default function HeroSection({ slides = [] }) {
           <p
             key={active.id + '-subtext'}
             style={{
-              fontSize: '1.125rem',
-              lineHeight: 1.8,
-              color: 'rgba(255, 255, 255, 0.82)',
+              fontSize: '1.1rem',
+              lineHeight: 1.75,
+              color: 'rgba(255, 255, 255, 0.85)',
               maxWidth: '680px',
-              marginBottom: '2.25rem',
+              marginBottom: '1.5rem',
               animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
@@ -371,7 +371,7 @@ export default function HeroSection({ slides = [] }) {
               alignItems: 'center',
               gap: '1.25rem',
               flexWrap: 'wrap',
-              marginBottom: '2.75rem',
+              marginBottom: '1.75rem',
             }}
           >
             <Link
@@ -384,7 +384,7 @@ export default function HeroSection({ slides = [] }) {
                 color: '#FFFFFF',
                 fontSize: '1rem',
                 fontWeight: 700,
-                padding: '0.9rem 1.85rem',
+                padding: '0.85rem 1.75rem',
                 borderRadius: '10px',
                 textDecoration: 'none',
                 boxShadow: `0 8px 24px ${active.themeColor}55`,
@@ -414,7 +414,7 @@ export default function HeroSection({ slides = [] }) {
                 color: '#FFFFFF',
                 fontSize: '1rem',
                 fontWeight: 700,
-                padding: '0.9rem 1.75rem',
+                padding: '0.85rem 1.65rem',
                 borderRadius: '10px',
                 border: '1.5px solid rgba(255, 255, 255, 0.3)',
                 textDecoration: 'none',
@@ -462,7 +462,7 @@ export default function HeroSection({ slides = [] }) {
               alignItems: 'center',
               gap: '1.75rem',
               flexWrap: 'wrap',
-              paddingTop: '1.5rem',
+              paddingTop: '1.25rem',
               borderTop: '1px solid rgba(255, 255, 255, 0.12)',
             }}
           >
@@ -496,7 +496,7 @@ export default function HeroSection({ slides = [] }) {
             gap: '16px',
             width: '100%',
             maxWidth: '820px',
-            marginTop: '3.5rem',
+            marginTop: '2rem',
             flexWrap: 'wrap',
           }}
         >
