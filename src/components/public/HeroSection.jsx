@@ -2,14 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  ShieldCheck,
   Cpu,
   Database,
   Layers,
   BarChart3,
   Server,
   Cloud,
-  CheckCircle2,
   Zap,
 } from 'lucide-react';
 
