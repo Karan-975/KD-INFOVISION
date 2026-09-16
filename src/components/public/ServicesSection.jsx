@@ -47,6 +47,62 @@ const iconMap = {
   Activity,
 };
 
+// Enterprise technology stacks powering each service
+const serviceTechStack = {
+  'AI & Machine Learning': ['PyTorch', 'LangChain', 'OpenAI / Anthropic', 'MLflow', 'Triton Server', 'vLLM'],
+  'Data Analytics & BI': ['Power BI', 'Tableau', 'Qlik Sense', 'DAX Studio', 'Azure Synapse', 'Looker'],
+  'Software Development': ['Next.js 14', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'GraphQL'],
+  'IT Consulting': ['Enterprise TOGAF', 'Zero Trust IAM', 'Cloud FinOps', 'ISO 27001', 'SOC2 Type II'],
+  'Digital Transformation': ['Microsoft Power Platform', 'Azure Modernization', 'SAP & Salesforce Integration', 'Kubernetes'],
+  'Data Engineering': ['Snowflake', 'Databricks Delta', 'Apache Kafka', 'dbt Core', 'Apache Airflow', 'PySpark'],
+  'Cloud Solutions': ['AWS Well-Architected', 'Microsoft Azure', 'Google Cloud', 'Terraform (IaC)', 'Kubernetes (EKS/AKS)'],
+  'Managed Services': ['Datadog', 'Prometheus & Grafana', '24/7 SRE Incident Response', 'PagerDuty', 'SLA 99.9%'],
+};
+
+// Authentic enterprise photography mapping for each service practice
+const serviceImages = {
+  'AI & Machine Learning': {
+    src: '/images/service_software_real.jpg',
+    caption: 'Production Machine Learning Pipelines & Scalable Architecture Mapping',
+    tag: 'MLOps & Inference Pods',
+  },
+  'Data Analytics & BI': {
+    src: '/images/service_analytics_real.jpg',
+    caption: 'Executive Power BI Operational Analytics & Boardroom KPI Delivery',
+    tag: 'Executive Reporting in Action',
+  },
+  'Software Development': {
+    src: '/images/service_software_real.jpg',
+    caption: 'Full-Stack Modern Microservices Engineering & Agile Sprint Pods',
+    tag: 'Next.js, Node.js & Cloud Native',
+  },
+  'IT Consulting': {
+    src: '/images/about_enterprise_team.jpg',
+    caption: 'Strategic Cloud Architecture Audits & Enterprise Modernization Advisory',
+    tag: 'Enterprise Architecture Practice',
+  },
+  'Digital Transformation': {
+    src: '/images/about_enterprise_team.jpg',
+    caption: 'Cross-Functional Digital Modernization, ERP Integrations & Migration',
+    tag: 'Enterprise Scale Execution',
+  },
+  'Data Engineering': {
+    src: '/images/hero_realistic_analytics.jpg',
+    caption: 'Automated High-Throughput Lakehouses on Snowflake, Databricks & dbt',
+    tag: 'Data Architecture Workstation',
+  },
+  'Cloud Solutions': {
+    src: '/images/service_cloud_real.jpg',
+    caption: 'Tier-4 Cloud Infrastructure, Kubernetes Clusters & SRE Reliability',
+    tag: 'Cloud & Infrastructure Operations',
+  },
+  'Managed Services': {
+    src: '/images/service_cloud_real.jpg',
+    caption: '24/7 Platform Health Telemetry, Automated Incident Alerts & 99.9% SLA',
+    tag: 'Managed SRE Operations',
+  },
+};
+
 // Rich capabilities matrix matching Algoscale layout pattern, mapped to KD Infovision services
 const capabilitiesData = {
   'AI & Machine Learning': [
@@ -578,7 +634,7 @@ export default function ServicesSection({ services = [] }) {
               }}
             >
               <div style={{ maxWidth: '680px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
                   <span
                     style={{
                       fontSize: '0.75rem',
@@ -586,23 +642,46 @@ export default function ServicesSection({ services = [] }) {
                       color: 'var(--blue)',
                       letterSpacing: '1px',
                       textTransform: 'uppercase',
-                      background: 'rgba(61, 155, 233, 0.1)',
-                      padding: '3px 8px',
+                      background: 'rgba(21, 138, 226, 0.1)',
+                      padding: '4px 10px',
                       borderRadius: '6px',
                     }}
                   >
                     SPECIALIZATION #{selectedService.num}
                   </span>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>
-                    {currentCapabilities.length} Core Capabilities
+                  <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 600 }}>
+                    {currentCapabilities.length} Enterprise Capabilities
                   </span>
                 </div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--navy)', lineHeight: 1.25, marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.85rem', fontWeight: 800, color: 'var(--navy)', lineHeight: 1.2, marginBottom: '0.75rem' }}>
                   {selectedService.title}
                 </h3>
-                <p style={{ fontSize: '0.95rem', color: 'var(--body)', lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontSize: '0.975rem', color: '#475569', lineHeight: 1.65, marginBottom: '1.25rem' }}>
                   {selectedService.details || selectedService.description}
                 </p>
+
+                {/* Tech Stack Chips for this Service */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.725rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginRight: '4px' }}>
+                    Engineered With:
+                  </span>
+                  {(serviceTechStack[selectedService.title] || ['Cloud Native', 'Enterprise Architecture', 'Production Ready']).map((tech, tIdx) => (
+                    <span
+                      key={tIdx}
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 600,
+                        color: 'var(--navy)',
+                        background: '#F1F5F9',
+                        padding: '3px 8px',
+                        borderRadius: '4px',
+                        border: '1px solid #E2E8F0',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <a
@@ -613,20 +692,94 @@ export default function ServicesSection({ services = [] }) {
                   gap: '6px',
                   fontWeight: 700,
                   fontSize: '0.875rem',
-                  color: 'var(--blue)',
+                  color: '#FFFFFF',
+                  background: 'var(--blue)',
                   textDecoration: 'none',
-                  padding: '8px 16px',
+                  padding: '10px 18px',
                   borderRadius: '8px',
-                  background: 'rgba(61, 155, 233, 0.08)',
                   transition: 'all 0.2s ease',
                   alignSelf: 'flex-start',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(61, 155, 233, 0.15)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(61, 155, 233, 0.08)')}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0E70BA')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--blue)')}
               >
                 Inquire for {selectedService.title} <ArrowRight size={15} />
               </a>
             </div>
+
+            {/* Authentic Practice in Action Photography Banner */}
+            {serviceImages[selectedService.title] && (
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '210px',
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  marginBottom: '2.5rem',
+                  border: '1px solid var(--gray-200)',
+                  boxShadow: '0 8px 24px rgba(5, 45, 93, 0.06)',
+                }}
+              >
+                <img
+                  key={selectedService.title}
+                  src={serviceImages[selectedService.title].src}
+                  alt={serviceImages[selectedService.title].caption}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(180deg, rgba(5, 45, 93, 0.1) 0%, rgba(5, 45, 93, 0.8) 100%)',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    padding: '1.25rem 1.5rem',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '8px',
+                  }}
+                >
+                  <div style={{ color: '#FFFFFF' }}>
+                    <div
+                      style={{
+                        fontSize: '0.675rem',
+                        fontWeight: 800,
+                        letterSpacing: '1px',
+                        textTransform: 'uppercase',
+                        color: 'var(--blue)',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      {serviceImages[selectedService.title].tag}
+                    </div>
+                    <div style={{ fontSize: '0.925rem', fontWeight: 700, color: '#FFFFFF' }}>
+                      {serviceImages[selectedService.title].caption}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.725rem',
+                      fontWeight: 700,
+                      color: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.18)',
+                      backdropFilter: 'blur(10px)',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
+                    }}
+                  >
+                    KD Infovision Practice
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* 3-COLUMN CAPABILITIES GRID (Direct Algoscale Pattern) */}
             <div

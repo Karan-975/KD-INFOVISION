@@ -192,11 +192,11 @@ export default function Footer({ settings }) {
           }}
         >
           <div>
-            © {new Date().getFullYear()} {settings?.siteName || 'KD INFOVISION'}. All Rights Reserved.
+            © {new Date().getFullYear()} {settings?.siteName || 'KD INFOVISION'}. All Rights Reserved. • Delivery Centers: Bangalore &amp; Mumbai, India
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <span>Powered by Next.js, Prisma & MySQL</span>
+            <span>ISO 27001 &amp; SOC2 Aligned Practices</span>
             <button
               onClick={scrollToTop}
               style={{

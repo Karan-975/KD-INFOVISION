@@ -1,50 +1,115 @@
 'use client';
 
 import React from 'react';
-import { Database, Sparkles, Cpu, Layers, BarChart, ArrowUpRight } from 'lucide-react';
+import {
+  Database,
+  Cpu,
+  Layers,
+  ShieldCheck,
+  CheckCircle2,
+  Lock,
+  GitBranch,
+  Workflow,
+  ArrowRight
+} from 'lucide-react';
 
 export default function WhyUsSection() {
   const pillars = [
     {
-      icon: Database,
-      title: 'Data-Driven Decisions',
-      desc: 'Transform fragmented data into executive-ready intelligence. Real-time dashboards, KPI tracking, and BI platforms built around your exact business questions.',
-      tag: 'Analytics & BI',
-    },
-    {
-      icon: Sparkles,
-      title: 'AI-Powered Solutions',
-      desc: 'Predictive models, NLP, GenAI, and computer vision — intelligent systems that learn from your data and scale with your business goals.',
-      tag: 'Machine Learning',
-    },
-    {
       icon: Layers,
-      title: 'Digital Transformation',
-      desc: 'End-to-end modernization: cloud migration, ERP implementation, process automation, and scalable platform development — all under one roof.',
-      tag: 'Cloud & Platforms',
+      title: 'Architectural Rigor & Cloud Scalability',
+      badge: 'Zero Technical Debt',
+      desc: 'We design decoupled cloud lakehouses (Snowflake, Databricks, BigQuery) with automated CI/CD pipelines, modular microservices, and elastic compute that scales effortlessly with your workload.',
+      points: [
+        'Decoupled storage and compute topology',
+        'Automated dbt & Airflow data transformations',
+        'Multi-cloud resilience (AWS, Azure, GCP)',
+      ],
+    },
+    {
+      icon: Cpu,
+      title: 'Production-Grade AI & MLOps',
+      badge: 'Measurable Enterprise ROI',
+      desc: 'We move beyond experimental Jupyter notebooks. We engineer containerized, low-latency AI inference pipelines, hardened RAG architectures with deterministic guardrails, and automated drift monitoring.',
+      points: [
+        'Secure Retrieval-Augmented Generation (RAG)',
+        'Automated model drift & latency monitoring',
+        'Enterprise SLA with sub-100ms response targets',
+      ],
+    },
+    {
+      icon: GitBranch,
+      title: 'Zero Vendor Lock-in & Total IP Ownership',
+      badge: '100% Client-Owned Code',
+      desc: 'All data pipelines, infrastructure as code (Terraform), model weights, and custom BI dashboards remain 100% your intellectual property. Zero proprietary wrappers or hidden vendor dependencies.',
+      points: [
+        'Open-source & standard cloud native tooling',
+        'Comprehensive handover & architecture documentation',
+        'Complete repository & container ownership',
+      ],
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Enterprise Security, Compliance & Governance',
+      badge: 'SOC2 & ISO Ready',
+      desc: 'Security is engineered into the foundation, not bolted on as an afterthought. We implement granular Role-Based Access Control (RBAC), end-to-end data encryption, and audit-ready data lineage.',
+      points: [
+        'Granular RBAC & zero-trust network policies',
+        'End-to-end encryption (at-rest & in-transit)',
+        'Full metadata auditing & compliance cataloging',
+      ],
     },
   ];
 
   return (
-    <section id="why" style={{ background: '#FFFFFF' }}>
+    <section id="why" style={{ background: '#F8FAFC', padding: '6.5rem 0' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 4rem auto' }}>
-          <div className="sec-eye" style={{ justifyContent: 'center' }}>
-            Why KD Infovision
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            ENGINEERING EXCELLENCE &amp; PRINCIPLES
           </div>
-          <h2 className="sec-title">Intelligence That Drives Real Business Outcomes</h2>
-          <p className="sec-sub">
-            We don&apos;t just build dashboards — we build competitive advantage. Every engagement is designed around
-            measurable impact.
+          <h2
+            style={{
+              fontSize: 'clamp(2rem, 3.2vw, 2.75rem)',
+              fontWeight: 800,
+              color: 'var(--navy)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+            }}
+          >
+            Why Industry Leaders Partner with KD Infovision
+          </h2>
+          <p
+            style={{
+              fontSize: '1.05rem',
+              color: 'var(--muted)',
+              lineHeight: 1.7,
+            }}
+          >
+            We eliminate the high failure rate of enterprise data and AI initiatives through battle-tested
+            software engineering standards, predictable delivery milestones, and uncompromising governance.
           </p>
         </div>
 
-        {/* 3 Pillars Grid */}
+        {/* 4 Pillars Grid (2x2) */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: 'repeat(2, 1fr)',
             gap: '2rem',
           }}
           className="why-grid"
@@ -54,88 +119,156 @@ export default function WhyUsSection() {
             return (
               <div
                 key={idx}
-                className="tilt-card"
+                className="enterprise-card"
                 style={{
-                  padding: '3rem 2.25rem',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1.5px solid var(--gray-200)',
-                  background: '#FFFFFF',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  boxShadow: 'var(--shadow-sm)',
+                  padding: '2.5rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '1.25rem',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(61, 155, 233, 0.4)';
-                  e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
-                  e.currentTarget.style.transform = 'translateY(-6px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--gray-200)';
-                  e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-                  e.currentTarget.style.transform = 'none';
+                  justifyContent: 'space-between',
+                  borderRadius: '16px',
+                  background: '#FFFFFF',
+                  position: 'relative',
                 }}
               >
-                {/* Glowing Top Line */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '3px',
-                    background: 'linear-gradient(90deg, #1B3A6B, #3D9BE9)',
-                  }}
-                />
-
-                <div
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '16px',
-                    background: 'var(--blue-light)',
-                    border: '1.5px solid rgba(61, 155, 233, 0.2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--blue)',
-                  }}
-                >
-                  <IconComp size={28} />
-                </div>
-
                 <div>
-                  <span
+                  <div
                     style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      color: 'var(--blue)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '1.5rem',
                     }}
                   >
-                    {item.tag}
-                  </span>
+                    <div
+                      style={{
+                        width: '54px',
+                        height: '54px',
+                        borderRadius: '12px',
+                        background: 'rgba(21, 138, 226, 0.08)',
+                        border: '1.5px solid rgba(21, 138, 226, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'var(--blue)',
+                      }}
+                    >
+                      <IconComp size={26} />
+                    </div>
+
+                    <span
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 700,
+                        color: 'var(--navy)',
+                        background: '#F1F5F9',
+                        padding: '0.35rem 0.75rem',
+                        borderRadius: '6px',
+                        border: '1px solid #E2E8F0',
+                        letterSpacing: '0.5px',
+                      }}
+                    >
+                      {item.badge}
+                    </span>
+                  </div>
+
                   <h3
                     style={{
-                      fontSize: '1.35rem',
+                      fontSize: '1.3rem',
                       fontWeight: 800,
                       color: 'var(--navy)',
-                      marginTop: '0.35rem',
+                      marginBottom: '0.75rem',
+                      lineHeight: 1.3,
                     }}
                   >
                     {item.title}
                   </h3>
+
+                  <p
+                    style={{
+                      fontSize: '0.95rem',
+                      color: '#64748B',
+                      lineHeight: 1.7,
+                      marginBottom: '1.5rem',
+                    }}
+                  >
+                    {item.desc}
+                  </p>
                 </div>
 
-                <p style={{ fontSize: '0.975rem', color: 'var(--muted)', lineHeight: 1.75 }}>
-                  {item.desc}
-                </p>
+                <div
+                  style={{
+                    paddingTop: '1.25rem',
+                    borderTop: '1px solid #F1F5F9',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                  }}
+                >
+                  {item.points.map((point, pIdx) => (
+                    <div
+                      key={pIdx}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontSize: '0.85rem',
+                        color: '#334155',
+                        fontWeight: 500,
+                      }}
+                    >
+                      <CheckCircle2 size={15} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Bottom Consultation Banner */}
+        <div
+          style={{
+            marginTop: '3.5rem',
+            padding: '2rem 2.5rem',
+            borderRadius: '14px',
+            background: 'linear-gradient(135deg, #052D5D 0%, #0A2540 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1.5rem',
+          }}
+        >
+          <div>
+            <h4 style={{ color: '#FFFFFF', fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.25rem' }}>
+              Have an upcoming Data or AI modernization initiative?
+            </h4>
+            <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem', margin: 0 }}>
+              Speak directly with our Lead Enterprise Solutions Architect for an initial feasibility review.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'var(--blue)',
+              color: '#FFFFFF',
+              fontSize: '0.9rem',
+              fontWeight: 700,
+              padding: '0.75rem 1.4rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#0E70BA')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--blue)')}
+          >
+            <span>Request Architecture Consultation</span>
+            <ArrowRight size={16} />
+          </a>
         </div>
       </div>
 

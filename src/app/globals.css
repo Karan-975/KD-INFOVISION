@@ -257,6 +257,66 @@ section {
   border-radius: var(--radius-lg);
 }
 
+/* Enterprise IT Professional Card Utility */
+.enterprise-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(5, 45, 93, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.enterprise-card:hover {
+  border-color: rgba(21, 138, 226, 0.4);
+  box-shadow: 0 16px 36px rgba(5, 45, 93, 0.09);
+  transform: translateY(-4px);
+}
+
+/* Enterprise Tech Pill */
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+.tech-pill:hover {
+  background: var(--blue-light);
+  border-color: rgba(21, 138, 226, 0.3);
+  color: var(--blue-mid);
+}
+
+/* Telemetry Status Chip */
+.telemetry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #059669;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+/* Subtle Technical Grid Overlay */
+.tech-grid-bg {
+  background-image: radial-gradient(rgba(5, 45, 93, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 /* Animations */
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }

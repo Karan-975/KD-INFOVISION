@@ -192,7 +192,7 @@ export default function Navbar({ settings }) {
               e.currentTarget.style.transform = 'none';
             }}
           >
-            Free Consultation
+            Schedule Consultation
             <ArrowUpRight size={16} />
           </a>
 
