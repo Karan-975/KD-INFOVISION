@@ -30,25 +30,6 @@ export default async function ContactPage() {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 14px',
-              borderRadius: '30px',
-              background: 'rgba(21, 138, 226, 0.15)',
-              border: '1px solid rgba(21, 138, 226, 0.3)',
-              color: 'var(--blue)',
-              fontSize: '0.785rem',
-              fontWeight: 700,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              marginBottom: '1.25rem',
-            }}
-          >
-            START YOUR TRANSFORMATION
-          </div>
           <h1
             style={{
               fontFamily: 'var(--font-heading)',
