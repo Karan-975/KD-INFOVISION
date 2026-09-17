@@ -19,16 +19,16 @@ import {
 export default function ServicesSection({ services = [] }) {
   const [activeModal, setActiveModal] = useState(null);
 
-  // Core Practice Definitions inspired by Team Computers "Explore Our Tech Solutions"
+  // Core Practice Definitions inspired by premium enterprise capability centers
   const defaultPractices = [
     {
       id: 'data-ai',
-      title: 'Data & AI Solutions',
+      title: 'AI & Machine Learning',
       kicker: 'Intelligent Enterprise',
       icon: BrainCircuit,
       image: '/images/service_analytics_real.jpg',
-      alt: 'Enterprise executive analytics and Power BI dashboard presentation',
-      desc: 'Unlock actionable business intelligence with modern cloud lakehouses, automated data pipelines, and production machine learning models built for measurable ROI.',
+      alt: 'Enterprise executive analytics and AI dashboard presentation',
+      desc: 'Custom ML models, predictive analytics, NLP, GenAI, computer vision — intelligent automation with real, quantifiable ROI.',
       capabilities: [
         'Snowflake & Databricks Lakehouses',
         'Executive Power BI & Tableau Dashboards',
@@ -39,13 +39,13 @@ export default function ServicesSection({ services = [] }) {
         'KD Infovision designs and deploys unified modern data architectures that bridge fragmented source systems into high-speed analytical layers. From medallion architecture on Databricks to automated DAX semantic models in Power BI and secure LLM inference endpoints, we ensure your data assets drive strategic executive decisions.',
     },
     {
-      id: 'cloud-infra',
-      title: 'Cloud & Infrastructure Solutions',
+      id: 'data-bi',
+      title: 'Data Analytics & BI',
       kicker: 'Scalable & Resilient',
-      icon: Cloud,
+      icon: BarChart3,
       image: '/images/service_cloud_real.jpg',
       alt: 'Tier-4 enterprise cloud datacenter server rack inspection',
-      desc: 'Leverage secure, scalable multi-cloud architectures across AWS, Microsoft Azure, and GCP designed for high availability, automated elasticity, and zero downtime.',
+      desc: 'Power BI, Qlik, Tableau — transform raw enterprise data into executive-ready dashboards, automated semantic layers, and actionable intelligence.',
       capabilities: [
         'Multi-Cloud Architecture (AWS, Azure, GCP)',
         'Kubernetes (EKS / AKS) & Containerization',
@@ -57,12 +57,12 @@ export default function ServicesSection({ services = [] }) {
     },
     {
       id: 'software-engineering',
-      title: 'Software & Digital Engineering',
+      title: 'Software Development',
       kicker: 'Modern Architecture',
       icon: Code2,
       image: '/images/service_software_real.jpg',
       alt: 'Software and ML engineering team collaborating at workstation',
-      desc: 'Modernize enterprise workflows with custom high-performance web applications, resilient backend microservices, and secure API integrations.',
+      desc: 'Scalable web apps, APIs, SaaS platforms with Next.js & Laravel. MVP to enterprise-grade — fast, maintainable, and production-ready.',
       capabilities: [
         'Next.js 14 & React Full-Stack Platforms',
         'Microservices & Node.js Backend Engines',
@@ -73,13 +73,13 @@ export default function ServicesSection({ services = [] }) {
         'From customer-facing digital portals to internal mission-critical ERP integrations, our software engineering practice delivers clean, maintainable code with zero technical debt. Every solution is delivered with 100% client intellectual property ownership and comprehensive documentation.',
     },
     {
-      id: 'managed-services',
-      title: 'Enterprise Managed Services & Security',
+      id: 'it-consulting',
+      title: 'IT Consulting & Managed Cloud',
       kicker: 'Proactive Reliability',
       icon: ShieldCheck,
       image: '/images/hero_realistic_analytics.jpg',
       alt: 'IT Consultant monitoring telemetry and enterprise cloud architecture',
-      desc: 'Optimize and safeguard your mission-critical systems with 24/7 proactive monitoring, rapid incident response, zero-trust IAM, and compliance governance.',
+      desc: 'Technology strategy, architecture reviews, vendor selection, zero-trust cybersecurity, and digital roadmap planning for every stage.',
       capabilities: [
         '24/7 SRE Incident Response & Monitoring',
         'Zero-Trust Security & Granular RBAC',
@@ -122,7 +122,7 @@ export default function ServicesSection({ services = [] }) {
               marginBottom: '1rem',
             }}
           >
-            End-to-End Enterprise Technology Practices
+            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
           </h2>
 
           <p
@@ -136,205 +136,147 @@ export default function ServicesSection({ services = [] }) {
           </p>
         </div>
 
-        {/* 4 Clean Solution Practice Cards (2x2 Grid) */}
+        {/* 4 Clean Solution Practice Cards (2x2 Grid) - In the reference editorial design */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2.5rem',
+            gap: '2.25rem',
           }}
           className="practices-grid"
         >
-          {practices.map((item) => {
-            const IconComp = item.icon;
-            return (
-              <div
-                key={item.id}
-                className="solution-practice-card"
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '16px',
-                  border: '1px solid #E2E8F0',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 4px 20px rgba(5, 45, 93, 0.04)',
-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              >
-                <div>
-                  {/* High-Resolution Photography Header */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      width: '100%',
-                      height: '210px',
-                      overflow: 'hidden',
-                      background: '#052D5D',
-                    }}
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                        transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                      }}
-                      className="practice-img"
-                    />
-                    {/* Subtle Overlay Vignette */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(180deg, rgba(5, 45, 93, 0.1) 0%, rgba(5, 45, 93, 0.75) 100%)',
-                      }}
-                    />
-
-                    {/* Floating Practice Category Chip */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '14px',
-                        left: '14px',
-                        background: 'rgba(5, 45, 93, 0.85)',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                        borderRadius: '8px',
-                        padding: '5px 12px',
-                        color: '#FFFFFF',
-                        fontSize: '0.725rem',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.6px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                      }}
-                    >
-                      <IconComp size={14} style={{ color: 'var(--blue)' }} />
-                      <span>{item.kicker}</span>
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div style={{ padding: '2rem' }}>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-heading)',
-                        fontSize: '1.4rem',
-                        fontWeight: 800,
-                        color: 'var(--navy)',
-                        marginBottom: '0.75rem',
-                        lineHeight: 1.25,
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-
-                    {/* Short, high-impact description: zero fluff */}
-                    <p
-                      style={{
-                        fontSize: '0.95rem',
-                        color: '#64748B',
-                        lineHeight: 1.65,
-                        marginBottom: '1.5rem',
-                      }}
-                    >
-                      {item.desc}
-                    </p>
-
-                    {/* 4 Clean Capability Tags */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '8px',
-                        marginBottom: '1rem',
-                      }}
-                    >
-                      {item.capabilities.map((cap, cIdx) => (
-                        <span
-                          key={cIdx}
-                          style={{
-                            fontSize: '0.75rem',
-                            fontWeight: 600,
-                            color: '#334155',
-                            background: '#F8FAFC',
-                            border: '1px solid #E2E8F0',
-                            padding: '4px 10px',
-                            borderRadius: '6px',
-                          }}
-                        >
-                          {cap}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Footer with Direct CTA */}
+          {practices.map((item) => (
+            <div
+              key={item.id}
+              className="solution-practice-card"
+              style={{
+                background: '#FFFFFF',
+                borderRadius: '20px',
+                border: '1px solid #E2EAF4',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                padding: '1.25rem 1.25rem 1.65rem 1.25rem',
+                boxShadow: '0 8px 30px rgba(5, 45, 93, 0.06), 0 1px 3px rgba(5, 45, 93, 0.04)',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                cursor: 'pointer',
+              }}
+              onClick={() => setActiveModal(item)}
+            >
+              <div>
+                {/* Top Rounded Photo (Clean 16:9 Inset Frame matching reference Image-2) */}
                 <div
                   style={{
-                    padding: '1.25rem 2rem',
-                    borderTop: '1px solid #F1F5F9',
-                    background: '#FAFAFC',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    position: 'relative',
+                    width: '100%',
+                    aspectRatio: '16 / 9',
+                    borderRadius: '14px',
+                    overflow: 'hidden',
+                    background: '#F1F5F9',
+                    marginBottom: '1.5rem',
                   }}
                 >
-                  <button
-                    onClick={() => setActiveModal(item)}
+                  <img
+                    src={item.image}
+                    alt={item.alt}
                     style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--blue)',
-                      fontSize: '0.9rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      padding: 0,
-                      transition: 'gap 0.2s ease',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.gap = '10px')}
-                    onMouseLeave={(e) => (e.currentTarget.style.gap = '6px')}
-                  >
-                    <span>Explore Practice Architecture</span>
-                    <ArrowRight size={16} />
-                  </button>
+                    className="practice-img"
+                  />
+                </div>
 
-                  <a
-                    href="#contact"
+                {/* Editorial Content Area - Perfectly left-aligned with image */}
+                <div>
+                  <h3
                     style={{
-                      fontSize: '0.775rem',
-                      fontWeight: 600,
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: 'clamp(1.3rem, 1.7vw, 1.55rem)',
+                      fontWeight: 800,
+                      color: 'var(--navy)',
+                      marginBottom: '0.85rem',
+                      lineHeight: 1.32,
+                      letterSpacing: '-0.015em',
+                      transition: 'color 0.2s ease',
+                    }}
+                    className="practice-title"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: '0.96rem',
                       color: '#64748B',
-                      textDecoration: 'none',
+                      lineHeight: 1.7,
+                      margin: 0,
                     }}
                   >
-                    Consult an Architect &rarr;
-                  </a>
+                    {item.desc}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Clean Editorial CTA Link */}
+              <div
+                style={{
+                  marginTop: '1.5rem',
+                  paddingTop: '1.15rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  borderTop: '1px solid #F1F5F9',
+                }}
+              >
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    color: 'var(--blue)',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    transition: 'gap 0.2s ease',
+                  }}
+                  className="practice-cta"
+                >
+                  <span>Explore Practice Architecture</span>
+                  <ArrowRight size={15} />
+                </span>
+
+                <span
+                  style={{
+                    fontSize: '0.8rem',
+                    color: '#94A3B8',
+                    fontWeight: 600,
+                  }}
+                >
+                  Enterprise Advisory &rarr;
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Practice Architecture Detail Modal */}
+      {/* Interactive Detail Modal: Deep Technical Feasibility */}
       {activeModal && (
         <div className="modal-overlay" onClick={() => setActiveModal(null)}>
           <div
             className="modal-content"
-            style={{ maxWidth: '640px', padding: '2.5rem', borderRadius: '16px' }}
             onClick={(e) => e.stopPropagation()}
+            style={{
+              padding: '2.5rem',
+              maxWidth: '680px',
+              borderRadius: '20px',
+              background: '#FFFFFF',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            }}
           >
             <div
               style={{
@@ -360,9 +302,6 @@ export default function ServicesSection({ services = [] }) {
                   <activeModal.icon size={22} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--blue)', textTransform: 'uppercase' }}>
-                    {activeModal.kicker}
-                  </div>
                   <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--navy)' }}>
                     {activeModal.title}
                   </h3>
@@ -445,12 +384,18 @@ export default function ServicesSection({ services = [] }) {
 
       <style jsx>{`
         :global(.solution-practice-card:hover) {
-          border-color: rgba(21, 138, 226, 0.4) !important;
-          box-shadow: 0 16px 36px rgba(5, 45, 93, 0.1) !important;
-          transform: translateY(-4px);
+          border-color: rgba(21, 138, 226, 0.45) !important;
+          box-shadow: 0 24px 48px -10px rgba(5, 45, 93, 0.12), 0 0 25px rgba(21, 138, 226, 0.08) !important;
+          transform: translateY(-8px);
         }
         :global(.solution-practice-card:hover .practice-img) {
           transform: scale(1.04);
+        }
+        :global(.solution-practice-card:hover .practice-title) {
+          color: var(--blue) !important;
+        }
+        :global(.solution-practice-card:hover .practice-cta) {
+          gap: 12px !important;
         }
         @media (max-width: 960px) {
           :global(.practices-grid) {
