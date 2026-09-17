@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, X, BookOpen, Calendar, Sparkles } from 'lucide-react';
+import { ArrowRight, X, BookOpen, Calendar } from 'lucide-react';
 
 export default function InsightsSection({ insights = [] }) {
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -169,8 +169,8 @@ export default function InsightsSection({ insights = [] }) {
                 gap: '8px',
               }}
             >
-              <Sparkles size={20} color="var(--blue)" />
-              Trending on KD Infovision
+              <BookOpen size={18} color="var(--blue)" />
+              Trending Publications
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>

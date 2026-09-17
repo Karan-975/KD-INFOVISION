@@ -282,7 +282,7 @@ export default function HeroSection({ slides = [] }) {
                 textAlign: 'center',
               }}
             >
-              UNITED BY TECHNOLOGY • TRUSTED ENTERPRISE ECOSYSTEM
+              ENTERPRISE TECHNOLOGY PARTNERS & ECOSYSTEM
             </div>
 
             <div

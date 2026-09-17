@@ -43,6 +43,7 @@ export default function AdminDashboardPage() {
   const [message, setMessage] = useState({ text: '', type: 'success' });
   const [mediaModalOpen, setMediaModalOpen] = useState(false);
   const [mediaTargetField, setMediaTargetField] = useState(null);
+  const [quickSlideTarget, setQuickSlideTarget] = useState(null);
 
   // Data states
   const [settings, setSettings] = useState({});
@@ -194,6 +195,28 @@ export default function AdminDashboardPage() {
       }
     } catch (err) {
       showNotification(err.message, 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleQuickUpdateSlideImage = async (slide, newImageUrl) => {
+    setSaving(true);
+    try {
+      const res = await fetch('/api/admin/slides', {
+        method: 'PUT',
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: slide.id, imageUrl: newImageUrl }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showNotification('Carousel slide image updated successfully!');
+        checkAuthAndFetchData();
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (err) {
+      showNotification(err.message || 'Failed to update slide image', 'error');
     } finally {
       setSaving(false);
     }
@@ -693,19 +716,96 @@ export default function AdminDashboardPage() {
                       </span>
                     </div>
 
-                    {slide.imageUrl && (
-                      <div style={{ position: 'relative', width: '100%', height: '130px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-200)', background: '#0F2347' }}>
-                        <img
-                          src={slide.imageUrl}
-                          alt={slide.headline}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                        />
-                        <div style={{ position: 'absolute', bottom: '6px', right: '8px', background: 'rgba(3, 24, 56, 0.75)', color: '#fff', fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>
-                          Background Image
+                    {/* Slide Image Preview & Quick Switcher */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ position: 'relative', width: '100%', height: '145px', borderRadius: '10px', overflow: 'hidden', border: '1.5px solid var(--gray-200)', background: '#0F2347' }}>
+                        {slide.imageUrl ? (
+                          <img
+                            src={slide.imageUrl}
+                            alt={slide.headline}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          />
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
+                            <ImageIcon size={24} style={{ marginBottom: '6px' }} />
+                            <span>No Image Configured</span>
+                          </div>
+                        )}
+                        <span style={{ position: 'absolute', top: '8px', left: '8px', background: 'rgba(15, 23, 42, 0.85)', color: '#FFFFFF', fontSize: '0.68rem', padding: '3px 8px', borderRadius: '4px', fontWeight: 700, letterSpacing: '0.5px' }}>
+                          CAROUSEL IMAGE
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setQuickSlideTarget(slide);
+                            setMediaModalOpen(true);
+                          }}
+                          style={{
+                            position: 'absolute',
+                            bottom: '8px',
+                            right: '8px',
+                            background: 'rgba(3, 24, 56, 0.92)',
+                            color: '#FFFFFF',
+                            border: '1px solid rgba(255, 255, 255, 0.3)',
+                            padding: '6px 12px',
+                            borderRadius: '6px',
+                            fontSize: '0.75rem',
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            backdropFilter: 'blur(8px)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                          }}
+                        >
+                          <ImageIcon size={13} /> Upload / Choose Custom
+                        </button>
+                      </div>
+
+                      {/* 1-Click Realistic Presets Switcher */}
+                      <div>
+                        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--muted)', marginBottom: '5px' }}>
+                          Switch Image Preset:
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '6px' }}>
+                          {[
+                            { label: 'Workstation', url: '/images/hero_realistic_analytics.jpg' },
+                            { label: 'AI Engineers', url: '/images/service_software_real.jpg' },
+                            { label: 'Power BI Board', url: '/images/service_analytics_real.jpg' },
+                            { label: 'Cloud Systems', url: '/images/service_cloud_real.jpg' },
+                          ].map((p) => {
+                            const isSelected = slide.imageUrl === p.url;
+                            return (
+                              <button
+                                key={p.url}
+                                type="button"
+                                onClick={() => handleQuickUpdateSlideImage(slide, p.url)}
+                                style={{
+                                  padding: '5px 8px',
+                                  fontSize: '0.725rem',
+                                  fontWeight: isSelected ? 800 : 600,
+                                  borderRadius: '6px',
+                                  border: isSelected ? '1.5px solid var(--blue)' : '1px solid var(--gray-300)',
+                                  background: isSelected ? 'rgba(21, 138, 226, 0.12)' : '#F8FAFC',
+                                  color: isSelected ? 'var(--blue)' : 'var(--navy)',
+                                  cursor: 'pointer',
+                                  textAlign: 'left',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  transition: 'all 0.15s ease',
+                                }}
+                              >
+                                <span>{p.label}</span>
+                                {isSelected && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--blue)' }} />}
+                              </button>
+                            );
+                          })}
                         </div>
                       </div>
-                    )}
+                    </div>
 
                     <div style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>Tag: {slide.tag}</div>
                     <h4 style={{ fontSize: '1.15rem', color: 'var(--navy)', lineHeight: 1.3 }}>
@@ -1409,7 +1509,7 @@ export default function AdminDashboardPage() {
                       />
                     ) : ['imageUrl', 'logoUrl', 'avatarUrl'].includes(key) || key.toLowerCase().includes('image') ? (
                       <div>
-                        <div style={{ display: 'flex', gap: '8px', marginBottom: editingItem[key] ? '8px' : '0' }}>
+                        <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
                           <input
                             type="text"
                             placeholder="/images/example.jpg or https://..."
@@ -1441,14 +1541,50 @@ export default function AdminDashboardPage() {
                             <ImageIcon size={16} /> Choose / Upload
                           </button>
                         </div>
+
+                        {/* Quick Presets for Realistic Carousel Photography */}
+                        {editingType === 'slides' && (
+                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '10px' }}>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--muted)', alignSelf: 'center', fontWeight: 600 }}>Quick Presets:</span>
+                            {[
+                              { label: 'Workstation / Lakehouse', url: '/images/hero_realistic_analytics.jpg' },
+                              { label: 'AI & ML Engineers', url: '/images/service_software_real.jpg' },
+                              { label: 'Boardroom Power BI', url: '/images/service_analytics_real.jpg' },
+                              { label: 'Cloud Infrastructure', url: '/images/service_cloud_real.jpg' },
+                            ].map((preset) => (
+                              <button
+                                key={preset.url}
+                                type="button"
+                                onClick={() => setEditingItem((prev) => ({ ...prev, [key]: preset.url }))}
+                                style={{
+                                  fontSize: '0.75rem',
+                                  padding: '3px 9px',
+                                  borderRadius: '5px',
+                                  border: '1px solid var(--gray-300)',
+                                  background: editingItem[key] === preset.url ? 'var(--blue)' : '#F1F5F9',
+                                  color: editingItem[key] === preset.url ? '#fff' : 'var(--navy)',
+                                  cursor: 'pointer',
+                                  fontWeight: 600,
+                                  transition: 'all 0.15s ease',
+                                }}
+                              >
+                                {preset.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+
                         {editingItem[key] && (
-                          <div style={{ position: 'relative', width: '100%', height: '120px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-200)', background: '#0F2347' }}>
+                          <div style={{ position: 'relative', width: '100%', height: '140px', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-200)', background: '#0F2347' }}>
                             <img
                               src={editingItem[key]}
                               alt="Preview"
                               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                               onError={(e) => { e.currentTarget.style.display = 'none'; }}
                             />
+                            <div style={{ position: 'absolute', bottom: '6px', right: '8px', background: 'rgba(3, 24, 56, 0.75)', color: '#fff', fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>
+                              Preview
+                            </div>
                           </div>
                         )}
                       </div>
@@ -1516,9 +1652,15 @@ export default function AdminDashboardPage() {
       {/* MEDIA MODAL */}
       <MediaLibraryModal
         isOpen={mediaModalOpen}
-        onClose={() => setMediaModalOpen(false)}
+        onClose={() => {
+          setMediaModalOpen(false);
+          setQuickSlideTarget(null);
+        }}
         onSelect={(url) => {
-          if (mediaTargetField) {
+          if (quickSlideTarget) {
+            handleQuickUpdateSlideImage(quickSlideTarget, url);
+            setQuickSlideTarget(null);
+          } else if (mediaTargetField) {
             setEditingItem((prev) => ({ ...prev, [mediaTargetField]: url }));
           }
           setMediaModalOpen(false);

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, X, Sparkles, Building2, CheckCircle2, TrendingUp, Layers } from 'lucide-react';
+import { ArrowRight, X, Building2, CheckCircle2, TrendingUp, Layers } from 'lucide-react';
 
 export default function CaseStudiesSection({ caseStudies = [] }) {
   const [selectedCase, setSelectedCase] = useState(null);
