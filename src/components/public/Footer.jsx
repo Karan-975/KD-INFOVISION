@@ -52,9 +52,7 @@ export default function Footer({ settings }) {
     <footer
       style={{
         position: 'relative',
-        background: '#090D15',
-        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
-        backgroundSize: '28px 28px',
+        background: 'radial-gradient(ellipse 100% 55% at 50% 0%, #0A3266 0%, #041935 45%, #020E1F 100%)',
         color: '#FFFFFF',
         padding: '0 0 2rem 0',
         overflow: 'hidden',
@@ -78,7 +76,7 @@ export default function Footer({ settings }) {
           left: '10%',
           width: '500px',
           height: '400px',
-          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.08) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -603,15 +601,16 @@ export default function Footer({ settings }) {
 
       <style jsx>{`
         :global(.adventurous-cta-card) {
-          background: linear-gradient(135deg, #091326 0%, #151838 25%, #082d38 50%, #20113b 75%, #0a1b33 100%);
-          background-size: 300% 300%;
-          animation: adventurousMesh 12s ease infinite alternate;
-          box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.65), 0 0 40px -10px rgba(56, 189, 248, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+          background: linear-gradient(135deg, rgba(21, 138, 226, 0.22) 0%, rgba(5, 45, 93, 0.8) 45%, rgba(139, 92, 246, 0.2) 100%), #031836;
+          background-size: 200% 200%;
+          animation: adventurousMesh 10s ease infinite alternate;
+          box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.6), 0 0 35px -5px rgba(21, 138, 226, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(16px);
           transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
         :global(.adventurous-cta-card:hover) {
           transform: translateY(-4px);
-          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px -10px rgba(129, 140, 248, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px -5px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35);
         }
         :global(.cta-orb-1) {
           position: absolute;
