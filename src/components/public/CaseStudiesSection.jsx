@@ -138,184 +138,177 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
           </a>
         </div>
 
-        {/* 2x2 Case Grid */}
+        {/* 2x2 Case Grid - Identical Size & 16:9 Widescreen Image as Practice Cards Above */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2rem',
+            gap: '2.25rem',
           }}
           className="cases-grid"
         >
           {activeCases.map((item) => (
             <div
               key={item.id || item.title}
-              className="enterprise-card"
+              className="case-study-card"
               style={{
-                borderRadius: '16px',
                 background: '#FFFFFF',
+                borderRadius: '20px',
+                border: '1px solid #E2EAF4',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: 0,
+                padding: '1.25rem 1.25rem 1.65rem 1.25rem',
+                boxShadow: '0 8px 30px rgba(5, 45, 93, 0.06), 0 1px 3px rgba(5, 45, 93, 0.04)',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                cursor: 'pointer',
               }}
+              onClick={() => setSelectedCase(item)}
             >
-              {/* Authentic Case Study Photo Header */}
-              {item.image && (
-                <div style={{ height: '175px', position: 'relative', overflow: 'hidden' }}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
+              <div>
+                {/* Top Rounded Photo (Clean 16:9 Inset Frame matching Practice Cards above) */}
+                {item.image && (
                   <div
                     style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(5, 45, 93, 0.15) 0%, rgba(5, 45, 93, 0.75) 100%)',
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: '12px',
-                      left: '18px',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      fontSize: '0.725rem',
-                      fontWeight: 700,
-                      background: 'rgba(255, 255, 255, 0.95)',
-                      color: 'var(--navy)',
-                      letterSpacing: '0.5px',
+                      position: 'relative',
+                      width: '100%',
+                      aspectRatio: '16 / 9',
+                      borderRadius: '14px',
+                      overflow: 'hidden',
+                      background: '#F1F5F9',
+                      marginBottom: '1.5rem',
                     }}
                   >
-                    {item.tag}
-                  </span>
-                </div>
-              )}
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                      className="case-img"
+                    />
+                  </div>
+                )}
 
-              <div style={{ padding: '1.75rem 2rem 2rem 2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+                {/* Editorial Content Area - Perfectly left-aligned with image */}
                 <div>
+                  {/* Kicker tag & Outcome Pill */}
                   <div
                     style={{
                       display: 'flex',
-                      alignItems: 'flex-start',
+                      alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '1.25rem',
-                      marginBottom: '1.25rem',
+                      marginBottom: '0.85rem',
+                      flexWrap: 'wrap',
+                      gap: '8px',
                     }}
                   >
-                    <h3
+                    <span
                       style={{
-                        fontSize: '1.25rem',
+                        fontSize: '0.78rem',
                         fontWeight: 800,
-                        color: 'var(--navy)',
-                        lineHeight: 1.3,
-                        margin: 0,
-                        flex: 1,
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        color: 'var(--blue)',
                       }}
                     >
-                      {item.title}
-                    </h3>
+                      {item.tag}
+                    </span>
 
-                    {/* Result Metric Pill */}
-                    <div
-                      style={{
-                        minWidth: '105px',
-                        padding: '0.75rem 0.65rem',
-                        borderRadius: '10px',
-                        background: 'linear-gradient(135deg, #052D5D 0%, #158AE2 100%)',
-                        textAlign: 'center',
-                        flexShrink: 0,
-                        color: '#FFFFFF',
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-heading)',
-                          fontSize: '1.65rem',
-                          fontWeight: 800,
-                          lineHeight: 1,
-                          letterSpacing: '-0.02em',
-                        }}
-                      >
-                        {item.resultNum}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: '0.625rem',
-                          fontWeight: 700,
-                          color: 'rgba(255, 255, 255, 0.85)',
-                          marginTop: '3px',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px',
-                        }}
-                      >
-                        {item.resultLabel}
-                      </div>
-                    </div>
-                  </div>
-
-                <p style={{ fontSize: '0.925rem', color: '#64748B', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-                  {item.summary}
-                </p>
-
-                {/* Architecture Tech Pills */}
-                {item.stack && item.stack.length > 0 && (
-                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-                    {item.stack.map((t, tidx) => (
+                    {item.resultNum && (
                       <span
-                        key={tidx}
                         style={{
-                          fontSize: '0.725rem',
-                          fontWeight: 600,
-                          color: '#334155',
-                          background: '#F8FAFC',
-                          padding: '3px 8px',
-                          borderRadius: '4px',
-                          border: '1px solid #E2E8F0',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '4px 10px',
+                          borderRadius: '8px',
+                          background: 'rgba(21, 138, 226, 0.1)',
+                          border: '1px solid rgba(21, 138, 226, 0.25)',
+                          fontSize: '0.78rem',
+                          fontWeight: 800,
+                          color: 'var(--blue)',
                         }}
                       >
-                        {t}
+                        <span>{item.resultNum}</span>
+                        <span style={{ fontWeight: 600, color: 'var(--navy)' }}>{item.resultLabel}</span>
                       </span>
-                    ))}
+                    )}
                   </div>
-                )}
+
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: 'clamp(1.3rem, 1.7vw, 1.55rem)',
+                      fontWeight: 800,
+                      color: 'var(--navy)',
+                      marginBottom: '0.85rem',
+                      lineHeight: 1.32,
+                      letterSpacing: '-0.015em',
+                      transition: 'color 0.2s ease',
+                    }}
+                    className="case-title"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: '0.96rem',
+                      color: '#64748B',
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
+                  >
+                    {item.summary}
+                  </p>
+                </div>
               </div>
 
-              {/* Card Bottom CTA */}
+              {/* Clean Editorial CTA Link */}
               <div
                 style={{
-                  paddingTop: '1.25rem',
-                  borderTop: '1px solid #F1F5F9',
+                  marginTop: '1.5rem',
+                  paddingTop: '1.15rem',
                   display: 'flex',
-                  justifyContent: 'space-between',
                   alignItems: 'center',
+                  justifyContent: 'space-between',
+                  borderTop: '1px solid #F1F5F9',
                 }}
               >
-                <button
-                  onClick={() => setSelectedCase(item)}
+                <span
                   style={{
-                    background: 'transparent',
-                    border: 'none',
-                    fontSize: '0.85rem',
-                    fontWeight: 700,
-                    color: 'var(--blue)',
-                    cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '4px',
-                    padding: 0,
+                    gap: '8px',
+                    color: 'var(--blue)',
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    transition: 'gap 0.2s ease',
                   }}
+                  className="case-cta"
                 >
                   <span>Examine Architecture &amp; Solution</span>
-                  <ArrowRight size={14} />
-                </button>
+                  <ArrowRight size={15} />
+                </span>
+
+                <span
+                  style={{
+                    fontSize: '0.8rem',
+                    color: '#94A3B8',
+                    fontWeight: 600,
+                  }}
+                >
+                  Case Study &rarr;
+                </span>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
 
@@ -471,9 +464,24 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       )}
 
       <style jsx>{`
+        :global(.case-study-card:hover) {
+          border-color: rgba(21, 138, 226, 0.45) !important;
+          box-shadow: 0 24px 48px -10px rgba(5, 45, 93, 0.12), 0 0 25px rgba(21, 138, 226, 0.08) !important;
+          transform: translateY(-8px);
+        }
+        :global(.case-study-card:hover .case-img) {
+          transform: scale(1.04);
+        }
+        :global(.case-study-card:hover .case-title) {
+          color: var(--blue) !important;
+        }
+        :global(.case-study-card:hover .case-cta) {
+          gap: 12px !important;
+        }
         @media (max-width: 960px) {
           :global(.cases-grid) {
             grid-template-columns: 1fr !important;
+            gap: 2rem !important;
           }
         }
       `}</style>
