@@ -52,7 +52,9 @@ export default function Footer({ settings }) {
     <footer
       style={{
         position: 'relative',
-        background: 'linear-gradient(180deg, #03152C 0%, #020C1B 100%)',
+        background: '#090D15',
+        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
         color: '#FFFFFF',
         padding: '0 0 2rem 0',
         overflow: 'hidden',
@@ -62,91 +64,74 @@ export default function Footer({ settings }) {
       <div
         style={{
           width: '100%',
-          height: '3px',
+          height: '2px',
           background: 'linear-gradient(90deg, #158AE2 0%, #06B6D4 20%, #10B981 40%, #8B5CF6 60%, #F59E0B 80%, #EC4899 100%)',
-          boxShadow: '0 0 16px rgba(21, 138, 226, 0.4)',
+          boxShadow: '0 0 16px rgba(21, 138, 226, 0.5)',
         }}
       />
 
-      {/* Atmospheric Multi-Color Mesh Background Glows */}
+      {/* Atmospheric Ambient Depth Glows */}
       <div
         style={{
           position: 'absolute',
           top: 0,
-          left: '5%',
-          width: '450px',
-          height: '350px',
-          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.1) 0%, transparent 70%)',
+          left: '10%',
+          width: '500px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
       <div
         style={{
           position: 'absolute',
-          top: '20%',
+          bottom: '10%',
           right: '5%',
-          width: '450px',
-          height: '350px',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
+          width: '500px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '4.5rem' }}>
-        {/* PRE-FOOTER ENTERPRISE CALL-TO-ACTION CARD with Multi-Color Accents */}
+        {/* PRE-FOOTER ENTERPRISE CALL-TO-ACTION CARD with Adventurous Animated Aurora & No Flag */}
         <div
+          className="adventurous-cta-card"
           style={{
-            marginBottom: '4rem',
-            padding: '2.5rem 3rem',
-            borderRadius: '24px',
-            background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(16, 185, 129, 0.08) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.14)',
-            boxShadow: '0 24px 60px -15px rgba(0, 0, 0, 0.5)',
-            display: 'flex',
+            marginBottom: '4.5rem',
+            padding: '3.25rem 3.5rem',
+            borderRadius: '26px',
+            position: 'relative',
+            overflow: 'hidden',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            display: 'grid',
+            gridTemplateColumns: '1.25fr auto',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '2rem',
+            gap: '3rem',
           }}
-          className="footer-cta-card"
         >
-          <div style={{ maxWidth: '640px' }}>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '4px 12px',
-                borderRadius: '20px',
-                background: 'rgba(16, 185, 129, 0.15)',
-                border: '1px solid rgba(16, 185, 129, 0.35)',
-                color: '#34D399',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                marginBottom: '0.85rem',
-              }}
-            >
-              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#34D399', boxShadow: '0 0 8px #34D399' }} />
-              Enterprise Architecture Consultation
-            </div>
+          {/* Animated Background Ambient Orbs */}
+          <div className="cta-orb-1" />
+          <div className="cta-orb-2" />
 
+          {/* Content Left: Headline & Description */}
+          <div style={{ position: 'relative', zIndex: 2 }}>
             <h3
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.1rem)',
+                fontSize: 'clamp(1.65rem, 2.7vw, 2.35rem)',
                 fontWeight: 800,
-                letterSpacing: '-0.02em',
-                lineHeight: 1.25,
+                letterSpacing: '-0.025em',
+                lineHeight: 1.22,
                 color: '#FFFFFF',
-                marginBottom: '0.75rem',
+                marginBottom: '1rem',
               }}
             >
               Ready to Accelerate Your{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #38BDF8 0%, #A78BFA 50%, #34D399 100%)',
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #34D399 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -157,41 +142,36 @@ export default function Footer({ settings }) {
 
             <p
               style={{
-                fontSize: '0.975rem',
-                lineHeight: 1.65,
-                color: 'rgba(255, 255, 255, 0.75)',
+                fontSize: '1.025rem',
+                lineHeight: 1.7,
+                color: 'rgba(255, 255, 255, 0.8)',
                 margin: 0,
+                maxWidth: '620px',
               }}
             >
               Consult with our certified data engineers and AI architects to modernize legacy systems, build resilient lakehouses, and unlock actionable intelligence.
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          {/* Actions Right: Two Polished CTAs */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', flexWrap: 'wrap', position: 'relative', zIndex: 2 }}>
             <Link
               href="/contact"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                padding: '0.9rem 1.85rem',
+                gap: '10px',
+                padding: '0.95rem 1.95rem',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #158AE2 0%, #6366F1 100%)',
+                background: 'linear-gradient(135deg, #158AE2 0%, #6366F1 50%, #8B5CF6 100%)',
                 color: '#FFFFFF',
                 fontWeight: 700,
-                fontSize: '0.95rem',
+                fontSize: '0.96rem',
                 textDecoration: 'none',
-                boxShadow: '0 8px 24px rgba(21, 138, 226, 0.45)',
+                boxShadow: '0 10px 28px rgba(21, 138, 226, 0.45)',
                 transition: 'all 0.25s ease',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(99, 102, 241, 0.55)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 138, 226, 0.45)';
-              }}
+              className="cta-primary-btn"
             >
               <span>Schedule Architecture Briefing</span>
               <ArrowRight size={16} />
@@ -202,24 +182,18 @@ export default function Footer({ settings }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                padding: '0.9rem 1.65rem',
+                padding: '0.95rem 1.75rem',
                 borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.07)',
-                border: '1px solid rgba(255, 255, 255, 0.16)',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#FFFFFF',
                 fontWeight: 600,
-                fontSize: '0.95rem',
+                fontSize: '0.96rem',
                 textDecoration: 'none',
+                backdropFilter: 'blur(8px)',
                 transition: 'all 0.2s ease',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.14)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.07)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.16)';
-              }}
+              className="cta-secondary-btn"
             >
               Explore Solutions
             </Link>
@@ -628,6 +602,75 @@ export default function Footer({ settings }) {
       </div>
 
       <style jsx>{`
+        :global(.adventurous-cta-card) {
+          background: linear-gradient(135deg, #091326 0%, #151838 25%, #082d38 50%, #20113b 75%, #0a1b33 100%);
+          background-size: 300% 300%;
+          animation: adventurousMesh 12s ease infinite alternate;
+          box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.65), 0 0 40px -10px rgba(56, 189, 248, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        :global(.adventurous-cta-card:hover) {
+          transform: translateY(-4px);
+          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px -10px rgba(129, 140, 248, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+        :global(.cta-orb-1) {
+          position: absolute;
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, transparent 70%);
+          top: -80px;
+          right: 15%;
+          animation: orbFloat1 8s ease-in-out infinite alternate;
+          pointer-events: none;
+        }
+        :global(.cta-orb-2) {
+          position: absolute;
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+          bottom: -60px;
+          left: 10%;
+          animation: orbFloat2 9s ease-in-out infinite alternate;
+          pointer-events: none;
+        }
+        @keyframes adventurousMesh {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        @keyframes orbFloat1 {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          100% {
+            transform: translate(40px, -25px) scale(1.15);
+          }
+        }
+        @keyframes orbFloat2 {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          100% {
+            transform: translate(-30px, 20px) scale(1.12);
+          }
+        }
+        :global(.cta-primary-btn:hover) {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 34px rgba(99, 102, 241, 0.6) !important;
+        }
+        :global(.cta-secondary-btn:hover) {
+          background: rgba(255, 255, 255, 0.16) !important;
+          border-color: rgba(255, 255, 255, 0.35) !important;
+          transform: translateY(-2px);
+        }
         :global(.social-btn:hover) {
           transform: translateY(-2px);
         }
@@ -666,8 +709,10 @@ export default function Footer({ settings }) {
             grid-template-columns: 1fr 1fr !important;
             gap: 2.5rem !important;
           }
-          :global(.footer-cta-card) {
-            padding: 2rem 1.5rem !important;
+          :global(.adventurous-cta-card) {
+            grid-template-columns: 1fr !important;
+            padding: 2.5rem 1.75rem !important;
+            gap: 2rem !important;
           }
         }
         @media (max-width: 600px) {
