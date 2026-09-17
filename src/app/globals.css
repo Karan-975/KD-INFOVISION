@@ -339,6 +339,35 @@ section {
   animation-play-state: paused;
 }
 
+/* Technology Partner Marquee & Logo Hover Effects */
+.tech-partners-track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.tech-partners-track:hover {
+  animation-play-state: paused;
+}
+
+.tech-partner-logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  cursor: pointer;
+  user-select: none;
+  filter: grayscale(100%) opacity(0.5);
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tech-partner-logo-item:hover {
+  filter: grayscale(0%) opacity(1) !important;
+  transform: translateY(-3px) scale(1.08);
+}
+
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
