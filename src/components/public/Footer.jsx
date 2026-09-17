@@ -11,6 +11,11 @@ import {
   ShieldCheck,
   Mail,
   MapPin,
+  Phone,
+  CheckCircle2,
+  Lock,
+  Activity,
+  Zap,
 } from 'lucide-react';
 
 export default function Footer({ settings }) {
@@ -47,23 +52,56 @@ export default function Footer({ settings }) {
     <footer
       style={{
         position: 'relative',
-        background: 'radial-gradient(ellipse 90% 40% at 50% 0%, rgba(21, 138, 226, 0.12) 0%, rgba(3, 24, 56, 0.98) 55%, #020e20 100%)',
-        borderTop: '1px solid rgba(21, 138, 226, 0.25)',
+        background: 'linear-gradient(180deg, #03152C 0%, #020C1B 100%)',
         color: '#FFFFFF',
-        padding: '4.5rem 0 2rem 0',
+        padding: '0 0 2rem 0',
         overflow: 'hidden',
       }}
     >
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        {/* PRE-FOOTER ENTERPRISE CALL-TO-ACTION CARD */}
+      {/* Top Multi-Color Spectrum Accent Line */}
+      <div
+        style={{
+          width: '100%',
+          height: '3px',
+          background: 'linear-gradient(90deg, #158AE2 0%, #06B6D4 20%, #10B981 40%, #8B5CF6 60%, #F59E0B 80%, #EC4899 100%)',
+          boxShadow: '0 0 16px rgba(21, 138, 226, 0.4)',
+        }}
+      />
+
+      {/* Atmospheric Multi-Color Mesh Background Glows */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '5%',
+          width: '450px',
+          height: '350px',
+          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.1) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          top: '20%',
+          right: '5%',
+          width: '450px',
+          height: '350px',
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '4.5rem' }}>
+        {/* PRE-FOOTER ENTERPRISE CALL-TO-ACTION CARD with Multi-Color Accents */}
         <div
           style={{
             marginBottom: '4rem',
-            padding: '2.5rem 2.5rem',
-            borderRadius: '20px',
-            background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%)',
-            border: '1px solid rgba(21, 138, 226, 0.25)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.35)',
+            padding: '2.5rem 3rem',
+            borderRadius: '24px',
+            background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(16, 185, 129, 0.08) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.14)',
+            boxShadow: '0 24px 60px -15px rgba(0, 0, 0, 0.5)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -73,9 +111,31 @@ export default function Footer({ settings }) {
           className="footer-cta-card"
         >
           <div style={{ maxWidth: '640px' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                background: 'rgba(16, 185, 129, 0.15)',
+                border: '1px solid rgba(16, 185, 129, 0.35)',
+                color: '#34D399',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                marginBottom: '0.85rem',
+              }}
+            >
+              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#34D399', boxShadow: '0 0 8px #34D399' }} />
+              Enterprise Architecture Consultation
+            </div>
+
             <h3
               style={{
-                fontSize: 'clamp(1.5rem, 2.8vw, 2.1rem)',
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.1rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.25,
@@ -83,17 +143,27 @@ export default function Footer({ settings }) {
                 marginBottom: '0.75rem',
               }}
             >
-              Ready to Accelerate Your Enterprise AI &amp; Cloud Journey?
+              Ready to Accelerate Your{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #A78BFA 50%, #34D399 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                AI &amp; Cloud Transformation?
+              </span>
             </h3>
+
             <p
               style={{
-                fontSize: '1rem',
+                fontSize: '0.975rem',
                 lineHeight: 1.65,
                 color: 'rgba(255, 255, 255, 0.75)',
                 margin: 0,
               }}
             >
-              Consult with our principal architects to design resilient data lakehouses, deploy production-grade AI, and automate mission-critical workflows.
+              Consult with our certified data engineers and AI architects to modernize legacy systems, build resilient lakehouses, and unlock actionable intelligence.
             </p>
           </div>
 
@@ -104,23 +174,23 @@ export default function Footer({ settings }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '0.85rem 1.75rem',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #158AE2 0%, #0D6EFD 100%)',
+                padding: '0.9rem 1.85rem',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #158AE2 0%, #6366F1 100%)',
                 color: '#FFFFFF',
                 fontWeight: 700,
                 fontSize: '0.95rem',
                 textDecoration: 'none',
-                boxShadow: '0 8px 24px rgba(21, 138, 226, 0.4)',
+                boxShadow: '0 8px 24px rgba(21, 138, 226, 0.45)',
                 transition: 'all 0.25s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(21, 138, 226, 0.6)';
+                e.currentTarget.style.boxShadow = '0 12px 30px rgba(99, 102, 241, 0.55)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 138, 226, 0.4)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 138, 226, 0.45)';
               }}
             >
               <span>Schedule Architecture Briefing</span>
@@ -132,10 +202,10 @@ export default function Footer({ settings }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                padding: '0.85rem 1.5rem',
-                borderRadius: '10px',
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                padding: '0.9rem 1.65rem',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.07)',
+                border: '1px solid rgba(255, 255, 255, 0.16)',
                 color: '#FFFFFF',
                 fontWeight: 600,
                 fontSize: '0.95rem',
@@ -143,10 +213,12 @@ export default function Footer({ settings }) {
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.14)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.07)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.16)';
               }}
             >
               Explore Solutions
@@ -154,11 +226,11 @@ export default function Footer({ settings }) {
           </div>
         </div>
 
-        {/* MAIN FOOTER NAVIGATION GRID */}
+        {/* MAIN FOOTER NAVIGATION GRID: General, Professional & Multi-Colored */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '2.2fr 1.1fr 1.1fr 1.1fr',
+            gridTemplateColumns: '2fr 1fr 1fr 1.15fr',
             gap: '3.5rem',
             marginBottom: '3.5rem',
           }}
@@ -171,7 +243,7 @@ export default function Footer({ settings }) {
                 src="/logo-mark.png"
                 alt="KD Infovision"
                 style={{
-                  height: '48px',
+                  height: '46px',
                   width: 'auto',
                   objectFit: 'contain',
                   display: 'block',
@@ -183,27 +255,31 @@ export default function Footer({ settings }) {
               style={{
                 fontSize: '0.925rem',
                 lineHeight: 1.75,
-                color: 'rgba(255, 255, 255, 0.6)',
+                color: 'rgba(255, 255, 255, 0.65)',
                 maxWidth: '340px',
-                marginBottom: '1.5rem',
+                marginBottom: '1.75rem',
               }}
             >
               Transforming enterprise operations with hardened cloud lakehouses, automated AI pipelines, and board-ready Power BI analytics.
             </p>
 
-            {/* Delivery Locations & Contact info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '1.75rem', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.65)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <MapPin size={15} style={{ color: '#38BDF8', flexShrink: 0 }} />
+            {/* Delivery Locations & Contact with Multi-Color Icons */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.75rem', fontSize: '0.85rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
+                <MapPin size={16} style={{ color: '#FB923C', flexShrink: 0 }} />
                 <span>Delivery Centers: Bangalore &amp; Mumbai, India</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Mail size={15} style={{ color: '#38BDF8', flexShrink: 0 }} />
-                <span>contact@kdinfovision.com</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
+                <Mail size={16} style={{ color: '#38BDF8', flexShrink: 0 }} />
+                <span>{settings?.email || 'contact@kdinfovision.com'}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
+                <Phone size={16} style={{ color: '#34D399', flexShrink: 0 }} />
+                <span>{settings?.phone || '+91 98765 43210'}</span>
               </div>
             </div>
 
-            {/* Social Buttons */}
+            {/* Social Buttons with Individual Multi-Color Brand Identities */}
             <div style={{ display: 'flex', gap: '10px' }}>
               <a
                 href={settings?.socialLinkedin || 'https://linkedin.com'}
@@ -211,127 +287,109 @@ export default function Footer({ settings }) {
                 rel="noreferrer"
                 aria-label="LinkedIn"
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: 'rgba(10, 102, 194, 0.12)',
+                  border: '1px solid rgba(10, 102, 194, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  transition: 'all 0.2s',
+                  color: '#38BDF8',
+                  transition: 'all 0.25s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#0A66C2';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#0A66C2';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                }}
+                className="social-btn linkedin-btn"
               >
-                <Linkedin size={17} />
+                <Linkedin size={18} />
               </a>
+
               <a
                 href={settings?.socialTwitter || 'https://twitter.com'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Twitter"
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: 'rgba(29, 161, 242, 0.12)',
+                  border: '1px solid rgba(29, 161, 242, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  transition: 'all 0.2s',
+                  color: '#1DA1F2',
+                  transition: 'all 0.25s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1DA1F2';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#1DA1F2';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                }}
+                className="social-btn twitter-btn"
               >
-                <Twitter size={17} />
+                <Twitter size={18} />
               </a>
+
               <a
                 href={settings?.socialGithub || 'https://github.com'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: 'rgba(139, 92, 246, 0.12)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  transition: 'all 0.2s',
+                  color: '#A78BFA',
+                  transition: 'all 0.25s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#24292E';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#24292E';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                }}
+                className="social-btn github-btn"
               >
-                <Github size={17} />
+                <Github size={18} />
               </a>
             </div>
           </div>
 
-          {/* Solutions Col */}
+          {/* Solutions Column (Electric Blue / Cyan Theme) */}
           <div>
-            <h4
+            <div
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
                 fontSize: '0.825rem',
                 fontWeight: 800,
                 color: '#38BDF8',
                 textTransform: 'uppercase',
                 letterSpacing: '1.5px',
-                marginBottom: '1.25rem',
+                marginBottom: '1.35rem',
               }}
             >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#38BDF8',
+                  display: 'inline-block',
+                  boxShadow: '0 0 10px #38BDF8',
+                }}
+              />
               Solutions
-            </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            </div>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {solutions.map((item, idx) => (
                 <li key={idx}>
                   <Link
                     href={item.href}
                     style={{
-                      color: 'rgba(255,255,255,0.7)',
+                      color: 'rgba(255, 255, 255, 0.7)',
                       textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.2s ease, padding-left 0.2s ease',
+                      fontSize: '0.915rem',
+                      transition: 'all 0.2s ease',
                       display: 'inline-block',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#38BDF8';
-                      e.currentTarget.style.paddingLeft = '4px';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                      e.currentTarget.style.paddingLeft = '0px';
-                    }}
+                    className="footer-link solutions-link"
                   >
                     {item.name}
                   </Link>
@@ -340,40 +398,47 @@ export default function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Industries Col */}
+          {/* Industries Column (Fresh Emerald Green Theme) */}
           <div>
-            <h4
+            <div
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
                 fontSize: '0.825rem',
                 fontWeight: 800,
-                color: '#38BDF8',
+                color: '#34D399',
                 textTransform: 'uppercase',
                 letterSpacing: '1.5px',
-                marginBottom: '1.25rem',
+                marginBottom: '1.35rem',
               }}
             >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#34D399',
+                  display: 'inline-block',
+                  boxShadow: '0 0 10px #34D399',
+                }}
+              />
               Industries
-            </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            </div>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {industries.map((item, idx) => (
                 <li key={idx}>
                   <Link
                     href={item.href}
                     style={{
-                      color: 'rgba(255,255,255,0.7)',
+                      color: 'rgba(255, 255, 255, 0.7)',
                       textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.2s ease, padding-left 0.2s ease',
+                      fontSize: '0.915rem',
+                      transition: 'all 0.2s ease',
                       display: 'inline-block',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#38BDF8';
-                      e.currentTarget.style.paddingLeft = '4px';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                      e.currentTarget.style.paddingLeft = '0px';
-                    }}
+                    className="footer-link industries-link"
                   >
                     {item.name}
                   </Link>
@@ -382,47 +447,110 @@ export default function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Company Col */}
+          {/* Company Column (Elegant Violet / Purple Theme) */}
           <div>
-            <h4
+            <div
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
                 fontSize: '0.825rem',
                 fontWeight: 800,
-                color: '#38BDF8',
+                color: '#A78BFA',
                 textTransform: 'uppercase',
                 letterSpacing: '1.5px',
-                marginBottom: '1.25rem',
+                marginBottom: '1.35rem',
               }}
             >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#A78BFA',
+                  display: 'inline-block',
+                  boxShadow: '0 0 10px #A78BFA',
+                }}
+              />
               Company
-            </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            </div>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {company.map((item, idx) => (
                 <li key={idx}>
                   <Link
                     href={item.href}
                     style={{
-                      color: item.isSpecial ? '#38BDF8' : 'rgba(255,255,255,0.7)',
+                      color: item.isSpecial ? '#FBBF24' : 'rgba(255, 255, 255, 0.7)',
                       fontWeight: item.isSpecial ? 700 : 400,
                       textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.2s ease, padding-left 0.2s ease',
-                      display: 'inline-block',
+                      fontSize: '0.915rem',
+                      transition: 'all 0.2s ease',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = item.isSpecial ? '#60A5FA' : '#38BDF8';
-                      e.currentTarget.style.paddingLeft = '4px';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = item.isSpecial ? '#38BDF8' : 'rgba(255,255,255,0.7)';
-                      e.currentTarget.style.paddingLeft = '0px';
-                    }}
+                    className="footer-link company-link"
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    {item.isSpecial && (
+                      <span
+                        style={{
+                          fontSize: '0.7rem',
+                          fontWeight: 800,
+                          padding: '2px 8px',
+                          borderRadius: '6px',
+                          background: 'rgba(245, 158, 11, 0.15)',
+                          border: '1px solid rgba(245, 158, 11, 0.35)',
+                          color: '#FBBF24',
+                          letterSpacing: '0.5px',
+                        }}
+                      >
+                        CMS
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* MULTI-COLOR TRUST & COMPLIANCE BADGE STRIP */}
+        <div
+          style={{
+            padding: '1.25rem 1.75rem',
+            borderRadius: '16px',
+            background: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            marginBottom: '2.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1.25rem',
+            fontSize: '0.825rem',
+            color: 'rgba(255, 255, 255, 0.75)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', display: 'inline-block', boxShadow: '0 0 8px #10B981' }} />
+            <span style={{ fontWeight: 600 }}>99.98% Enterprise Uptime SLA</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <ShieldCheck size={16} style={{ color: '#38BDF8' }} />
+            <span style={{ fontWeight: 600 }}>SOC2 Type II &amp; ISO 27001 Ready</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Zap size={16} style={{ color: '#F59E0B' }} />
+            <span style={{ fontWeight: 600 }}>24/7 SRE Telemetry &amp; Response</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Lock size={16} style={{ color: '#A78BFA' }} />
+            <span style={{ fontWeight: 600 }}>100% Client Code &amp; IP Ownership</span>
           </div>
         </div>
 
@@ -435,7 +563,7 @@ export default function Footer({ settings }) {
             justifyContent: 'space-between',
             alignItems: 'center',
             fontSize: '0.85rem',
-            color: 'rgba(255, 255, 255, 0.5)',
+            color: 'rgba(255, 255, 255, 0.55)',
             flexWrap: 'wrap',
             gap: '1.25rem',
           }}
@@ -443,62 +571,109 @@ export default function Footer({ settings }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <span>© {new Date().getFullYear()} {settings?.siteName || 'KD INFOVISION'}. All Rights Reserved.</span>
             <span>•</span>
-            <span>Enterprise Data &amp; AI Partner</span>
+            <span style={{ color: '#38BDF8' }}>Enterprise Data &amp; AI Partner</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#34D399', fontSize: '0.8rem', fontWeight: 600 }}>
-              <ShieldCheck size={14} />
-              <span>ISO 27001 &amp; SOC2 Aligned</span>
-            </div>
+            <Link
+              href="/privacy"
+              style={{ color: 'rgba(255, 255, 255, 0.55)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.55)')}
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              href="/terms"
+              style={{ color: 'rgba(255, 255, 255, 0.55)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.55)')}
+            >
+              Terms of Service
+            </Link>
 
             <button
               onClick={scrollToTop}
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#FFFFFF',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
+                gap: '6px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#FFFFFF',
+                borderRadius: '8px',
+                padding: '6px 14px',
                 cursor: 'pointer',
+                fontSize: '0.8rem',
+                fontWeight: 600,
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = '#158AE2';
                 e.currentTarget.style.borderColor = '#158AE2';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
-              title="Scroll to top"
             >
-              <ArrowUp size={16} />
+              <span>Back to Top</span>
+              <ArrowUp size={14} />
             </button>
           </div>
         </div>
       </div>
 
       <style jsx>{`
+        :global(.social-btn:hover) {
+          transform: translateY(-2px);
+        }
+        :global(.linkedin-btn:hover) {
+          background: #0A66C2 !important;
+          border-color: #0A66C2 !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 4px 14px rgba(10, 102, 194, 0.5);
+        }
+        :global(.twitter-btn:hover) {
+          background: #1DA1F2 !important;
+          border-color: #1DA1F2 !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 4px 14px rgba(29, 161, 242, 0.5);
+        }
+        :global(.github-btn:hover) {
+          background: #8B5CF6 !important;
+          border-color: #8B5CF6 !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 4px 14px rgba(139, 92, 246, 0.5);
+        }
+        :global(.solutions-link:hover) {
+          color: #38BDF8 !important;
+          padding-left: 5px;
+        }
+        :global(.industries-link:hover) {
+          color: #34D399 !important;
+          padding-left: 5px;
+        }
+        :global(.company-link:hover) {
+          color: #A78BFA !important;
+          padding-left: 5px;
+        }
         @media (max-width: 960px) {
           :global(.footer-grid) {
             grid-template-columns: 1fr 1fr !important;
             gap: 2.5rem !important;
           }
           :global(.footer-cta-card) {
-            padding: 2rem !important;
+            padding: 2rem 1.5rem !important;
           }
         }
         @media (max-width: 600px) {
           :global(.footer-grid) {
             grid-template-columns: 1fr !important;
-          }
-          :global(.footer-cta-card) {
-            padding: 1.5rem !important;
+            gap: 2.5rem !important;
           }
         }
       `}</style>

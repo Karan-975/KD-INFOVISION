@@ -1,7 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Clock,
+  ShieldCheck,
+  Award,
+} from 'lucide-react';
 
 export default function ContactSection({ settings }) {
   const [formData, setFormData] = useState({
@@ -46,369 +57,489 @@ export default function ContactSection({ settings }) {
   };
 
   return (
-    <section id="contact" style={{ padding: 0, background: 'var(--navy-deep)' }}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          minHeight: '620px',
-        }}
-        className="contact-split-grid"
-      >
-        {/* Left Info Pane */}
+    <section id="contact" style={{ padding: '6.5rem 0', background: '#F8FAFC', position: 'relative' }}>
+      <div className="container">
         <div
           style={{
-            background: 'var(--navy-dark)',
-            padding: '6rem 4.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+            display: 'grid',
+            gridTemplateColumns: '1.05fr 1.15fr',
+            gap: '4rem',
+            alignItems: 'start',
           }}
-          className="contact-left-pane"
+          className="contact-split-grid"
         >
-          <div className="sec-eye" style={{ color: 'var(--blue)' }}>
-            Let&apos;s Connect
-          </div>
-          <h2
-            style={{
-              fontSize: 'clamp(2.2rem, 3.5vw, 3.25rem)',
-              color: '#FFFFFF',
-              lineHeight: 1.15,
-              marginBottom: '1.25rem',
-            }}
-          >
-            Build Something That Drives Real Impact.
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.75,
-              color: 'rgba(255, 255, 255, 0.6)',
-              marginBottom: '2.75rem',
-              maxWidth: '480px',
-            }}
-          >
-            Reach out for technical consultations, project demos, architecture reviews, or data strategy discussions.
-          </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#FFFFFF' }}>
-              <div
+          {/* Left Info Pane: Spacious, High-Contrast & Multi-Color Accents */}
+          <div className="contact-left-pane">
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.825rem',
+                fontWeight: 800,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--blue)',
+                marginBottom: '1rem',
+              }}
+            >
+              <span
                 style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
-                  background: 'rgba(61, 155, 233, 0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--blue-cyan)',
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: 'var(--blue)',
+                  display: 'inline-block',
+                  boxShadow: '0 0 10px rgba(21, 138, 226, 0.5)',
                 }}
-              >
-                <Mail size={20} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase' }}>Email Us</div>
-                <a href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`} style={{ color: '#FFFFFF', fontWeight: 600, textDecoration: 'none' }}>
-                  {settings?.email || 'hello@kdinfovision.com'}
-                </a>
-              </div>
+              />
+              Let&apos;s Connect
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#FFFFFF' }}>
-              <div
-                style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
-                  background: 'rgba(61, 155, 233, 0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--blue-cyan)',
-                }}
-              >
-                <Phone size={20} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase' }}>Call Us</div>
-                <a href={`tel:${settings?.phone || '+91 98765 43210'}`} style={{ color: '#FFFFFF', fontWeight: 600, textDecoration: 'none' }}>
-                  {settings?.phone || '+91 98765 43210'}
-                </a>
-              </div>
-            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2.2rem, 3.4vw, 3rem)',
+                fontWeight: 800,
+                color: 'var(--navy)',
+                letterSpacing: '-0.025em',
+                lineHeight: 1.18,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Build Something That Drives{' '}
+              <span style={{ color: 'var(--blue)' }}>Real Impact.</span>
+            </h2>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#FFFFFF' }}>
+            <p
+              style={{
+                fontSize: '1.05rem',
+                lineHeight: 1.75,
+                color: '#64748B',
+                marginBottom: '2.5rem',
+                maxWidth: '500px',
+              }}
+            >
+              Reach out for technical consultations, solution demos, architecture audits, or enterprise data roadmap discussions.
+            </p>
+
+            {/* 3 Spacious Contact Info Cards with Diverse Professional Colors */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
+              {/* Email Card (Signature Blue) */}
               <div
                 style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
-                  background: 'rgba(61, 155, 233, 0.15)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--blue-cyan)',
+                  gap: '1.25rem',
+                  padding: '1.15rem 1.35rem',
+                  borderRadius: '16px',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2EAF4',
+                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
+                  transition: 'all 0.25s ease',
                 }}
+                className="contact-card"
               >
-                <MapPin size={20} />
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    background: 'rgba(21, 138, 226, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--blue)',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Mail size={22} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
+                    Email Us
+                  </div>
+                  <a
+                    href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`}
+                    style={{
+                      color: 'var(--navy)',
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    className="contact-link"
+                  >
+                    {settings?.email || 'hello@kdinfovision.com'}
+                  </a>
+                </div>
               </div>
-              <div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase' }}>Offices</div>
-                <div style={{ color: '#FFFFFF', fontWeight: 600 }}>
-                  {settings?.address || 'Bangalore & Mumbai, India'}
+
+              {/* Phone Card (Fresh Emerald Green) */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1.25rem',
+                  padding: '1.15rem 1.35rem',
+                  borderRadius: '16px',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2EAF4',
+                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                className="contact-card"
+              >
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    background: 'rgba(16, 185, 129, 0.12)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#059669',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Phone size={22} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
+                    Direct Advisory Line
+                  </div>
+                  <a
+                    href={`tel:${settings?.phone || '+91 98765 43210'}`}
+                    style={{
+                      color: 'var(--navy)',
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    className="contact-link"
+                  >
+                    {settings?.phone || '+91 98765 43210'}
+                  </a>
+                </div>
+              </div>
+
+              {/* Offices Card (Warm Amber / Bronze) */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1.25rem',
+                  padding: '1.15rem 1.35rem',
+                  borderRadius: '16px',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2EAF4',
+                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                className="contact-card"
+              >
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '12px',
+                    background: 'rgba(245, 158, 11, 0.12)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#D97706',
+                    flexShrink: 0,
+                  }}
+                >
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
+                    Delivery Hubs
+                  </div>
+                  <div style={{ color: 'var(--navy)', fontSize: '0.975rem', fontWeight: 700 }}>
+                    {settings?.address || 'Bangalore & Mumbai, India'}
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Enterprise Trust Assurance Bar */}
+            <div
+              style={{
+                padding: '1.25rem 1.5rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%)',
+                border: '1px solid rgba(21, 138, 226, 0.18)',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1.5rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
+                <Clock size={16} style={{ color: 'var(--blue)' }} />
+                <span>&lt; 24h Response SLA</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
+                <ShieldCheck size={16} style={{ color: '#10B981' }} />
+                <span>NDA &amp; IP Protection</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
+                <Award size={16} style={{ color: '#8B5CF6' }} />
+                <span>Senior Architect Led</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Right Interactive Form */}
-        <div
-          style={{
-            background: 'var(--navy-deep)',
-            padding: '6rem 4.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-          className="contact-right-pane"
-        >
-          <h3
+          {/* Right Interactive Form: Clean, Elevated, Spacious White Card */}
+          <div
             style={{
-              fontSize: '1.75rem',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              marginBottom: '1.75rem',
+              background: '#FFFFFF',
+              borderRadius: '24px',
+              border: '1px solid #E2EAF4',
+              boxShadow: '0 20px 50px -10px rgba(5, 45, 93, 0.08), 0 4px 12px rgba(5, 45, 93, 0.03)',
+              padding: '3rem 3rem',
             }}
+            className="contact-right-pane"
           >
-            Send Us a Message
-          </h3>
-
-          {status.success && (
-            <div
-              style={{
-                padding: '1.25rem',
-                borderRadius: 'var(--radius-sm)',
-                background: 'rgba(74, 222, 128, 0.15)',
-                border: '1px solid #4ADE80',
-                color: '#4ADE80',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                marginBottom: '1.5rem',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-              }}
-            >
-              <CheckCircle2 size={20} />
-              Thank you! Your message has been received. Our team will contact you within 24 hours.
-            </div>
-          )}
-
-          {status.error && (
-            <div
-              style={{
-                padding: '1.25rem',
-                borderRadius: 'var(--radius-sm)',
-                background: 'rgba(239, 68, 68, 0.15)',
-                border: '1px solid #EF4444',
-                color: '#F87171',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                marginBottom: '1.5rem',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-              }}
-            >
-              <AlertCircle size={20} />
-              {status.error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Rajesh Kumar"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#FFFFFF',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Enterprise Co."
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#FFFFFF',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="name@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#FFFFFF',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  placeholder="+91 98765 43210"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#FFFFFF',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                Service of Interest
-              </label>
-              <select
-                value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+            <div style={{ marginBottom: '2rem' }}>
+              <h3
                 style={{
-                  width: '100%',
-                  padding: '0.85rem 1rem',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: '8px',
-                  color: '#FFFFFF',
-                  fontSize: '0.95rem',
-                  outline: 'none',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.75rem',
+                  fontWeight: 800,
+                  color: 'var(--navy)',
+                  marginBottom: '0.4rem',
+                  letterSpacing: '-0.015em',
                 }}
               >
-                <option value="AI & Machine Learning" style={{ background: '#0F2347', color: '#fff' }}>AI & Machine Learning</option>
-                <option value="Data Analytics & BI" style={{ background: '#0F2347', color: '#fff' }}>Data Analytics & BI (Power BI / Qlik)</option>
-                <option value="Software Development" style={{ background: '#0F2347', color: '#fff' }}>Software Development (Next.js / Laravel)</option>
-                <option value="IT Consulting" style={{ background: '#0F2347', color: '#fff' }}>IT Strategy & Consulting</option>
-                <option value="Digital Transformation" style={{ background: '#0F2347', color: '#fff' }}>Digital Transformation & ERP</option>
-                <option value="Data Engineering & Cloud" style={{ background: '#0F2347', color: '#fff' }}>Data Engineering & Cloud (Azure / AWS)</option>
-              </select>
+                Send Us a Message
+              </h3>
+              <p style={{ fontSize: '0.95rem', color: '#64748B', margin: 0 }}>
+                Fill out the brief details below and our solution architects will connect with you.
+              </p>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                Tell us about your project or questions *
-              </label>
-              <textarea
-                required
-                rows={3}
-                placeholder="Briefly describe your objectives, data landscape, or challenges..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            {status.success && (
+              <div
+                style={{
+                  padding: '1.25rem',
+                  borderRadius: '12px',
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid #10B981',
+                  color: '#065F46',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  marginBottom: '1.75rem',
+                  fontSize: '0.95rem',
+                  fontWeight: 600,
+                }}
+              >
+                <CheckCircle2 size={22} style={{ color: '#10B981', flexShrink: 0 }} />
+                <span>Thank you! Your message has been received. Our team will contact you within 24 hours.</span>
+              </div>
+            )}
+
+            {status.error && (
+              <div
+                style={{
+                  padding: '1.25rem',
+                  borderRadius: '12px',
+                  background: 'rgba(239, 68, 68, 0.1)',
+                  border: '1px solid #EF4444',
+                  color: '#991B1B',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  marginBottom: '1.75rem',
+                  fontSize: '0.95rem',
+                  fontWeight: 600,
+                }}
+              >
+                <AlertCircle size={22} style={{ color: '#EF4444', flexShrink: 0 }} />
+                <span>{status.error}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.35rem' }}>
+              {/* Row 1: Name & Company */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }} className="form-row">
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                    Your Name <span style={{ color: '#EF4444' }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Rajesh Kumar"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Enterprise Co."
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="form-input"
+                  />
+                </div>
+              </div>
+
+              {/* Row 2: Email & Phone */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }} className="form-row">
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                    Corporate Email <span style={{ color: '#EF4444' }}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="name@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="form-input"
+                  />
+                </div>
+              </div>
+
+              {/* Row 3: Practice of Interest */}
+              <div>
+                <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  Practice of Interest
+                </label>
+                <select
+                  value={formData.service}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="form-input"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <option value="AI & Machine Learning">AI &amp; Machine Learning (MLOps, GenAI, Vision)</option>
+                  <option value="Data Analytics & BI">Data Analytics &amp; BI (Power BI, Tableau, Qlik)</option>
+                  <option value="Software Development">Software Development (Next.js, Cloud APIs, SaaS)</option>
+                  <option value="IT Consulting & Managed Cloud">IT Consulting &amp; Managed Cloud (AWS, Azure, SRE)</option>
+                  <option value="Cloud Lakehouses & dbt">Cloud Lakehouses &amp; dbt (Snowflake, Databricks)</option>
+                  <option value="Enterprise Architecture Advisory">Enterprise Architecture Advisory</option>
+                </select>
+              </div>
+
+              {/* Row 4: Objectives / Message */}
+              <div>
+                <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  Project Objectives or Inquiries <span style={{ color: '#EF4444' }}>*</span>
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  placeholder="Briefly describe your business goals, technology landscape, or questions..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="form-input"
+                  style={{ resize: 'none', lineHeight: 1.6 }}
+                />
+              </div>
+
+              {/* Submit CTA */}
+              <button
+                type="submit"
+                disabled={status.loading}
                 style={{
                   width: '100%',
-                  padding: '0.85rem 1rem',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: '8px',
+                  padding: '1.05rem',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #158AE2 0%, #0D6EFD 100%)',
                   color: '#FFFFFF',
-                  fontSize: '0.95rem',
-                  outline: 'none',
-                  resize: 'none',
+                  border: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  cursor: status.loading ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 8px 24px rgba(21, 138, 226, 0.35)',
+                  transition: 'all 0.25s ease',
+                  marginTop: '0.5rem',
                 }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={status.loading}
-              className="btn-primary"
-              style={{
-                width: '100%',
-                padding: '1rem',
-                fontSize: '1rem',
-                marginTop: '0.5rem',
-              }}
-            >
-              {status.loading ? (
-                <>
-                  <Loader2 size={18} className="animate-spin" /> Submitting...
-                </>
-              ) : (
-                <>
-                  Send Message <Send size={16} />
-                </>
-              )}
-            </button>
-          </form>
+                onMouseEnter={(e) => {
+                  if (!status.loading) {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(21, 138, 226, 0.5)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 138, 226, 0.35)';
+                }}
+              >
+                {status.loading ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" /> Submitting Inquiry...
+                  </>
+                ) : (
+                  <>
+                    Send Consultation Inquiry <Send size={16} />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
       <style jsx>{`
+        :global(.form-input) {
+          width: 100%;
+          padding: 0.95rem 1.15rem;
+          background: #F8FAFC;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 10px;
+          color: #0F172A;
+          font-size: 0.95rem;
+          outline: none;
+          transition: all 0.2s ease;
+          font-family: inherit;
+        }
+        :global(.form-input:focus) {
+          background: #FFFFFF;
+          border-color: #158AE2;
+          box-shadow: 0 0 0 4px rgba(21, 138, 226, 0.14);
+        }
+        :global(.contact-card:hover) {
+          border-color: rgba(21, 138, 226, 0.35) !important;
+          box-shadow: 0 8px 24px rgba(5, 45, 93, 0.08) !important;
+          transform: translateY(-2px);
+        }
+        :global(.contact-link:hover) {
+          color: var(--blue) !important;
+        }
         @media (max-width: 960px) {
           :global(.contact-split-grid) {
             grid-template-columns: 1fr !important;
+            gap: 3rem !important;
           }
-          :global(.contact-left-pane),
           :global(.contact-right-pane) {
-            padding: 4rem 1.5rem !important;
-          }
-          :global(.contact-left-pane) {
-            border-right: none !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 2.25rem 1.5rem !important;
           }
           :global(.form-row) {
             grid-template-columns: 1fr !important;
