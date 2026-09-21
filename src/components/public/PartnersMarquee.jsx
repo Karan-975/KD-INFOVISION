@@ -261,8 +261,9 @@ export default function PartnersMarquee({ partners = [] }) {
           overflow: 'hidden',
           width: '100%',
           position: 'relative',
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          padding: '0.85rem 0',
+          maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
         }}
       >
         <div className="animate-marquee tech-partners-track">

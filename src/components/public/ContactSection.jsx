@@ -9,10 +9,25 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Clock,
   ShieldCheck,
   Award,
+  Clock,
+  ArrowRight,
+  Check,
+  Building2,
+  Lock,
+  Compass,
+  FileCheck,
+  TrendingUp,
 } from 'lucide-react';
+
+const PRACTICES = [
+  { id: 'ai-mlops', label: 'AI & Production MLOps' },
+  { id: 'lakehouse', label: 'Cloud Lakehouse & dbt' },
+  { id: 'power-bi', label: 'Executive Power BI & Analytics' },
+  { id: 'software', label: 'Cloud-Native Software & APIs' },
+  { id: 'advisory', label: 'Enterprise Architecture Advisory' },
+];
 
 export default function ContactSection({ settings }) {
   const [formData, setFormData] = useState({
@@ -20,7 +35,7 @@ export default function ContactSection({ settings }) {
     company: '',
     email: '',
     phone: '',
-    service: 'AI & Machine Learning',
+    service: 'AI & Production MLOps',
     message: '',
   });
 
@@ -48,7 +63,7 @@ export default function ContactSection({ settings }) {
         company: '',
         email: '',
         phone: '',
-        service: 'AI & Machine Learning',
+        service: 'AI & Production MLOps',
         message: '',
       });
     } catch (err) {
@@ -57,53 +72,67 @@ export default function ContactSection({ settings }) {
   };
 
   return (
-    <section id="contact" style={{ padding: '6.5rem 0', background: '#F8FAFC', position: 'relative' }}>
-      <div className="container">
+    <section
+      id="contact"
+      style={{
+        padding: '6.5rem 0',
+        background: '#F8FAFC',
+        position: 'relative',
+        borderTop: '1px solid #E2E8F0',
+      }}
+    >
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.05fr 1.15fr',
-            gap: '4rem',
+            gridTemplateColumns: '1.08fr 1.12fr',
+            gap: '4.5rem',
             alignItems: 'start',
           }}
           className="contact-split-grid"
         >
-          {/* Left Info Pane: Spacious, High-Contrast & Multi-Color Accents */}
-          <div className="contact-left-pane">
+          {/* Left Column: Bespoke Architectural Directory & Consultation Roadmap */}
+          <div className="contact-left-col">
+            {/* Clean Typographic Eyebrow (No pill badge) */}
             <div
               style={{
-                display: 'inline-flex',
+                display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                fontSize: '0.825rem',
-                fontWeight: 800,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: 'var(--blue)',
+                gap: '12px',
                 marginBottom: '1rem',
               }}
             >
               <span
                 style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
+                  width: '28px',
+                  height: '3px',
                   background: 'var(--blue)',
+                  borderRadius: '2px',
                   display: 'inline-block',
-                  boxShadow: '0 0 10px rgba(21, 138, 226, 0.5)',
                 }}
               />
-              Let&apos;s Connect
+              <span
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: 800,
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  color: 'var(--blue)',
+                }}
+              >
+                Enterprise Advisory &amp; Architecture Discovery
+              </span>
             </div>
 
+            {/* Authoritative Headline */}
             <h2
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.2rem, 3.4vw, 3rem)',
+                fontSize: 'clamp(2.25rem, 3.4vw, 3.15rem)',
                 fontWeight: 800,
                 color: 'var(--navy)',
                 letterSpacing: '-0.025em',
-                lineHeight: 1.18,
+                lineHeight: 1.16,
                 marginBottom: '1.25rem',
               }}
             >
@@ -115,434 +144,699 @@ export default function ContactSection({ settings }) {
               style={{
                 fontSize: '1.05rem',
                 lineHeight: 1.75,
-                color: '#64748B',
-                marginBottom: '2.5rem',
-                maxWidth: '500px',
+                color: '#475569',
+                marginBottom: '2.25rem',
+                maxWidth: '540px',
               }}
             >
-              Reach out for technical consultations, solution demos, architecture audits, or enterprise data roadmap discussions.
+              Engage directly with our Principal Solutions Architects. We analyze architectural feasibility,
+              modernization trade-offs, and phased execution roadmaps for enterprise data, AI, and cloud platforms.
             </p>
 
-            {/* 3 Spacious Contact Info Cards with Diverse Professional Colors */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
-              {/* Email Card (Signature Blue) */}
+            {/* Unified Architectural Channel Directory (Handcrafted & Integrated, not floating cards) */}
+            <div
+              style={{
+                background: '#FFFFFF',
+                borderRadius: '16px',
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 4px 20px rgba(5, 45, 93, 0.04)',
+                overflow: 'hidden',
+                marginBottom: '2.25rem',
+              }}
+            >
+              {/* Channel 1: Email Scoping */}
               <div
                 style={{
+                  padding: '1.4rem 1.6rem',
+                  borderBottom: '1px solid #F1F5F9',
                   display: 'flex',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                   gap: '1.25rem',
-                  padding: '1.15rem 1.35rem',
-                  borderRadius: '16px',
-                  background: '#FFFFFF',
-                  border: '1px solid #E2EAF4',
-                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
-                  transition: 'all 0.25s ease',
+                  transition: 'background 0.2s ease',
                 }}
-                className="contact-card"
+                className="directory-item"
               >
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(21, 138, 226, 0.1)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(21, 138, 226, 0.08)',
+                    border: '1px solid rgba(21, 138, 226, 0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: 'var(--blue)',
                     flexShrink: 0,
+                    marginTop: '2px',
                   }}
                 >
-                  <Mail size={22} />
+                  <Mail size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
-                    Email Us
+                <div style={{ flex: 1 }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: '#64748B',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                      }}
+                    >
+                      Technical Scoping &amp; RFP Desk
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#10B981',
+                        background: 'rgba(16, 185, 129, 0.1)',
+                        padding: '2px 8px',
+                        borderRadius: '6px',
+                      }}
+                    >
+                      &lt; 24h Response SLA
+                    </span>
                   </div>
                   <a
                     href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`}
                     style={{
-                      color: 'var(--navy)',
-                      fontSize: '1rem',
+                      fontSize: '1.05rem',
                       fontWeight: 700,
+                      color: 'var(--navy)',
                       textDecoration: 'none',
-                      transition: 'color 0.2s ease',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
                     }}
-                    className="contact-link"
+                    className="directory-link"
                   >
                     {settings?.email || 'hello@kdinfovision.com'}
+                    <ArrowRight size={14} style={{ opacity: 0.6 }} />
                   </a>
+                  <p style={{ margin: '3px 0 0 0', fontSize: '0.825rem', color: '#64748B', lineHeight: 1.4 }}>
+                    Direct routing to Practice Leads for architectural audits and scope reviews.
+                  </p>
                 </div>
               </div>
 
-              {/* Phone Card (Fresh Emerald Green) */}
+              {/* Channel 2: Telephone Advisory */}
               <div
                 style={{
+                  padding: '1.4rem 1.6rem',
+                  borderBottom: '1px solid #F1F5F9',
                   display: 'flex',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                   gap: '1.25rem',
-                  padding: '1.15rem 1.35rem',
-                  borderRadius: '16px',
-                  background: '#FFFFFF',
-                  border: '1px solid #E2EAF4',
-                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
-                  transition: 'all 0.25s ease',
+                  transition: 'background 0.2s ease',
                 }}
-                className="contact-card"
+                className="directory-item"
               >
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(16, 185, 129, 0.12)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(16, 185, 129, 0.08)',
+                    border: '1px solid rgba(16, 185, 129, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#059669',
                     flexShrink: 0,
+                    marginTop: '2px',
                   }}
                 >
-                  <Phone size={22} />
+                  <Phone size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
-                    Direct Advisory Line
+                <div style={{ flex: 1 }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: '#64748B',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                      }}
+                    >
+                      Immediate Advisory Desk
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#052D5D',
+                        background: 'rgba(5, 45, 93, 0.06)',
+                        padding: '2px 8px',
+                        borderRadius: '6px',
+                      }}
+                    >
+                      Mon – Fri 9:00 – 19:00 IST
+                    </span>
                   </div>
                   <a
                     href={`tel:${settings?.phone || '+91 98765 43210'}`}
                     style={{
-                      color: 'var(--navy)',
-                      fontSize: '1rem',
+                      fontSize: '1.05rem',
                       fontWeight: 700,
+                      color: 'var(--navy)',
                       textDecoration: 'none',
-                      transition: 'color 0.2s ease',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
                     }}
-                    className="contact-link"
+                    className="directory-link"
                   >
                     {settings?.phone || '+91 98765 43210'}
+                    <ArrowRight size={14} style={{ opacity: 0.6 }} />
                   </a>
+                  <p style={{ margin: '3px 0 0 0', fontSize: '0.825rem', color: '#64748B', lineHeight: 1.4 }}>
+                    Direct line to Practice Leadership for active engineering transformation mandates.
+                  </p>
                 </div>
               </div>
 
-              {/* Offices Card (Warm Amber / Bronze) */}
+              {/* Channel 3: Dual Delivery Hubs */}
               <div
                 style={{
+                  padding: '1.4rem 1.6rem',
                   display: 'flex',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                   gap: '1.25rem',
-                  padding: '1.15rem 1.35rem',
-                  borderRadius: '16px',
-                  background: '#FFFFFF',
-                  border: '1px solid #E2EAF4',
-                  boxShadow: '0 4px 16px rgba(5, 45, 93, 0.03)',
-                  transition: 'all 0.25s ease',
+                  transition: 'background 0.2s ease',
                 }}
-                className="contact-card"
+                className="directory-item"
               >
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(245, 158, 11, 0.12)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '10px',
+                    background: 'rgba(245, 158, 11, 0.08)',
+                    border: '1px solid rgba(245, 158, 11, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#D97706',
                     flexShrink: 0,
+                    marginTop: '2px',
                   }}
                 >
-                  <MapPin size={22} />
+                  <MapPin size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '2px' }}>
-                    Delivery Hubs
+                <div style={{ flex: 1 }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: '#64748B',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                      }}
+                    >
+                      Strategic Delivery Hubs
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#D97706',
+                        background: 'rgba(245, 158, 11, 0.1)',
+                        padding: '2px 8px',
+                        borderRadius: '6px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: '6px',
+                          height: '6px',
+                          borderRadius: '50%',
+                          background: '#10B981',
+                        }}
+                      />
+                      IST (UTC+5:30) Active
+                    </span>
                   </div>
-                  <div style={{ color: 'var(--navy)', fontSize: '0.975rem', fontWeight: 700 }}>
-                    {settings?.address || 'Bangalore & Mumbai, India'}
+                  <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '3px' }}>
+                    Bengaluru &amp; Mumbai, India
+                  </div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                      gap: '0.5rem',
+                      marginTop: '6px',
+                    }}
+                  >
+                    <div style={{ fontSize: '0.8rem', color: '#475569' }}>
+                      <strong style={{ color: 'var(--navy)' }}>Bengaluru:</strong> Cloud Lakehouse &amp; MLOps R&amp;D Hub
+                    </div>
+                    <div style={{ fontSize: '0.8rem', color: '#475569' }}>
+                      <strong style={{ color: 'var(--navy)' }}>Mumbai:</strong> Executive BI &amp; Client Solutions
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Enterprise Trust Assurance Bar */}
-            <div
-              style={{
-                padding: '1.25rem 1.5rem',
-                borderRadius: '16px',
-                background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%)',
-                border: '1px solid rgba(21, 138, 226, 0.18)',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '1.5rem',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
-                <Clock size={16} style={{ color: 'var(--blue)' }} />
-                <span>&lt; 24h Response SLA</span>
+            {/* Engagement Protocol (3-Stage Workflow - Handcrafted & High-Trust) */}
+            <div>
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 800,
+                  color: '#64748B',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  marginBottom: '0.85rem',
+                }}
+              >
+                Engagement Framework
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
-                <ShieldCheck size={16} style={{ color: '#10B981' }} />
-                <span>NDA &amp; IP Protection</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
-                <Award size={16} style={{ color: '#8B5CF6' }} />
-                <span>Senior Architect Led</span>
+
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '0.85rem',
+                }}
+                className="protocol-row"
+              >
+                <div
+                  style={{
+                    background: '#FFFFFF',
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    border: '1px solid #E2E8F0',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <Compass size={16} style={{ color: 'var(--blue)' }} />
+                    <span style={{ fontSize: '0.825rem', fontWeight: 800, color: 'var(--navy)' }}>
+                      01. Scoping Call
+                    </span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.75rem', color: '#64748B', lineHeight: 1.45 }}>
+                    30-min discovery led by a Principal Architect under mutual NDA.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    background: '#FFFFFF',
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    border: '1px solid #E2E8F0',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <FileCheck size={16} style={{ color: '#10B981' }} />
+                    <span style={{ fontSize: '0.825rem', fontWeight: 800, color: 'var(--navy)' }}>
+                      02. 100% Client IP
+                    </span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.75rem', color: '#64748B', lineHeight: 1.45 }}>
+                    Zero vendor lock-in. All pipelines, models, and code are 100% yours.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    background: '#FFFFFF',
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    border: '1px solid #E2E8F0',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <TrendingUp size={16} style={{ color: '#8B5CF6' }} />
+                    <span style={{ fontSize: '0.825rem', fontWeight: 800, color: 'var(--navy)' }}>
+                      03. Clear Roadmap
+                    </span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.75rem', color: '#64748B', lineHeight: 1.45 }}>
+                    Deterministic milestones, timeline estimates, and feasibility audit.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Interactive Form: Clean, Elevated, Spacious White Card */}
+          {/* Right Column: Bespoke "Technical Consultation Briefing" Form */}
           <div
             style={{
               background: '#FFFFFF',
-              borderRadius: '24px',
-              border: '1px solid #E2EAF4',
-              boxShadow: '0 20px 50px -10px rgba(5, 45, 93, 0.08), 0 4px 12px rgba(5, 45, 93, 0.03)',
-              padding: '3rem 3rem',
+              borderRadius: '20px',
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 25px 60px -15px rgba(5, 45, 93, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.5)',
+              overflow: 'hidden',
+              position: 'relative',
             }}
-            className="contact-right-pane"
+            className="contact-briefing-card"
           >
-            <div style={{ marginBottom: '2rem' }}>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '1.75rem',
-                  fontWeight: 800,
-                  color: 'var(--navy)',
-                  marginBottom: '0.4rem',
-                  letterSpacing: '-0.015em',
-                }}
-              >
-                Send Us a Message
-              </h3>
-              <p style={{ fontSize: '0.95rem', color: '#64748B', margin: 0 }}>
-                Fill out the brief details below and our solution architects will connect with you.
-              </p>
-            </div>
+            {/* Top Multi-Color Engineering Accent Bar */}
+            <div
+              style={{
+                height: '4px',
+                width: '100%',
+                background: 'linear-gradient(90deg, #158AE2 0%, #052D5D 50%, #10B981 100%)',
+              }}
+            />
 
-            {status.success && (
-              <div
-                style={{
-                  padding: '1.25rem',
-                  borderRadius: '12px',
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid #10B981',
-                  color: '#065F46',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  marginBottom: '1.75rem',
-                  fontSize: '0.95rem',
-                  fontWeight: 600,
-                }}
-              >
-                <CheckCircle2 size={22} style={{ color: '#10B981', flexShrink: 0 }} />
-                <span>Thank you! Your message has been received. Our team will contact you within 24 hours.</span>
-              </div>
-            )}
-
-            {status.error && (
-              <div
-                style={{
-                  padding: '1.25rem',
-                  borderRadius: '12px',
-                  background: 'rgba(239, 68, 68, 0.1)',
-                  border: '1px solid #EF4444',
-                  color: '#991B1B',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  marginBottom: '1.75rem',
-                  fontSize: '0.95rem',
-                  fontWeight: 600,
-                }}
-              >
-                <AlertCircle size={22} style={{ color: '#EF4444', flexShrink: 0 }} />
-                <span>{status.error}</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.35rem' }}>
-              {/* Row 1: Name & Company */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }} className="form-row">
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                    Your Name <span style={{ color: '#EF4444' }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Rajesh Kumar"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="form-input"
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Enterprise Co."
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="form-input"
-                  />
-                </div>
-              </div>
-
-              {/* Row 2: Email & Phone */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }} className="form-row">
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                    Corporate Email <span style={{ color: '#EF4444' }}>*</span>
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="name@company.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="form-input"
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="form-input"
-                  />
-                </div>
-              </div>
-
-              {/* Row 3: Practice of Interest */}
-              <div>
-                <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                  Practice of Interest
-                </label>
-                <select
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="form-input"
-                  style={{ cursor: 'pointer' }}
+            <div style={{ padding: '2.5rem 2.5rem 2.25rem 2.5rem' }} className="form-inner">
+              {/* Form Header */}
+              <div style={{ marginBottom: '1.75rem' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '0.35rem',
+                  }}
                 >
-                  <option value="AI & Machine Learning">AI &amp; Machine Learning (MLOps, GenAI, Vision)</option>
-                  <option value="Data Analytics & BI">Data Analytics &amp; BI (Power BI, Tableau, Qlik)</option>
-                  <option value="Software Development">Software Development (Next.js, Cloud APIs, SaaS)</option>
-                  <option value="IT Consulting & Managed Cloud">IT Consulting &amp; Managed Cloud (AWS, Azure, SRE)</option>
-                  <option value="Cloud Lakehouses & dbt">Cloud Lakehouses &amp; dbt (Snowflake, Databricks)</option>
-                  <option value="Enterprise Architecture Advisory">Enterprise Architecture Advisory</option>
-                </select>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.6rem',
+                      fontWeight: 800,
+                      color: 'var(--navy)',
+                      letterSpacing: '-0.02em',
+                      margin: 0,
+                    }}
+                  >
+                    Initiate Architecture Discovery
+                  </h3>
+                  <span
+                    style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 800,
+                      color: 'var(--blue)',
+                      background: 'rgba(21, 138, 226, 0.08)',
+                      padding: '3px 8px',
+                      borderRadius: '6px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.6px',
+                    }}
+                  >
+                    Confidential
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.9rem', color: '#64748B', margin: 0 }}>
+                  Share your technical parameters below to be routed directly to the appropriate Practice Specialist.
+                </p>
               </div>
 
-              {/* Row 4: Objectives / Message */}
-              <div>
-                <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
-                  Project Objectives or Inquiries <span style={{ color: '#EF4444' }}>*</span>
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Briefly describe your business goals, technology landscape, or questions..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="form-input"
-                  style={{ resize: 'none', lineHeight: 1.6 }}
-                />
-              </div>
+              {/* Status Notifications */}
+              {status.success && (
+                <div
+                  style={{
+                    padding: '1.15rem 1.25rem',
+                    borderRadius: '12px',
+                    background: 'rgba(16, 185, 129, 0.08)',
+                    border: '1.5px solid #10B981',
+                    color: '#065F46',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '1.75rem',
+                    fontSize: '0.925rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  <CheckCircle2 size={22} style={{ color: '#10B981', flexShrink: 0 }} />
+                  <span>
+                    Thank you! Your briefing has been routed to our practice leadership. A Senior Solution Architect will reach out within 24 hours.
+                  </span>
+                </div>
+              )}
 
-              {/* Submit CTA */}
-              <button
-                type="submit"
-                disabled={status.loading}
-                style={{
-                  width: '100%',
-                  padding: '1.05rem',
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #158AE2 0%, #0D6EFD 100%)',
-                  color: '#FFFFFF',
-                  border: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  cursor: status.loading ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 8px 24px rgba(21, 138, 226, 0.35)',
-                  transition: 'all 0.25s ease',
-                  marginTop: '0.5rem',
-                }}
-                onMouseEnter={(e) => {
-                  if (!status.loading) {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(21, 138, 226, 0.5)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(21, 138, 226, 0.35)';
-                }}
-              >
-                {status.loading ? (
-                  <>
-                    <Loader2 size={18} className="animate-spin" /> Submitting Inquiry...
-                  </>
-                ) : (
-                  <>
-                    Send Consultation Inquiry <Send size={16} />
-                  </>
-                )}
-              </button>
-            </form>
+              {status.error && (
+                <div
+                  style={{
+                    padding: '1.15rem 1.25rem',
+                    borderRadius: '12px',
+                    background: 'rgba(239, 68, 68, 0.08)',
+                    border: '1.5px solid #EF4444',
+                    color: '#991B1B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '1.75rem',
+                    fontSize: '0.925rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  <AlertCircle size={22} style={{ color: '#EF4444', flexShrink: 0 }} />
+                  <span>{status.error}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {/* Row 1: Name & Company */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="bespoke-form-row">
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>
+                      Your Full Name <span style={{ color: '#EF4444' }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rajesh Kumar"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="bespoke-input"
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>
+                      Company / Organization
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Acme Enterprise Ltd"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="bespoke-input"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 2: Email & Phone */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="bespoke-form-row">
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>
+                      Corporate Email <span style={{ color: '#EF4444' }}>*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="name@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="bespoke-input"
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>
+                      Direct Phone / WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="bespoke-input"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 3: Interactive Practice Selector (Handcrafted Chips) */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '8px' }}>
+                    Practice Area of Primary Interest
+                  </label>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '8px',
+                    }}
+                  >
+                    {PRACTICES.map((p) => {
+                      const isSelected = formData.service === p.label;
+                      return (
+                        <button
+                          key={p.id}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, service: p.label })}
+                          style={{
+                            padding: '6px 12px',
+                            fontSize: '0.8rem',
+                            fontWeight: 700,
+                            borderRadius: '8px',
+                            border: isSelected
+                              ? '1.5px solid var(--navy)'
+                              : '1px solid #E2E8F0',
+                            background: isSelected ? 'var(--navy)' : '#F8FAFC',
+                            color: isSelected ? '#FFFFFF' : '#334155',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            transition: 'all 0.2s ease',
+                          }}
+                          className="practice-chip"
+                        >
+                          {isSelected && <Check size={13} style={{ color: '#10B981', strokeWidth: 3 }} />}
+                          <span>{p.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Row 4: Project Objectives */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px' }}>
+                    Project Objectives or Technical Scope <span style={{ color: '#EF4444' }}>*</span>
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Describe your current tech stack (e.g. AWS, Snowflake, SQL Server), expected timeline, data volumes, or specific target business outcomes..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="bespoke-input"
+                    style={{ resize: 'none', lineHeight: 1.6 }}
+                  />
+                </div>
+
+                {/* Security Reassurance */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '0.775rem',
+                    color: '#64748B',
+                    padding: '4px 0',
+                  }}
+                >
+                  <Lock size={14} style={{ color: '#10B981', flexShrink: 0 }} />
+                  <span>Confidentiality Guaranteed: All inquiries protected under Mutual NDA protocols.</span>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={status.loading}
+                  style={{
+                    width: '100%',
+                    padding: '1.05rem',
+                    fontSize: '0.98rem',
+                    fontWeight: 700,
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #158AE2 0%, #0A4FA8 100%)',
+                    color: '#FFFFFF',
+                    border: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    cursor: status.loading ? 'not-allowed' : 'pointer',
+                    boxShadow: '0 8px 20px rgba(21, 138, 226, 0.3)',
+                    transition: 'all 0.25s ease',
+                  }}
+                  className="bespoke-submit-btn"
+                >
+                  {status.loading ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" /> Submitting Briefing...
+                    </>
+                  ) : (
+                    <>
+                      Submit Consultation Request <ArrowRight size={17} />
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        :global(.form-input) {
+        :global(.bespoke-input) {
           width: 100%;
-          padding: 0.95rem 1.15rem;
+          padding: 0.85rem 1.05rem;
           background: #F8FAFC;
           border: 1.5px solid #E2E8F0;
-          border-radius: 10px;
+          border-radius: 8px;
           color: #0F172A;
-          font-size: 0.95rem;
+          font-size: 0.925rem;
           outline: none;
           transition: all 0.2s ease;
           font-family: inherit;
         }
-        :global(.form-input:focus) {
+        :global(.bespoke-input:focus) {
           background: #FFFFFF;
           border-color: #158AE2;
-          box-shadow: 0 0 0 4px rgba(21, 138, 226, 0.14);
+          box-shadow: 0 0 0 3px rgba(21, 138, 226, 0.15);
         }
-        :global(.contact-card:hover) {
-          border-color: rgba(21, 138, 226, 0.35) !important;
-          box-shadow: 0 8px 24px rgba(5, 45, 93, 0.08) !important;
-          transform: translateY(-2px);
+        :global(.directory-item:hover) {
+          background: rgba(248, 250, 252, 0.9);
         }
-        :global(.contact-link:hover) {
+        :global(.directory-link:hover) {
           color: var(--blue) !important;
         }
-        @media (max-width: 960px) {
+        :global(.practice-chip:hover) {
+          border-color: #CBD5E1;
+        }
+        :global(.bespoke-submit-btn:hover) {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(21, 138, 226, 0.42) !important;
+        }
+        @media (max-width: 980px) {
           :global(.contact-split-grid) {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 3.5rem !important;
           }
-          :global(.contact-right-pane) {
-            padding: 2.25rem 1.5rem !important;
+          :global(.form-inner) {
+            padding: 2rem 1.5rem !important;
           }
-          :global(.form-row) {
+          :global(.bespoke-form-row) {
             grid-template-columns: 1fr !important;
+          }
+          :global(.protocol-row) {
+            grid-template-columns: 1fr !important;
+            gap: 0.75rem !important;
           }
         }
       `}</style>

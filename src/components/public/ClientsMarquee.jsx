@@ -200,22 +200,25 @@ export default function ClientsMarquee() {
           animation: clientsMarquee 32s linear infinite;
         }
         .clients-marquee-track:hover {
-          animation-play-state: paused;
+          animation-play-state: paused !important;
         }
         .client-logo-item {
           display: flex;
           align-items: center;
-          justifyContent: center;
+          justify-content: center;
           padding: 0.5rem 1rem;
-          opacity: 0.85;
-          filter: grayscale(15%);
-          transition: all 0.3s ease;
+          opacity: 1;
+          filter: none;
+          position: relative;
+          transform-origin: center center;
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+          will-change: transform;
           cursor: pointer;
         }
         .client-logo-item:hover {
-          opacity: 1;
-          filter: grayscale(0%);
-          transform: translateY(-2px);
+          transform: scale(1.22);
+          z-index: 10;
+          filter: drop-shadow(0 6px 14px rgba(5, 45, 93, 0.12));
         }
         @keyframes clientsMarquee {
           0% {

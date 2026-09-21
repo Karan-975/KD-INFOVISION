@@ -343,29 +343,36 @@ section {
 .tech-partners-track {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
+  gap: 3.75rem;
   width: max-content;
   animation: marquee-scroll 35s linear infinite;
 }
 
-.tech-partners-track:hover {
-  animation-play-state: paused;
+.tech-partners-track:hover,
+.animate-marquee:hover {
+  animation-play-state: paused !important;
 }
 
 .tech-partner-logo-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
+  height: 52px;
+  padding: 0.25rem 0.75rem;
   cursor: pointer;
   user-select: none;
-  filter: grayscale(100%) opacity(0.5);
-  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  filter: none !important;
+  opacity: 1 !important;
+  position: relative;
+  transform-origin: center center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  will-change: transform;
 }
 
 .tech-partner-logo-item:hover {
-  filter: grayscale(0%) opacity(1) !important;
-  transform: translateY(-3px) scale(1.08);
+  transform: scale(1.25);
+  z-index: 20;
+  filter: drop-shadow(0 8px 18px rgba(5, 45, 93, 0.16)) !important;
 }
 
 /* Modal Overlay */
