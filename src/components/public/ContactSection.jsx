@@ -9,8 +9,11 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Check,
   Lock,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  Award,
 } from 'lucide-react';
 
 export default function ContactSection({ settings }) {
@@ -59,190 +62,329 @@ export default function ContactSection({ settings }) {
     <section
       id="contact"
       style={{
-        padding: '5.5rem 0',
+        padding: '6rem 0',
         background: '#FFFFFF',
         position: 'relative',
         borderTop: '1px solid #E2E8F0',
       }}
     >
-      <div className="container">
+      {/* Subtle Ambient Background Watermark Glow */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(circle at 10% 20%, rgba(21, 138, 226, 0.04) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Unified Executive Consultation Console (Split Integrated Architecture) */}
         <div
           style={{
+            maxWidth: '1220px',
+            margin: '0 auto',
+            borderRadius: '26px',
+            overflow: 'hidden',
+            boxShadow: '0 25px 65px -15px rgba(5, 45, 93, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8)',
             display: 'grid',
-            gridTemplateColumns: '1fr 1.15fr',
-            gap: '4rem',
-            alignItems: 'start',
+            gridTemplateColumns: '1.05fr 1.15fr',
+            background: '#FFFFFF',
           }}
-          className="contact-layout"
+          className="contact-console"
         >
-          {/* Left Column: Summarized & Clean Information */}
-          <div className="contact-info-col">
-            <h2
+          {/* Left Column: Authoritative Corporate Advisory Pane (Midnight Navy) */}
+          <div
+            style={{
+              background: 'linear-gradient(155deg, #052D5D 0%, #031E40 55%, #021226 100%)',
+              padding: '3.75rem 3.25rem',
+              color: '#FFFFFF',
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+            className="contact-dark-pane"
+          >
+            {/* Technical Dot Grid Overlay */}
+            <div
               style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.2rem, 3.2vw, 2.85rem)',
-                fontWeight: 800,
-                color: 'var(--navy)',
-                letterSpacing: '-0.025em',
-                lineHeight: 1.18,
-                marginBottom: '1rem',
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px)',
+                backgroundSize: '24px 24px',
+                pointerEvents: 'none',
               }}
-            >
-              Build Something That Drives{' '}
-              <span style={{ color: 'var(--blue)' }}>Real Impact.</span>
-            </h2>
+            />
 
-            <p
-              style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.7,
-                color: '#64748B',
-                marginBottom: '2.5rem',
-                maxWidth: '480px',
-              }}
-            >
-              Connect with our technical architects for cloud modernization, enterprise analytics, or production AI solutions.
-            </p>
-
-            {/* Concise Contact Channels */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              {/* Email */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-                <div
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              {/* Exact Headline */}
+              <h2
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'clamp(2.15rem, 3.2vw, 2.85rem)',
+                  fontWeight: 800,
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.025em',
+                  lineHeight: 1.18,
+                  marginBottom: '1rem',
+                }}
+              >
+                Build Something That Drives{' '}
+                <span
                   style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '12px',
-                    background: 'rgba(21, 138, 226, 0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--blue)',
-                    flexShrink: 0,
+                    background: 'linear-gradient(135deg, #38BDF8 0%, #60A5FA 50%, #818CF8 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '2px' }}>
-                    Email Us
-                  </div>
-                  <a
-                    href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`}
+                  Real Impact.
+                </span>
+              </h2>
+
+              {/* Exact Subtitle */}
+              <p
+                style={{
+                  fontSize: '1.025rem',
+                  lineHeight: 1.7,
+                  color: 'rgba(255, 255, 255, 0.78)',
+                  marginBottom: '2.5rem',
+                  maxWidth: '460px',
+                }}
+              >
+                Connect with our technical architects for cloud modernization, enterprise analytics, or production AI solutions.
+              </p>
+
+              {/* Exact 3 Channels Styled as Frosted Glass Architectural Tiles */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', marginBottom: '2.5rem' }}>
+                {/* Email Us */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1.15rem',
+                    padding: '1.05rem 1.25rem',
+                    borderRadius: '14px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.25s ease',
+                  }}
+                  className="glass-channel-tile"
+                >
+                  <div
                     style={{
-                      fontSize: '1rem',
-                      fontWeight: 700,
-                      color: 'var(--navy)',
-                      textDecoration: 'none',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: 'rgba(56, 189, 248, 0.15)',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#38BDF8',
+                      flexShrink: 0,
                     }}
-                    className="contact-text-link"
                   >
-                    {settings?.email || 'hello@kdinfovision.com'}
-                  </a>
+                    <Mail size={20} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: 'rgba(255, 255, 255, 0.6)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.8px',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      Email Us
+                    </div>
+                    <a
+                      href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`}
+                      style={{
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        transition: 'color 0.2s ease',
+                      }}
+                      className="glass-channel-link"
+                    >
+                      {settings?.email || 'hello@kdinfovision.com'}
+                      <ArrowRight size={14} style={{ opacity: 0.6 }} />
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Phone */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                {/* Call Us */}
                 <div
                   style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '12px',
-                    background: 'rgba(16, 185, 129, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#059669',
-                    flexShrink: 0,
+                    gap: '1.15rem',
+                    padding: '1.05rem 1.25rem',
+                    borderRadius: '14px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.25s ease',
                   }}
+                  className="glass-channel-tile"
                 >
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '2px' }}>
-                    Call Us
-                  </div>
-                  <a
-                    href={`tel:${settings?.phone || '+91 98765 43210'}`}
+                  <div
                     style={{
-                      fontSize: '1rem',
-                      fontWeight: 700,
-                      color: 'var(--navy)',
-                      textDecoration: 'none',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: 'rgba(16, 185, 129, 0.15)',
+                      border: '1px solid rgba(16, 185, 129, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#10B981',
+                      flexShrink: 0,
                     }}
-                    className="contact-text-link"
                   >
-                    {settings?.phone || '+91 98765 43210'}
-                  </a>
+                    <Phone size={20} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: 'rgba(255, 255, 255, 0.6)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.8px',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      Call Us
+                    </div>
+                    <a
+                      href={`tel:${settings?.phone || '+91 98765 43210'}`}
+                      style={{
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        transition: 'color 0.2s ease',
+                      }}
+                      className="glass-channel-link"
+                    >
+                      {settings?.phone || '+91 98765 43210'}
+                      <ArrowRight size={14} style={{ opacity: 0.6 }} />
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Delivery Hubs */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                {/* Delivery Hubs */}
                 <div
                   style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '12px',
-                    background: 'rgba(245, 158, 11, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#D97706',
-                    flexShrink: 0,
+                    gap: '1.15rem',
+                    padding: '1.05rem 1.25rem',
+                    borderRadius: '14px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.25s ease',
                   }}
+                  className="glass-channel-tile"
                 >
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '2px' }}>
-                    Delivery Hubs
+                  <div
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: 'rgba(245, 158, 11, 0.15)',
+                      border: '1px solid rgba(245, 158, 11, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#F59E0B',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <MapPin size={20} />
                   </div>
-                  <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)' }}>
-                    {settings?.address || 'Bangalore & Mumbai, India'}
+                  <div>
+                    <div
+                      style={{
+                        fontSize: '0.725rem',
+                        fontWeight: 800,
+                        color: 'rgba(255, 255, 255, 0.6)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.8px',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      Delivery Hubs
+                    </div>
+                    <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF' }}>
+                      {settings?.address || 'Bangalore & Mumbai, India'}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Reassurance Checklist */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', borderTop: '1px solid #F1F5F9', paddingTop: '1.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: '#475569' }}>
-                <Check size={16} style={{ color: '#10B981', flexShrink: 0 }} />
-                <span>Response turnaround within 24 business hours</span>
+            {/* Bottom Enterprise Governance Commitments */}
+            <div
+              style={{
+                position: 'relative',
+                zIndex: 2,
+                borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+                paddingTop: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '1rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                <Clock size={15} style={{ color: '#38BDF8' }} />
+                <span>&lt; 24h Response SLA</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: '#475569' }}>
-                <Check size={16} style={{ color: '#10B981', flexShrink: 0 }} />
-                <span>Initial scoping led by Senior Solution Architects</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                <ShieldCheck size={15} style={{ color: '#10B981' }} />
+                <span>Mutual NDA Protected</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: '#475569' }}>
-                <Check size={16} style={{ color: '#10B981', flexShrink: 0 }} />
-                <span>100% client-owned code &amp; IP under mutual NDA</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                <Award size={15} style={{ color: '#A78BFA' }} />
+                <span>Architect Led</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Clean, Professional, Spacious Form */}
+          {/* Right Column: Pristine Executive Form Console (White) */}
           <div
             style={{
+              padding: '3.75rem 3.5rem',
               background: '#FFFFFF',
-              borderRadius: '20px',
-              border: '1px solid #E2E8F0',
-              boxShadow: '0 8px 30px rgba(5, 45, 93, 0.04)',
-              padding: '2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
-            className="contact-form-box"
+            className="contact-form-pane"
           >
-            <div style={{ marginBottom: '1.75rem' }}>
+            {/* Exact Form Header */}
+            <div style={{ marginBottom: '2rem' }}>
               <h3
                 style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '1.5rem',
+                  fontSize: '1.65rem',
                   fontWeight: 800,
                   color: 'var(--navy)',
-                  marginBottom: '0.35rem',
-                  letterSpacing: '-0.015em',
+                  marginBottom: '0.4rem',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 Send Us a Message
@@ -252,11 +394,12 @@ export default function ContactSection({ settings }) {
               </p>
             </div>
 
+            {/* Status Feedback */}
             {status.success && (
               <div
                 style={{
                   padding: '1.15rem 1.25rem',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   background: 'rgba(16, 185, 129, 0.08)',
                   border: '1.5px solid #10B981',
                   color: '#065F46',
@@ -277,7 +420,7 @@ export default function ContactSection({ settings }) {
               <div
                 style={{
                   padding: '1.15rem 1.25rem',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   background: 'rgba(239, 68, 68, 0.08)',
                   border: '1.5px solid #EF4444',
                   color: '#991B1B',
@@ -296,9 +439,9 @@ export default function ContactSection({ settings }) {
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {/* Row 1: Name & Company */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="contact-form-row">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="form-split-row">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                     Your Name <span style={{ color: '#EF4444' }}>*</span>
                   </label>
                   <input
@@ -307,11 +450,11 @@ export default function ContactSection({ settings }) {
                     placeholder="e.g. Rajesh Kumar"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="clean-input"
+                    className="console-input"
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                     Company Name
                   </label>
                   <input
@@ -319,15 +462,15 @@ export default function ContactSection({ settings }) {
                     placeholder="e.g. Enterprise Co."
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="clean-input"
+                    className="console-input"
                   />
                 </div>
               </div>
 
               {/* Row 2: Email & Phone */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="contact-form-row">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.15rem' }} className="form-split-row">
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                     Corporate Email <span style={{ color: '#EF4444' }}>*</span>
                   </label>
                   <input
@@ -336,11 +479,11 @@ export default function ContactSection({ settings }) {
                     placeholder="name@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="clean-input"
+                    className="console-input"
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                  <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                     Phone Number
                   </label>
                   <input
@@ -348,20 +491,20 @@ export default function ContactSection({ settings }) {
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="clean-input"
+                    className="console-input"
                   />
                 </div>
               </div>
 
               {/* Row 3: Practice of Interest */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                   Practice of Interest
                 </label>
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="clean-input"
+                  className="console-input"
                   style={{ cursor: 'pointer' }}
                 >
                   <option value="AI & Machine Learning">AI &amp; Machine Learning (MLOps, GenAI, Vision)</option>
@@ -375,7 +518,7 @@ export default function ContactSection({ settings }) {
 
               {/* Row 4: Objectives / Message */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
+                <label style={{ display: 'block', fontSize: '0.785rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>
                   Project Objectives or Inquiries <span style={{ color: '#EF4444' }}>*</span>
                 </label>
                 <textarea
@@ -384,18 +527,18 @@ export default function ContactSection({ settings }) {
                   placeholder="Briefly describe your business goals, technology landscape, or questions..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="clean-input"
+                  className="console-input"
                   style={{ resize: 'none', lineHeight: 1.6 }}
                 />
               </div>
 
-              {/* Reassurance */}
+              {/* Reassurance Note */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.775rem', color: '#64748B' }}>
                 <Lock size={13} style={{ color: '#10B981', flexShrink: 0 }} />
                 <span>Protected by Mutual NDA. Zero vendor lock-in.</span>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit CTA Button with the Adventurous Midnight Gradient Shade */}
               <button
                 type="submit"
                 disabled={status.loading}
@@ -417,7 +560,7 @@ export default function ContactSection({ settings }) {
                   transition: 'all 0.25s ease',
                   marginTop: '0.25rem',
                 }}
-                className="clean-submit-btn"
+                className="console-submit-btn"
               >
                 {status.loading ? (
                   <>
@@ -435,9 +578,9 @@ export default function ContactSection({ settings }) {
       </div>
 
       <style jsx>{`
-        :global(.clean-input) {
+        :global(.console-input) {
           width: 100%;
-          padding: 0.85rem 1rem;
+          padding: 0.85rem 1.05rem;
           background: #F8FAFC;
           border: 1.5px solid #E2E8F0;
           border-radius: 8px;
@@ -447,28 +590,33 @@ export default function ContactSection({ settings }) {
           transition: all 0.2s ease;
           font-family: inherit;
         }
-        :global(.clean-input:focus) {
+        :global(.console-input:focus) {
           background: #FFFFFF;
           border-color: #158AE2;
           box-shadow: 0 0 0 3px rgba(21, 138, 226, 0.15);
         }
-        :global(.contact-text-link:hover) {
-          color: var(--blue) !important;
+        :global(.glass-channel-tile:hover) {
+          background: rgba(255, 255, 255, 0.08) !important;
+          border-color: rgba(56, 189, 248, 0.4) !important;
+          transform: translateX(4px);
         }
-        :global(.clean-submit-btn:hover) {
+        :global(.glass-channel-link:hover) {
+          color: #38BDF8 !important;
+        }
+        :global(.console-submit-btn:hover) {
           background: linear-gradient(135deg, rgba(21, 138, 226, 0.42) 0%, rgba(5, 45, 93, 0.98) 45%, rgba(139, 92, 246, 0.38) 100%), #031836 !important;
           transform: translateY(-2px);
           box-shadow: 0 12px 30px rgba(5, 45, 93, 0.5), 0 0 24px rgba(56, 189, 248, 0.35) !important;
         }
-        @media (max-width: 960px) {
-          :global(.contact-layout) {
+        @media (max-width: 980px) {
+          :global(.contact-console) {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
           }
-          :global(.contact-form-box) {
-            padding: 2rem 1.5rem !important;
+          :global(.contact-dark-pane),
+          :global(.contact-form-pane) {
+            padding: 3rem 1.75rem !important;
           }
-          :global(.contact-form-row) {
+          :global(.form-split-row) {
             grid-template-columns: 1fr !important;
           }
         }
