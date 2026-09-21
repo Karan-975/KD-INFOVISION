@@ -401,19 +401,19 @@ export default function ContactSection({ settings }) {
                 disabled={status.loading}
                 style={{
                   width: '100%',
-                  padding: '1rem',
-                  fontSize: '0.98rem',
+                  padding: '1.05rem',
+                  fontSize: '1rem',
                   fontWeight: 700,
                   borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #158AE2 0%, #0D6EFD 100%)',
+                  background: 'linear-gradient(135deg, rgba(21, 138, 226, 0.28) 0%, rgba(5, 45, 93, 0.95) 45%, rgba(139, 92, 246, 0.28) 100%), #031836',
                   color: '#FFFFFF',
-                  border: 'none',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
                   cursor: status.loading ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 6px 18px rgba(21, 138, 226, 0.28)',
+                  boxShadow: '0 8px 24px rgba(5, 45, 93, 0.35), 0 0 16px rgba(21, 138, 226, 0.2)',
                   transition: 'all 0.25s ease',
                   marginTop: '0.25rem',
                 }}
@@ -456,8 +456,9 @@ export default function ContactSection({ settings }) {
           color: var(--blue) !important;
         }
         :global(.clean-submit-btn:hover) {
+          background: linear-gradient(135deg, rgba(21, 138, 226, 0.42) 0%, rgba(5, 45, 93, 0.98) 45%, rgba(139, 92, 246, 0.38) 100%), #031836 !important;
           transform: translateY(-2px);
-          box-shadow: 0 10px 24px rgba(21, 138, 226, 0.38) !important;
+          box-shadow: 0 12px 30px rgba(5, 45, 93, 0.5), 0 0 24px rgba(56, 189, 248, 0.35) !important;
         }
         @media (max-width: 960px) {
           :global(.contact-layout) {
