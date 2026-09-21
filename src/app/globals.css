@@ -67,15 +67,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+/* Clean Modern Scrollbar with White Track */
+html {
+  scrollbar-color: #CBD5E1 #FFFFFF;
+  scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--navy-dark);
+  background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(61, 155, 233, 0.4);
+  background: #CBD5E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
