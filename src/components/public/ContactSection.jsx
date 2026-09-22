@@ -14,9 +14,15 @@ import {
   ShieldCheck,
   Clock,
   Award,
+  ExternalLink,
 } from 'lucide-react';
 
 export default function ContactSection({ settings }) {
+  const displayAddress = settings?.address || 'Bangalore & Mumbai, India';
+  const queryAddress = settings?.address ? settings.address.replace(/&/g, ',') : 'Bangalore, India';
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryAddress)}`;
+  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(queryAddress)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -284,8 +290,11 @@ export default function ContactSection({ settings }) {
                   </div>
                 </div>
 
-                {/* Delivery Hubs */}
-                <div
+                {/* Delivery Hubs (Linked to Google Maps) */}
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -294,9 +303,12 @@ export default function ContactSection({ settings }) {
                     borderRadius: '14px',
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
+                    textDecoration: 'none',
                     transition: 'all 0.25s ease',
+                    cursor: 'pointer',
                   }}
                   className="glass-channel-tile"
+                  title="Open Delivery Hubs in Google Maps"
                 >
                   <div
                     style={{
@@ -314,7 +326,7 @@ export default function ContactSection({ settings }) {
                   >
                     <MapPin size={20} />
                   </div>
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <div
                       style={{
                         fontSize: '0.725rem',
@@ -327,11 +339,12 @@ export default function ContactSection({ settings }) {
                     >
                       Delivery Hubs
                     </div>
-                    <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF' }}>
-                      {settings?.address || 'Bangalore & Mumbai, India'}
+                    <div style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      {displayAddress}
+                      <ArrowRight size={14} style={{ opacity: 0.6 }} />
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -575,6 +588,177 @@ export default function ContactSection({ settings }) {
             </form>
           </div>
         </div>
+
+        {/* Real Google Map Dynamic Location Thumbnail (Standard Light Mode - Authentic Google Maps) */}
+        <div
+          style={{
+            maxWidth: '1220px',
+            margin: '2rem auto 0 auto',
+            borderRadius: '22px',
+            overflow: 'hidden',
+            background: '#FFFFFF',
+            boxShadow: '0 16px 45px -12px rgba(5, 45, 93, 0.1), 0 0 0 1px rgba(226, 232, 240, 0.85)',
+            position: 'relative',
+          }}
+          className="map-thumbnail-card"
+        >
+          {/* Header Bar */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '1rem 1.75rem',
+              background: '#F8FAFC',
+              borderBottom: '1px solid #E2E8F0',
+              flexWrap: 'wrap',
+              gap: '1rem',
+            }}
+            className="map-header-bar"
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <div
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(234, 67, 53, 0.1)',
+                  border: '1px solid rgba(234, 67, 53, 0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#EA4335',
+                  flexShrink: 0,
+                }}
+              >
+                <MapPin size={20} />
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.725rem',
+                    fontWeight: 800,
+                    color: '#64748B',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.8px',
+                    marginBottom: '2px',
+                  }}
+                >
+                  Delivery Hubs • Real-Time Google Maps
+                </div>
+                <div style={{ fontSize: '1.025rem', fontWeight: 700, color: 'var(--navy)' }}>
+                  {displayAddress}
+                </div>
+              </div>
+            </div>
+
+            {/* Tap / Redirect Action Button */}
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '0.65rem 1.25rem',
+                borderRadius: '10px',
+                background: '#052D5D',
+                color: '#FFFFFF',
+                fontSize: '0.875rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 12px rgba(5, 45, 93, 0.18)',
+              }}
+              className="map-action-btn"
+            >
+              Open in Google Maps <ExternalLink size={15} />
+            </a>
+          </div>
+
+          {/* Authentic Real Google Map Display (Standard Light Theme - No Dark Filters) */}
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: '270px',
+              background: '#E5E3DF',
+              overflow: 'hidden',
+            }}
+            className="map-embed-wrapper"
+          >
+            {/* Standard Light Google Map Embed */}
+            <iframe
+              src={googleMapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{
+                border: 0,
+                width: '100%',
+                height: '100%',
+                display: 'block',
+                filter: 'none',
+                colorScheme: 'light',
+              }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`Google Map showing ${displayAddress}`}
+            />
+
+            {/* Clickable Full-Area Tap Overlay Redirecting to Google Maps */}
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 5,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                cursor: 'pointer',
+              }}
+              className="map-click-overlay"
+              aria-label={`Open ${displayAddress} in Google Maps`}
+              title="Click anywhere on the map to open in Google Maps"
+            >
+              {/* Floating Pill on Map */}
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(8px)',
+                  padding: '0.7rem 1.35rem',
+                  borderRadius: '9999px',
+                  border: '1.5px solid rgba(255, 255, 255, 0.8)',
+                  boxShadow: '0 12px 32px -4px rgba(5, 45, 93, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.06)',
+                  fontSize: '0.875rem',
+                  fontWeight: 700,
+                  color: 'var(--navy)',
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                className="map-float-pill"
+              >
+                <div
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: '#10B981',
+                    boxShadow: '0 0 0 3px rgba(16, 185, 129, 0.25)',
+                  }}
+                />
+                <span>Tap to view live Google Maps</span>
+                <ArrowRight size={15} style={{ color: '#158AE2' }} />
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
@@ -608,6 +792,29 @@ export default function ContactSection({ settings }) {
           transform: translateY(-2px);
           box-shadow: 0 12px 30px rgba(5, 45, 93, 0.5), 0 0 24px rgba(56, 189, 248, 0.35) !important;
         }
+        :global(.map-thumbnail-card) {
+          transition: all 0.3s ease;
+        }
+        :global(.map-thumbnail-card:hover) {
+          box-shadow: 0 20px 50px -10px rgba(5, 45, 93, 0.15), 0 0 0 1px rgba(21, 138, 226, 0.3) !important;
+        }
+        :global(.map-action-btn:hover) {
+          background: #158AE2 !important;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(21, 138, 226, 0.35) !important;
+        }
+        :global(.map-click-overlay) {
+          background: rgba(15, 23, 42, 0);
+          transition: background 0.25s ease;
+        }
+        :global(.map-click-overlay:hover) {
+          background: rgba(15, 23, 42, 0.06);
+        }
+        :global(.map-click-overlay:hover .map-float-pill) {
+          transform: scale(1.05);
+          box-shadow: 0 16px 36px -4px rgba(5, 45, 93, 0.3);
+          background: #FFFFFF;
+        }
         @media (max-width: 980px) {
           :global(.contact-console) {
             grid-template-columns: 1fr !important;
@@ -618,6 +825,14 @@ export default function ContactSection({ settings }) {
           }
           :global(.form-split-row) {
             grid-template-columns: 1fr !important;
+          }
+          :global(.map-header-bar) {
+            flex-direction: column;
+            align-items: flex-start !important;
+          }
+          :global(.map-action-btn) {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
