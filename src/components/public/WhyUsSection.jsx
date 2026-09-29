@@ -13,47 +13,47 @@ import {
 export default function WhyUsSection() {
   const pillars = [
     {
-      icon: Layers,
-      title: 'Architectural Rigor & Scalability',
-      badge: 'Zero Technical Debt',
-      desc: 'Decoupled cloud lakehouses (Snowflake, Databricks, BigQuery) with automated CI/CD and elastic multi-cloud compute designed for long-term scalability.',
+      icon: ShieldCheck,
+      title: 'The KDI Framework & Advisory',
+      badge: 'Global Standards',
+      desc: 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. As a trusted advisor, we only suggest what you NEED, not what you LIKE.',
       points: [
-        'Decoupled storage and compute topology',
-        'Automated dbt & Airflow data transformations',
-        'Multi-cloud resilience (AWS, Azure, GCP)',
+        'Strategic alignment with business goals',
+        'Adhering to global standards & industry best practices',
+        'Transparent delivery and predictable milestones',
       ],
     },
     {
       icon: Cpu,
-      title: 'Production-Grade AI & MLOps',
-      badge: 'Measurable ROI',
-      desc: 'Containerized, low-latency AI inference pipelines, hardened RAG architectures with deterministic guardrails, and continuous model drift monitoring.',
+      title: 'KDI Certified Resources',
+      badge: 'Quick & Quality Delivery',
+      desc: 'Over 60% certified resources across Snowflake, AWS, Databricks, and Power BI ensuring specialized domain knowledge and rapid time-to-value.',
       points: [
-        'Secure Retrieval-Augmented Generation (RAG)',
-        'Automated model drift & latency monitoring',
-        'Enterprise SLA with sub-100ms response targets',
+        'Staff augmentations & dedicated technical talent',
+        'Trainings & enterprise outsourcing services',
+        'Trusted engineering pods adhering to strict SLAs',
       ],
     },
     {
-      icon: GitBranch,
-      title: '100% Client IP Ownership',
-      badge: 'Zero Vendor Lock-in',
-      desc: 'All pipelines, Terraform infrastructure, model weights, and custom BI dashboards remain 100% your intellectual property with full repository handover.',
+      icon: Layers,
+      title: 'Unified Data & AI Architecture',
+      badge: 'Modern AI & Lakehouses',
+      desc: 'Harness the power of data and artificial intelligence. We transform complex data into actionable insights with modern Snowflake, AWS, and Databricks foundations.',
       points: [
-        'Standard cloud-native open tooling',
-        'Comprehensive handover & architecture specs',
-        'Complete source code & container ownership',
+        'Snowflake Data Cloud & Databricks lakehouses',
+        'Autonomous Agentic AI & machine learning',
+        'Eliminating data silos and accelerating innovation',
       ],
     },
     {
-      icon: ShieldCheck,
-      title: 'Enterprise Security & Governance',
-      badge: 'SOC2 & ISO Ready',
-      desc: 'Security is engineered into the foundation with granular Role-Based Access Control (RBAC), end-to-end encryption, and audit-ready data lineage.',
+      icon: CheckCircle2,
+      title: 'Real-Time BI & Dashboards',
+      badge: 'Instant Solutions',
+      desc: 'You do not need to create your reports and dashboards from scratch. Just upload your data and get executive-ready solutions in real time.',
       points: [
-        'Granular RBAC & zero-trust network policies',
-        'End-to-end encryption (at-rest & in-transit)',
-        'Full metadata auditing & compliance cataloging',
+        'Power BI, Tableau, Qlik, Domo & Spotfire',
+        'Associative discovery & self-service analytics',
+        'Actionable KPI cockpits for leadership',
       ],
     },
   ];
@@ -62,7 +62,20 @@ export default function WhyUsSection() {
     <section id="why" style={{ background: '#F8FAFC', padding: '6.5rem 0' }}>
       <div className="container">
         {/* Section Header: Clean Enterprise */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 4rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 4rem auto' }}>
+          <div
+            style={{
+              fontSize: '0.85rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            Why Choose Us?
+          </div>
+
           <h2
             style={{
               fontFamily: 'var(--font-heading)',
@@ -74,7 +87,7 @@ export default function WhyUsSection() {
               marginBottom: '1rem',
             }}
           >
-            Why Industry Leaders Partner with KD Infovision
+            Start Your Data &amp; AI Journey with KD Infovision for <span style={{ color: 'var(--blue)' }}>Quick &amp; Quality Delivery</span>
           </h2>
 
           <p
@@ -84,7 +97,7 @@ export default function WhyUsSection() {
               lineHeight: 1.7,
             }}
           >
-            We eliminate the high failure rate of enterprise IT and AI initiatives through battle-tested engineering standards, predictable delivery milestones, and uncompromising governance.
+            The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our expertise, we make your work easier and faster.
           </p>
         </div>
 

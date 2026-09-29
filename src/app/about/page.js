@@ -9,9 +9,9 @@ import Footer from '@/components/public/Footer';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'About Us | KD Infovision — Enterprise Technology & AI Partner',
+  title: 'About Us | KD Infovision — Consulting | Outsourcing | Digital',
   description:
-    'Learn about KD Infovision, our enterprise engineering culture, leadership team, and track record in delivering scalable Data, Cloud, and AI architectures.',
+    "We're your team in difficult times. KD Infovision is a leading technology and AI-driven solutions company specializing in Data & Analytics, Artificial Intelligence, and Digital Transformation Services.",
 };
 
 export default async function AboutPage() {
@@ -38,6 +38,18 @@ export default async function AboutPage() {
         }}
       >
         <div className="container">
+          <div
+            style={{
+              fontSize: '0.875rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            Few Words About Us
+          </div>
           <h1
             style={{
               fontFamily: 'var(--font-heading)',
@@ -48,18 +60,18 @@ export default async function AboutPage() {
               marginBottom: '1.25rem',
             }}
           >
-            Pioneering Enterprise <span style={{ color: 'var(--blue)' }}>Data &amp; AI</span> Excellence
+            We're Your Team in <span style={{ color: 'var(--blue)' }}>Difficult Times</span>
           </h1>
           <p
             style={{
-              maxWidth: '640px',
+              maxWidth: '680px',
               margin: '0 auto',
               fontSize: '1.05rem',
-              color: 'rgba(255, 255, 255, 0.75)',
+              color: 'rgba(255, 255, 255, 0.78)',
               lineHeight: 1.7,
             }}
           >
-            Bridging complex raw enterprise datasets into actionable C-suite intelligence with scalable architectures and zero vendor lock-in.
+            We know that our clients are the key to our success and triumph. Empowering businesses with seamless integration, intelligent automation, and advanced Data &amp; AI solutions.
           </p>
         </div>
       </div>

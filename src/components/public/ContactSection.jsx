@@ -18,8 +18,8 @@ import {
 } from 'lucide-react';
 
 export default function ContactSection({ settings }) {
-  const displayAddress = settings?.address || 'Bangalore & Mumbai, India';
-  const queryAddress = settings?.address ? settings.address.replace(/&/g, ',') : 'Bangalore, India';
+  const displayAddress = settings?.address || 'Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051';
+  const queryAddress = settings?.address ? settings.address.replace(/&/g, ',') : 'Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051';
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryAddress)}`;
   const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(queryAddress)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
@@ -28,7 +28,7 @@ export default function ContactSection({ settings }) {
     company: '',
     email: '',
     phone: '',
-    service: 'AI & Machine Learning',
+    service: 'Data & Analytics',
     message: '',
   });
 
@@ -208,7 +208,7 @@ export default function ContactSection({ settings }) {
                       Email Us
                     </div>
                     <a
-                      href={`mailto:${settings?.email || 'hello@kdinfovision.com'}`}
+                      href={`mailto:${settings?.email || 'admin@kdinfovision.com'}`}
                       style={{
                         fontSize: '1rem',
                         fontWeight: 700,
@@ -221,7 +221,7 @@ export default function ContactSection({ settings }) {
                       }}
                       className="glass-channel-link"
                     >
-                      {settings?.email || 'hello@kdinfovision.com'}
+                      {settings?.email || 'admin@kdinfovision.com'}
                       <ArrowRight size={14} style={{ opacity: 0.6 }} />
                     </a>
                   </div>
@@ -271,7 +271,7 @@ export default function ContactSection({ settings }) {
                       Call Us
                     </div>
                     <a
-                      href={`tel:${settings?.phone || '+91 98765 43210'}`}
+                      href={`tel:${settings?.phone || '+91 9820536031'}`}
                       style={{
                         fontSize: '1rem',
                         fontWeight: 700,
@@ -284,7 +284,7 @@ export default function ContactSection({ settings }) {
                       }}
                       className="glass-channel-link"
                     >
-                      {settings?.phone || '+91 98765 43210'}
+                      {settings?.phone || '+91 9820536031'}
                       <ArrowRight size={14} style={{ opacity: 0.6 }} />
                     </a>
                   </div>
@@ -501,7 +501,7 @@ export default function ContactSection({ settings }) {
                   </label>
                   <input
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 9820536031"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="console-input"
@@ -520,12 +520,13 @@ export default function ContactSection({ settings }) {
                   className="console-input"
                   style={{ cursor: 'pointer' }}
                 >
-                  <option value="AI & Machine Learning">AI &amp; Machine Learning (MLOps, GenAI, Vision)</option>
-                  <option value="Data Analytics & BI">Data Analytics &amp; BI (Power BI, Tableau, Qlik)</option>
-                  <option value="Cloud Lakehouses & dbt">Cloud Lakehouses &amp; dbt (Snowflake, Databricks)</option>
-                  <option value="Software Development">Software Development (Next.js, Cloud APIs)</option>
-                  <option value="IT Consulting & Managed Cloud">IT Consulting &amp; Managed Cloud (AWS, Azure)</option>
-                  <option value="Enterprise Architecture Advisory">Enterprise Architecture Advisory</option>
+                  <option value="Data & Analytics">Data &amp; Analytics (Power BI, Tableau, Qlik, Domo, Spotfire)</option>
+                  <option value="Data Engineering">Data Engineering (Snowflake, Databricks, AWS)</option>
+                  <option value="Agentic AI">Agentic AI &amp; Machine Learning (R &amp; Python)</option>
+                  <option value="Technology & Management Consulting">Technology &amp; Management Consulting (KDI Framework)</option>
+                  <option value="Staff Augmentation & Trainings">Staff Augmentation, Trainings &amp; Outsourcing</option>
+                  <option value="Web & Mobile Development">Web &amp; Mobile Development</option>
+                  <option value="Digital & SEO Solutions">Digital &amp; SEO Solutions</option>
                 </select>
               </div>
 

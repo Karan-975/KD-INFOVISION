@@ -34,10 +34,10 @@ export async function GET() {
       data: {
         settings: settings || {
           siteName: 'KD INFOVISION',
-          tagline: 'Data. AI. Digital Transformation.',
-          email: 'hello@kdinfovision.com',
-          phone: '+91 98765 43210',
-          address: 'Bangalore & Mumbai, India',
+          tagline: 'Consulting | Outsourcing | Digital',
+          email: 'admin@kdinfovision.com',
+          phone: '+91 9820536031',
+          address: 'Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051',
           primaryColor: '#1B3A6B',
           accentColor: '#3D9BE9',
         },

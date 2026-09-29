@@ -6,9 +6,9 @@ import Footer from '@/components/public/Footer';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Contact Us | Schedule Architecture Consultation — KD Infovision',
+  title: 'Contact Us | Happy To Assist You — KD Infovision',
   description:
-    'Connect with KD Infovision enterprise architects for cloud modernization, Power BI analytics, and production AI system feasibility.',
+    'Get in touch & drop us a line because you deserve to work with the best! Connect with KD Infovision for Data & Analytics, AI, and Consulting solutions.',
 };
 
 export default async function ContactPage() {
@@ -30,6 +30,18 @@ export default async function ContactPage() {
         }}
       >
         <div className="container">
+          <div
+            style={{
+              fontSize: '0.875rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            Happy To Assist You
+          </div>
           <h1
             style={{
               fontFamily: 'var(--font-heading)',
@@ -40,18 +52,18 @@ export default async function ContactPage() {
               marginBottom: '1.25rem',
             }}
           >
-            Connect with Our <span style={{ color: 'var(--blue)' }}>Lead Architects</span>
+            Get in Touch &amp; <span style={{ color: 'var(--blue)' }}>Drop Us a Line</span>
           </h1>
           <p
             style={{
-              maxWidth: '660px',
+              maxWidth: '680px',
               margin: '0 auto',
               fontSize: '1.05rem',
-              color: 'rgba(255, 255, 255, 0.75)',
+              color: 'rgba(255, 255, 255, 0.78)',
               lineHeight: 1.7,
             }}
           >
-            Schedule a technical feasibility assessment or discuss your upcoming Data Lakehouse, Cloud Migration, or AI modernization roadmap.
+            Because you deserve to work with the best! Let's start exploring your Data &amp; Analytics journey with KD Infovision.
           </p>
         </div>
       </div>

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import {
   Linkedin,
+  Facebook,
   Twitter,
   Github,
   ArrowUp,
@@ -24,12 +25,12 @@ export default function Footer({ settings }) {
   };
 
   const solutions = [
-    { name: 'AI & Production MLOps', href: '/services' },
-    { name: 'Cloud Lakehouse & dbt', href: '/services' },
-    { name: 'Executive Power BI & Analytics', href: '/services' },
-    { name: 'Cloud-Native Engineering', href: '/services' },
-    { name: 'SRE & Managed Cloud Operations', href: '/services' },
-    { name: 'Data Governance & Catalogs', href: '/services' },
+    { name: 'Data & Analytics', href: '/services' },
+    { name: 'Data Engineering', href: '/services' },
+    { name: 'Agentic AI', href: '/services' },
+    { name: 'Technology & Consulting', href: '/services' },
+    { name: 'Staff Augmentation & Trainings', href: '/services' },
+    { name: 'BI Visualization Solutions', href: '/services' },
   ];
 
   const industries = [
@@ -232,29 +233,29 @@ export default function Footer({ settings }) {
                 marginBottom: '1.75rem',
               }}
             >
-              Transforming enterprise operations with hardened cloud lakehouses, automated AI pipelines, and board-ready Power BI analytics.
+              Consulting | Outsourcing | Digital — Delivering advanced Data &amp; Analytics, Data Engineering, Agentic AI, and Digital Transformation solutions.
             </p>
 
             {/* Delivery Locations & Contact with Multi-Color Icons */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.75rem', fontSize: '0.85rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
                 <MapPin size={16} style={{ color: '#FB923C', flexShrink: 0 }} />
-                <span>Delivery Centers: Bangalore &amp; Mumbai, India</span>
+                <span>Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
                 <Mail size={16} style={{ color: '#38BDF8', flexShrink: 0 }} />
-                <span>{settings?.email || 'contact@kdinfovision.com'}</span>
+                <span>{settings?.email || 'admin@kdinfovision.com'}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
                 <Phone size={16} style={{ color: '#34D399', flexShrink: 0 }} />
-                <span>{settings?.phone || '+91 98765 43210'}</span>
+                <span>{settings?.phone || '+91 9820536031'}</span>
               </div>
             </div>
 
             {/* Social Buttons with Individual Multi-Color Brand Identities */}
             <div style={{ display: 'flex', gap: '10px' }}>
               <a
-                href={settings?.socialLinkedin || 'https://linkedin.com'}
+                href={settings?.socialLinkedin || 'https://www.linkedin.com/company/kd-infovision-consulting/about/'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
@@ -273,6 +274,28 @@ export default function Footer({ settings }) {
                 className="social-btn linkedin-btn"
               >
                 <Linkedin size={18} />
+              </a>
+
+              <a
+                href="https://www.facebook.com/kdinfovision"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'rgba(24, 119, 242, 0.12)',
+                  border: '1px solid rgba(24, 119, 242, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#60A5FA',
+                  transition: 'all 0.25s ease',
+                }}
+                className="social-btn facebook-btn"
+              >
+                <Facebook size={18} />
               </a>
 
               <a
@@ -541,9 +564,9 @@ export default function Footer({ settings }) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <span>© {new Date().getFullYear()} {settings?.siteName || 'KD INFOVISION'}. All Rights Reserved.</span>
+            <span>All Copyrights with KD Infovision &amp; Consulting Pvt Ltd.</span>
             <span>•</span>
-            <span style={{ color: '#38BDF8' }}>Enterprise Data &amp; AI Partner</span>
+            <span style={{ color: '#38BDF8' }}>Consulting | Outsourcing | Digital</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

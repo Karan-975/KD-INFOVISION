@@ -1,11 +1,11 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'KD Infovision — Data. AI. Digital Transformation.',
+  title: 'KD Infovision — Consulting | Outsourcing | Digital',
   description:
-    'KD Infovision empowers enterprises to build AI-powered solutions, unlock business intelligence, and accelerate digital transformation.',
+    'KD Infovision empowers enterprises with Data & Analytics, Data Engineering, Agentic AI, and Digital Transformation solutions.',
   keywords:
-    'AI, Machine Learning, Power BI, Data Analytics, Digital Transformation, Cloud Solutions, Azure, AWS, Next.js, KD Infovision',
+    'KD Infovision, Consulting, Outsourcing, Digital, Data & Analytics, Data Engineering, Agentic AI, Snowflake, Databricks, AWS, Power BI, Tableau, Domo, Spotfire, Machine Learning',
   icons: {
     icon: [
       { url: '/favicon.ico?v=3' },

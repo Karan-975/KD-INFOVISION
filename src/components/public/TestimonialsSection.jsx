@@ -7,27 +7,27 @@ export default function TestimonialsSection({ testimonials = [] }) {
   const defaultList = [
     {
       quote:
-        'KD Infovision transformed how we use data. Their Power BI dashboards reduced our reporting time by 60% and gave leadership real-time visibility for the first time.',
-      name: 'Rajesh Kumar',
-      role: 'Head of Operations',
-      company: 'Manufacturing Co.',
-      avatarInit: 'RK',
+        "Development & Automation of reports by KDI has helped us eliminate manual dependencies and expedite decision making. Now we can support better analytics, ad hoc search, scheduled reports, administration and improved UX. KDI & Saurabh's team has completely fulfill our expectations.",
+      name: 'Dana Bailey',
+      role: 'SVP - Analytics',
+      company: 'Enterprise Financial Services',
+      avatarInit: 'DB',
     },
     {
       quote:
-        'Their AI churn model helped us retain 30% more clients. Deep BFSI domain understanding made the difference — they spoke our language from day one.',
-      name: 'Priya Sharma',
-      role: 'VP Analytics',
-      company: 'Financial Services Firm',
-      avatarInit: 'PS',
+        'KDI served our firm well in building MIS Dashboards & predictive models for targeting CRM efforts for our customers. Their client service, coupled with their ability to quickly absorb both business requirements and data complexities, was first rate. I highly recommend this team.',
+      name: 'David Larsen',
+      role: 'Head - IT',
+      company: 'Customer CRM & Tech Solutions',
+      avatarInit: 'DL',
     },
     {
       quote:
-        'From discovery to go-live in 8 weeks. Fast, scalable, easy to manage. Quality and communication throughout were truly exceptional. A trusted partner.',
-      name: 'Anil Mehta',
-      role: 'CTO',
-      company: 'E-commerce Startup',
-      avatarInit: 'AM',
+        'KDI Digital & Web Development team has helped our business reach the next level. Our product interface & admin governance implemented by KDI team is so easy to use, but is nevertheless more powerful than many other readymade products on the market. I recommend KDI for Mobile & Web Development.',
+      name: 'Mary Wells',
+      role: 'CEO',
+      company: 'Ecommerce Global',
+      avatarInit: 'MW',
     },
   ];
 
@@ -36,13 +36,13 @@ export default function TestimonialsSection({ testimonials = [] }) {
   return (
     <section id="testimonials" style={{ background: '#FFFFFF' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 4rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 4rem auto' }}>
           <div className="sec-eye" style={{ justifyContent: 'center' }}>
-            Client Stories
+            Customer Success Stories
           </div>
-          <h2 className="sec-title">What Our Clients Say</h2>
+          <h2 className="sec-title">Your Feedback is Our Strength</h2>
           <p className="sec-sub">
-            Real reviews from enterprise leaders who modernized their data stack and AI operations with us.
+            Real feedback from enterprise leaders who partner with KD Infovision to streamline data and accelerate digital growth.
           </p>
         </div>
 

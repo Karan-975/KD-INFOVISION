@@ -108,24 +108,24 @@ export default function AboutSection({ statCounters = [] }) {
         ...s,
         context:
           idx === 0
-            ? 'Production Cloud & AI Deployments'
+            ? 'Specialized Consultants & Engineers'
             : idx === 1
-            ? 'BFSI, Logistics & Tech Enterprises'
+            ? 'Enterprise & Strategic Partners'
             : idx === 2
-            ? 'Vertical Specializations'
-            : 'SLA Reliability & Architecture Ownership',
+            ? 'Successful Global Deliveries'
+            : 'Cloud, Data & AI Certifications',
       }))
     : [
-        { target: 50, suffix: '+', label: 'Projects Delivered', context: 'Production Cloud & AI Deployments' },
-        { target: 25, suffix: '+', label: 'Enterprise Clients', context: 'BFSI, Logistics & Tech Enterprises' },
-        { target: 8, suffix: '+', label: 'Industries Served', context: 'Cross-Sector Domain Expertise' },
-        { target: 100, suffix: '%', label: 'Architecture Ownership', context: 'Client IP with Zero Vendor Lock-in' },
+        { target: 38, suffix: '+', label: 'Team Members', context: 'Specialized Consultants & Engineers' },
+        { target: 24, suffix: '+', label: 'Happy Clients', context: 'Enterprise & Strategic Partners' },
+        { target: 50, suffix: '+', label: 'Projects Completed', context: 'Successful Global Deliveries' },
+        { target: 60, suffix: '%', label: 'Certified Resources', context: 'Cloud, Data & AI Certifications' },
       ];
 
   const valuePillars = [
-    'Zero Vendor Lock-in (100% Client-Owned Code & IP)',
-    'Enterprise Governance & SOC2-Ready Compliance',
-    'Full-Cycle Engineering: Ingestion to MLOps & BI',
+    'We Only Suggest What You NEED, Not What You LIKE',
+    'KDI Certified Resources to Ensure Quick & Quality Delivery',
+    'The KDI Framework: Adhering to Global Standards & Best Practices',
   ];
 
   return (
@@ -138,7 +138,7 @@ export default function AboutSection({ statCounters = [] }) {
         }}
         className="about-split-grid"
       >
-        {/* Left Story & Narrative: Team Computers-inspired concise layout */}
+        {/* Left Story & Narrative: Authentic KD Infovision story */}
         <div
           style={{
             background: 'var(--navy-dark)',
@@ -150,6 +150,19 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-left-pane"
         >
+          <div
+            style={{
+              fontSize: '0.85rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            We're Your Team In Difficult Times
+          </div>
+
           <h2
             style={{
               fontFamily: 'var(--font-heading)',
@@ -161,19 +174,31 @@ export default function AboutSection({ statCounters = [] }) {
               letterSpacing: '-0.02em',
             }}
           >
-            Transforming Ideas into Action with <span style={{ color: 'var(--blue)' }}>End-to-End IT</span> &amp; Analytics Solutions
+            We Know That Our Clients Are The Key To Our <span style={{ color: 'var(--blue)' }}>Success &amp; Triumph</span>
           </h2>
 
           <p
             style={{
-              fontSize: '1.05rem',
+              fontSize: '1.025rem',
               lineHeight: 1.75,
-              color: 'rgba(255, 255, 255, 0.75)',
-              marginBottom: '1.75rem',
-              maxWidth: '560px',
+              color: 'rgba(255, 255, 255, 0.78)',
+              marginBottom: '1.25rem',
+              maxWidth: '580px',
             }}
           >
-            We are the technology architects behind your digital journey. Over the years, we have become more than a service provider—we are a trusted partner in enterprise digital transformation, engineering scalable cloud lakehouses, production AI systems, and robust software that turn complex challenges into quantifiable business growth.
+            We are a leading technology and AI-driven solutions company specializing in Data &amp; Analytics, Artificial Intelligence, Software Engineering, Web &amp; Mobile Platforms, and Digital Transformation Services. Our expertise extends to building intelligent automation frameworks, scalable cloud architectures, and workforce solutions to empower businesses for the future.
+          </p>
+
+          <p
+            style={{
+              fontSize: '0.95rem',
+              lineHeight: 1.7,
+              color: 'rgba(255, 255, 255, 0.65)',
+              marginBottom: '1.75rem',
+              maxWidth: '580px',
+            }}
+          >
+            By delivering a full spectrum of advanced Data, BI, and AI services, we enable organizations to unlock the true value of their information. We transform raw data into actionable insights that accelerate decision-making, optimize operations, and achieve measurable business outcomes.
           </p>
 
           <div

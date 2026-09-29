@@ -174,22 +174,55 @@ const TECH_LOGOS = {
       </text>
     </svg>
   ),
+
+  domo: (
+    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+      <circle cx="14" cy="17" r="12" fill="#E85D04" />
+      <circle cx="14" cy="17" r="6" fill="#FFFFFF" />
+      <text x="32" y="23" fill="#E85D04" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="900" fontSize="17" letterSpacing="-0.2">
+        DOMO
+      </text>
+    </svg>
+  ),
+
+  spotfire: (
+    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+      <path d="M7 25C7 19 14 15 14 9C14 15 21 19 21 25C21 29 17.5 31 14 31C10.5 31 7 29 7 25Z" fill="#0080FF" />
+      <circle cx="14" cy="24" r="3" fill="#FFA500" />
+      <text x="28" y="23" fill="#052D5D" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
+        Spotfire
+      </text>
+    </svg>
+  ),
+
+  'data science & ml': (
+    <svg viewBox="0 0 160 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+      <circle cx="8" cy="17" r="4.5" fill="#38BDF8" />
+      <circle cx="18" cy="10" r="3.5" fill="#818CF8" />
+      <circle cx="18" cy="24" r="3.5" fill="#34D399" />
+      <line x1="8" y1="17" x2="18" y2="10" stroke="#94A3B8" strokeWidth="1.5" />
+      <line x1="8" y1="17" x2="18" y2="24" stroke="#94A3B8" strokeWidth="1.5" />
+      <text x="28" y="23" fill="#0F172A" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="13.5" letterSpacing="-0.2">
+        Data Science &amp; ML
+      </text>
+    </svg>
+  ),
 };
 
 export default function PartnersMarquee({ partners = [] }) {
   const defaultPartners = [
-    { name: 'Microsoft Azure' },
+    { name: 'Snowflake' },
     { name: 'AWS' },
-    { name: 'Power BI' },
-    { name: 'Qlik' },
+    { name: 'Domo' },
     { name: 'Databricks' },
-    { name: 'Python' },
-    { name: 'Next.js' },
-    { name: 'Laravel' },
+    { name: 'Qlik' },
     { name: 'Tableau' },
-    { name: 'OpenAI' },
-    { name: 'Azure ML' },
-    { name: 'React' },
+    { name: 'Spotfire' },
+    { name: 'Data Science & ML' },
+    { name: 'Power BI' },
+    { name: 'Python' },
+    { name: 'Microsoft Azure' },
+    { name: 'Next.js' },
   ];
 
   const items = partners && partners.length > 0 ? partners : defaultPartners;

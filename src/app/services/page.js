@@ -9,9 +9,9 @@ import Footer from '@/components/public/Footer';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Services & Practice Areas | KD Infovision — Enterprise IT Solutions',
+  title: 'Services & Capabilities | KD Infovision — Consulting | Outsourcing | Digital',
   description:
-    'Explore our enterprise services across Data & AI, Cloud & Infrastructure, Software & Digital Engineering, and Enterprise Managed Services.',
+    'Explore KD Infovision capabilities across Data & Analytics, Data Engineering, Agentic AI, Snowflake, Databricks, AWS, Power BI, and Management Consulting.',
 };
 
 export default async function ServicesPage() {
@@ -38,6 +38,18 @@ export default async function ServicesPage() {
         }}
       >
         <div className="container">
+          <div
+            style={{
+              fontSize: '0.875rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              color: 'var(--blue)',
+              marginBottom: '0.75rem',
+            }}
+          >
+            Our Capabilities
+          </div>
           <h1
             style={{
               fontFamily: 'var(--font-heading)',
@@ -48,18 +60,18 @@ export default async function ServicesPage() {
               marginBottom: '1.25rem',
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            With Our Expertise, We Make Your Work <span style={{ color: 'var(--blue)' }}>Easier and Faster</span>
           </h1>
           <p
             style={{
-              maxWidth: '660px',
+              maxWidth: '680px',
               margin: '0 auto',
               fontSize: '1.05rem',
-              color: 'rgba(255, 255, 255, 0.75)',
+              color: 'rgba(255, 255, 255, 0.78)',
               lineHeight: 1.7,
             }}
           >
-            From modern cloud lakehouses and real-time streaming architectures to production AI pipelines and 24/7 managed infrastructure.
+            From Data &amp; Analytics and Data Engineering to Agentic AI, BI Visualization, and Strategic Management Consulting.
           </p>
         </div>
       </div>
