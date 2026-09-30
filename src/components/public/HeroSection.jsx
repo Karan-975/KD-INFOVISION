@@ -79,7 +79,7 @@ export default function HeroSection({ slides = [] }) {
           headline: s.headline || fallback.headline,
           headlineEmp: s.headlineEmp || fallback.headlineEmp,
           subtext: s.subtext || fallback.subtext,
-          image: '/images/hero_skyline.jpg', // Strictly enforce this single hero image
+          image: '/images/hero_skyline.jpg',
           alt: `${s.headline || ''} ${s.headlineEmp || ''}`.trim() || fallback.alt,
           themeColor: fallback.themeColor,
           primaryBtn: s.primaryBtn || fallback.primaryBtn,
@@ -117,351 +117,327 @@ export default function HeroSection({ slides = [] }) {
   ];
 
   return (
-    <section
-      id="hero"
-      style={{
-        position: 'relative',
-        minHeight: 'clamp(820px, 92vh, 1050px)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        background: '#02122B',
-        paddingTop: 'clamp(85px, 10vh, 110px)',
-        paddingBottom: '2rem',
-        overflow: 'hidden',
-        color: '#FFFFFF',
-      }}
-    >
-      {/* SINGLE DEDICATED HERO IMAGE: Shanghai Twilight Skyline */}
-      <div
+    <>
+      <section
+        id="hero"
         style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: 'none',
+          position: 'relative',
+          // Matches the natural 2.2:1 aspect ratio of the 2560x1160 skyline image for full-size viewing
+          minHeight: 'clamp(520px, 45.4vw, 780px)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          background: '#02122B',
+          paddingTop: 'clamp(70px, 7vw, 95px)',
+          paddingBottom: 'clamp(2rem, 4vw, 3.5rem)',
           overflow: 'hidden',
-          backgroundColor: '#02122B',
+          color: '#FFFFFF',
         }}
       >
-        <img
-          src="/images/hero_skyline.jpg"
-          alt="KD Infovision Global Skyline"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 42%',
-            opacity: 0.90,
-            display: 'block',
-          }}
-        />
-
-        {/* Directional Contrast Mask: keeps left-side typography crisp while letting the golden skyline glow on the right */}
+        {/* SINGLE DEDICATED HERO IMAGE: Shanghai Twilight Skyline (Full Size & High-DPI Quality) */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background:
-              'linear-gradient(90deg, rgba(2, 18, 43, 0.92) 0%, rgba(2, 18, 43, 0.72) 40%, rgba(2, 18, 43, 0.28) 72%, rgba(2, 18, 43, 0.10) 100%)',
-          }}
-        />
-
-        {/* Top Vignette (blends into fixed navbar) */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '100px',
-            background: 'linear-gradient(to bottom, rgba(2, 18, 43, 0.55) 0%, transparent 100%)',
-          }}
-        />
-
-        {/* Bottom Vignette */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '110px',
-            background: 'linear-gradient(to top, rgba(2, 18, 43, 0.92) 0%, transparent 100%)',
-          }}
-        />
-      </div>
-
-      {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
-      <div
-        className="container"
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          flex: 1,
-        }}
-      >
-        {/* Content Block */}
-        <div
-          style={{
-            maxWidth: '820px',
-            marginTop: 'clamp(1.5rem, 4vh, 3rem)',
-            marginBottom: 'clamp(4rem, 10vh, 8rem)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            overflow: 'hidden',
+            backgroundColor: '#02122B',
           }}
         >
-          {/* Tagline Badge */}
-          {active.tag && (
-            <div
-              key={active.id + '-tag'}
+          <img
+            src="/images/hero_skyline.jpg"
+            alt="KD Infovision Global Skyline"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              opacity: 1,
+              display: 'block',
+              imageRendering: '-webkit-optimize-contrast',
+            }}
+          />
+
+          {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and crystal-clear) */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(90deg, rgba(2, 14, 35, 0.88) 0%, rgba(2, 14, 35, 0.72) 36%, rgba(2, 14, 35, 0.22) 58%, transparent 78%)',
+            }}
+          />
+        </div>
+
+        {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
+        <div
+          className="container"
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          {/* Content Block */}
+          <div
+            style={{
+              maxWidth: '780px',
+              paddingRight: '1rem',
+            }}
+          >
+            {/* Tagline Badge */}
+            {active.tag && (
+              <div
+                key={active.id + '-tag'}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '6px 14px',
+                  borderRadius: '9999px',
+                  background: 'rgba(2, 14, 35, 0.65)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.22)',
+                  color: '#FFFFFF',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                  animation: 'hero-text-in 0.35s ease forwards',
+                }}
+              >
+                <span
+                  style={{
+                    width: '7px',
+                    height: '7px',
+                    borderRadius: '50%',
+                    background: active.themeColor,
+                    boxShadow: `0 0 8px ${active.themeColor}`,
+                  }}
+                />
+                <span>{active.tag}</span>
+              </div>
+            )}
+
+            {/* Headline */}
+            <h1
+              key={active.id + '-headline'}
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 14px',
-                borderRadius: '9999px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2.1rem, 3.8vw, 3.6rem)',
+                fontWeight: 800,
                 color: '#FFFFFF',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                marginBottom: '1.25rem',
-                animation: 'hero-text-in 0.35s ease forwards',
+                lineHeight: 1.15,
+                letterSpacing: '-0.025em',
+                marginBottom: '1.15rem',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.6)',
+                animation: 'hero-text-in 0.4s ease forwards',
               }}
             >
+              {active.headline}{' '}
               <span
                 style={{
-                  width: '7px',
-                  height: '7px',
-                  borderRadius: '50%',
-                  background: active.themeColor,
-                  boxShadow: `0 0 8px ${active.themeColor}`,
+                  color: active.themeColor,
+                  position: 'relative',
+                  display: 'inline-block',
+                  transition: 'color 0.3s ease',
+                  textShadow: `0 0 24px ${active.themeColor}aa, 0 2px 10px rgba(0,0,0,0.9)`,
                 }}
-              />
-              <span>{active.tag}</span>
-            </div>
-          )}
+              >
+                {active.headlineEmp}
+              </span>
+            </h1>
 
-          {/* Headline */}
-          <h1
-            key={active.id + '-headline'}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2.35rem, 4.4vw, 4rem)',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              lineHeight: 1.15,
-              letterSpacing: '-0.025em',
-              marginBottom: '1.25rem',
-              textShadow: '0 2px 18px rgba(0, 0, 0, 0.85)',
-              animation: 'hero-text-in 0.4s ease forwards',
-            }}
-          >
-            {active.headline}{' '}
-            <span
+            {/* Subtext */}
+            <p
+              key={active.id + '-subtext'}
               style={{
-                color: active.themeColor,
-                position: 'relative',
-                display: 'inline-block',
-                transition: 'color 0.3s ease',
-                textShadow: `0 0 28px ${active.themeColor}88`,
+                fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
+                lineHeight: 1.7,
+                color: '#FFFFFF',
+                maxWidth: '680px',
+                marginBottom: '1.75rem',
+                textShadow: '0 2px 12px rgba(0, 0, 0, 0.95)',
+                animation: 'hero-text-in 0.4s ease forwards',
               }}
             >
-              {active.headlineEmp}
-            </span>
-          </h1>
+              {active.subtext}
+            </p>
 
-          {/* Subtext */}
-          <p
-            key={active.id + '-subtext'}
+            {/* Action CTA Buttons */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+                flexWrap: 'wrap',
+                animation: 'hero-text-in 0.4s ease forwards',
+              }}
+            >
+              <Link
+                href={active.primaryUrl || '/contact'}
+                style={{
+                  backgroundColor: '#027A48',
+                  color: '#FFFFFF',
+                  borderRadius: '9999px',
+                  padding: '0.75rem 1.8rem',
+                  fontSize: '0.925rem',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 16px rgba(2, 122, 72, 0.45)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#026038';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(2, 122, 72, 0.55)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#027A48';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(2, 122, 72, 0.45)';
+                }}
+              >
+                <span>{active.primaryBtn || 'Get Started'}</span>
+                <ArrowRight size={16} />
+              </Link>
+
+              <Link
+                href={active.secUrl || '/services'}
+                style={{
+                  backgroundColor: 'rgba(2, 14, 35, 0.6)',
+                  color: '#FFFFFF',
+                  borderRadius: '9999px',
+                  padding: '0.75rem 1.6rem',
+                  fontSize: '0.925rem',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  backdropFilter: 'blur(8px)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(2, 14, 35, 0.6)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span>{active.secBtn || 'Explore Solutions'}</span>
+              </Link>
+            </div>
+
+            {/* Minimalist Slide Indicators */}
+            {total > 1 && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginTop: '1.75rem',
+                  paddingLeft: '2px',
+                }}
+              >
+                {carouselSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentSlide(idx)}
+                    aria-label={`Slide ${idx + 1}`}
+                    style={{
+                      width: currentSlide === idx ? '36px' : '14px',
+                      height: '4px',
+                      borderRadius: '4px',
+                      background: currentSlide === idx ? active.themeColor : 'rgba(255, 255, 255, 0.4)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.35s ease',
+                      padding: 0,
+                      boxShadow: currentSlide === idx ? `0 0 10px ${active.themeColor}` : 'none',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* DEDICATED ENTERPRISE TECHNOLOGY PARTNERS RIBBON (Placed below hero to keep skyline 100% unobstructed) */}
+      <div
+        style={{
+          background: '#021024',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid rgba(5, 45, 93, 0.12)',
+          padding: '1.1rem 1.5rem',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+        }}
+      >
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div
             style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.8,
-              color: 'rgba(255, 255, 255, 0.95)',
-              maxWidth: '700px',
-              marginBottom: '2rem',
-              textShadow: '0 2px 12px rgba(0, 0, 0, 0.85)',
-              animation: 'hero-text-in 0.4s ease forwards',
+              fontSize: '0.68rem',
+              fontWeight: 800,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              color: 'rgba(255, 255, 255, 0.55)',
+              marginBottom: '0.65rem',
+              textAlign: 'center',
             }}
           >
-            {active.subtext}
-          </p>
+            ENTERPRISE TECHNOLOGY PARTNERS & ECOSYSTEM
+          </div>
 
-          {/* Action CTA Buttons */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '14px',
+              justifyContent: 'center',
+              gap: '10px',
               flexWrap: 'wrap',
-              animation: 'hero-text-in 0.4s ease forwards',
             }}
           >
-            <Link
-              href={active.primaryUrl || '/contact'}
-              style={{
-                backgroundColor: '#027A48',
-                color: '#FFFFFF',
-                borderRadius: '9999px',
-                padding: '0.75rem 1.8rem',
-                fontSize: '0.95rem',
-                fontWeight: 700,
-                textDecoration: 'none',
-                boxShadow: '0 4px 16px rgba(2, 122, 72, 0.4)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#026038';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(2, 122, 72, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#027A48';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(2, 122, 72, 0.4)';
-              }}
-            >
-              <span>{active.primaryBtn || 'Get Started'}</span>
-              <ArrowRight size={16} />
-            </Link>
-
-            <Link
-              href={active.secUrl || '/services'}
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#FFFFFF',
-                borderRadius: '9999px',
-                padding: '0.75rem 1.6rem',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                textDecoration: 'none',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
-                backdropFilter: 'blur(8px)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.45)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <span>{active.secBtn || 'Explore Solutions'}</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* BOTTOM DOCKED AREA: Ecosystem Ribbon & Slide Indicators */}
-        <div style={{ width: '100%', marginTop: 'auto' }}>
-          {/* Enterprise Cloud & Technology Ecosystem Ribbon */}
-          <div
-            style={{
-              padding: '0.8rem 1.5rem',
-              borderRadius: '14px',
-              background: 'rgba(2, 18, 43, 0.65)',
-              backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-            }}
-          >
-            <div
-              style={{
-                fontSize: '0.7rem',
-                fontWeight: 800,
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(255, 255, 255, 0.6)',
-                marginBottom: '0.85rem',
-                textAlign: 'center',
-              }}
-            >
-              ENTERPRISE TECHNOLOGY PARTNERS & ECOSYSTEM
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '12px',
-                flexWrap: 'wrap',
-              }}
-            >
-              {techEcosystem.map((tech, idx) => {
-                const TechIcon = tech.icon;
-                return (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      padding: '5px 14px',
-                      borderRadius: '9999px',
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      color: '#FFFFFF',
-                      fontSize: '0.775rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.2px',
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <TechIcon size={14} style={{ color: tech.color }} />
-                    <span>{tech.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Minimalist Slide Progress Indicators */}
-          {total > 1 && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                marginTop: '1.25rem',
-                paddingLeft: '4px',
-              }}
-            >
-              {carouselSlides.map((_, idx) => (
-                <button
+            {techEcosystem.map((tech, idx) => {
+              const TechIcon = tech.icon;
+              return (
+                <div
                   key={idx}
-                  type="button"
-                  onClick={() => setCurrentSlide(idx)}
-                  aria-label={`Slide ${idx + 1}`}
                   style={{
-                    width: currentSlide === idx ? '40px' : '16px',
-                    height: '5px',
-                    borderRadius: '4px',
-                    background: currentSlide === idx ? active.themeColor : 'rgba(255, 255, 255, 0.35)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.35s ease',
-                    padding: 0,
-                    boxShadow: currentSlide === idx ? `0 0 10px ${active.themeColor}88` : 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '5px 13px',
+                    borderRadius: '9999px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#FFFFFF',
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.2px',
+                    transition: 'all 0.2s ease',
                   }}
-                />
-              ))}
-            </div>
-          )}
+                >
+                  <TechIcon size={13} style={{ color: tech.color }} />
+                  <span>{tech.name}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -469,7 +445,7 @@ export default function HeroSection({ slides = [] }) {
         @keyframes hero-text-in {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(8px);
           }
           to {
             opacity: 1;
@@ -477,6 +453,6 @@ export default function HeroSection({ slides = [] }) {
           }
         }
       `}</style>
-    </section>
+    </>
   );
 }
