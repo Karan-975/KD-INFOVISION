@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 function CounterItem({ target, suffix, label, context }) {
@@ -42,38 +43,40 @@ function CounterItem({ target, suffix, label, context }) {
       ref={ref}
       style={{
         padding: '1.5rem 1.25rem',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        border: '1px solid rgba(255, 250, 101, 0.12)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        background: 'rgba(255, 255, 255, 0.025)',
+        background: 'rgba(255, 255, 255, 0.03)',
         borderRadius: '12px',
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(21, 138, 226, 0.1)';
-        e.currentTarget.style.borderColor = 'rgba(21, 138, 226, 0.35)';
+        e.currentTarget.style.background = 'rgba(29, 202, 246, 0.08)';
+        e.currentTarget.style.borderColor = 'rgba(29, 202, 246, 0.4)';
         e.currentTarget.style.transform = 'translateY(-2px)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.025)';
-        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+        e.currentTarget.style.borderColor = 'rgba(255, 250, 101, 0.12)';
         e.currentTarget.style.transform = 'translateY(0)';
       }}
     >
       <div
         style={{
-          fontFamily: 'var(--font-heading)',
+          fontFamily: "'Montserrat', sans-serif",
           fontSize: 'clamp(2rem, 2.6vw, 2.75rem)',
           fontWeight: 800,
-          color: '#FFFFFF',
+          background: 'linear-gradient(91.06deg, #1DCAF6 0%, #08B066 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
           lineHeight: 1,
           marginBottom: '0.4rem',
           letterSpacing: '-0.02em',
         }}
       >
         {count}
-        <span style={{ color: 'var(--blue)' }}>{suffix}</span>
+        <span>{suffix}</span>
       </div>
       <div
         style={{
@@ -83,6 +86,7 @@ function CounterItem({ target, suffix, label, context }) {
           textTransform: 'uppercase',
           letterSpacing: '0.6px',
           marginBottom: '0.2rem',
+          fontFamily: "'Montserrat', sans-serif",
         }}
       >
         {label}
@@ -91,7 +95,7 @@ function CounterItem({ target, suffix, label, context }) {
         <div
           style={{
             fontSize: '0.725rem',
-            color: 'rgba(255, 255, 255, 0.6)',
+            color: 'rgba(255, 255, 255, 0.65)',
             lineHeight: 1.35,
           }}
         >
@@ -129,7 +133,7 @@ export default function AboutSection({ statCounters = [] }) {
   ];
 
   return (
-    <section id="about" style={{ padding: 0, background: 'var(--navy-dark)' }}>
+    <section id="about" style={{ padding: 0, background: '#000000', color: '#ffffff' }}>
       <div
         style={{
           display: 'grid',
@@ -138,15 +142,15 @@ export default function AboutSection({ statCounters = [] }) {
         }}
         className="about-split-grid"
       >
-        {/* Left Story & Narrative: Authentic KD Infovision story */}
+        {/* Left Story & Narrative */}
         <div
           style={{
-            background: 'var(--navy-dark)',
+            background: '#000000',
             padding: '5rem 4.5rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            borderRight: '1px solid rgba(255, 255, 255, 0.06)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.08)',
           }}
           className="about-left-pane"
         >
@@ -156,16 +160,17 @@ export default function AboutSection({ statCounters = [] }) {
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '1.5px',
-              color: 'var(--blue)',
+              color: '#fffa65',
               marginBottom: '0.75rem',
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
-            We're Your Team In Difficult Times
+            WE'RE YOUR PARTNER IN CRITICAL MOMENTS
           </div>
 
           <h2
             style={{
-              fontFamily: 'var(--font-heading)',
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 'clamp(2rem, 3vw, 2.75rem)',
               color: '#FFFFFF',
               lineHeight: 1.18,
@@ -174,26 +179,35 @@ export default function AboutSection({ statCounters = [] }) {
               letterSpacing: '-0.02em',
             }}
           >
-            We Know That Our Clients Are The Key To Our <span style={{ color: 'var(--blue)' }}>Success &amp; Triumph</span>
+            We Know That Our Clients Are The Key To Our{' '}
+            <span
+              style={{
+                background: 'linear-gradient(259.44deg, #E8F073 30.39%, rgb(0 255 200 / .99) 90.57%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Success &amp; Triumph
+            </span>
           </h2>
 
           <p
             style={{
               fontSize: '1.025rem',
               lineHeight: 1.75,
-              color: 'rgba(255, 255, 255, 0.78)',
+              color: 'rgba(255, 255, 255, 0.85)',
               marginBottom: '1.25rem',
               maxWidth: '580px',
             }}
           >
-            We are a leading technology and AI-driven solutions company specializing in Data &amp; Analytics, Artificial Intelligence, Software Engineering, Web &amp; Mobile Platforms, and Digital Transformation Services. Our expertise extends to building intelligent automation frameworks, scalable cloud architectures, and workforce solutions to empower businesses for the future.
+            KD Infovision is a premier technology and AI solutions consulting firm specializing in Data &amp; Analytics, Modern Lakehouses, Autonomous Agentic AI, and Enterprise Cloud Transformation.
           </p>
 
           <p
             style={{
               fontSize: '0.95rem',
               lineHeight: 1.7,
-              color: 'rgba(255, 255, 255, 0.65)',
+              color: 'rgba(255, 255, 255, 0.7)',
               marginBottom: '1.75rem',
               maxWidth: '580px',
             }}
@@ -216,52 +230,46 @@ export default function AboutSection({ statCounters = [] }) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  color: 'rgba(255, 255, 255, 0.9)',
+                  color: 'rgba(255, 255, 255, 0.92)',
                   fontSize: '0.925rem',
                   fontWeight: 500,
                 }}
               >
-                <CheckCircle2 size={18} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+                <CheckCircle2 size={18} style={{ color: '#fffa65', flexShrink: 0 }} />
                 <span>{pillar}</span>
               </div>
             ))}
           </div>
 
           <div>
-            <a
-              href="#solutions"
+            <Link
+              href="/about"
+              className="about-tc-learn-more"
               style={{
+                background: 'linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%)',
+                padding: '12px 34px',
+                borderRadius: '40px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                fontSize: '0.95rem',
-                fontWeight: 700,
+                gap: '10px',
                 color: '#FFFFFF',
-                background: 'var(--blue)',
-                padding: '0.85rem 1.6rem',
-                borderRadius: '8px',
+                fontSize: '15px',
+                fontWeight: 600,
+                fontFamily: "'Montserrat', sans-serif",
                 textDecoration: 'none',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#0E70BA';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'var(--blue)';
-                e.currentTarget.style.transform = 'translateY(0)';
+                transition: 'all 0.4s ease',
               }}
             >
-              Explore Solutions &amp; Practices
-              <ArrowRight size={18} />
-            </a>
+              <span>Explore Our Story</span>
+              <img src="/images/learn-more-arrow.svg" alt="arrow" style={{ width: '15px' }} />
+            </Link>
           </div>
         </div>
 
         {/* Right Pane: Team Photography Visual + 4 Metric Counters */}
         <div
           style={{
-            background: 'var(--navy)',
+            background: '#050508',
             padding: '4rem 3.5rem',
             display: 'flex',
             flexDirection: 'column',
@@ -270,14 +278,14 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-right-pane"
         >
-          {/* Authentic Engineering Team Collaboration Visual */}
+          {/* Engineering Team Visual */}
           <div
             style={{
               position: 'relative',
               borderRadius: '16px',
               overflow: 'hidden',
-              boxShadow: '0 16px 40px rgba(0, 0, 0, 0.3)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              boxShadow: '0 16px 40px rgba(0, 0, 0, 0.6)',
+              border: '1px solid rgba(255, 250, 101, 0.2)',
               aspectRatio: '16 / 9',
             }}
           >
@@ -296,7 +304,7 @@ export default function AboutSection({ statCounters = [] }) {
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, transparent 40%, rgba(5, 45, 93, 0.85) 100%)',
+                background: 'linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%)',
               }}
             />
             <div
@@ -336,6 +344,13 @@ export default function AboutSection({ statCounters = [] }) {
       </div>
 
       <style jsx>{`
+        .about-tc-learn-more:hover {
+          background: linear-gradient(93.05deg, #0DB16A -14.26%, #1EC9F2 85.74%) !important;
+          transform: translateY(-2px);
+        }
+        .about-tc-learn-more:hover img {
+          transform: translateX(4px);
+        }
         @media (max-width: 960px) {
           :global(.about-split-grid) {
             grid-template-columns: 1fr !important;
