@@ -57,22 +57,22 @@ export default function TeamComputersAboutView({
     {
       title: 'Innovation',
       iconUrl: '/images/core-value-ico.svg',
-      desc: 'We encourage relentless creativity to develop advanced data lakehouses, intelligent streaming pipelines, and autonomous AI agents that drive digital transformation.',
+      desc: 'We encourage creativity to develop advanced, cutting-edge solutions that drive industry progress.',
     },
     {
       title: 'Integrity',
       iconUrl: '/images/core-value-ico1.svg',
-      desc: 'We uphold honesty, transparent governance, and strict zero-trust data protocols across every enterprise client engagement and cloud deployment.',
+      desc: 'We uphold honesty, transparency, and ethical practices in all our business dealings.',
     },
     {
-      title: 'Customer Centricity',
+      title: 'Teamwork',
       iconUrl: '/images/core-value-ico2.svg',
-      desc: 'We only suggest what you NEED, not what you LIKE. We prioritize genuine enterprise ROI over hype, engineering scalable architectures with zero architectural bloat.',
+      desc: 'We collaborate effectively, leveraging diverse skills to achieve common goals and exceed expectations.',
     },
     {
-      title: 'Engineering Excellence',
+      title: 'Sustainability',
       iconUrl: '/images/core-value-ico3.svg',
-      desc: 'Adhering to the KDI Framework, global delivery standards, certified talent (60%+ certified), and rigorous SLAs for sub-second query performance and 99.99% uptime.',
+      desc: 'We are committed to eco-friendly practices, ensuring responsible resource management and environmental stewardship.',
     },
   ];
 
@@ -273,8 +273,8 @@ export default function TeamComputersAboutView({
       >
         <div className="container">
           <div className="head wow fadeInUp">
-            <span>THE DNA OF OUR SUCCESS</span>
-            <h2>Our Core Values</h2>
+            <span style={{ color: '#000000' }}>THE DNA OF OUR SUCCESS</span>
+            <h2 style={{ color: '#000000' }}>Our Core Values</h2>
           </div>
 
           <div className="our-core-main">
@@ -283,8 +283,8 @@ export default function TeamComputersAboutView({
                 <div className="our-core-ico">
                   <img src={val.iconUrl} alt={val.title} />
                 </div>
-                <h3>{val.title}</h3>
-                <p>{val.desc}</p>
+                <h3 style={{ color: '#000000' }}>{val.title}</h3>
+                <p style={{ color: '#000000' }}>{val.desc}</p>
               </div>
             ))}
           </div>
@@ -758,6 +758,33 @@ export default function TeamComputersAboutView({
            ------------------------------------------------------------- */
         .tc-about-root .our-core-values {
           padding: 80px 0 60px;
+          background: url(/images/core-value-bg.webp) no-repeat center center;
+          background-size: cover;
+        }
+
+        .tc-about-root .our-core-values .head {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .tc-about-root .our-core-values .head span {
+          color: #000000 !important;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 10px;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .tc-about-root .our-core-values .head h2 {
+          color: #000000 !important;
+          font-size: clamp(34px, 4vw, 48px);
+          font-weight: 700;
+          line-height: 1.25;
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
         }
 
         .tc-about-root .our-core-main {
@@ -769,7 +796,7 @@ export default function TeamComputersAboutView({
         .tc-about-root .our-core-bx {
           width: calc(50% - 15px);
           padding: 55px 50px 30px;
-          background: url(/images/core-bg1.webp) no-repeat;
+          background: url(/images/core-bg1.webp) no-repeat center center;
           background-size: 100% 100%;
           position: relative;
           margin-bottom: 30px;
@@ -778,7 +805,7 @@ export default function TeamComputersAboutView({
         }
 
         .tc-about-root .our-core-bx:hover {
-          background: url(/images/core-bg1-hover.png) no-repeat;
+          background: url(/images/core-bg1-hover.png) no-repeat center center;
           background-size: 100% 100%;
           transform: translateY(-4px);
         }
@@ -795,6 +822,11 @@ export default function TeamComputersAboutView({
           background: url(/images/core-ico-bg.webp) no-repeat center center;
           background-size: contain;
           border-radius: 100%;
+          transition: transform 0.3s ease;
+        }
+
+        .tc-about-root .our-core-bx:hover .our-core-ico {
+          transform: scale(1.08);
         }
 
         .tc-about-root .our-core-ico img {
@@ -808,7 +840,7 @@ export default function TeamComputersAboutView({
           line-height: 124%;
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
-          color: #ffffff;
+          color: #000000 !important;
           margin: 0 0 12px 0;
         }
 
@@ -816,8 +848,10 @@ export default function TeamComputersAboutView({
           font-size: 16px;
           line-height: 25px;
           margin-bottom: 0;
-          color: #e2e8f0;
-          opacity: 0.95;
+          color: #000000 !important;
+          opacity: 1 !important;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
         }
 
         @media (max-width: 767px) {
