@@ -92,7 +92,7 @@ export default function HeroSection({ slides = [] }) {
             textAlign: 'center',
           }}
         >
-          {/* Tagline: Free in the center (No box, no dot) */}
+          {/* Tagline: Free in the center (No box, no dot, managed gap) */}
           <div
             style={{
               color: '#CBD5E1',
@@ -100,7 +100,7 @@ export default function HeroSection({ slides = [] }) {
               fontWeight: 700,
               letterSpacing: '2.5px',
               textTransform: 'uppercase',
-              marginBottom: '1rem',
+              marginBottom: '0.45rem',
               textShadow: '0 2px 12px rgba(0, 0, 0, 0.9)',
             }}
           >
@@ -171,7 +171,7 @@ export default function HeroSection({ slides = [] }) {
             </span>
           </h1>
 
-          {/* Centered Action CTA Button */}
+          {/* Centered Action CTA Button (Removed green, replaced with KD brand blue) */}
           <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
@@ -179,7 +179,7 @@ export default function HeroSection({ slides = [] }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#027A48',
+                background: 'linear-gradient(135deg, #158AE2 0%, #0A66C2 100%)',
                 color: '#FFFFFF',
                 borderRadius: '9999px',
                 padding: '0.72rem 1.85rem',
@@ -187,18 +187,19 @@ export default function HeroSection({ slides = [] }) {
                 fontWeight: 700,
                 letterSpacing: '0.01em',
                 textDecoration: 'none',
-                boxShadow: '0 4px 16px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)',
+                boxShadow: '0 4px 18px rgba(21, 138, 226, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#026038';
+                e.currentTarget.style.background = 'linear-gradient(135deg, #0D7CD4 0%, #0855A5 100%)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 22px rgba(2, 122, 72, 0.65)';
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(21, 138, 226, 0.65)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#027A48';
+                e.currentTarget.style.background = 'linear-gradient(135deg, #158AE2 0%, #0A66C2 100%)';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(21, 138, 226, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3)';
               }}
             >
               <span>Get Started</span>

@@ -97,7 +97,7 @@ export default function Navbar({ settings }) {
 
   return (
     <>
-      {/* Main Header matching reference design */}
+      {/* Main Header matching reference design with translucent dark twilight background */}
       <header
         style={{
           position: 'fixed',
@@ -106,12 +106,12 @@ export default function Navbar({ settings }) {
           right: 0,
           zIndex: 1000,
           height: '55px',
-          background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : '#FFFFFF',
+          background: isScrolled ? 'rgba(2, 14, 38, 0.90)' : 'rgba(2, 14, 38, 0.65)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(5, 45, 93, 0.08)',
-          boxShadow: isScrolled ? '0 4px 20px rgba(5, 45, 93, 0.06)' : 'none',
-          transition: 'background-color 0.25s ease, box-shadow 0.25s ease',
+          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: isScrolled ? '0 8px 24px rgba(0, 0, 0, 0.35)' : 'none',
+          transition: 'background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
         }}
       >
         <div
@@ -139,11 +139,11 @@ export default function Navbar({ settings }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--navy)',
+                color: '#FFFFFF',
                 transition: 'background-color 0.2s ease, transform 0.15s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(5, 45, 93, 0.07)';
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.12)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
@@ -166,9 +166,9 @@ export default function Navbar({ settings }) {
                 src="/logo-mark.png"
                 alt="KD Infovision"
                 style={{
-                  height: 'clamp(36px, 4vw, 42px)',
+                  height: 'clamp(34px, 3.8vw, 38px)',
                   width: 'auto',
-                  maxHeight: '46px',
+                  maxHeight: '42px',
                   objectFit: 'contain',
                   display: 'block',
                   transition: 'opacity 0.2s ease',
@@ -187,7 +187,7 @@ export default function Navbar({ settings }) {
                 aria-haspopup="true"
                 aria-expanded={profileDropdownOpen}
                 style={{
-                  background: profileDropdownOpen ? 'rgba(5, 45, 93, 0.08)' : 'transparent',
+                  background: profileDropdownOpen ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
                   border: 'none',
                   cursor: 'pointer',
                   padding: '8px',
@@ -195,11 +195,11 @@ export default function Navbar({ settings }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--navy)',
+                  color: '#FFFFFF',
                   transition: 'background-color 0.2s ease, transform 0.15s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(5, 45, 93, 0.08)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.12)';
                 }}
                 onMouseLeave={(e) => {
                   if (!profileDropdownOpen) {
