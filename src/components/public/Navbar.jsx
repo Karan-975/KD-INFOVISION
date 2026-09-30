@@ -3,14 +3,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  Menu, 
-  X, 
-  User, 
-  ChevronRight, 
-  Phone, 
-  Mail, 
-  MapPin, 
+import {
+  Menu,
+  X,
+  User,
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin,
   ArrowRight,
   Shield,
   LogIn,
@@ -105,7 +105,7 @@ export default function Navbar({ settings }) {
           left: 0,
           right: 0,
           zIndex: 1000,
-          height: '72px',
+          height: '55px',
           background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : '#FFFFFF',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
