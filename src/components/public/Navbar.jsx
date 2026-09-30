@@ -97,7 +97,7 @@ export default function Navbar({ settings }) {
 
   return (
     <>
-      {/* Main Header matching reference design with translucent dark twilight background */}
+      {/* Main Header with transparent glass background that does not darken the top sky */}
       <header
         style={{
           position: 'fixed',
@@ -106,12 +106,12 @@ export default function Navbar({ settings }) {
           right: 0,
           zIndex: 1000,
           height: '55px',
-          background: isScrolled ? 'rgba(2, 14, 38, 0.90)' : 'rgba(2, 14, 38, 0.65)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(255, 255, 255, 0.08)',
+          background: isScrolled ? 'rgba(2, 14, 38, 0.85)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(16px)' : 'blur(4px)',
+          WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'blur(4px)',
+          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
           boxShadow: isScrolled ? '0 8px 24px rgba(0, 0, 0, 0.35)' : 'none',
-          transition: 'background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
+          transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
         }}
       >
         <div
@@ -327,34 +327,34 @@ export default function Navbar({ settings }) {
               )}
             </div>
 
-            {/* "Get started" Forest Green Pill Button */}
+            {/* "Get started" Clean Transparent Outline Pill Button */}
             <Link
               href="/contact"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: '#027A48',
+                backgroundColor: 'transparent',
                 color: '#FFFFFF',
                 borderRadius: '9999px',
-                padding: '0.55rem 1.4rem',
-                fontSize: '0.875rem',
-                fontWeight: 700,
+                border: '1.5px solid rgba(255, 255, 255, 0.75)',
+                padding: '0.45rem 1.3rem',
+                fontSize: '0.85rem',
+                fontWeight: 600,
                 textDecoration: 'none',
-                letterSpacing: '0.01em',
-                boxShadow: '0 2px 6px rgba(2, 122, 72, 0.25)',
-                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                letterSpacing: '0.02em',
+                transition: 'all 0.2s ease',
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#026038';
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = '#FFFFFF';
                 e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(2, 122, 72, 0.35)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#027A48';
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.75)';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 2px 6px rgba(2, 122, 72, 0.25)';
               }}
             >
               Get started
