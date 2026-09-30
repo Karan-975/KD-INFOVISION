@@ -94,33 +94,39 @@ export default function TeamComputersServicesView({
   const whyChoosePillars = [
     {
       title: 'Enhanced Efficiency & Productivity',
+      iconUrl: '/images/Enhanced-Efficiency-Productivity.png',
       icon: TrendingUp,
       desc: 'Our enterprise data services streamline complex pipelines, eliminate reporting bottlenecks, and optimize query speeds—delivering sub-second insight latency.',
     },
     {
       title: 'Advanced Security & Compliance',
+      iconUrl: '/images/Advanced-Security-Compliance.png',
       icon: ShieldCheck,
       desc: 'Zero-trust cloud architecture, granular role-based access controls (RBAC), and continuous regulatory compliance across SOC2, HIPAA, and GDPR standards.',
     },
     {
       title: 'Future-Ready Scalability',
+      iconUrl: '/images/Future-Ready-Infrastructure.png',
       icon: Sparkles,
       desc: 'Architectures engineered on modern Lakehouse patterns with Snowflake, Databricks, and AWS, primed to seamlessly host autonomous Agentic AI workloads.',
     },
     {
       title: 'Device & Data Lifecycle Management',
+      iconUrl: '/images/Device-Lifecycle-Management.png',
       icon: Layers,
-      desc: 'Comprehensive oversight from multi-source streaming ingestion and automated schema validation to real-time feature stores and executive BI cockpits.',
+      desc: 'With KD Infovision you get end-to-end data & IT infrastructure support, covering full asset lifecycle management for seamless operations and optimal performance.',
     },
     {
       title: 'Optimized IT Costs & Cloud FinOps',
+      iconUrl: '/images/Optimized-IT-Costs.png',
       icon: Zap,
-      desc: 'Rigorous FinOps strategies that right-size cluster provisioning, eliminate runaway warehouse compute costs, and maximize ROI on every cloud data dollar.',
+      desc: 'Reduce unnecessary expenses and enhance efficiency through improved resource allocation, powered by modern Lakehouse & FinOps cost optimization frameworks.',
     },
     {
       title: 'Proactive Monitoring & 24/7 Support',
+      iconUrl: '/images/Proactive-Monitoring-Support.png',
       icon: Server,
-      desc: 'Continuous pipeline telemetry, automated anomaly alerts, and dedicated senior engineers ensuring uninterrupted 99.9% uptime for business-critical operations.',
+      desc: 'Our continuous pipeline monitoring services detect and resolve issues before they impact business operations, ensuring uninterrupted reliability and 99.9% uptime.',
     },
   ];
 
@@ -289,7 +295,17 @@ export default function TeamComputersServicesView({
               return (
                 <div key={idx} className="our-experties-bx">
                   <span className="our-ex-ico">
-                    <PillarIcon size={28} strokeWidth={2} />
+                    {pillar.iconUrl ? (
+                      <img
+                        src={pillar.iconUrl}
+                        alt={pillar.title}
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    ) : (
+                      <PillarIcon size={28} strokeWidth={2} />
+                    )}
                   </span>
                   <h3>{pillar.title}</h3>
                   <p>{pillar.desc}</p>
@@ -1029,16 +1045,11 @@ export default function TeamComputersServicesView({
         .tc-services-root .our-experties-bx {
           background: #08080a;
           border: 1px solid #242424;
-          border-radius: 17px;
-          padding: 40px 34px;
-          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .tc-services-root .our-experties-bx:hover {
-          background: #111116;
-          border-color: rgba(255, 250, 101, 0.4);
-          transform: translateY(-7px);
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+          border-radius: 20px;
+          padding: 42px 36px 36px;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+          position: relative;
         }
 
         .tc-services-root .our-ex-ico {
@@ -1052,21 +1063,25 @@ export default function TeamComputersServicesView({
           background: rgba(255, 250, 101, 0.08);
           border: 1px solid rgba(255, 250, 101, 0.25);
           color: #fffa65;
-          transition: all 0.5s ease;
+          transition: all 0.4s ease;
         }
 
-        .tc-services-root .our-experties-bx:hover .our-ex-ico {
-          background: rgba(255, 250, 101, 0.18);
-          transform: scale(1.08);
+        .tc-services-root .our-ex-ico img {
+          max-width: 44px;
+          max-height: 44px;
+          object-fit: contain;
+          transition: transform 0.4s ease;
         }
 
         .tc-services-root .our-experties-bx h3 {
           color: #ffffff;
-          font-size: 22px;
-          font-weight: 600;
+          font-size: 23px;
+          font-weight: 700;
           line-height: 1.3;
-          margin: 0 0 12px 0;
+          margin: 0 0 14px 0;
           min-height: 56px;
+          font-family: 'Montserrat', sans-serif;
+          transition: color 0.3s ease;
         }
 
         .tc-services-root .our-experties-bx p {
@@ -1074,6 +1089,33 @@ export default function TeamComputersServicesView({
           font-size: 15px;
           line-height: 1.65;
           margin: 0;
+          transition: color 0.3s ease;
+        }
+
+        /* EXACT HOVER STATE MATCHING REFERENCE (WHITE CARD WITH BLACK TEXT & YELLOW ICON) */
+        .tc-services-root .our-experties-bx:hover {
+          background: #ffffff !important;
+          border-color: #ffffff !important;
+          transform: translateY(-8px);
+          box-shadow: 0 20px 45px rgba(255, 255, 255, 0.16), 0 12px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .tc-services-root .our-experties-bx:hover .our-ex-ico {
+          background: transparent !important;
+          border-color: transparent !important;
+          transform: scale(1.12);
+        }
+
+        .tc-services-root .our-experties-bx:hover .our-ex-ico img {
+          transform: scale(1.12);
+        }
+
+        .tc-services-root .our-experties-bx:hover h3 {
+          color: #000000 !important;
+        }
+
+        .tc-services-root .our-experties-bx:hover p {
+          color: #1a1a1a !important;
         }
 
         /* -------------------------------------------------------------
