@@ -5,29 +5,23 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection({ slides = [] }) {
-  // Respect user-specified single focused messaging
-  const tag = 'Consulting | Solutioning | Digital';
-  const headlinePrefix = 'Your Partner For';
-  const headlineEmp = '“Empowering Your Enterprise with Intelligent Data & Next-Gen Autonomous Agents”';
-
   return (
     <section
       id="hero"
       style={{
         position: 'relative',
         // Proportional height matching the 2.2:1 aspect ratio of the 2560x1160 skyline photograph
-        minHeight: 'clamp(560px, 48vw, 760px)',
+        minHeight: 'clamp(520px, 46vw, 680px)',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        alignItems: 'center',
         background: '#02122B',
-        paddingTop: 'clamp(85px, 8vw, 110px)',
-        paddingBottom: 'clamp(3rem, 5vw, 4.5rem)',
+        paddingTop: 'clamp(70px, 6vw, 85px)',
+        paddingBottom: 'clamp(2.5rem, 4vw, 4rem)',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
     >
-      {/* SHANGHAI TWILIGHT SKYLINE BACKGROUND (Crisp 2560px QHD Full-Size) */}
+      {/* SHANGHAI TWILIGHT SKYLINE BACKGROUND (Full 2560px QHD Sharp Resolution) */}
       <div
         style={{
           position: 'absolute',
@@ -52,38 +46,38 @@ export default function HeroSection({ slides = [] }) {
           }}
         />
 
-        {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and vibrant) */}
+        {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and unobstructed) */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(90deg, rgba(2, 14, 38, 0.90) 0%, rgba(2, 14, 38, 0.74) 34%, rgba(2, 14, 38, 0.22) 60%, transparent 80%)',
+              'linear-gradient(90deg, rgba(2, 12, 32, 0.86) 0%, rgba(2, 12, 32, 0.68) 28%, rgba(2, 12, 32, 0.16) 48%, transparent 66%)',
           }}
         />
 
-        {/* Subtle Ambient Radial Highlight Behind Text */}
+        {/* Ambient Radial Glow Behind Text Block */}
         <div
           style={{
             position: 'absolute',
-            top: '20%',
-            left: '5%',
-            width: '600px',
-            height: '450px',
-            background: 'radial-gradient(circle, rgba(21, 138, 226, 0.12) 0%, transparent 70%)',
+            top: '25%',
+            left: '3%',
+            width: '500px',
+            height: '380px',
+            background: 'radial-gradient(circle, rgba(21, 138, 226, 0.14) 0%, transparent 70%)',
             pointerEvents: 'none',
           }}
         />
 
-        {/* Subtle Top Gradient for Clean Header Integration */}
+        {/* Subtle Top Gradient for Header Integration */}
         <div
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
-            height: '75px',
-            background: 'linear-gradient(to bottom, rgba(2, 14, 38, 0.45) 0%, transparent 100%)',
+            height: '65px',
+            background: 'linear-gradient(to bottom, rgba(2, 12, 32, 0.4) 0%, transparent 100%)',
           }}
         />
 
@@ -94,8 +88,8 @@ export default function HeroSection({ slides = [] }) {
             bottom: 0,
             left: 0,
             right: 0,
-            height: '80px',
-            background: 'linear-gradient(to top, rgba(2, 14, 38, 0.75) 0%, transparent 100%)',
+            height: '70px',
+            background: 'linear-gradient(to top, rgba(2, 12, 32, 0.7) 0%, transparent 100%)',
           }}
         />
       </div>
@@ -107,15 +101,15 @@ export default function HeroSection({ slides = [] }) {
           position: 'relative',
           zIndex: 2,
           width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
         }}
       >
         <div
           style={{
-            maxWidth: '880px',
-            paddingRight: '1rem',
+            // Constrain width to 540px so text never collides with the Oriental Pearl Tower or skyscrapers!
+            maxWidth: '540px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           }}
         >
           {/* Tagline Badge */}
@@ -124,35 +118,35 @@ export default function HeroSection({ slides = [] }) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '7px 18px',
+              padding: '6px 14px',
               borderRadius: '9999px',
-              background: 'rgba(2, 14, 38, 0.72)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.22)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
-              marginBottom: '1.25rem',
+              background: 'rgba(2, 14, 38, 0.68)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.35)',
+              marginBottom: '1rem',
             }}
           >
             <span
               style={{
-                width: '8px',
-                height: '8px',
+                width: '7px',
+                height: '7px',
                 borderRadius: '50%',
                 background: '#38BDF8',
-                boxShadow: '0 0 10px #38BDF8',
+                boxShadow: '0 0 8px #38BDF8',
               }}
             />
             <span
               style={{
-                color: '#F1F5F9',
-                fontSize: '0.825rem',
+                color: '#E2E8F0',
+                fontSize: '0.74rem',
                 fontWeight: 700,
-                letterSpacing: '1.5px',
+                letterSpacing: '1.2px',
                 textTransform: 'uppercase',
               }}
             >
-              Consulting <span style={{ color: '#38BDF8', margin: '0 4px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 4px' }}>|</span> Digital
+              Consulting <span style={{ color: '#38BDF8', margin: '0 3px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 3px' }}>|</span> Digital
             </span>
           </div>
 
@@ -161,72 +155,93 @@ export default function HeroSection({ slides = [] }) {
             style={{
               fontFamily: 'var(--font-heading)',
               margin: 0,
-              lineHeight: 1.16,
-              letterSpacing: '-0.025em',
+              lineHeight: 1.2,
+              letterSpacing: '-0.02em',
             }}
           >
             <span
               style={{
                 display: 'block',
-                fontSize: 'clamp(1.85rem, 3.2vw, 2.75rem)',
-                fontWeight: 700,
-                color: '#FFFFFF',
-                marginBottom: '0.65rem',
-                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95)',
+                fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)',
+                fontWeight: 600,
+                color: '#93C5FD',
+                letterSpacing: '0.03em',
+                textTransform: 'uppercase',
+                marginBottom: '0.5rem',
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)',
               }}
             >
-              {headlinePrefix}
+              Your Partner For
             </span>
             <span
               style={{
                 display: 'block',
-                fontSize: 'clamp(2.35rem, 4.3vw, 4.1rem)',
+                fontSize: 'clamp(1.6rem, 2.35vw, 2.25rem)',
                 fontWeight: 800,
-                letterSpacing: '-0.03em',
-                lineHeight: 1.15,
-                background: 'linear-gradient(135deg, #FFFFFF 0%, #E0F2FE 35%, #38BDF8 70%, #60A5FA 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter:
-                  'drop-shadow(0 2px 18px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.35))',
+                lineHeight: 1.22,
+                letterSpacing: '-0.025em',
+                color: '#FFFFFF',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 0 25px rgba(2, 12, 32, 0.8)',
               }}
             >
-              {headlineEmp}
+              “Empowering Your Enterprise with{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #60A5FA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline',
+                }}
+              >
+                Intelligent Data
+              </span>{' '}
+              & Next-Gen{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #60A5FA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline',
+                }}
+              >
+                Autonomous Agents
+              </span>
+              ”
             </span>
           </h1>
 
           {/* Action CTA Button */}
-          <div style={{ marginTop: '2.25rem' }}>
+          <div style={{ marginTop: '1.4rem' }}>
             <Link
               href="/contact"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '10px',
+                gap: '8px',
                 backgroundColor: '#027A48',
                 color: '#FFFFFF',
                 borderRadius: '9999px',
-                padding: '0.85rem 2.1rem',
-                fontSize: '0.975rem',
+                padding: '0.68rem 1.65rem',
+                fontSize: '0.885rem',
                 fontWeight: 700,
                 letterSpacing: '0.01em',
                 textDecoration: 'none',
-                boxShadow: '0 4px 18px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)',
-                transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+                boxShadow: '0 4px 14px rgba(2, 122, 72, 0.45)',
+                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#026038';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 24px rgba(2, 122, 72, 0.65)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(2, 122, 72, 0.55)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#027A48';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 18px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(2, 122, 72, 0.45)';
               }}
             >
               <span>Get Started</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
