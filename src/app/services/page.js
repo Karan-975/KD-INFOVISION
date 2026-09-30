@@ -21,7 +21,7 @@ export default async function ServicesPage() {
   ]);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+    <main style={{ minHeight: '100vh', background: '#000000' }}>
       <Navbar settings={settings} />
 
       {/* Full Team Computers Replica View with KD Infovision Content */}
@@ -33,7 +33,7 @@ export default async function ServicesPage() {
       />
 
       {/* Enterprise Partner Technology Ecosystem */}
-      <PartnersMarquee partners={partners} />
+      <PartnersMarquee partners={partners} isDark={true} />
 
       {/* Polished Corporate Footer */}
       <Footer settings={settings} />

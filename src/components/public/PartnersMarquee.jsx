@@ -209,7 +209,7 @@ const TECH_LOGOS = {
   ),
 };
 
-export default function PartnersMarquee({ partners = [] }) {
+export default function PartnersMarquee({ partners = [], isDark = false }) {
   const defaultPartners = [
     { name: 'Snowflake' },
     { name: 'AWS' },
@@ -253,7 +253,7 @@ export default function PartnersMarquee({ partners = [] }) {
         style={{
           fontSize: '1rem',
           fontWeight: 800,
-          color: 'var(--navy)',
+          color: isDark ? '#FFFFFF' : 'var(--navy)',
           letterSpacing: '-0.2px',
         }}
       >
@@ -266,9 +266,9 @@ export default function PartnersMarquee({ partners = [] }) {
     <div
       style={{
         padding: '2.25rem 0',
-        background: '#FFFFFF',
-        borderTop: '1px solid var(--gray-200)',
-        borderBottom: '1px solid var(--gray-200)',
+        background: isDark ? '#000000' : '#FFFFFF',
+        borderTop: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
+        borderBottom: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -278,7 +278,7 @@ export default function PartnersMarquee({ partners = [] }) {
           textAlign: 'center',
           fontSize: '0.75rem',
           fontWeight: 800,
-          color: 'var(--muted)',
+          color: isDark ? '#888888' : 'var(--muted)',
           letterSpacing: '2.5px',
           textTransform: 'uppercase',
           marginBottom: '1.5rem',
