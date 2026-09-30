@@ -4,6 +4,7 @@ import HeroSection from '@/components/public/HeroSection';
 import PartnersMarquee from '@/components/public/PartnersMarquee';
 import AboutSection from '@/components/public/AboutSection';
 import ServicesSection from '@/components/public/ServicesSection';
+import IndustriesSection from '@/components/public/IndustriesSection';
 import WhyUsSection from '@/components/public/WhyUsSection';
 import CaseStudiesSection from '@/components/public/CaseStudiesSection';
 import ClientsMarquee from '@/components/public/ClientsMarquee';
@@ -19,6 +20,7 @@ export default async function HomePage() {
     statCounters,
     partners,
     services,
+    industries,
     caseStudies,
   ] = await Promise.all([
     prisma.siteSetting.findFirst(),
@@ -26,6 +28,7 @@ export default async function HomePage() {
     prisma.statCounter.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.industry.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
@@ -44,6 +47,9 @@ export default async function HomePage() {
 
       {/* Explore Our Tech Solutions (4 Clean Practice Cards) */}
       <ServicesSection services={services} />
+
+      {/* Industry Reach & Domain Specialization */}
+      <IndustriesSection industries={industries} />
 
       {/* Engineering Excellence & Why Us */}
       <WhyUsSection />

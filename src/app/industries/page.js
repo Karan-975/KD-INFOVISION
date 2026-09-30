@@ -1,8 +1,7 @@
 import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
-import IndustriesSection from '@/components/public/IndustriesSection';
-import CaseStudiesSection from '@/components/public/CaseStudiesSection';
-import ContactSection from '@/components/public/ContactSection';
+import TeamComputersIndustriesView from '@/components/public/TeamComputersIndustriesView';
+import PartnersMarquee from '@/components/public/PartnersMarquee';
 import Footer from '@/components/public/Footer';
 
 export const dynamic = 'force-dynamic';
@@ -10,66 +9,30 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Industries We Serve | KD Infovision',
   description:
-    'Tailored enterprise technology solutions for Banking, Healthcare, Retail, Manufacturing, Logistics, and High-Tech.',
+    'Tailored enterprise technology solutions for Banking & BFSI, Manufacturing & Smart OT, Healthcare & Life Sciences, Retail, Logistics, and High-Tech GCCs.',
 };
 
 export default async function IndustriesPage() {
-  const [settings, industries, caseStudies] = await Promise.all([
+  const [settings, industries, partners] = await Promise.all([
     prisma.siteSetting.findFirst(),
     prisma.industry.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
   ]);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+    <main style={{ minHeight: '100vh', background: '#000000' }}>
       <Navbar settings={settings} />
 
-      {/* Page Header Banner */}
-      <div
-        style={{
-          paddingTop: '140px',
-          paddingBottom: '70px',
-          background: 'linear-gradient(135deg, #052D5D 0%, #032042 100%)',
-          color: '#FFFFFF',
-          textAlign: 'center',
-          position: 'relative',
-        }}
-      >
-        <div className="container">
-          <h1
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2.4rem, 4vw, 3.5rem)',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              lineHeight: 1.18,
-              marginBottom: '1.25rem',
-            }}
-          >
-            Deep Vertical &amp; <span style={{ color: 'var(--blue)' }}>Industry Domain Reach</span>
-          </h1>
-          <p
-            style={{
-              maxWidth: '660px',
-              margin: '0 auto',
-              fontSize: '1.05rem',
-              color: 'rgba(255, 255, 255, 0.75)',
-              lineHeight: 1.7,
-            }}
-          >
-            Purpose-built compliance, telemetry, and analytics architectures engineered to meet rigorous regulatory standards across sectors.
-          </p>
-        </div>
-      </div>
+      {/* Team Computers Industry Domain Hub with Sector Cockpit & Matrix */}
+      <TeamComputersIndustriesView
+        settings={settings}
+        industries={industries}
+      />
 
-      {/* Industries Section */}
-      <IndustriesSection industries={industries} />
+      {/* Enterprise Technology Partners Ecosystem Marquee */}
+      <PartnersMarquee partners={partners} isDark={true} />
 
-      {/* Associated Case Studies */}
-      <CaseStudiesSection caseStudies={caseStudies} />
-
-      {/* Contact & Footer */}
-      <ContactSection settings={settings} />
+      {/* Corporate Footer */}
       <Footer settings={settings} />
     </main>
   );
