@@ -11,12 +11,13 @@ export default function HeroSection({ slides = [] }) {
       style={{
         position: 'relative',
         // Proportional height matching the 2.2:1 aspect ratio of the 2560x1160 skyline photograph
-        minHeight: 'clamp(520px, 46vw, 680px)',
+        minHeight: 'clamp(540px, 46vw, 720px)',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         background: '#02122B',
-        paddingTop: 'clamp(70px, 6vw, 85px)',
-        paddingBottom: 'clamp(2.5rem, 4vw, 4rem)',
+        paddingTop: 'clamp(75px, 6vw, 95px)',
+        paddingBottom: 'clamp(3rem, 4.5vw, 4.5rem)',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
@@ -46,129 +47,87 @@ export default function HeroSection({ slides = [] }) {
           }}
         />
 
-        {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and unobstructed) */}
+        {/* Balanced Atmospheric Scrim (Ensures full-width centered text is crisp while keeping the skyline vivid) */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(90deg, rgba(2, 12, 32, 0.86) 0%, rgba(2, 12, 32, 0.68) 28%, rgba(2, 12, 32, 0.16) 48%, transparent 66%)',
+              'radial-gradient(ellipse 90% 75% at center, rgba(2, 12, 32, 0.65) 0%, rgba(2, 12, 32, 0.40) 50%, rgba(2, 12, 32, 0.15) 80%, transparent 100%)',
           }}
         />
 
-        {/* Ambient Radial Glow Behind Text Block */}
+        {/* Subtle Top & Bottom Gradient for Natural Integration */}
         <div
           style={{
             position: 'absolute',
-            top: '25%',
-            left: '3%',
-            width: '500px',
-            height: '380px',
-            background: 'radial-gradient(circle, rgba(21, 138, 226, 0.14) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Subtle Top Gradient for Header Integration */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '65px',
-            background: 'linear-gradient(to bottom, rgba(2, 12, 32, 0.4) 0%, transparent 100%)',
-          }}
-        />
-
-        {/* Subtle Bottom Transition Gradient */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '70px',
-            background: 'linear-gradient(to top, rgba(2, 12, 32, 0.7) 0%, transparent 100%)',
+            inset: 0,
+            background:
+              'linear-gradient(180deg, rgba(2, 12, 32, 0.55) 0%, rgba(2, 12, 32, 0.20) 45%, rgba(2, 12, 32, 0.65) 100%)',
           }}
         />
       </div>
 
-      {/* CONTENT LAYER */}
+      {/* CENTERED CONTENT LAYER SPREAD ACROSS THE HERO SECTION */}
       <div
         className="container"
         style={{
           position: 'relative',
           zIndex: 2,
           width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
         }}
       >
         <div
           style={{
-            // Constrain width to 540px so text never collides with the Oriental Pearl Tower or skyscrapers!
-            maxWidth: '540px',
+            // Spread across the full hero section
+            maxWidth: '1080px',
+            width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-start',
+            alignItems: 'center',
+            textAlign: 'center',
           }}
         >
-          {/* Tagline Badge */}
+          {/* Tagline: Free in the center (No box, no dot) */}
           <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 14px',
-              borderRadius: '9999px',
-              background: 'rgba(2, 14, 38, 0.68)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.18)',
-              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.35)',
+              color: '#CBD5E1',
+              fontSize: 'clamp(0.85rem, 1.15vw, 1.05rem)',
+              fontWeight: 700,
+              letterSpacing: '2.5px',
+              textTransform: 'uppercase',
               marginBottom: '1rem',
+              textShadow: '0 2px 12px rgba(0, 0, 0, 0.9)',
             }}
           >
-            <span
-              style={{
-                width: '7px',
-                height: '7px',
-                borderRadius: '50%',
-                background: '#38BDF8',
-                boxShadow: '0 0 8px #38BDF8',
-              }}
-            />
-            <span
-              style={{
-                color: '#E2E8F0',
-                fontSize: '0.74rem',
-                fontWeight: 700,
-                letterSpacing: '1.2px',
-                textTransform: 'uppercase',
-              }}
-            >
-              Consulting <span style={{ color: '#38BDF8', margin: '0 3px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 3px' }}>|</span> Digital
-            </span>
+            Consulting <span style={{ color: '#38BDF8', margin: '0 8px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 8px' }}>|</span> Digital
           </div>
 
-          {/* Headline */}
+          {/* Headline: Spread horizontally across hero section, size increased to balanced sweet spot */}
           <h1
             style={{
               fontFamily: 'var(--font-heading)',
               margin: 0,
-              lineHeight: 1.2,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.25,
+              letterSpacing: '-0.025em',
+              textAlign: 'center',
+              width: '100%',
             }}
           >
             <span
               style={{
                 display: 'block',
-                fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)',
-                fontWeight: 600,
+                fontSize: 'clamp(1.15rem, 1.6vw, 1.55rem)',
+                fontWeight: 700,
                 color: '#93C5FD',
-                letterSpacing: '0.03em',
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
-                marginBottom: '0.5rem',
-                textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)',
+                marginBottom: '0.65rem',
+                textShadow: '0 2px 12px rgba(0, 0, 0, 0.95)',
               }}
             >
               Your Partner For
@@ -176,12 +135,14 @@ export default function HeroSection({ slides = [] }) {
             <span
               style={{
                 display: 'block',
-                fontSize: 'clamp(1.6rem, 2.35vw, 2.25rem)',
+                // Sized between 2.05rem and 3.0rem (larger than 2.25rem, smaller than 4.1rem)
+                fontSize: 'clamp(1.95rem, 3.0vw, 2.95rem)',
                 fontWeight: 800,
                 lineHeight: 1.22,
                 letterSpacing: '-0.025em',
                 color: '#FFFFFF',
-                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 0 25px rgba(2, 12, 32, 0.8)',
+                textShadow:
+                  '0 2px 18px rgba(0, 0, 0, 0.95), 0 0 35px rgba(2, 12, 32, 0.9)',
               }}
             >
               “Empowering Your Enterprise with{' '}
@@ -210,8 +171,8 @@ export default function HeroSection({ slides = [] }) {
             </span>
           </h1>
 
-          {/* Action CTA Button */}
-          <div style={{ marginTop: '1.4rem' }}>
+          {/* Centered Action CTA Button */}
+          <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
               style={{
@@ -221,23 +182,23 @@ export default function HeroSection({ slides = [] }) {
                 backgroundColor: '#027A48',
                 color: '#FFFFFF',
                 borderRadius: '9999px',
-                padding: '0.68rem 1.65rem',
-                fontSize: '0.885rem',
+                padding: '0.72rem 1.85rem',
+                fontSize: '0.925rem',
                 fontWeight: 700,
                 letterSpacing: '0.01em',
                 textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(2, 122, 72, 0.45)',
+                boxShadow: '0 4px 16px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)',
                 transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#026038';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(2, 122, 72, 0.55)';
+                e.currentTarget.style.boxShadow = '0 6px 22px rgba(2, 122, 72, 0.65)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#027A48';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(2, 122, 72, 0.45)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)';
               }}
             >
               <span>Get Started</span>
