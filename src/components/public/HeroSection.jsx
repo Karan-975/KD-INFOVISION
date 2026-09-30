@@ -143,7 +143,7 @@ export default function HeroSection({ slides = [] }) {
           </h1>
 
           {/* Centered Transparent Outline Pill Button (No solid background) */}
-          <div style={{ marginTop: '2.25rem', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ marginTop: '3.5rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
               style={{
