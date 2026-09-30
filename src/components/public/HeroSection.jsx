@@ -1,458 +1,236 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import {
-  Cpu,
-  Database,
-  Layers,
-  BarChart3,
-  Server,
-  Cloud,
-  Zap,
-  ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection({ slides = [] }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Fallback defaults all unified to the uploaded Shanghai twilight skyline image
-  const defaultCarouselSlides = [
-    {
-      id: 'transformation-ai',
-      tag: 'CONSULTING • OUTSOURCING • DIGITAL',
-      themeColor: '#38BDF8',
-      headline: 'Your Partner For',
-      headlineEmp: 'Digital Transformation, Data & AI Analytics.',
-      subtext:
-        'You do not need to create your Reports & Dashboard from scratch. Just upload your data and get solution in real time.',
-      image: '/images/hero_skyline.jpg',
-      alt: 'KD Infovision Shanghai Skyline at twilight representing global enterprise digital transformation',
-      primaryBtn: 'Get Started',
-      primaryUrl: '/contact',
-      secBtn: 'Explore Solutions',
-      secUrl: '/services',
-    },
-    {
-      id: 'trusted-consulting',
-      tag: 'STRATEGIC ADVISORY & CONSULTING',
-      themeColor: '#34D399',
-      headline: 'We Only Suggest What You NEED,',
-      headlineEmp: 'Not What You LIKE.',
-      subtext:
-        'KDI Technology & Management Consulting — The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients.',
-      image: '/images/hero_skyline.jpg',
-      alt: 'KD Infovision strategic technology consulting and solution architecture',
-      primaryBtn: 'Talk to an Expert',
-      primaryUrl: '/contact',
-      secBtn: 'Our Capabilities',
-      secUrl: '/services',
-    },
-    {
-      id: 'certified-delivery',
-      tag: 'STAFF AUGMENTATION & OUTSOURCING',
-      themeColor: '#FBBF24',
-      headline: 'KDI Certified Resources to Ensure',
-      headlineEmp: 'Quick & Quality Delivery.',
-      subtext:
-        "KDI's Staff Augmentations, Trainings & Outsourcing Services — As a trusted advisor, KDI’s expert consultants deliver projects on time adhering to global standards.",
-      image: '/images/hero_skyline.jpg',
-      alt: 'KD Infovision certified enterprise delivery and global talent',
-      primaryBtn: 'Schedule Consultation',
-      primaryUrl: '/contact',
-      secBtn: 'About KD Infovision',
-      secUrl: '/about',
-    },
-  ];
-
-  // Active database slides
-  const activeDbSlides = Array.isArray(slides) && slides.length > 0
-    ? slides.filter((s) => s.isActive !== false)
-    : [];
-
-  const carouselSlides = activeDbSlides.length > 0
-    ? activeDbSlides.map((s, idx) => {
-        const fallback = defaultCarouselSlides[idx % defaultCarouselSlides.length];
-        return {
-          id: s.id || `slide-${idx}`,
-          tag: s.tag || fallback.tag,
-          headline: s.headline || fallback.headline,
-          headlineEmp: s.headlineEmp || fallback.headlineEmp,
-          subtext: s.subtext || fallback.subtext,
-          image: '/images/hero_skyline.jpg',
-          alt: `${s.headline || ''} ${s.headlineEmp || ''}`.trim() || fallback.alt,
-          themeColor: fallback.themeColor,
-          primaryBtn: s.primaryBtn || fallback.primaryBtn,
-          primaryUrl: s.primaryUrl || fallback.primaryUrl,
-          secBtn: s.secBtn || fallback.secBtn,
-          secUrl: s.secUrl || fallback.secUrl,
-        };
-      })
-    : defaultCarouselSlides;
-
-  const total = carouselSlides.length;
-  const active = carouselSlides[currentSlide] || carouselSlides[0];
-
-  // Smooth automatic slide rotation for headlines every 6 seconds
-  useEffect(() => {
-    if (total <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % total);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [total]);
-
-  // Enterprise Technology Ecosystem
-  const techEcosystem = [
-    { name: 'Microsoft Azure', icon: Server, color: '#38BDF8' },
-    { name: 'Amazon Web Services', icon: Cloud, color: '#FBBF24' },
-    { name: 'Google Cloud Platform', icon: Cloud, color: '#60A5FA' },
-    { name: 'Snowflake', icon: Database, color: '#38BDF8' },
-    { name: 'Databricks', icon: Layers, color: '#F87171' },
-    { name: 'Power BI', icon: BarChart3, color: '#FCD34D' },
-    { name: 'Tableau', icon: BarChart3, color: '#FB923C' },
-    { name: 'Apache Kafka', icon: Zap, color: '#E2E8F0' },
-    { name: 'Enterprise AI & MLOps', icon: Cpu, color: '#34D399' },
-  ];
+  // Respect user-specified single focused messaging
+  const tag = 'Consulting | Solutioning | Digital';
+  const headlinePrefix = 'Your Partner For';
+  const headlineEmp = '“Empowering Your Enterprise with Intelligent Data & Next-Gen Autonomous Agents”';
 
   return (
-    <>
-      <section
-        id="hero"
+    <section
+      id="hero"
+      style={{
+        position: 'relative',
+        // Proportional height matching the 2.2:1 aspect ratio of the 2560x1160 skyline photograph
+        minHeight: 'clamp(560px, 48vw, 760px)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        background: '#02122B',
+        paddingTop: 'clamp(85px, 8vw, 110px)',
+        paddingBottom: 'clamp(3rem, 5vw, 4.5rem)',
+        overflow: 'hidden',
+        color: '#FFFFFF',
+      }}
+    >
+      {/* SHANGHAI TWILIGHT SKYLINE BACKGROUND (Crisp 2560px QHD Full-Size) */}
+      <div
         style={{
-          position: 'relative',
-          // Matches the natural 2.2:1 aspect ratio of the 2560x1160 skyline image for full-size viewing
-          minHeight: 'clamp(520px, 45.4vw, 780px)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          background: '#02122B',
-          paddingTop: 'clamp(70px, 7vw, 95px)',
-          paddingBottom: 'clamp(2rem, 4vw, 3.5rem)',
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
           overflow: 'hidden',
-          color: '#FFFFFF',
+          backgroundColor: '#02122B',
         }}
       >
-        {/* SINGLE DEDICATED HERO IMAGE: Shanghai Twilight Skyline (Full Size & High-DPI Quality) */}
+        <img
+          src="/images/hero_skyline.jpg"
+          alt="KD Infovision Shanghai Skyline at twilight"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            opacity: 1,
+            display: 'block',
+            imageRendering: '-webkit-optimize-contrast',
+          }}
+        />
+
+        {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and vibrant) */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            zIndex: 0,
-            pointerEvents: 'none',
-            overflow: 'hidden',
-            backgroundColor: '#02122B',
+            background:
+              'linear-gradient(90deg, rgba(2, 14, 38, 0.90) 0%, rgba(2, 14, 38, 0.74) 34%, rgba(2, 14, 38, 0.22) 60%, transparent 80%)',
           }}
-        >
-          <img
-            src="/images/hero_skyline.jpg"
-            alt="KD Infovision Global Skyline"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              opacity: 1,
-              display: 'block',
-              imageRendering: '-webkit-optimize-contrast',
-            }}
-          />
+        />
 
-          {/* Focused Left-Side Typography Contrast Mask (Right side with towers and sunset remains 100% natural and crystal-clear) */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(2, 14, 35, 0.88) 0%, rgba(2, 14, 35, 0.72) 36%, rgba(2, 14, 35, 0.22) 58%, transparent 78%)',
-            }}
-          />
-        </div>
-
-        {/* CONTENT LAYER DIRECTLY OVER THE BACKGROUND */}
+        {/* Subtle Ambient Radial Highlight Behind Text */}
         <div
-          className="container"
           style={{
-            position: 'relative',
-            zIndex: 2,
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            position: 'absolute',
+            top: '20%',
+            left: '5%',
+            width: '600px',
+            height: '450px',
+            background: 'radial-gradient(circle, rgba(21, 138, 226, 0.12) 0%, transparent 70%)',
+            pointerEvents: 'none',
           }}
-        >
-          {/* Content Block */}
-          <div
-            style={{
-              maxWidth: '780px',
-              paddingRight: '1rem',
-            }}
-          >
-            {/* Tagline Badge */}
-            {active.tag && (
-              <div
-                key={active.id + '-tag'}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '6px 14px',
-                  borderRadius: '9999px',
-                  background: 'rgba(2, 14, 35, 0.65)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.22)',
-                  color: '#FFFFFF',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                  marginBottom: '1rem',
-                  animation: 'hero-text-in 0.35s ease forwards',
-                }}
-              >
-                <span
-                  style={{
-                    width: '7px',
-                    height: '7px',
-                    borderRadius: '50%',
-                    background: active.themeColor,
-                    boxShadow: `0 0 8px ${active.themeColor}`,
-                  }}
-                />
-                <span>{active.tag}</span>
-              </div>
-            )}
+        />
 
-            {/* Headline */}
-            <h1
-              key={active.id + '-headline'}
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.1rem, 3.8vw, 3.6rem)',
-                fontWeight: 800,
-                color: '#FFFFFF',
-                lineHeight: 1.15,
-                letterSpacing: '-0.025em',
-                marginBottom: '1.15rem',
-                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.6)',
-                animation: 'hero-text-in 0.4s ease forwards',
-              }}
-            >
-              {active.headline}{' '}
-              <span
-                style={{
-                  color: active.themeColor,
-                  position: 'relative',
-                  display: 'inline-block',
-                  transition: 'color 0.3s ease',
-                  textShadow: `0 0 24px ${active.themeColor}aa, 0 2px 10px rgba(0,0,0,0.9)`,
-                }}
-              >
-                {active.headlineEmp}
-              </span>
-            </h1>
+        {/* Subtle Top Gradient for Clean Header Integration */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '75px',
+            background: 'linear-gradient(to bottom, rgba(2, 14, 38, 0.45) 0%, transparent 100%)',
+          }}
+        />
 
-            {/* Subtext */}
-            <p
-              key={active.id + '-subtext'}
-              style={{
-                fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
-                lineHeight: 1.7,
-                color: '#FFFFFF',
-                maxWidth: '680px',
-                marginBottom: '1.75rem',
-                textShadow: '0 2px 12px rgba(0, 0, 0, 0.95)',
-                animation: 'hero-text-in 0.4s ease forwards',
-              }}
-            >
-              {active.subtext}
-            </p>
+        {/* Subtle Bottom Transition Gradient */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '80px',
+            background: 'linear-gradient(to top, rgba(2, 14, 38, 0.75) 0%, transparent 100%)',
+          }}
+        />
+      </div>
 
-            {/* Action CTA Buttons */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                flexWrap: 'wrap',
-                animation: 'hero-text-in 0.4s ease forwards',
-              }}
-            >
-              <Link
-                href={active.primaryUrl || '/contact'}
-                style={{
-                  backgroundColor: '#027A48',
-                  color: '#FFFFFF',
-                  borderRadius: '9999px',
-                  padding: '0.75rem 1.8rem',
-                  fontSize: '0.925rem',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                  boxShadow: '0 4px 16px rgba(2, 122, 72, 0.45)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#026038';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(2, 122, 72, 0.55)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#027A48';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(2, 122, 72, 0.45)';
-                }}
-              >
-                <span>{active.primaryBtn || 'Get Started'}</span>
-                <ArrowRight size={16} />
-              </Link>
-
-              <Link
-                href={active.secUrl || '/services'}
-                style={{
-                  backgroundColor: 'rgba(2, 14, 35, 0.6)',
-                  color: '#FFFFFF',
-                  borderRadius: '9999px',
-                  padding: '0.75rem 1.6rem',
-                  fontSize: '0.925rem',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  backdropFilter: 'blur(8px)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(2, 14, 35, 0.6)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <span>{active.secBtn || 'Explore Solutions'}</span>
-              </Link>
-            </div>
-
-            {/* Minimalist Slide Indicators */}
-            {total > 1 && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  marginTop: '1.75rem',
-                  paddingLeft: '2px',
-                }}
-              >
-                {carouselSlides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setCurrentSlide(idx)}
-                    aria-label={`Slide ${idx + 1}`}
-                    style={{
-                      width: currentSlide === idx ? '36px' : '14px',
-                      height: '4px',
-                      borderRadius: '4px',
-                      background: currentSlide === idx ? active.themeColor : 'rgba(255, 255, 255, 0.4)',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'all 0.35s ease',
-                      padding: 0,
-                      boxShadow: currentSlide === idx ? `0 0 10px ${active.themeColor}` : 'none',
-                    }}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* DEDICATED ENTERPRISE TECHNOLOGY PARTNERS RIBBON (Placed below hero to keep skyline 100% unobstructed) */}
+      {/* CONTENT LAYER */}
       <div
+        className="container"
         style={{
-          background: '#021024',
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          borderBottom: '1px solid rgba(5, 45, 93, 0.12)',
-          padding: '1.1rem 1.5rem',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+          position: 'relative',
+          zIndex: 2,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
         }}
       >
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div
+          style={{
+            maxWidth: '880px',
+            paddingRight: '1rem',
+          }}
+        >
+          {/* Tagline Badge */}
           <div
             style={{
-              fontSize: '0.68rem',
-              fontWeight: 800,
-              letterSpacing: '1.5px',
-              textTransform: 'uppercase',
-              color: 'rgba(255, 255, 255, 0.55)',
-              marginBottom: '0.65rem',
-              textAlign: 'center',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '7px 18px',
+              borderRadius: '9999px',
+              background: 'rgba(2, 14, 38, 0.72)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255, 255, 255, 0.22)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
+              marginBottom: '1.25rem',
             }}
           >
-            ENTERPRISE TECHNOLOGY PARTNERS & ECOSYSTEM
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: '#38BDF8',
+                boxShadow: '0 0 10px #38BDF8',
+              }}
+            />
+            <span
+              style={{
+                color: '#F1F5F9',
+                fontSize: '0.825rem',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+              }}
+            >
+              Consulting <span style={{ color: '#38BDF8', margin: '0 4px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 4px' }}>|</span> Digital
+            </span>
           </div>
 
-          <div
+          {/* Headline */}
+          <h1
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '10px',
-              flexWrap: 'wrap',
+              fontFamily: 'var(--font-heading)',
+              margin: 0,
+              lineHeight: 1.16,
+              letterSpacing: '-0.025em',
             }}
           >
-            {techEcosystem.map((tech, idx) => {
-              const TechIcon = tech.icon;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '5px 13px',
-                    borderRadius: '9999px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#FFFFFF',
-                    fontSize: '0.75rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.2px',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  <TechIcon size={13} style={{ color: tech.color }} />
-                  <span>{tech.name}</span>
-                </div>
-              );
-            })}
+            <span
+              style={{
+                display: 'block',
+                fontSize: 'clamp(1.85rem, 3.2vw, 2.75rem)',
+                fontWeight: 700,
+                color: '#FFFFFF',
+                marginBottom: '0.65rem',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.95)',
+              }}
+            >
+              {headlinePrefix}
+            </span>
+            <span
+              style={{
+                display: 'block',
+                fontSize: 'clamp(2.35rem, 4.3vw, 4.1rem)',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                lineHeight: 1.15,
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #E0F2FE 35%, #38BDF8 70%, #60A5FA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter:
+                  'drop-shadow(0 2px 18px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.35))',
+              }}
+            >
+              {headlineEmp}
+            </span>
+          </h1>
+
+          {/* Action CTA Button */}
+          <div style={{ marginTop: '2.25rem' }}>
+            <Link
+              href="/contact"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                backgroundColor: '#027A48',
+                color: '#FFFFFF',
+                borderRadius: '9999px',
+                padding: '0.85rem 2.1rem',
+                fontSize: '0.975rem',
+                fontWeight: 700,
+                letterSpacing: '0.01em',
+                textDecoration: 'none',
+                boxShadow: '0 4px 18px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#026038';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(2, 122, 72, 0.65)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#027A48';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(2, 122, 72, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3)';
+              }}
+            >
+              <span>Get Started</span>
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes hero-text-in {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </>
+    </section>
   );
 }

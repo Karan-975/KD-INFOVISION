@@ -45,56 +45,20 @@ async function main() {
   // 3. Hero Slides
   const slideCount = await prisma.heroSlide.count();
   if (slideCount === 0) {
-    await prisma.heroSlide.createMany({
-      data: [
-        {
-          order: 0,
-          tag: 'Consulting | Outsourcing | Digital',
-          headline: 'Your Partner For',
-          headlineEmp: 'Digital Transformation, Data & AI Analytics',
-          subtext: 'You do not need to create your Reports & Dashboard from scratch. Just upload your data and get solution in real time.',
-          primaryBtn: 'Get Started',
-          primaryUrl: '#contact',
-          secBtn: 'Explore Solutions →',
-          secUrl: '#solutions',
-          imageUrl: '/images/hero_skyline.jpg',
-          svgType: 'analytics',
-          bgGradient: 'linear-gradient(135deg,#0F2347 0%,#1B3A6B 55%,#0D2B5E 100%)',
-          isActive: true,
-        },
-        {
-          order: 1,
-          tag: 'Strategic Advisory & Consulting',
-          headline: 'We Only Suggest What You NEED,',
-          headlineEmp: 'Not What You LIKE',
-          subtext: 'KDI Technology & Management Consulting — The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients.',
-          primaryBtn: 'Talk to an Expert',
-          primaryUrl: '#contact',
-          secBtn: 'Our Capabilities →',
-          secUrl: '#solutions',
-          imageUrl: '/images/hero_skyline.jpg',
-          svgType: 'neural',
-          bgGradient: 'linear-gradient(135deg,#0a1628 0%,#1B3A6B 65%,#0F2347 100%)',
-          isActive: true,
-        },
-        {
-          order: 2,
-          tag: 'Staff Augmentation & Outsourcing',
-          headline: 'KDI Certified Resources to Ensure',
-          headlineEmp: 'Quick & Quality Delivery',
-          subtext: "KDI's Staff Augmentations, Trainings & Outsourcing Services — As a trusted advisor, KDI’s expert consultants deliver projects on time while adhering to global standards.",
-          primaryBtn: 'Contact Us',
-          primaryUrl: '#contact',
-          secBtn: 'Join Our Team →',
-          secUrl: '/about',
-          imageUrl: '/images/hero_skyline.jpg',
-          svgType: 'cloud',
-          bgGradient: 'linear-gradient(135deg,#122850 0%,#0F2347 55%,#1B3A6B 100%)',
-          isActive: true,
-        },
-      ],
+    await prisma.heroSlide.create({
+      data: {
+        order: 0,
+        tag: 'Consulting | Solutioning | Digital',
+        headline: 'Your Partner For',
+        headlineEmp: '“Empowering Your Enterprise with Intelligent Data & Next-Gen Autonomous Agents”',
+        subtext: '',
+        primaryBtn: 'Get Started',
+        primaryUrl: '/contact',
+        imageUrl: '/images/hero_skyline.jpg',
+        isActive: true,
+      },
     });
-    console.log('Hero slides seeded.');
+    console.log('Hero slide seeded.');
   }
 
   // 4. Stat Counters
