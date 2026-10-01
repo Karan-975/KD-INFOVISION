@@ -15,7 +15,6 @@ import {
   Phone,
   CheckCircle2,
   Lock,
-  Activity,
   Zap,
 } from 'lucide-react';
 
@@ -49,231 +48,85 @@ export default function Footer({ settings }) {
     { name: 'Admin CMS Portal', href: '/admin', isSpecial: true },
   ];
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer
-      style={{
-        position: 'relative',
-        background: 'radial-gradient(ellipse 100% 55% at 50% 0%, #0A3266 0%, #041935 45%, #020E1F 100%)',
-        color: '#FFFFFF',
-        padding: '0 0 2rem 0',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Top Multi-Color Spectrum Accent Line */}
-      <div
-        style={{
-          width: '100%',
-          height: '2px',
-          background: 'linear-gradient(90deg, #158AE2 0%, #06B6D4 20%, #10B981 40%, #8B5CF6 60%, #F59E0B 80%, #EC4899 100%)',
-          boxShadow: '0 0 16px rgba(21, 138, 226, 0.5)',
-        }}
-      />
-
-      {/* Atmospheric Ambient Depth Glows */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '10%',
-          width: '500px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(21, 138, 226, 0.08) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '5%',
-          width: '500px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '4.5rem' }}>
-        {/* PRE-FOOTER ENTERPRISE CALL-TO-ACTION CARD with Adventurous Animated Aurora & No Flag */}
-        <div
-          className="adventurous-cta-card"
-          style={{
-            marginBottom: '4.5rem',
-            padding: '3.25rem 3.5rem',
-            borderRadius: '26px',
-            position: 'relative',
-            overflow: 'hidden',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
-            display: 'grid',
-            gridTemplateColumns: '1.25fr auto',
-            alignItems: 'center',
-            gap: '3rem',
-          }}
-        >
-          {/* Animated Background Ambient Orbs */}
-          <div className="cta-orb-1" />
-          <div className="cta-orb-2" />
-
-          {/* Content Left: Headline & Description */}
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <h3
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.65rem, 2.7vw, 2.35rem)',
-                fontWeight: 800,
-                letterSpacing: '-0.025em',
-                lineHeight: 1.22,
-                color: '#FFFFFF',
-                marginBottom: '1rem',
-              }}
-            >
-              Ready to Accelerate Your{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #34D399 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                AI &amp; Cloud Transformation?
-              </span>
+    <footer className="kd-footer">
+      <div className="container">
+        {/* =====================================================================
+            1. PRE-FOOTER CTA CARD: Simple, Basic, Professional
+            ===================================================================== */}
+        <div className="cta-card">
+          <div className="cta-text-content">
+            <h3 className="cta-title">
+              Ready to Accelerate Your AI &amp; Cloud Transformation?
             </h3>
-
-            <p
-              style={{
-                fontSize: '1.025rem',
-                lineHeight: 1.7,
-                color: 'rgba(255, 255, 255, 0.8)',
-                margin: 0,
-                maxWidth: '620px',
-              }}
-            >
+            <p className="cta-description">
               Consult with our certified data engineers and AI architects to modernize legacy systems, build resilient lakehouses, and unlock actionable intelligence.
             </p>
           </div>
 
-          {/* Actions Right: Two Polished CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', flexWrap: 'wrap', position: 'relative', zIndex: 2 }}>
-            <Link
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '0.95rem 1.95rem',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #158AE2 0%, #6366F1 50%, #8B5CF6 100%)',
-                color: '#FFFFFF',
-                fontWeight: 700,
-                fontSize: '0.96rem',
-                textDecoration: 'none',
-                boxShadow: '0 10px 28px rgba(21, 138, 226, 0.45)',
-                transition: 'all 0.25s ease',
-              }}
-              className="cta-primary-btn"
-            >
+          <div className="cta-actions">
+            <Link href="/contact" className="cta-btn-primary">
               <span>Schedule Architecture Briefing</span>
               <ArrowRight size={16} />
             </Link>
 
-            <Link
-              href="/services"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '0.95rem 1.75rem',
-                borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#FFFFFF',
-                fontWeight: 600,
-                fontSize: '0.96rem',
-                textDecoration: 'none',
-                backdropFilter: 'blur(8px)',
-                transition: 'all 0.2s ease',
-              }}
-              className="cta-secondary-btn"
-            >
+            <Link href="/services" className="cta-btn-secondary">
               Explore Solutions
             </Link>
           </div>
         </div>
 
-        {/* MAIN FOOTER NAVIGATION GRID: General, Professional & Multi-Colored */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr 1fr 1.15fr',
-            gap: '3.5rem',
-            marginBottom: '3.5rem',
-          }}
-          className="footer-grid"
-        >
-          {/* Brand Column */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.25rem' }}>
+        {/* =====================================================================
+            2. MAIN FOOTER NAVIGATION: Clean, Typography-Driven (No AI Glows)
+            ===================================================================== */}
+        <div className="footer-nav-grid">
+          {/* Brand & Address Column */}
+          <div className="footer-brand-col">
+            <Link href="/" className="footer-logo-link">
               <img
                 src="/logo-mark.png"
                 alt="KD Infovision"
-                style={{
-                  height: '46px',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
+                className="footer-logo-img"
               />
-            </div>
+            </Link>
 
-            <p
-              style={{
-                fontSize: '0.925rem',
-                lineHeight: 1.75,
-                color: 'rgba(255, 255, 255, 0.65)',
-                maxWidth: '340px',
-                marginBottom: '1.75rem',
-              }}
-            >
+            <p className="brand-summary">
               Consulting | Outsourcing | Digital — Delivering advanced Data &amp; Analytics, Data Engineering, Agentic AI, and Digital Transformation solutions.
             </p>
 
-            {/* Delivery Locations & Contact with Multi-Color Icons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.75rem', fontSize: '0.85rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
-                <MapPin size={16} style={{ color: '#FB923C', flexShrink: 0 }} />
+            <div className="contact-details-list">
+              <div className="contact-item">
+                <MapPin size={16} className="contact-icon" />
                 <span>Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
-                <Mail size={16} style={{ color: '#38BDF8', flexShrink: 0 }} />
-                <span>{settings?.email || 'admin@kdinfovision.com'}</span>
+
+              <div className="contact-item">
+                <Mail size={16} className="contact-icon" />
+                <a href={`mailto:${settings?.email || 'admin@kdinfovision.com'}`}>
+                  {settings?.email || 'admin@kdinfovision.com'}
+                </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'rgba(255, 255, 255, 0.75)' }}>
-                <Phone size={16} style={{ color: '#34D399', flexShrink: 0 }} />
-                <span>{settings?.phone || '+91 9820536031'}</span>
+
+              <div className="contact-item">
+                <Phone size={16} className="contact-icon" />
+                <a href={`tel:${(settings?.phone || '+91 9820536031').replace(/\s+/g, '')}`}>
+                  {settings?.phone || '+91 9820536031'}
+                </a>
               </div>
             </div>
 
-            {/* Social Buttons with Individual Multi-Color Brand Identities */}
-            <div style={{ display: 'flex', gap: '10px' }}>
+            {/* Clean Social Links */}
+            <div className="social-links-row">
               <a
                 href={settings?.socialLinkedin || 'https://www.linkedin.com/company/kd-infovision-consulting/about/'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'rgba(10, 102, 194, 0.12)',
-                  border: '1px solid rgba(10, 102, 194, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#38BDF8',
-                  transition: 'all 0.25s ease',
-                }}
-                className="social-btn linkedin-btn"
+                className="social-link"
               >
-                <Linkedin size={18} />
+                <Linkedin size={16} />
               </a>
 
               <a
@@ -281,21 +134,9 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'rgba(24, 119, 242, 0.12)',
-                  border: '1px solid rgba(24, 119, 242, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#60A5FA',
-                  transition: 'all 0.25s ease',
-                }}
-                className="social-btn facebook-btn"
+                className="social-link"
               >
-                <Facebook size={18} />
+                <Facebook size={16} />
               </a>
 
               <a
@@ -303,21 +144,9 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Twitter"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'rgba(29, 161, 242, 0.12)',
-                  border: '1px solid rgba(29, 161, 242, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#1DA1F2',
-                  transition: 'all 0.25s ease',
-                }}
-                className="social-btn twitter-btn"
+                className="social-link"
               >
-                <Twitter size={18} />
+                <Twitter size={16} />
               </a>
 
               <a
@@ -325,67 +154,20 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'rgba(139, 92, 246, 0.12)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#A78BFA',
-                  transition: 'all 0.25s ease',
-                }}
-                className="social-btn github-btn"
+                className="social-link"
               >
-                <Github size={18} />
+                <Github size={16} />
               </a>
             </div>
           </div>
 
-          {/* Solutions Column (Electric Blue / Cyan Theme) */}
-          <div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '0.825rem',
-                fontWeight: 800,
-                color: '#38BDF8',
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                marginBottom: '1.35rem',
-              }}
-            >
-              <span
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#38BDF8',
-                  display: 'inline-block',
-                  boxShadow: '0 0 10px #38BDF8',
-                }}
-              />
-              Solutions
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          {/* Solutions Column */}
+          <div className="footer-links-col">
+            <h4 className="col-heading">Solutions</h4>
+            <ul className="links-list">
               {solutions.map((item, idx) => (
                 <li key={idx}>
-                  <Link
-                    href={item.href}
-                    style={{
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      textDecoration: 'none',
-                      fontSize: '0.915rem',
-                      transition: 'all 0.2s ease',
-                      display: 'inline-block',
-                    }}
-                    className="footer-link solutions-link"
-                  >
+                  <Link href={item.href} className="nav-link">
                     {item.name}
                   </Link>
                 </li>
@@ -393,48 +175,13 @@ export default function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Industries Column (Fresh Emerald Green Theme) */}
-          <div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '0.825rem',
-                fontWeight: 800,
-                color: '#34D399',
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                marginBottom: '1.35rem',
-              }}
-            >
-              <span
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#34D399',
-                  display: 'inline-block',
-                  boxShadow: '0 0 10px #34D399',
-                }}
-              />
-              Industries
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          {/* Industries Column */}
+          <div className="footer-links-col">
+            <h4 className="col-heading">Industries</h4>
+            <ul className="links-list">
               {industries.map((item, idx) => (
                 <li key={idx}>
-                  <Link
-                    href={item.href}
-                    style={{
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      textDecoration: 'none',
-                      fontSize: '0.915rem',
-                      transition: 'all 0.2s ease',
-                      display: 'inline-block',
-                    }}
-                    className="footer-link industries-link"
-                  >
+                  <Link href={item.href} className="nav-link">
                     {item.name}
                   </Link>
                 </li>
@@ -442,68 +189,15 @@ export default function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Company Column (Elegant Violet / Purple Theme) */}
-          <div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '0.825rem',
-                fontWeight: 800,
-                color: '#A78BFA',
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                marginBottom: '1.35rem',
-              }}
-            >
-              <span
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#A78BFA',
-                  display: 'inline-block',
-                  boxShadow: '0 0 10px #A78BFA',
-                }}
-              />
-              Company
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          {/* Company Column */}
+          <div className="footer-links-col">
+            <h4 className="col-heading">Company</h4>
+            <ul className="links-list">
               {company.map((item, idx) => (
                 <li key={idx}>
-                  <Link
-                    href={item.href}
-                    style={{
-                      color: item.isSpecial ? '#FBBF24' : 'rgba(255, 255, 255, 0.7)',
-                      fontWeight: item.isSpecial ? 700 : 400,
-                      textDecoration: 'none',
-                      fontSize: '0.915rem',
-                      transition: 'all 0.2s ease',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                    className="footer-link company-link"
-                  >
+                  <Link href={item.href} className="nav-link company-link">
                     <span>{item.name}</span>
-                    {item.isSpecial && (
-                      <span
-                        style={{
-                          fontSize: '0.7rem',
-                          fontWeight: 800,
-                          padding: '2px 8px',
-                          borderRadius: '6px',
-                          background: 'rgba(245, 158, 11, 0.15)',
-                          border: '1px solid rgba(245, 158, 11, 0.35)',
-                          color: '#FBBF24',
-                          letterSpacing: '0.5px',
-                        }}
-                      >
-                        CMS
-                      </span>
-                    )}
+                    {item.isSpecial && <span className="cms-badge">CMS</span>}
                   </Link>
                 </li>
               ))}
@@ -511,110 +205,50 @@ export default function Footer({ settings }) {
           </div>
         </div>
 
-        {/* MULTI-COLOR TRUST & COMPLIANCE BADGE STRIP */}
-        <div
-          style={{
-            padding: '1.25rem 1.75rem',
-            borderRadius: '16px',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            marginBottom: '2.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1.25rem',
-            fontSize: '0.825rem',
-            color: 'rgba(255, 255, 255, 0.75)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', display: 'inline-block', boxShadow: '0 0 8px #10B981' }} />
-            <span style={{ fontWeight: 600 }}>99.98% Enterprise Uptime SLA</span>
+        {/* =====================================================================
+            3. TRUST STRIP: Clean, Professional Enterprise Assurance
+            ===================================================================== */}
+        <div className="trust-strip">
+          <div className="trust-strip-item">
+            <CheckCircle2 size={16} className="trust-icon" />
+            <span>99.98% Enterprise Uptime SLA</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <ShieldCheck size={16} style={{ color: '#38BDF8' }} />
-            <span style={{ fontWeight: 600 }}>SOC2 Type II &amp; ISO 27001 Ready</span>
+          <div className="trust-strip-item">
+            <ShieldCheck size={16} className="trust-icon" />
+            <span>SOC 2 Type II &amp; ISO 27001 Ready</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Zap size={16} style={{ color: '#F59E0B' }} />
-            <span style={{ fontWeight: 600 }}>24/7 SRE Telemetry &amp; Response</span>
+          <div className="trust-strip-item">
+            <Zap size={16} className="trust-icon" />
+            <span>24/7 SRE Telemetry &amp; Monitoring</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Lock size={16} style={{ color: '#A78BFA' }} />
-            <span style={{ fontWeight: 600 }}>100% Client Code &amp; IP Ownership</span>
+          <div className="trust-strip-item">
+            <Lock size={16} className="trust-icon" />
+            <span>100% Client Code &amp; IP Ownership</span>
           </div>
         </div>
 
-        {/* BOTTOM COPYRIGHT & COMPLIANCE BAR */}
-        <div
-          style={{
-            paddingTop: '2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            fontSize: '0.85rem',
-            color: 'rgba(255, 255, 255, 0.55)',
-            flexWrap: 'wrap',
-            gap: '1.25rem',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <span>All Copyrights with KD Infovision &amp; Consulting Pvt Ltd.</span>
-            <span>•</span>
-            <span style={{ color: '#38BDF8' }}>Consulting | Outsourcing | Digital</span>
+        {/* =====================================================================
+            4. BOTTOM BAR: Simple & Clean Copyright
+            ===================================================================== */}
+        <div className="bottom-bar">
+          <div className="copyright-text">
+            <span>&copy; {currentYear} KD Infovision &amp; Consulting Pvt Ltd. All rights reserved.</span>
+            <span className="dot-sep">&bull;</span>
+            <span className="tagline">Consulting | Outsourcing | Digital</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link
-              href="/privacy"
-              style={{ color: 'rgba(255, 255, 255, 0.55)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.55)')}
-            >
+          <div className="bottom-links">
+            <Link href="/privacy" className="bottom-link">
               Privacy Policy
             </Link>
-
-            <Link
-              href="/terms"
-              style={{ color: 'rgba(255, 255, 255, 0.55)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.55)')}
-            >
+            <Link href="/terms" className="bottom-link">
               Terms of Service
             </Link>
 
-            <button
-              onClick={scrollToTop}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#FFFFFF',
-                borderRadius: '8px',
-                padding: '6px 14px',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#158AE2';
-                e.currentTarget.style.borderColor = '#158AE2';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
+            <button onClick={scrollToTop} className="back-to-top-btn" aria-label="Back to top">
               <span>Back to Top</span>
               <ArrowUp size={14} />
             </button>
@@ -622,125 +256,400 @@ export default function Footer({ settings }) {
         </div>
       </div>
 
+      {/* =====================================================================
+          CSS: Clean, Grounded, Professional (No AI Rainbows or Floating Orbs)
+          ===================================================================== */}
       <style jsx>{`
-        :global(.adventurous-cta-card) {
-          background: linear-gradient(135deg, rgba(21, 138, 226, 0.22) 0%, rgba(5, 45, 93, 0.8) 45%, rgba(139, 92, 246, 0.2) 100%), #031836;
-          background-size: 200% 200%;
-          animation: adventurousMesh 10s ease infinite alternate;
-          box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.6), 0 0 35px -5px rgba(21, 138, 226, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(16px);
-          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        .kd-footer {
+          background: #07090e;
+          color: #ffffff;
+          font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          border-top: 1px solid #161c28;
+          padding: 4rem 0 2rem 0;
+          position: relative;
         }
-        :global(.adventurous-cta-card:hover) {
-          transform: translateY(-4px);
-          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px -5px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+        .container {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 0 24px;
         }
-        :global(.cta-orb-1) {
-          position: absolute;
-          width: 320px;
-          height: 320px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, transparent 70%);
-          top: -80px;
-          right: 15%;
-          animation: orbFloat1 8s ease-in-out infinite alternate;
-          pointer-events: none;
+
+        /* 1. PRE-FOOTER CTA CARD */
+        .cta-card {
+          background: #0d111a;
+          border: 1px solid #1e2638;
+          border-radius: 16px;
+          padding: 3rem 3.5rem;
+          margin-bottom: 4.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2.5rem;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
         }
-        :global(.cta-orb-2) {
-          position: absolute;
-          width: 280px;
-          height: 280px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
-          bottom: -60px;
-          left: 10%;
-          animation: orbFloat2 9s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-        @keyframes adventurousMesh {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        @keyframes orbFloat1 {
-          0% {
-            transform: translate(0, 0) scale(1);
-          }
-          100% {
-            transform: translate(40px, -25px) scale(1.15);
-          }
-        }
-        @keyframes orbFloat2 {
-          0% {
-            transform: translate(0, 0) scale(1);
-          }
-          100% {
-            transform: translate(-30px, 20px) scale(1.12);
-          }
-        }
-        :global(.cta-primary-btn:hover) {
-          transform: translateY(-2px);
-          box-shadow: 0 14px 34px rgba(99, 102, 241, 0.6) !important;
-        }
-        :global(.cta-secondary-btn:hover) {
-          background: rgba(255, 255, 255, 0.16) !important;
-          border-color: rgba(255, 255, 255, 0.35) !important;
+
+        .cta-card:hover {
+          border-color: #2b3952;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
           transform: translateY(-2px);
         }
-        :global(.social-btn:hover) {
+
+        .cta-text-content {
+          max-width: 640px;
+        }
+
+        .cta-title {
+          font-size: clamp(1.5rem, 2.3vw, 2rem);
+          font-weight: 700;
+          color: #ffffff;
+          line-height: 1.25;
+          letter-spacing: -0.015em;
+          margin: 0 0 0.75rem 0;
+        }
+
+        .cta-description {
+          font-size: 0.98rem;
+          line-height: 1.65;
+          color: #94a3b8;
+          margin: 0;
+        }
+
+        .cta-actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          flex-shrink: 0;
+          flex-wrap: wrap;
+        }
+
+        .cta-btn-primary {
+          background: #0284c7;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 12px 22px;
+          border-radius: 8px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+          border: 1px solid transparent;
+        }
+
+        .cta-btn-primary:hover {
+          background: #0369a1;
+          transform: translateY(-1px);
+        }
+
+        .cta-btn-secondary {
+          background: transparent;
+          color: #e2e8f0;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 12px 22px;
+          border-radius: 8px;
+          text-decoration: none;
+          border: 1px solid #334155;
+          transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .cta-btn-secondary:hover {
+          background: rgba(255, 255, 255, 0.05);
+          border-color: #64748b;
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        /* 2. FOOTER NAVIGATION GRID */
+        .footer-nav-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1.15fr;
+          gap: 3.5rem;
+          margin-bottom: 3.5rem;
+        }
+
+        .footer-brand-col {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .footer-logo-link {
+          display: inline-block;
+          margin-bottom: 1.25rem;
+          text-decoration: none;
+        }
+
+        .footer-logo-img {
+          height: 38px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+        }
+
+        .brand-summary {
+          font-size: 14px;
+          line-height: 1.7;
+          color: #94a3b8;
+          max-width: 360px;
+          margin: 0 0 1.5rem 0;
+        }
+
+        .contact-details-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 1.75rem;
+          font-size: 13.5px;
+        }
+
+        .contact-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          color: #94a3b8;
+          line-height: 1.5;
+        }
+
+        .contact-item a {
+          color: #94a3b8;
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+
+        .contact-item a:hover {
+          color: #ffffff;
+        }
+
+        :global(.contact-icon) {
+          color: #64748b;
+          flex-shrink: 0;
+          margin-top: 3px;
+        }
+
+        .social-links-row {
+          display: flex;
+          gap: 8px;
+        }
+
+        .social-link {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: #0d111a;
+          border: 1px solid #1e2638;
+          color: #94a3b8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-link:hover {
+          background: #151c2b;
+          border-color: #0284c7;
+          color: #ffffff;
           transform: translateY(-2px);
         }
-        :global(.linkedin-btn:hover) {
-          background: #0A66C2 !important;
-          border-color: #0A66C2 !important;
-          color: #FFFFFF !important;
-          box-shadow: 0 4px 14px rgba(10, 102, 194, 0.5);
+
+        /* Nav Columns */
+        .footer-links-col {
+          display: flex;
+          flex-direction: column;
         }
-        :global(.twitter-btn:hover) {
-          background: #1DA1F2 !important;
-          border-color: #1DA1F2 !important;
-          color: #FFFFFF !important;
-          box-shadow: 0 4px 14px rgba(29, 161, 242, 0.5);
+
+        .col-heading {
+          font-size: 13px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: #ffffff;
+          margin: 0 0 1.25rem 0;
         }
-        :global(.github-btn:hover) {
-          background: #8B5CF6 !important;
-          border-color: #8B5CF6 !important;
-          color: #FFFFFF !important;
-          box-shadow: 0 4px 14px rgba(139, 92, 246, 0.5);
+
+        .links-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
         }
-        :global(.solutions-link:hover) {
-          color: #38BDF8 !important;
-          padding-left: 5px;
+
+        .nav-link {
+          color: #94a3b8;
+          font-size: 14px;
+          line-height: 1.5;
+          text-decoration: none;
+          display: inline-block;
+          transition: color 0.15s ease, transform 0.15s ease;
         }
-        :global(.industries-link:hover) {
-          color: #34D399 !important;
-          padding-left: 5px;
+
+        .nav-link:hover {
+          color: #ffffff;
+          transform: translateX(3px);
         }
-        :global(.company-link:hover) {
-          color: #A78BFA !important;
-          padding-left: 5px;
+
+        .company-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
         }
-        @media (max-width: 960px) {
-          :global(.footer-grid) {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 2.5rem !important;
+
+        .cms-badge {
+          background: #141a26;
+          border: 1px solid #243044;
+          color: #94a3b8;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+
+        /* 3. TRUST STRIP */
+        .trust-strip {
+          background: #0b0e16;
+          border: 1px solid #161c28;
+          border-radius: 12px;
+          padding: 1.15rem 1.75rem;
+          margin-bottom: 2.75rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+          font-size: 13px;
+          color: #cbd5e1;
+        }
+
+        .trust-strip-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 500;
+        }
+
+        :global(.trust-icon) {
+          color: #0284c7;
+          flex-shrink: 0;
+        }
+
+        /* 4. BOTTOM BAR */
+        .bottom-bar {
+          border-top: 1px solid #161c28;
+          padding-top: 1.75rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+          font-size: 13px;
+          color: #64748b;
+        }
+
+        .copyright-text {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .dot-sep {
+          color: #334155;
+        }
+
+        .tagline {
+          color: #94a3b8;
+        }
+
+        .bottom-links {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+        }
+
+        .bottom-link {
+          color: #64748b;
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+
+        .bottom-link:hover {
+          color: #94a3b8;
+        }
+
+        .back-to-top-btn {
+          background: transparent;
+          border: 1px solid #1e2638;
+          color: #94a3b8;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-family: inherit;
+          transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+        }
+
+        .back-to-top-btn:hover {
+          background: #111622;
+          border-color: #334155;
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+          .cta-card {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2.25rem 2rem;
+            gap: 1.75rem;
           }
-          :global(.adventurous-cta-card) {
-            grid-template-columns: 1fr !important;
-            padding: 2.5rem 1.75rem !important;
-            gap: 2rem !important;
+
+          .footer-nav-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+          }
+
+          .trust-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
           }
         }
+
         @media (max-width: 600px) {
-          :global(.footer-grid) {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
+          .footer-nav-grid {
+            grid-template-columns: 1fr;
+            gap: 2.25rem;
+          }
+
+          .trust-strip {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+          }
+
+          .bottom-bar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          }
+
+          .cta-actions {
+            width: 100%;
+          }
+
+          .cta-btn-primary,
+          .cta-btn-secondary {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
