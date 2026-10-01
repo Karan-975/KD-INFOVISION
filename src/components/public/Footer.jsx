@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   Lock,
   Zap,
+  Sparkles,
 } from 'lucide-react';
 
 export default function Footer({ settings }) {
@@ -52,24 +53,58 @@ export default function Footer({ settings }) {
 
   return (
     <footer className="kd-footer">
+      {/* Top Animated Spectrum Accent Line */}
+      <div className="spectrum-line" />
+
       <div className="container">
         {/* =====================================================================
-            1. PRE-FOOTER CTA CARD: Simple, Basic, Professional
+            1. PRE-FOOTER CTA CARD: Vibrant, Animated, Premium & Colorful
             ===================================================================== */}
         <div className="cta-card">
+          {/* Subtle Ambient Radial Backlight */}
+          <div className="cta-ambient-glow" />
+
           <div className="cta-text-content">
+            {/* Pill Eyebrow with Pulse */}
+            <div className="cta-pill-row">
+              <span className="cta-pill">
+                <span className="live-dot" />
+                ENTERPRISE ARCHITECTURE ADVISORY
+              </span>
+            </div>
+
             <h3 className="cta-title">
-              Ready to Accelerate Your AI &amp; Cloud Transformation?
+              Ready to Accelerate Your{' '}
+              <span className="cta-gradient-text">
+                AI &amp; Cloud Transformation?
+              </span>
             </h3>
+
             <p className="cta-description">
               Consult with our certified data engineers and AI architects to modernize legacy systems, build resilient lakehouses, and unlock actionable intelligence.
             </p>
+
+            {/* 3 Interactive Micro-Badges */}
+            <div className="cta-badges-row">
+              <span className="micro-badge cyan-badge">
+                <Zap size={13} />
+                Sub-Second Latency
+              </span>
+              <span className="micro-badge green-badge">
+                <ShieldCheck size={13} />
+                Zero-Trust Compliance
+              </span>
+              <span className="micro-badge yellow-badge">
+                <Sparkles size={13} />
+                Quantifiable ROI
+              </span>
+            </div>
           </div>
 
           <div className="cta-actions">
             <Link href="/contact" className="cta-btn-primary">
               <span>Schedule Architecture Briefing</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={17} className="btn-arrow" />
             </Link>
 
             <Link href="/services" className="cta-btn-secondary">
@@ -79,7 +114,7 @@ export default function Footer({ settings }) {
         </div>
 
         {/* =====================================================================
-            2. MAIN FOOTER NAVIGATION: Clean, Typography-Driven (No AI Glows)
+            2. MAIN FOOTER NAVIGATION: Colorful & Alive with Smooth Animations
             ===================================================================== */}
         <div className="footer-nav-grid">
           {/* Brand & Address Column */}
@@ -93,40 +128,40 @@ export default function Footer({ settings }) {
             </Link>
 
             <p className="brand-summary">
-              Consulting | Outsourcing | Digital — Delivering advanced Data &amp; Analytics, Data Engineering, Agentic AI, and Digital Transformation solutions.
+              <span className="brand-highlight">Consulting | Outsourcing | Digital</span> — Delivering advanced Data &amp; Analytics, Data Engineering, Agentic AI, and Digital Transformation solutions.
             </p>
 
             <div className="contact-details-list">
               <div className="contact-item">
-                <MapPin size={16} className="contact-icon" />
+                <MapPin size={17} className="contact-icon pin-icon" />
                 <span>Shop No 9, Ananat Kanakar Marg, Bandra – East, Mumbai 400051</span>
               </div>
 
               <div className="contact-item">
-                <Mail size={16} className="contact-icon" />
+                <Mail size={17} className="contact-icon mail-icon" />
                 <a href={`mailto:${settings?.email || 'admin@kdinfovision.com'}`}>
                   {settings?.email || 'admin@kdinfovision.com'}
                 </a>
               </div>
 
               <div className="contact-item">
-                <Phone size={16} className="contact-icon" />
+                <Phone size={17} className="contact-icon phone-icon" />
                 <a href={`tel:${(settings?.phone || '+91 9820536031').replace(/\s+/g, '')}`}>
                   {settings?.phone || '+91 9820536031'}
                 </a>
               </div>
             </div>
 
-            {/* Clean Social Links */}
+            {/* Vibrant Brand Social Icons */}
             <div className="social-links-row">
               <a
                 href={settings?.socialLinkedin || 'https://www.linkedin.com/company/kd-infovision-consulting/about/'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="social-link"
+                className="social-link linkedin-link"
               >
-                <Linkedin size={16} />
+                <Linkedin size={17} />
               </a>
 
               <a
@@ -134,9 +169,9 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="social-link"
+                className="social-link facebook-link"
               >
-                <Facebook size={16} />
+                <Facebook size={17} />
               </a>
 
               <a
@@ -144,9 +179,9 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Twitter"
-                className="social-link"
+                className="social-link twitter-link"
               >
-                <Twitter size={16} />
+                <Twitter size={17} />
               </a>
 
               <a
@@ -154,48 +189,60 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className="social-link"
+                className="social-link github-link"
               >
-                <Github size={16} />
+                <Github size={17} />
               </a>
             </div>
           </div>
 
-          {/* Solutions Column */}
+          {/* Solutions Column (Electric Cyan) */}
           <div className="footer-links-col">
-            <h4 className="col-heading">Solutions</h4>
+            <div className="col-header-wrap">
+              <span className="col-accent-bar bar-cyan" />
+              <h4 className="col-heading heading-cyan">Solutions</h4>
+            </div>
             <ul className="links-list">
               {solutions.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link">
-                    {item.name}
+                  <Link href={item.href} className="nav-link link-cyan">
+                    <span className="link-hover-dash" />
+                    <span>{item.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Industries Column */}
+          {/* Industries Column (Emerald Mint Green) */}
           <div className="footer-links-col">
-            <h4 className="col-heading">Industries</h4>
+            <div className="col-header-wrap">
+              <span className="col-accent-bar bar-green" />
+              <h4 className="col-heading heading-green">Industries</h4>
+            </div>
             <ul className="links-list">
               {industries.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link">
-                    {item.name}
+                  <Link href={item.href} className="nav-link link-green">
+                    <span className="link-hover-dash" />
+                    <span>{item.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Company Column (Vibrant Violet / Purple) */}
           <div className="footer-links-col">
-            <h4 className="col-heading">Company</h4>
+            <div className="col-header-wrap">
+              <span className="col-accent-bar bar-purple" />
+              <h4 className="col-heading heading-purple">Company</h4>
+            </div>
             <ul className="links-list">
               {company.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link company-link">
+                  <Link href={item.href} className="nav-link link-purple company-link">
+                    <span className="link-hover-dash" />
                     <span>{item.name}</span>
                     {item.isSpecial && <span className="cms-badge">CMS</span>}
                   </Link>
@@ -206,32 +253,32 @@ export default function Footer({ settings }) {
         </div>
 
         {/* =====================================================================
-            3. TRUST STRIP: Clean, Professional Enterprise Assurance
+            3. MULTI-COLOR TRUST STRIP: Interactive with Hover Glows
             ===================================================================== */}
         <div className="trust-strip">
-          <div className="trust-strip-item">
-            <CheckCircle2 size={16} className="trust-icon" />
-            <span>99.98% Enterprise Uptime SLA</span>
+          <div className="trust-strip-item item-uptime">
+            <span className="trust-dot-pulse" />
+            <span className="trust-text">99.98% Enterprise Uptime SLA</span>
           </div>
 
-          <div className="trust-strip-item">
-            <ShieldCheck size={16} className="trust-icon" />
-            <span>SOC 2 Type II &amp; ISO 27001 Ready</span>
+          <div className="trust-strip-item item-soc">
+            <ShieldCheck size={17} className="trust-icon icon-cyan" />
+            <span className="trust-text">SOC 2 Type II &amp; ISO 27001 Ready</span>
           </div>
 
-          <div className="trust-strip-item">
-            <Zap size={16} className="trust-icon" />
-            <span>24/7 SRE Telemetry &amp; Monitoring</span>
+          <div className="trust-strip-item item-sre">
+            <Zap size={17} className="trust-icon icon-amber" />
+            <span className="trust-text">24/7 SRE Telemetry &amp; Response</span>
           </div>
 
-          <div className="trust-strip-item">
-            <Lock size={16} className="trust-icon" />
-            <span>100% Client Code &amp; IP Ownership</span>
+          <div className="trust-strip-item item-ip">
+            <Lock size={17} className="trust-icon icon-purple" />
+            <span className="trust-text">100% Client Code &amp; IP Ownership</span>
           </div>
         </div>
 
         {/* =====================================================================
-            4. BOTTOM BAR: Simple & Clean Copyright
+            4. BOTTOM BAR: Animated Back-to-Top & Legal Links
             ===================================================================== */}
         <div className="bottom-bar">
           <div className="copyright-text">
@@ -250,122 +297,276 @@ export default function Footer({ settings }) {
 
             <button onClick={scrollToTop} className="back-to-top-btn" aria-label="Back to top">
               <span>Back to Top</span>
-              <ArrowUp size={14} />
+              <ArrowUp size={14} className="up-arrow" />
             </button>
           </div>
         </div>
       </div>
 
       {/* =====================================================================
-          CSS: Clean, Grounded, Professional (No AI Rainbows or Floating Orbs)
+          CSS: Vibrant Colors, Smooth Transitions, Dynamic Animations
           ===================================================================== */}
       <style jsx>{`
         .kd-footer {
-          background: #07090e;
+          background: #06080e;
           color: #ffffff;
           font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          border-top: 1px solid #161c28;
-          padding: 4rem 0 2rem 0;
           position: relative;
+          padding: 4.5rem 0 2rem 0;
+          overflow: hidden;
+        }
+
+        /* Top Spectrum Shimmer Line */
+        .spectrum-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #00C8FF 0%, #0DB16A 25%, #fffa65 50%, #B38BFF 75%, #00C8FF 100%);
+          background-size: 200% 100%;
+          animation: spectrumShift 6s linear infinite;
+          box-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
+        }
+
+        @keyframes spectrumShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 200% 50%;
+          }
         }
 
         .container {
-          max-width: 1240px;
+          max-width: 1260px;
           margin: 0 auto;
           padding: 0 24px;
+          position: relative;
+          z-index: 2;
         }
 
         /* 1. PRE-FOOTER CTA CARD */
         .cta-card {
-          background: #0d111a;
-          border: 1px solid #1e2638;
-          border-radius: 16px;
-          padding: 3rem 3.5rem;
+          position: relative;
+          background: linear-gradient(135deg, rgba(8, 22, 48, 0.85) 0%, rgba(13, 10, 32, 0.85) 50%, rgba(6, 26, 32, 0.85) 100%);
+          border: 1px solid rgba(0, 200, 255, 0.3);
+          border-radius: 22px;
+          padding: 3.25rem 3.5rem;
           margin-bottom: 4.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 2.5rem;
-          transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+          overflow: hidden;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(14px);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .cta-card:hover {
-          border-color: #2b3952;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-          transform: translateY(-2px);
+          border-color: rgba(0, 200, 255, 0.6);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 200, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+          transform: translateY(-3px);
+        }
+
+        /* Soft Breathing Ambient Glow */
+        .cta-ambient-glow {
+          position: absolute;
+          top: -40%;
+          right: -10%;
+          width: 450px;
+          height: 350px;
+          background: radial-gradient(circle, rgba(0, 200, 255, 0.15) 0%, rgba(13, 177, 106, 0.08) 50%, transparent 70%);
+          pointer-events: none;
+          animation: pulseAmbient 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseAmbient {
+          0% {
+            transform: scale(0.9) translate(0, 0);
+            opacity: 0.7;
+          }
+          100% {
+            transform: scale(1.15) translate(-20px, 15px);
+            opacity: 1;
+          }
         }
 
         .cta-text-content {
-          max-width: 640px;
+          max-width: 650px;
+          position: relative;
+          z-index: 2;
         }
 
-        .cta-title {
-          font-size: clamp(1.5rem, 2.3vw, 2rem);
-          font-weight: 700;
-          color: #ffffff;
-          line-height: 1.25;
-          letter-spacing: -0.015em;
-          margin: 0 0 0.75rem 0;
+        .cta-pill-row {
+          margin-bottom: 0.85rem;
         }
 
-        .cta-description {
-          font-size: 0.98rem;
-          line-height: 1.65;
-          color: #94a3b8;
-          margin: 0;
-        }
-
-        .cta-actions {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          flex-shrink: 0;
-          flex-wrap: wrap;
-        }
-
-        .cta-btn-primary {
-          background: #0284c7;
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: 600;
-          padding: 12px 22px;
-          border-radius: 8px;
-          text-decoration: none;
+        .cta-pill {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          transition: background-color 0.2s ease, transform 0.2s ease;
-          border: 1px solid transparent;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          color: #fffa65;
+          background: rgba(255, 250, 101, 0.1);
+          border: 1px solid rgba(255, 250, 101, 0.3);
+          padding: 5px 14px;
+          border-radius: 20px;
+        }
+
+        .live-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #fffa65;
+          box-shadow: 0 0 8px #fffa65;
+          animation: livePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.4);
+            opacity: 0.5;
+          }
+        }
+
+        .cta-title {
+          font-size: clamp(1.65rem, 2.6vw, 2.25rem);
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1.22;
+          letter-spacing: -0.02em;
+          margin: 0 0 0.85rem 0;
+        }
+
+        .cta-gradient-text {
+          background: linear-gradient(90.21deg, #00C8FF 0%, #00F7FF 40%, #0DB16A 90%);
+          WebkitBackgroundClip: text;
+          WebkitTextFillColor: transparent;
+          display: inline-block;
+        }
+
+        .cta-description {
+          font-size: 1rem;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.78);
+          margin: 0 0 1.5rem 0;
+        }
+
+        .cta-badges-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .micro-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          padding: 4px 12px;
+          border-radius: 14px;
+          transition: transform 0.2s ease;
+        }
+
+        .micro-badge:hover {
+          transform: translateY(-1px);
+        }
+
+        .cyan-badge {
+          background: rgba(0, 200, 255, 0.12);
+          border: 1px solid rgba(0, 200, 255, 0.35);
+          color: #00F7FF;
+        }
+
+        .green-badge {
+          background: rgba(13, 177, 106, 0.12);
+          border: 1px solid rgba(13, 177, 106, 0.35);
+          color: #34D399;
+        }
+
+        .yellow-badge {
+          background: rgba(255, 250, 101, 0.1);
+          border: 1px solid rgba(255, 250, 101, 0.3);
+          color: #fffa65;
+        }
+
+        /* Actions Buttons */
+        .cta-actions {
+          display: flex;
+          align-items: center;
+          gap: 1.15rem;
+          flex-shrink: 0;
+          flex-wrap: wrap;
+          position: relative;
+          z-index: 2;
+        }
+
+        .cta-btn-primary {
+          background: linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%);
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 13px 26px;
+          border-radius: 40px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          box-shadow: 0 4px 18px rgba(30, 201, 242, 0.35);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .cta-btn-primary:hover {
-          background: #0369a1;
-          transform: translateY(-1px);
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 8px 28px rgba(30, 201, 242, 0.55);
+          filter: brightness(1.08);
+        }
+
+        :global(.btn-arrow) {
+          transition: transform 0.25s ease;
+        }
+
+        .cta-btn-primary:hover :global(.btn-arrow) {
+          transform: translateX(4px);
         }
 
         .cta-btn-secondary {
-          background: transparent;
-          color: #e2e8f0;
+          background: rgba(0, 200, 255, 0.06);
+          color: #00F7FF;
           font-size: 14px;
           font-weight: 600;
-          padding: 12px 22px;
-          border-radius: 8px;
+          padding: 12px 24px;
+          border-radius: 40px;
           text-decoration: none;
-          border: 1px solid #334155;
-          transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+          border: 1px solid rgba(0, 200, 255, 0.35);
+          transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
         }
 
         .cta-btn-secondary:hover {
-          background: rgba(255, 255, 255, 0.05);
-          border-color: #64748b;
+          background: rgba(0, 200, 255, 0.16);
+          border-color: #00F7FF;
           color: #ffffff;
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 18px rgba(0, 200, 255, 0.25);
         }
 
         /* 2. FOOTER NAVIGATION GRID */
         .footer-nav-grid {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1.15fr;
+          grid-template-columns: 2fr 1.05fr 1.05fr 1.15fr;
           gap: 3.5rem;
           margin-bottom: 3.5rem;
         }
@@ -377,12 +578,17 @@ export default function Footer({ settings }) {
 
         .footer-logo-link {
           display: inline-block;
-          margin-bottom: 1.25rem;
+          margin-bottom: 1.35rem;
           text-decoration: none;
+          transition: transform 0.2s ease;
+        }
+
+        .footer-logo-link:hover {
+          transform: scale(1.03);
         }
 
         .footer-logo-img {
-          height: 38px;
+          height: 42px;
           width: auto;
           object-fit: contain;
           display: block;
@@ -391,16 +597,21 @@ export default function Footer({ settings }) {
         .brand-summary {
           font-size: 14px;
           line-height: 1.7;
-          color: #94a3b8;
+          color: rgba(255, 255, 255, 0.7);
           max-width: 360px;
-          margin: 0 0 1.5rem 0;
+          margin: 0 0 1.75rem 0;
+        }
+
+        .brand-highlight {
+          color: #00F7FF;
+          font-weight: 600;
         }
 
         .contact-details-list {
           display: flex;
           flex-direction: column;
-          gap: 10px;
-          margin-bottom: 1.75rem;
+          gap: 12px;
+          margin-bottom: 1.85rem;
           font-size: 13.5px;
         }
 
@@ -408,50 +619,97 @@ export default function Footer({ settings }) {
           display: flex;
           align-items: flex-start;
           gap: 10px;
-          color: #94a3b8;
+          color: rgba(255, 255, 255, 0.75);
           line-height: 1.5;
+          transition: transform 0.2s ease;
+        }
+
+        .contact-item:hover {
+          transform: translateX(3px);
         }
 
         .contact-item a {
-          color: #94a3b8;
+          color: rgba(255, 255, 255, 0.75);
           text-decoration: none;
-          transition: color 0.15s ease;
+          transition: color 0.2s ease;
         }
 
         .contact-item a:hover {
-          color: #ffffff;
+          color: #00F7FF;
         }
 
         :global(.contact-icon) {
-          color: #64748b;
           flex-shrink: 0;
-          margin-top: 3px;
+          margin-top: 2px;
+          transition: transform 0.2s ease;
         }
 
+        .contact-item:hover :global(.contact-icon) {
+          transform: scale(1.15);
+        }
+
+        :global(.pin-icon) {
+          color: #FB923C;
+        }
+
+        :global(.mail-icon) {
+          color: #38BDF8;
+        }
+
+        :global(.phone-icon) {
+          color: #34D399;
+        }
+
+        /* Social Icons */
         .social-links-row {
           display: flex;
-          gap: 8px;
+          gap: 10px;
         }
 
         .social-link {
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          background: #0d111a;
-          border: 1px solid #1e2638;
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          background: #0d121c;
+          border: 1px solid rgba(255, 255, 255, 0.1);
           color: #94a3b8;
           display: flex;
           align-items: center;
           justify-content: center;
           text-decoration: none;
-          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .social-link:hover {
-          background: #151c2b;
-          border-color: #0284c7;
+        .linkedin-link:hover {
+          background: #0A66C2;
+          border-color: #0A66C2;
           color: #ffffff;
-          transform: translateY(-2px);
+          transform: translateY(-3px) scale(1.08);
+          box-shadow: 0 6px 18px rgba(10, 102, 194, 0.45);
+        }
+
+        .facebook-link:hover {
+          background: #1877F2;
+          border-color: #1877F2;
+          color: #ffffff;
+          transform: translateY(-3px) scale(1.08);
+          box-shadow: 0 6px 18px rgba(24, 119, 242, 0.45);
+        }
+
+        .twitter-link:hover {
+          background: #00C8FF;
+          border-color: #00C8FF;
+          color: #ffffff;
+          transform: translateY(-3px) scale(1.08);
+          box-shadow: 0 6px 18px rgba(0, 200, 255, 0.45);
+        }
+
+        .github-link:hover {
+          background: #8B5CF6;
+          border-color: #8B5CF6;
+          color: #ffffff;
+          transform: translateY(-3px) scale(1.08);
+          box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
         }
 
         /* Nav Columns */
@@ -460,13 +718,52 @@ export default function Footer({ settings }) {
           flex-direction: column;
         }
 
+        .col-header-wrap {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 1.35rem;
+        }
+
+        .col-accent-bar {
+          width: 4px;
+          height: 16px;
+          border-radius: 4px;
+        }
+
+        .bar-cyan {
+          background: #00C8FF;
+          box-shadow: 0 0 8px #00C8FF;
+        }
+
+        .bar-green {
+          background: #0DB16A;
+          box-shadow: 0 0 8px #0DB16A;
+        }
+
+        .bar-purple {
+          background: #B38BFF;
+          box-shadow: 0 0 8px #B38BFF;
+        }
+
         .col-heading {
           font-size: 13px;
-          font-weight: 700;
+          font-weight: 800;
           text-transform: uppercase;
-          letter-spacing: 0.8px;
-          color: #ffffff;
-          margin: 0 0 1.25rem 0;
+          letter-spacing: 1.2px;
+          margin: 0;
+        }
+
+        .heading-cyan {
+          color: #00C8FF;
+        }
+
+        .heading-green {
+          color: #34D399;
+        }
+
+        .heading-purple {
+          color: #B38BFF;
         }
 
         .links-list {
@@ -475,142 +772,239 @@ export default function Footer({ settings }) {
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 0.85rem;
+          gap: 0.9rem;
         }
 
         .nav-link {
-          color: #94a3b8;
+          color: rgba(255, 255, 255, 0.7);
           font-size: 14px;
           line-height: 1.5;
           text-decoration: none;
-          display: inline-block;
-          transition: color 0.15s ease, transform 0.15s ease;
+          display: inline-flex;
+          align-items: center;
+          position: relative;
+          transition: all 0.25s ease;
         }
 
-        .nav-link:hover {
-          color: #ffffff;
-          transform: translateX(3px);
+        .link-hover-dash {
+          width: 0;
+          height: 2px;
+          margin-right: 0;
+          border-radius: 2px;
+          transition: all 0.25s ease;
+          opacity: 0;
+        }
+
+        .nav-link:hover .link-hover-dash {
+          width: 10px;
+          margin-right: 8px;
+          opacity: 1;
+        }
+
+        .link-cyan .link-hover-dash {
+          background: #00F7FF;
+          box-shadow: 0 0 6px #00F7FF;
+        }
+
+        .link-cyan:hover {
+          color: #00F7FF;
+          transform: translateX(4px);
+        }
+
+        .link-green .link-hover-dash {
+          background: #34D399;
+          box-shadow: 0 0 6px #34D399;
+        }
+
+        .link-green:hover {
+          color: #34D399;
+          transform: translateX(4px);
+        }
+
+        .link-purple .link-hover-dash {
+          background: #C084FC;
+          box-shadow: 0 0 6px #C084FC;
+        }
+
+        .link-purple:hover {
+          color: #C084FC;
+          transform: translateX(4px);
         }
 
         .company-link {
-          display: inline-flex;
-          align-items: center;
           gap: 8px;
         }
 
         .cms-badge {
-          background: #141a26;
-          border: 1px solid #243044;
-          color: #94a3b8;
+          background: rgba(245, 158, 11, 0.15);
+          border: 1px solid rgba(245, 158, 11, 0.4);
+          color: #FBBF24;
           font-size: 10px;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 0.5px;
-          padding: 2px 6px;
-          border-radius: 4px;
+          padding: 2px 7px;
+          border-radius: 6px;
+          box-shadow: 0 0 8px rgba(245, 158, 11, 0.25);
         }
 
         /* 3. TRUST STRIP */
         .trust-strip {
-          background: #0b0e16;
-          border: 1px solid #161c28;
-          border-radius: 12px;
-          padding: 1.15rem 1.75rem;
+          background: rgba(13, 18, 30, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          padding: 1.25rem 2rem;
           margin-bottom: 2.75rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 1.25rem;
-          font-size: 13px;
-          color: #cbd5e1;
+          gap: 1.5rem;
+          backdrop-filter: blur(10px);
         }
 
         .trust-strip-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-weight: 500;
+          gap: 10px;
+          font-size: 13.5px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.85);
+          transition: transform 0.25s ease;
+        }
+
+        .trust-strip-item:hover {
+          transform: translateY(-2px);
+        }
+
+        .trust-dot-pulse {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10B981;
+          box-shadow: 0 0 10px #10B981;
+          animation: dotPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes dotPulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.5);
+            opacity: 0.6;
+          }
         }
 
         :global(.trust-icon) {
-          color: #0284c7;
           flex-shrink: 0;
+          transition: transform 0.25s ease;
+        }
+
+        .trust-strip-item:hover :global(.trust-icon) {
+          transform: scale(1.2);
+        }
+
+        :global(.icon-cyan) {
+          color: #00F7FF;
+          filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.4));
+        }
+
+        :global(.icon-amber) {
+          color: #F59E0B;
+          filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4));
+        }
+
+        :global(.icon-purple) {
+          color: #A78BFA;
+          filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));
         }
 
         /* 4. BOTTOM BAR */
         .bottom-bar {
-          border-top: 1px solid #161c28;
-          padding-top: 1.75rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding-top: 2rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 1.25rem;
+          gap: 1.5rem;
           font-size: 13px;
-          color: #64748b;
+          color: rgba(255, 255, 255, 0.6);
         }
 
         .copyright-text {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
           flex-wrap: wrap;
         }
 
         .dot-sep {
-          color: #334155;
+          color: rgba(255, 255, 255, 0.3);
         }
 
         .tagline {
-          color: #94a3b8;
+          color: #00F7FF;
+          font-weight: 600;
         }
 
         .bottom-links {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 1.75rem;
         }
 
         .bottom-link {
-          color: #64748b;
+          color: rgba(255, 255, 255, 0.6);
           text-decoration: none;
-          transition: color 0.15s ease;
+          transition: all 0.2s ease;
+          position: relative;
         }
 
         .bottom-link:hover {
-          color: #94a3b8;
+          color: #ffffff;
         }
 
         .back-to-top-btn {
-          background: transparent;
-          border: 1px solid #1e2638;
-          color: #94a3b8;
-          padding: 6px 12px;
-          border-radius: 6px;
+          background: rgba(0, 200, 255, 0.08);
+          border: 1px solid rgba(0, 200, 255, 0.3);
+          color: #00F7FF;
+          padding: 7px 16px;
+          border-radius: 20px;
           font-size: 12px;
-          font-weight: 600;
+          font-weight: 700;
           cursor: pointer;
           display: inline-flex;
           align-items: center;
           gap: 6px;
           font-family: inherit;
-          transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .back-to-top-btn:hover {
-          background: #111622;
-          border-color: #334155;
+          background: linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%);
+          border-color: transparent;
           color: #ffffff;
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(30, 201, 242, 0.4);
+        }
+
+        :global(.up-arrow) {
+          transition: transform 0.25s ease;
+        }
+
+        .back-to-top-btn:hover :global(.up-arrow) {
+          transform: translateY(-2px);
         }
 
         /* RESPONSIVE */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
           .cta-card {
             flex-direction: column;
             align-items: flex-start;
-            padding: 2.25rem 2rem;
-            gap: 1.75rem;
+            padding: 2.5rem 2rem;
+            gap: 2rem;
           }
 
           .footer-nav-grid {
@@ -621,11 +1015,11 @@ export default function Footer({ settings }) {
           .trust-strip {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.25rem;
           }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
           .footer-nav-grid {
             grid-template-columns: 1fr;
             gap: 2.25rem;
@@ -633,13 +1027,13 @@ export default function Footer({ settings }) {
 
           .trust-strip {
             grid-template-columns: 1fr;
-            gap: 0.85rem;
+            gap: 1rem;
           }
 
           .bottom-bar {
             flex-direction: column;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 1.25rem;
           }
 
           .cta-actions {
