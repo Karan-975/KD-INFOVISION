@@ -52,7 +52,7 @@ function CounterItem({ target, suffix, label, context }) {
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         borderRadius: '16px',
-        boxShadow: '0 8px 30px rgba(5, 25, 80, 0.2)',
+        boxShadow: '0 8px 30px rgba(5, 25, 80, 0.18)',
         transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
       }}
@@ -132,7 +132,7 @@ export default function AboutSection({ statCounters = [] }) {
       id="about"
       style={{
         padding: 0,
-        background: 'linear-gradient(135deg, #1865F2 0%, #104EC9 45%, #0A369D 100%)',
+        background: 'linear-gradient(135deg, #227CEE 0%, #1F5ECD 45%, #1B45B3 100%)',
         color: '#ffffff',
         position: 'relative',
         overflow: 'hidden',
@@ -147,7 +147,7 @@ export default function AboutSection({ statCounters = [] }) {
           width: '650px',
           height: '650px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 229, 255, 0.22) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(0, 229, 255, 0.18) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
@@ -159,37 +159,10 @@ export default function AboutSection({ statCounters = [] }) {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 208, 40, 0.14) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(255, 208, 40, 0.12) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
-
-      {/* Subtle Geometric Polygonal Background Facets matching reference image */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          overflow: 'hidden',
-          opacity: 0.16,
-        }}
-      >
-        <svg width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="facetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="facetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#50E6FF" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <polygon points="0,0 520,0 260,700 0,600" fill="url(#facetGrad1)" />
-          <polygon points="650,0 1350,150 1100,850 500,450" fill="url(#facetGrad2)" />
-          <polygon points="1150,350 1920,80 1920,950 1250,750" fill="url(#facetGrad1)" />
-        </svg>
-      </div>
 
       <div
         style={{
@@ -208,45 +181,11 @@ export default function AboutSection({ statCounters = [] }) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            borderRight: '1px solid rgba(255, 255, 255, 0.14)',
             position: 'relative',
             zIndex: 2,
           }}
           className="about-left-pane"
         >
-          {/* Overline Badge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 16px',
-              background: 'rgba(255, 208, 40, 0.16)',
-              border: '1px solid rgba(255, 208, 40, 0.45)',
-              borderRadius: '30px',
-              color: '#FFD028',
-              fontSize: '0.8rem',
-              fontWeight: 800,
-              letterSpacing: '1.2px',
-              textTransform: 'uppercase',
-              marginBottom: '1.25rem',
-              fontFamily: "'Montserrat', sans-serif",
-              width: 'fit-content',
-            }}
-          >
-            <span
-              style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: '#FFD028',
-                display: 'inline-block',
-                boxShadow: '0 0 8px #FFD028',
-              }}
-            />
-            WE&apos;RE YOUR PARTNER IN CRITICAL MOMENTS
-          </div>
-
           {/* Heading with Golden Yellow Accent */}
           <h2
             style={{
@@ -367,7 +306,7 @@ export default function AboutSection({ statCounters = [] }) {
           </div>
         </div>
 
-        {/* Right Pane: Isometric Data Analytics Visual + 4 Quantitative Metric Counters */}
+        {/* Right Pane: Seamless 3D Isometric Data Analytics Visual + 4 Quantitative Metric Counters */}
         <div
           style={{
             padding: '4.5rem 4rem',
@@ -380,84 +319,29 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-right-pane"
         >
-          {/* Isometric 3D Analytics & AI Architecture Visual */}
+          {/* Seamless 3D Analytics & AI Artwork: No border, No card frame, Seamlessly blended into background */}
           <div
-            className="about-illustration-wrapper"
             style={{
               position: 'relative',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(2, 16, 56, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.22)',
-              aspectRatio: '16 / 9',
-              background: 'linear-gradient(135deg, #1254E2 0%, #0A369D 100%)',
-              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.25rem 0',
             }}
           >
             <img
-              src="/images/about_analytics_illustration.jpg"
+              src="/images/about_analytics_seamless.png"
               alt="KD Infovision Modern Data Architecture, Cloud Lakehouse and AI Analytics"
               style={{
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
+                height: 'auto',
+                maxHeight: '380px',
+                objectFit: 'contain',
                 display: 'block',
+                filter: 'drop-shadow(0 20px 45px rgba(5, 20, 65, 0.32))',
               }}
             />
-
-            {/* Subtle Gradient & Tag */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(180deg, transparent 55%, rgba(6, 26, 85, 0.88) 100%)',
-                pointerEvents: 'none',
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '14px',
-                left: '18px',
-                right: '18px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                color: '#FFFFFF',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                letterSpacing: '0.4px',
-                textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: '#00E5FF',
-                    boxShadow: '0 0 10px #00E5FF',
-                    display: 'inline-block',
-                  }}
-                />
-                <span>Enterprise Data Architecture &amp; Autonomous AI Engineering</span>
-              </div>
-              <span
-                style={{
-                  background: 'rgba(255, 208, 40, 0.25)',
-                  border: '1px solid rgba(255, 208, 40, 0.6)',
-                  color: '#FFD028',
-                  padding: '3px 10px',
-                  borderRadius: '20px',
-                  fontSize: '0.7rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                }}
-              >
-                AI Analytics
-              </span>
-            </div>
           </div>
 
           {/* 4 Quantitative Metric Counters (2x2 Grid) */}
@@ -493,21 +377,15 @@ export default function AboutSection({ statCounters = [] }) {
           transform: translateY(-4px) !important;
           box-shadow: 0 16px 36px rgba(3, 18, 65, 0.45) !important;
         }
-        .about-illustration-wrapper:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 28px 68px rgba(2, 16, 56, 0.65), 0 0 0 1px rgba(255, 208, 40, 0.5) !important;
-        }
         @media (max-width: 960px) {
           :global(.about-split-grid) {
             grid-template-columns: 1fr !important;
           }
           :global(.about-left-pane) {
             padding: 3.5rem 1.5rem !important;
-            border-right: none !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
           }
           :global(.about-right-pane) {
-            padding: 3rem 1.5rem !important;
+            padding: 2.5rem 1.5rem 3.5rem 1.5rem !important;
           }
         }
       `}</style>
