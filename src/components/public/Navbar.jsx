@@ -210,7 +210,7 @@ export default function Navbar({ settings }) {
                 <User size={22} strokeWidth={2.2} />
               </button>
 
-              {/* Profile Dropdown Popup */}
+              {/* Profile Dropdown Popup (Dark Theme) */}
               {profileDropdownOpen && (
                 <div
                   style={{
@@ -218,10 +218,10 @@ export default function Navbar({ settings }) {
                     top: 'calc(100% + 10px)',
                     right: 0,
                     width: '240px',
-                    background: '#FFFFFF',
+                    background: '#0c101d',
                     borderRadius: '14px',
-                    boxShadow: '0 12px 36px rgba(5, 45, 93, 0.14), 0 2px 6px rgba(0, 0, 0, 0.04)',
-                    border: '1px solid rgba(5, 45, 93, 0.09)',
+                    boxShadow: '0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.15)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     padding: '8px',
                     zIndex: 1050,
                     animation: 'dropdownFadeIn 0.2s ease-out',
@@ -230,15 +230,15 @@ export default function Navbar({ settings }) {
                   <div
                     style={{
                       padding: '8px 12px 10px',
-                      borderBottom: '1px solid #F1F5F9',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                       marginBottom: '6px',
                     }}
                   >
-                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748B', fontWeight: 700 }}>
+                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#9DA8FB', fontWeight: 800 }}>
                       KD Portal
                     </div>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--navy)' }}>
-                      Account & Access
+                    <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#FFFFFF' }}>
+                      Account &amp; Access
                     </div>
                   </div>
 
@@ -251,20 +251,22 @@ export default function Navbar({ settings }) {
                       gap: '10px',
                       padding: '9px 12px',
                       borderRadius: '8px',
-                      color: 'var(--navy)',
+                      color: '#E2E8F0',
                       textDecoration: 'none',
                       fontSize: '0.875rem',
                       fontWeight: 600,
-                      transition: 'background-color 0.15s ease',
+                      transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#F1F5F9';
+                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                      e.currentTarget.style.color = '#FFFFFF';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#E2E8F0';
                     }}
                   >
-                    <Shield size={16} color="var(--blue)" />
+                    <Shield size={16} color="#9DA8FB" />
                     <span>Admin Dashboard</span>
                   </Link>
 
@@ -277,24 +279,26 @@ export default function Navbar({ settings }) {
                       gap: '10px',
                       padding: '9px 12px',
                       borderRadius: '8px',
-                      color: 'var(--navy)',
+                      color: '#E2E8F0',
                       textDecoration: 'none',
                       fontSize: '0.875rem',
                       fontWeight: 600,
-                      transition: 'background-color 0.15s ease',
+                      transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#F1F5F9';
+                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                      e.currentTarget.style.color = '#FFFFFF';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#E2E8F0';
                     }}
                   >
-                    <LogIn size={16} color="#64748B" />
+                    <LogIn size={16} color="#94A3B8" />
                     <span>Portal Sign In</span>
                   </Link>
 
-                  <div style={{ height: '1px', background: '#F1F5F9', margin: '6px 0' }} />
+                  <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
                   <Link
                     href="/contact"
@@ -305,22 +309,22 @@ export default function Navbar({ settings }) {
                       gap: '10px',
                       padding: '9px 12px',
                       borderRadius: '8px',
-                      color: '#475569',
+                      color: '#94A3B8',
                       textDecoration: 'none',
                       fontSize: '0.825rem',
                       fontWeight: 500,
-                      transition: 'background-color 0.15s ease',
+                      transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#F8FAFC';
-                      e.currentTarget.style.color = 'var(--blue)';
+                      e.currentTarget.style.backgroundColor = 'rgba(157, 168, 251, 0.1)';
+                      e.currentTarget.style.color = '#9DA8FB';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.color = '#475569';
+                      e.currentTarget.style.color = '#94A3B8';
                     }}
                   >
-                    <Phone size={14} />
+                    <Phone size={14} color="#38BDF8" />
                     <span>Client Support</span>
                   </Link>
                 </div>
@@ -369,9 +373,9 @@ export default function Navbar({ settings }) {
         style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(5, 25, 55, 0.45)',
-          backdropFilter: 'blur(4px)',
-          WebkitBackdropFilter: 'blur(4px)',
+          backgroundColor: 'rgba(2, 6, 18, 0.75)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
           zIndex: 1100,
           opacity: isDrawerOpen ? 1 : 0,
           pointerEvents: isDrawerOpen ? 'auto' : 'none',
@@ -379,7 +383,7 @@ export default function Navbar({ settings }) {
         }}
       />
 
-      {/* Off-Canvas Navigation Drawer Panel */}
+      {/* Off-Canvas Navigation Drawer Panel (Dark Obsidian Theme) */}
       <aside
         aria-label="Main Navigation Drawer"
         style={{
@@ -388,9 +392,10 @@ export default function Navbar({ settings }) {
           left: 0,
           bottom: 0,
           width: 'min(390px, 86vw)',
-          backgroundColor: '#FFFFFF',
+          background: 'radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.16) 0%, transparent 45%), radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 40%), #070a14',
           zIndex: 1101,
-          boxShadow: '10px 0 40px rgba(5, 45, 93, 0.16)',
+          borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '16px 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 92, 246, 0.08)',
           transform: isDrawerOpen ? 'translateX(0)' : 'translateX(-100%)',
           transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)',
           display: 'flex',
@@ -405,7 +410,7 @@ export default function Navbar({ settings }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderBottom: '1px solid #F1F5F9',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           }}
         >
           <Link
@@ -420,10 +425,10 @@ export default function Navbar({ settings }) {
             />
             <span
               style={{
-                fontFamily: 'var(--font-heading)',
+                fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 800,
                 fontSize: '1rem',
-                color: 'var(--navy)',
+                color: '#FFFFFF',
                 letterSpacing: '-0.02em',
               }}
             >
@@ -435,8 +440,8 @@ export default function Navbar({ settings }) {
             onClick={() => setIsDrawerOpen(false)}
             aria-label="Close navigation menu"
             style={{
-              background: '#F1F5F9',
-              border: 'none',
+              background: 'rgba(255, 255, 255, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
               cursor: 'pointer',
               width: '36px',
               height: '36px',
@@ -444,14 +449,16 @@ export default function Navbar({ settings }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--navy)',
-              transition: 'background-color 0.15s ease, transform 0.15s ease',
+              color: '#FFFFFF',
+              transition: 'all 0.15s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#E2E8F0';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.14)';
+              e.currentTarget.style.borderColor = '#9DA8FB';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#F1F5F9';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
             }}
           >
             <X size={20} strokeWidth={2.4} />
@@ -464,17 +471,18 @@ export default function Navbar({ settings }) {
           <div>
             <div
               style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
+                fontSize: '0.72rem',
+                fontWeight: 800,
                 textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#94A3B8',
-                marginBottom: '0.75rem',
+                letterSpacing: '0.12em',
+                color: '#8B949E',
+                marginBottom: '0.85rem',
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
               Menu
             </div>
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -486,10 +494,11 @@ export default function Navbar({ settings }) {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '0.75rem 1rem',
+                      padding: '0.8rem 1rem',
                       borderRadius: '10px',
-                      backgroundColor: isActive ? 'var(--blue-light)' : 'transparent',
-                      color: isActive ? 'var(--blue)' : 'var(--navy)',
+                      backgroundColor: isActive ? 'rgba(146, 102, 253, 0.14)' : 'transparent',
+                      borderLeft: isActive ? '3px solid #9266FD' : '3px solid transparent',
+                      color: isActive ? '#FFFFFF' : '#D1D5DB',
                       fontWeight: isActive ? 700 : 600,
                       fontSize: '1rem',
                       textDecoration: 'none',
@@ -497,19 +506,21 @@ export default function Navbar({ settings }) {
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.backgroundColor = '#F8FAFC';
-                        e.currentTarget.style.color = 'var(--blue)';
+                        e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.06)';
+                        e.currentTarget.style.color = '#FFFFFF';
+                        e.currentTarget.style.transform = 'translateX(4px)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive) {
                         e.currentTarget.style.backgroundColor = 'transparent';
-                        e.currentTarget.style.color = 'var(--navy)';
+                        e.currentTarget.style.color = '#D1D5DB';
+                        e.currentTarget.style.transform = 'translateX(0)';
                       }
                     }}
                   >
                     <span>{link.name}</span>
-                    <ChevronRight size={16} opacity={isActive ? 1 : 0.4} />
+                    <ChevronRight size={16} color={isActive ? '#9DA8FB' : 'rgba(255, 255, 255, 0.3)'} />
                   </Link>
                 );
               })}
@@ -520,17 +531,18 @@ export default function Navbar({ settings }) {
           <div>
             <div
               style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
+                fontSize: '0.72rem',
+                fontWeight: 800,
                 textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#94A3B8',
-                marginBottom: '0.75rem',
+                letterSpacing: '0.12em',
+                color: '#8B949E',
+                marginBottom: '0.85rem',
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
               Enterprise Capabilities
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {capabilityAreas.map((area) => {
                 const IconComponent = area.icon;
                 return (
@@ -542,36 +554,43 @@ export default function Navbar({ settings }) {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '12px',
-                      padding: '0.65rem 0.85rem',
-                      borderRadius: '8px',
+                      padding: '0.7rem 0.85rem',
+                      borderRadius: '10px',
                       textDecoration: 'none',
-                      color: '#475569',
+                      color: '#E2E8F0',
                       fontSize: '0.85rem',
                       fontWeight: 500,
-                      transition: 'all 0.15s ease',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      transition: 'all 0.18s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#F8FAFC';
-                      e.currentTarget.style.color = 'var(--navy)';
+                      e.currentTarget.style.backgroundColor = 'rgba(157, 168, 251, 0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(157, 168, 251, 0.35)';
+                      e.currentTarget.style.color = '#FFFFFF';
+                      e.currentTarget.style.transform = 'translateX(3px)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.color = '#475569';
+                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+                      e.currentTarget.style.color = '#E2E8F0';
+                      e.currentTarget.style.transform = 'translateX(0)';
                     }}
                   >
                     <div
                       style={{
-                        width: '28px',
-                        height: '28px',
-                        borderRadius: '6px',
-                        backgroundColor: 'var(--blue-light)',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(157, 168, 251, 0.12)',
+                        border: '1px solid rgba(157, 168, 251, 0.25)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexShrink: 0,
                       }}
                     >
-                      <IconComponent size={15} color="var(--blue)" />
+                      <IconComponent size={16} color="#9DA8FB" />
                     </div>
                     <span>{area.title}</span>
                   </Link>
@@ -584,28 +603,43 @@ export default function Navbar({ settings }) {
           <div
             style={{
               marginTop: 'auto',
-              background: '#F8FAFC',
+              background: 'linear-gradient(135deg, rgba(17, 24, 39, 0.85) 0%, rgba(13, 17, 28, 0.95) 100%)',
               borderRadius: '12px',
-              padding: '1rem',
-              border: '1px solid #E2E8F0',
+              padding: '1.1rem',
+              border: '1px solid rgba(157, 168, 251, 0.2)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
             }}
           >
-            <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '8px' }}>
+            <div
+              style={{
+                fontSize: '0.72rem',
+                fontWeight: 800,
+                color: '#9DA8FB',
+                marginBottom: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+            >
               Direct Consultation
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <a
                 href={`tel:${phone}`}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  color: '#475569',
+                  color: '#CBD5E1',
                   textDecoration: 'none',
                   fontSize: '0.825rem',
+                  fontWeight: 600,
+                  transition: 'color 0.15s ease',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
               >
-                <Phone size={13} color="var(--blue)" />
+                <Phone size={13} color="#38BDF8" />
                 <span>{phone}</span>
               </a>
               <a
@@ -614,12 +648,16 @@ export default function Navbar({ settings }) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  color: '#475569',
+                  color: '#CBD5E1',
                   textDecoration: 'none',
                   fontSize: '0.825rem',
+                  fontWeight: 600,
+                  transition: 'color 0.15s ease',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
               >
-                <Mail size={13} color="var(--blue)" />
+                <Mail size={13} color="#34D399" />
                 <span>{email}</span>
               </a>
               <div
@@ -627,13 +665,13 @@ export default function Navbar({ settings }) {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '8px',
-                  color: '#64748B',
+                  color: '#8B949E',
                   fontSize: '0.775rem',
                   lineHeight: '1.4',
-                  marginTop: '4px',
+                  marginTop: '2px',
                 }}
               >
-                <MapPin size={13} color="var(--blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <MapPin size={13} color="#9DA8FB" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <span>Bandra East, Mumbai 400051</span>
               </div>
             </div>
@@ -644,8 +682,8 @@ export default function Navbar({ settings }) {
         <div
           style={{
             padding: '1.25rem 1.5rem',
-            borderTop: '1px solid #F1F5F9',
-            backgroundColor: '#FFFFFF',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            backgroundColor: '#070a14',
           }}
         >
           <Link
@@ -656,18 +694,26 @@ export default function Navbar({ settings }) {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '8px',
-              backgroundColor: '#027A48',
+              background: 'linear-gradient(259.44deg, #9DA8FB 25.03%, #9266FD 90.57%)',
               color: '#FFFFFF',
               borderRadius: '9999px',
               padding: '0.75rem',
               fontWeight: 700,
               fontSize: '0.925rem',
               textDecoration: 'none',
-              boxShadow: '0 4px 14px rgba(2, 122, 72, 0.25)',
-              transition: 'background-color 0.2s ease',
+              boxShadow: '0 8px 24px rgba(146, 102, 253, 0.35)',
+              transition: 'all 0.25s ease',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#026038')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#027A48')}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(259.44deg, #9266FD 25.03%, #9DA8FB 90.57%)';
+              e.currentTarget.style.boxShadow = '0 12px 28px rgba(157, 168, 251, 0.45)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(259.44deg, #9DA8FB 25.03%, #9266FD 90.57%)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(146, 102, 253, 0.35)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
           >
             <span>Get started</span>
             <ArrowRight size={16} />

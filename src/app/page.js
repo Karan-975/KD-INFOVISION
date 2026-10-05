@@ -40,7 +40,7 @@ export default async function HomePage() {
       <HeroSection slides={heroSlides} />
 
       {/* Technology Partners Marquee */}
-      <PartnersMarquee partners={partners} />
+      <PartnersMarquee partners={partners} isDark={true} />
 
       {/* About Us / Our Story with Team Photo & 4 Metric Counters */}
       <AboutSection statCounters={statCounters} />
