@@ -2,6 +2,7 @@ import prisma from '@/lib/prisma';
 import Navbar from '@/components/public/Navbar';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
+import StripeFiberBurst from '@/components/public/StripeFiberBurst';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,7 +23,7 @@ export default async function ContactPage() {
       <div
         style={{
           paddingTop: '160px',
-          paddingBottom: '50px',
+          paddingBottom: '0px',
           background: '#040612',
           color: '#FFFFFF',
           textAlign: 'center',
@@ -156,6 +157,22 @@ export default async function ContactPage() {
           >
             Because you deserve to work with the best! Let&apos;s start exploring your Data &amp; Analytics journey with KD Infovision.
           </p>
+        </div>
+
+        {/* Stripe-Style Radiant Fiber Stick Burst Animation (Matching Image-1 & Placed in Image-2 Marked Location) */}
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '1100px',
+            margin: '0 auto',
+            marginTop: '-10px',
+            zIndex: 3,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <StripeFiberBurst height={290} fiberCount={210} />
         </div>
       </div>
 
