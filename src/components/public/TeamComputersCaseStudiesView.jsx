@@ -31,7 +31,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Real-Time Fraud Detection & Enterprise Streaming Lakehouse',
       metricNum: '65%',
       metricLabel: 'Latency Reduction (85ms SLA)',
-      image: '/images/hero_realistic_analytics.jpg',
+      image: '/images/case_study_uptime.png',
       summary:
         'Architected an event-driven data streaming engine ingesting over 10M+ daily financial transactions with real-time ML anomaly scoring and sub-second decision latency.',
       stack: ['Snowflake', 'Apache Kafka', 'Python ML', 'Azure AKS', 'FinOps'],
@@ -49,7 +49,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Unified Customer 360 & Predictive Demand Forecasting Engine',
       metricNum: '3.2×',
       metricLabel: 'Forecast Precision (-34% Stockouts)',
-      image: '/images/service_analytics_real.jpg',
+      image: '/images/case_study_workforce.png',
       summary:
         'Centralized 14 fragmented ERP and CRM databases into an executive Power BI semantic layer and automated demand forecasting pipeline across 200+ distribution centers.',
       stack: ['Power BI', 'Databricks', 'Azure Synapse', 'dbt', 'SQL'],
@@ -67,7 +67,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'HIPAA-Compliant Intelligent Clinical Document Processing & Sovereign RAG',
       metricNum: '85%',
       metricLabel: 'Turnaround Acceleration',
-      image: '/images/service_software_real.jpg',
+      image: '/images/case_study_cloud_transform.png',
       summary:
         'Developed an automated OCR and Retrieval-Augmented Generation (RAG) assistant for complex clinical trial reports, protocol documents, and diagnostic telemetry.',
       stack: ['Azure OpenAI', 'LangChain', 'PostgreSQL pgvector', 'Docker', 'FastAPI'],
@@ -85,7 +85,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'IoT Sensor Telemetry Pipeline & Real-Time Logistics Routing Cockpit',
       metricNum: '99.98%',
       metricLabel: 'SLA Cold-Chain Compliance',
-      image: '/images/service_cloud_real.jpg',
+      image: '/images/case_study_uptime.png',
       summary:
         'Engineered a real-time IoT fleet monitoring telemetry system tracking temperature-controlled pharmaceutical freight across multi-modal national transit corridors.',
       stack: ['AWS IoT Core', 'Apache Airflow', 'Tableau', 'TimescaleDB', 'Lambda'],
@@ -103,7 +103,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Petabyte-Scale Legacy Modernization to Distributed Cloud Lakehouse',
       metricNum: '-55%',
       metricLabel: 'Cloud Compute Spend',
-      image: '/images/hero_enterprise_tech.jpg',
+      image: '/images/case_study_cloud_transform.png',
       summary:
         'Modernized a 15-year-old on-premise data warehouse to a serverless multi-cluster Snowflake lakehouse with automated CI/CD and cost observability.',
       stack: ['Snowflake', 'AWS Glue', 'Airflow', 'Terraform', 'FinOps'],
@@ -121,7 +121,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Autonomous Multi-Agent Copilot for Enterprise Decision Intelligence',
       metricNum: '90%',
       metricLabel: 'Routine Query Automation',
-      image: '/images/about_analytics_illustration.jpg',
+      image: '/images/about_analytics_seamless.png',
       summary:
         'Engineered an autonomous multi-agent system where specialized AI agents collaborate to answer complex cross-functional business questions directly from lakehouse tables.',
       stack: ['LangGraph', 'LlamaIndex', 'Python', 'OpenAI', 'Redis', 'Next.js'],
