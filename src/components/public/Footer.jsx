@@ -154,7 +154,11 @@ export default function Footer({ settings }) {
             <ul className="links-list">
               {solutions.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link">
+                  <Link
+                    href={item.href}
+                    className="nav-link"
+                    style={{ color: 'rgba(255, 255, 255, 0.65)', textDecoration: 'none' }}
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -168,7 +172,11 @@ export default function Footer({ settings }) {
             <ul className="links-list">
               {industries.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link">
+                  <Link
+                    href={item.href}
+                    className="nav-link"
+                    style={{ color: 'rgba(255, 255, 255, 0.65)', textDecoration: 'none' }}
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -182,7 +190,15 @@ export default function Footer({ settings }) {
             <ul className="links-list">
               {company.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link company-link">
+                  <Link
+                    href={item.href}
+                    className={`nav-link ${item.isSpecial ? 'admin-cms-link' : ''}`}
+                    style={
+                      item.isSpecial
+                        ? { color: '#00E5FF', fontWeight: 600, textDecoration: 'none' }
+                        : { color: 'rgba(255, 255, 255, 0.65)', textDecoration: 'none' }
+                    }
+                  >
                     <span>{item.name}</span>
                     {item.isSpecial && <span className="cms-badge">CMS</span>}
                   </Link>
@@ -197,7 +213,11 @@ export default function Footer({ settings }) {
             <ul className="links-list">
               {trustAndLegal.map((item, idx) => (
                 <li key={idx}>
-                  <Link href={item.href} className="nav-link">
+                  <Link
+                    href={item.href}
+                    className="nav-link"
+                    style={{ color: 'rgba(255, 255, 255, 0.65)', textDecoration: 'none' }}
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -443,7 +463,7 @@ export default function Footer({ settings }) {
 
         /* Column Headers & Links */
         .col-heading {
-          font-size: 0.92rem;
+          font-size: 0.95rem;
           font-weight: 600;
           color: #ffffff;
           letter-spacing: 0.02em;
@@ -459,34 +479,80 @@ export default function Footer({ settings }) {
           gap: 0.65rem;
         }
 
-        .nav-link {
+        /* Category Links: exactly match the marked content color */
+        .links-list li :global(a),
+        .links-list :global(.nav-link),
+        .footer-links-col :global(.nav-link),
+        .footer-links-col :global(a) {
           display: inline-flex;
           align-items: center;
-          font-size: 0.87rem;
-          color: rgba(255, 255, 255, 0.62);
-          text-decoration: none;
+          font-size: 0.88rem;
+          color: rgba(255, 255, 255, 0.65) !important;
+          text-decoration: none !important;
           transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 0.15rem 0;
+          padding: 0.18rem 0;
+          line-height: 1.5;
         }
 
-        .nav-link:hover {
-          color: #ffffff;
-          transform: translateX(3px);
+        .links-list li :global(a:visited),
+        .footer-links-col :global(a:visited) {
+          color: rgba(255, 255, 255, 0.65) !important;
+          text-decoration: none !important;
         }
 
-        .company-link {
-          gap: 6px;
+        /* On hover: matches the heading (bright crisp white #ffffff, font-weight 600) */
+        .links-list li :global(a:hover),
+        .links-list :global(.nav-link:hover),
+        .footer-links-col :global(.nav-link:hover) {
+          color: #ffffff !important;
+          font-weight: 600 !important;
+          transform: translateX(4px);
+          text-decoration: none !important;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+        }
+
+        /* Admin CMS Portal: Unique distinct radiant color fitting our dark obsidian theme */
+        .links-list li :global(.admin-cms-link),
+        .links-list :global(.admin-cms-link),
+        .footer-links-col :global(a.admin-cms-link) {
+          color: #00E5FF !important;
+          font-weight: 600 !important;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .links-list li :global(.admin-cms-link:visited),
+        .footer-links-col :global(a.admin-cms-link:visited) {
+          color: #00E5FF !important;
+        }
+
+        .links-list li :global(.admin-cms-link:hover),
+        .footer-links-col :global(a.admin-cms-link:hover) {
+          color: #ffffff !important;
+          text-shadow: 0 0 14px rgba(0, 229, 255, 0.85);
+          transform: translateX(4px);
         }
 
         .cms-badge {
-          font-size: 9px;
+          font-size: 10px;
           font-weight: 700;
-          letter-spacing: 0.5px;
-          padding: 2px 6px;
+          letter-spacing: 0.8px;
+          padding: 2px 7px;
           border-radius: 4px;
-          background: rgba(146, 102, 253, 0.18);
-          color: #9DA8FB;
-          border: 1px solid rgba(157, 168, 251, 0.3);
+          background: rgba(0, 229, 255, 0.16);
+          color: #00E5FF;
+          border: 1px solid rgba(0, 229, 255, 0.45);
+          box-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+          transition: all 0.2s ease;
+        }
+
+        .links-list li :global(.admin-cms-link:hover) .cms-badge,
+        .footer-links-col :global(a.admin-cms-link:hover) .cms-badge {
+          background: #00E5FF;
+          color: #040612;
+          border-color: #00E5FF;
+          box-shadow: 0 0 14px rgba(0, 229, 255, 0.7);
         }
 
         /* Clean Bottom Bar */
