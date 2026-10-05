@@ -153,28 +153,28 @@ export default async function ContactPage() {
               fontSize: '1.1rem',
               color: 'rgba(255, 255, 255, 0.78)',
               lineHeight: 1.7,
-              marginBottom: '2rem',
+              marginBottom: '2.5rem',
             }}
           >
             Because you deserve to work with the best! Let&apos;s start exploring your Data &amp; Analytics journey with KD Infovision.
           </p>
         </div>
 
-        {/* Stripe-Style Radiant Fiber Stick Burst Animation (Wide spread filling remaining space, proper space below text, origin circle removed) */}
+        {/* Stripe-Style Radiant Fiber Stick Burst Animation */}
         <div
           style={{
             position: 'relative',
             width: '100%',
-            maxWidth: '100%',
+            maxWidth: '1050px',
             margin: '0 auto',
-            marginTop: '2rem',
+            marginTop: '1.5rem',
             zIndex: 3,
             display: 'flex',
             justifyContent: 'center',
             overflow: 'hidden',
           }}
         >
-          <StripeFiberBurst height={280} fiberCount={280} />
+          <StripeFiberBurst height={290} fiberCount={210} />
         </div>
       </div>
 

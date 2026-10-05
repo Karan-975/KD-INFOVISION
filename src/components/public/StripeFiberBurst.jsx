@@ -13,8 +13,8 @@ import React, { useEffect, useRef } from 'react';
  * 3. Origin circle/bead completely removed for a natural, seamless emission from the baseline.
  */
 export default function StripeFiberBurst({
-  height = 270,
-  fiberCount = 280,
+  height = 290,
+  fiberCount = 210,
   className = '',
 }) {
   const canvasRef = useRef(null);
@@ -62,26 +62,33 @@ export default function StripeFiberBurst({
       }
 
       init() {
+        // Distribute angles in a smooth hemisphere radiating upwards (from 192° to 348°)
         const t = this.index / (this.total - 1); // 0 to 1
         
-        // Spread wide from almost horizontal left (~182°) to almost horizontal right (~358°)
-        // In radians: PI + 0.04 to 2*PI - 0.04
-        const minAngle = Math.PI + 0.04;
-        const maxAngle = Math.PI * 2 - 0.04;
+        // Radians: PI + 0.18 to 2*PI - 0.18
+        const minAngle = Math.PI + 0.18;
+        const maxAngle = Math.PI * 2 - 0.18;
         
-        // Uniform linear distribution so lateral flanks are completely filled
-        this.baseAngle = minAngle + t * (maxAngle - minAngle);
+        // Natural dome density distribution
+        const centeredT = (t - 0.5) * 2; // -1 to 1
+        const curvedT = Math.sign(centeredT) * Math.pow(Math.abs(centeredT), 0.95);
+        this.baseAngle = (Math.PI * 1.5) + (curvedT * (maxAngle - minAngle) * 0.5);
         this.currentAngle = this.baseAngle;
 
-        // Organic length variation
-        this.lengthMultiplier = 0.62 + Math.random() * 0.38;
+        // Length envelope: dome/elliptical shape, longer near top, with organic variations
+        const verticalFactor = Math.abs(Math.sin(this.baseAngle)); // 1 at top (270 deg), lower at sides
+        this.domeEnvelope = 0.55 + 0.45 * Math.pow(verticalFactor, 0.75);
+        
+        // Organic length variation (exact earlier formula)
+        const lengthRandom = 0.65 + Math.random() * 0.5;
+        this.baseLengthFactor = this.domeEnvelope * lengthRandom;
         this.currentLength = 100;
 
         // Wave animation properties
         this.phase = Math.random() * Math.PI * 2;
-        this.speed = 0.5 + Math.random() * 0.7;
-        this.swayAmp = 0.012 + Math.random() * 0.02; // smooth subtle sway
-        this.lengthAmp = 0.02 + Math.random() * 0.035;
+        this.speed = 0.6 + Math.random() * 0.8;
+        this.swayAmp = 0.015 + Math.random() * 0.025; // radians of sway
+        this.lengthAmp = 0.03 + Math.random() * 0.04;
 
         // Pulse properties
         this.pulsePhase = Math.random() * Math.PI * 2;
@@ -89,33 +96,20 @@ export default function StripeFiberBurst({
 
         // Visual attributes
         this.colorObj = themeColors[this.index % themeColors.length];
-        this.dotRadius = 1.3 + Math.random() * 1.6;
-        this.lineWidth = 0.95 + Math.random() * 0.75;
+        this.dotRadius = 1.6 + Math.random() * 1.8;
+        this.lineWidth = 1.0 + Math.random() * 0.8;
         
         // Base opacity
-        this.baseAlpha = 0.38 + Math.random() * 0.45;
+        this.baseAlpha = 0.45 + Math.random() * 0.45;
       }
 
-      update(time, originX, originY, canvasW, canvasH, pixelRatio) {
-        // Calculate max reach in direction of baseAngle using elliptical dome envelope:
-        const sinA = Math.sin(this.baseAngle);
-        const cosA = Math.cos(this.baseAngle);
-        
-        // Vertical semi-axis: stops at 66% of canvas height, ensuring plenty of clean space above!
-        const V = canvasH * 0.66;
-        // Horizontal semi-axis: stretches out wide to fill the remaining horizontal flanks!
-        const H = Math.min(canvasW * 0.47, 850 * pixelRatio);
-
-        const termV = (sinA * sinA) / (V * V);
-        const termH = (cosA * cosA) / (H * H);
-        const maxEnvelopeRadius = 1 / Math.sqrt(Math.max(1e-6, termV + termH));
-
+      update(time, originX, originY, maxRadius) {
         // 1. Natural organic harmonic oscillation (breathing sway and stretch)
         const wave = Math.sin(time * this.speed + this.phase);
         const lengthWave = Math.cos(time * this.speed * 0.85 + this.phase * 1.4);
         
         let targetAngle = this.baseAngle + wave * this.swayAmp;
-        let targetLength = maxEnvelopeRadius * (this.lengthMultiplier + lengthWave * this.lengthAmp);
+        let targetLength = maxRadius * (this.baseLengthFactor + lengthWave * this.lengthAmp);
 
         // 2. Interactive Cursor deflection and attraction
         if (mouse.isHovered) {
@@ -125,15 +119,15 @@ export default function StripeFiberBurst({
           const dx = mouse.x - tipX;
           const dy = mouse.y - tipY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const influenceRadius = 180 * pixelRatio;
+          const influenceRadius = 180 * dpr;
 
           if (dist < influenceRadius) {
             const force = (1 - dist / influenceRadius);
             const angleToMouse = Math.atan2(mouse.y - originY, mouse.x - originX);
             const angleDiff = angleToMouse - this.baseAngle;
             
-            targetAngle += angleDiff * force * 0.3;
-            targetLength += force * (25 * pixelRatio);
+            targetAngle += angleDiff * force * 0.35;
+            targetLength += force * (35 * dpr);
           }
         }
 
@@ -145,29 +139,29 @@ export default function StripeFiberBurst({
         this.pulse = 0.5 + 0.5 * Math.sin(time * this.pulseSpeed + this.pulsePhase);
       }
 
-      draw(ctx, originX, originY, pixelRatio) {
+      draw(ctx, originX, originY) {
         const tipX = originX + Math.cos(this.currentAngle) * this.currentLength;
         const tipY = originY + Math.sin(this.currentAngle) * this.currentLength;
 
         const { r, g, b } = this.colorObj;
 
-        // Draw radiant stick / line with smooth gradient
+        // Draw radiant stick / line with gradient
         const lineGrad = ctx.createLinearGradient(originX, originY, tipX, tipY);
-        // Base is transparent deep violet to merge seamlessly into baseline
-        lineGrad.addColorStop(0, 'rgba(124, 58, 237, 0.04)');
-        lineGrad.addColorStop(0.3, `rgba(${r}, ${g}, ${b}, ${this.baseAlpha * 0.3})`);
+        // Base is transparent deep violet to merge seamlessly into origin
+        lineGrad.addColorStop(0, 'rgba(124, 58, 237, 0.05)');
+        lineGrad.addColorStop(0.35, `rgba(${r}, ${g}, ${b}, ${this.baseAlpha * 0.35})`);
         lineGrad.addColorStop(1, `rgba(${r}, ${g}, ${b}, ${this.baseAlpha})`);
 
         ctx.beginPath();
         ctx.moveTo(originX, originY);
         ctx.lineTo(tipX, tipY);
         ctx.strokeStyle = lineGrad;
-        ctx.lineWidth = this.lineWidth * pixelRatio;
+        ctx.lineWidth = this.lineWidth * dpr;
         ctx.stroke();
 
         // Draw Tip Node (Dot)
-        const dotAlpha = Math.min(1, this.baseAlpha + this.pulse * 0.35);
-        const tipRadius = (this.dotRadius + this.pulse * 0.8) * pixelRatio;
+        const dotAlpha = Math.min(1, this.baseAlpha + this.pulse * 0.3);
+        const tipRadius = (this.dotRadius + this.pulse * 0.8) * dpr;
 
         // Outer soft glow around dot
         const glowRadius = tipRadius * 3.5;
@@ -216,6 +210,12 @@ export default function StripeFiberBurst({
       canvas.height = heightPx * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${heightPx}px`;
+
+      // Update fiber base lengths on resize
+      const maxRadius = Math.min(width * 0.50, heightPx * 0.90) * dpr;
+      fibers.forEach(f => {
+        f.currentLength = maxRadius * f.baseLengthFactor;
+      });
     };
 
     handleResize();
@@ -266,14 +266,15 @@ export default function StripeFiberBurst({
 
       // Origin point: bottom center of the canvas
       const originX = canvas.width / 2;
-      const originY = canvas.height;
+      const originY = canvas.height - 2 * dpr;
+      const maxRadius = Math.min(canvas.width * 0.50, canvas.height * 0.90);
 
-      // Soft ambient base glow wash where fibers emerge (no circular core bead/circle)
-      const baseGlowRadius = 140 * dpr;
+      // Soft ambient base glow where fibers emerge (no bright circular core bead/circle)
+      const baseGlowRadius = 120 * dpr;
       const baseGlow = ctx.createRadialGradient(originX, originY, 0, originX, originY, baseGlowRadius);
-      baseGlow.addColorStop(0, 'rgba(146, 102, 253, 0.18)');
-      baseGlow.addColorStop(0.35, 'rgba(6, 182, 212, 0.09)');
-      baseGlow.addColorStop(0.7, 'rgba(124, 58, 237, 0.03)');
+      baseGlow.addColorStop(0, 'rgba(146, 102, 253, 0.28)');
+      baseGlow.addColorStop(0.4, 'rgba(6, 182, 212, 0.14)');
+      baseGlow.addColorStop(0.8, 'rgba(124, 58, 237, 0.04)');
       baseGlow.addColorStop(1, 'transparent');
 
       ctx.beginPath();
@@ -286,11 +287,11 @@ export default function StripeFiberBurst({
 
       // Update and draw all fibers
       for (let i = 0; i < fibers.length; i++) {
-        fibers[i].update(elapsed, originX, originY, canvas.width, canvas.height, dpr);
-        fibers[i].draw(ctx, originX, originY, dpr);
+        fibers[i].update(elapsed, originX, originY, maxRadius);
+        fibers[i].draw(ctx, originX, originY);
       }
 
-      // Reset composite operation (NOTE: Center circle/bead completely removed per user request)
+      // Reset composite operation (origin circle removed per request)
       ctx.globalCompositeOperation = 'source-over';
 
       animationFrameId = requestAnimationFrame(render);
