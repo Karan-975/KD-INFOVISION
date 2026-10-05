@@ -3,21 +3,21 @@
 import React from 'react';
 
 // Authentic Vector SVG Logos for Enterprise Technology Partners
-const TECH_LOGOS = {
+const getTechLogos = (isDark = false) => ({
   'microsoft azure': (
-    <svg viewBox="0 0 170 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 170 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <path d="M7.4 27.6H17.2L20.8 21.4L11.2 7.6H1.4L7.4 27.6Z" fill="#0078D4" />
       <path d="M17.3 27.6H29.6L24.8 13.2L20.8 21.4L17.3 27.6Z" fill="#50E6FF" />
       <path d="M11.2 7.6L16.2 15.8L20.8 21.4L24.8 13.2L20.8 7.6H11.2Z" fill="#005BA1" />
-      <text x="36" y="23.5" fill="#0078D4" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="15.5" letterSpacing="-0.2">
+      <text x="36" y="23.5" fill={isDark ? '#38BDF8' : '#0078D4'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="15.5" letterSpacing="-0.2">
         Microsoft Azure
       </text>
     </svg>
   ),
 
   aws: (
-    <svg viewBox="0 0 105 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
-      <text x="0" y="22" fill="#232F3E" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="900" fontSize="24" letterSpacing="-0.8">
+    <svg viewBox="0 0 105 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
+      <text x="0" y="22" fill={isDark ? '#FFFFFF' : '#232F3E'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="900" fontSize="24" letterSpacing="-0.8">
         aws
       </text>
       <path d="M4 26C18 33 38 33 50 24.5" stroke="#FF9900" strokeWidth="2.8" strokeLinecap="round" fill="none" />
@@ -26,7 +26,7 @@ const TECH_LOGOS = {
   ),
 
   'power bi': (
-    <svg viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <rect x="0" y="3" width="28" height="28" rx="6" fill="#F2C811" />
       <rect x="5.5" y="16" width="4.5" height="11" rx="1.5" fill="#242424" />
       <rect x="11.8" y="11" width="4.5" height="16" rx="1.5" fill="#242424" />
@@ -38,7 +38,7 @@ const TECH_LOGOS = {
   ),
 
   qlik: (
-    <svg viewBox="0 0 95 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 95 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <circle cx="14" cy="17" r="9.5" stroke="#009845" strokeWidth="4" fill="none" />
       <path d="M21 24L26 29" stroke="#009845" strokeWidth="4" strokeLinecap="round" />
       <text x="32" y="23.5" fill="#009845" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="900" fontSize="18" letterSpacing="-0.3">
@@ -48,7 +48,7 @@ const TECH_LOGOS = {
   ),
 
   databricks: (
-    <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(0, 4)">
         <path d="M14 0L26 6L14 12L2 6L14 0Z" fill="#FF3621" />
         <path d="M2 10L14 16L26 10L24 8L14 13L4 8L2 10Z" fill="#FF3621" />
@@ -62,30 +62,30 @@ const TECH_LOGOS = {
   ),
 
   python: (
-    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(0, 3) scale(0.95)">
         <path d="M13.5 0C6.3 0 6.7 3.1 6.7 3.1L6.7 6.3H13.7V7.3H3.9C0 7.3 0 12.2 0 12.2C0 14.8 1.4 16.5 3.9 16.5H5.8V13.8C5.8 10.7 8.5 10.7 8.5 10.7H15.5C18.1 10.7 18.5 8.1 18.5 8.1V3.1C18.5 3.1 18.7 0 13.5 0ZM9.5 2C10.3 2 11 2.7 11 3.5C11 4.3 10.3 5 9.5 5C8.7 5 8 4.3 8 3.5C8 2.7 8.7 2 9.5 2Z" fill="#387EB8" />
         <path d="M13.5 27C20.7 27 20.3 23.9 20.3 23.9L20.3 20.7H13.3V19.7H23.1C27 19.7 27 14.8 27 14.8C27 12.2 25.6 10.5 23.1 10.5H21.2V13.2C21.2 16.3 18.5 16.3 18.5 16.3H11.5C8.9 16.3 8.5 18.9 8.5 18.9V23.9C8.5 23.9 8.3 27 13.5 27ZM17.5 25C16.7 25 16 24.3 16 23.5C16 22.7 16.7 22 17.5 22C18.3 22 19 22.7 19 23.5C19 24.3 18.3 25 17.5 25Z" fill="#FFE052" />
       </g>
-      <text x="32" y="23" fill="#306998" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
+      <text x="32" y="23" fill={isDark ? '#58A6FF' : '#306998'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
         python
       </text>
     </svg>
   ),
 
   'next.js': (
-    <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
-      <circle cx="14" cy="17" r="13" fill="#000000" />
-      <path d="M19 22.5L9.5 10.5V23.5H7.5V9.5H9.5L20.5 23.5L19 22.5Z" fill="#FFFFFF" />
-      <path d="M18 9.5H20V18L18 15.5V9.5Z" fill="#FFFFFF" opacity="0.6" />
-      <text x="34" y="23" fill="#000000" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.3">
+    <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
+      <circle cx="14" cy="17" r="13" fill={isDark ? '#FFFFFF' : '#000000'} />
+      <path d="M19 22.5L9.5 10.5V23.5H7.5V9.5H9.5L20.5 23.5L19 22.5Z" fill={isDark ? '#000000' : '#FFFFFF'} />
+      <path d="M18 9.5H20V18L18 15.5V9.5Z" fill={isDark ? '#000000' : '#FFFFFF'} opacity="0.6" />
+      <text x="34" y="23" fill={isDark ? '#FFFFFF' : '#000000'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.3">
         Next.js
       </text>
     </svg>
   ),
 
   laravel: (
-    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(14, 17) scale(0.7)">
         <path d="M0 -15L13 -7.5V7.5L0 15L-13 7.5V-7.5L0 -15Z" fill="#FF2D20" />
         <path d="M0 -15L13 -7.5L0 0L-13 -7.5L0 -15Z" fill="#FF4D40" />
@@ -98,12 +98,10 @@ const TECH_LOGOS = {
   ),
 
   tableau: (
-    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(14, 17)">
-        {/* Center orange cross */}
         <rect x="-1.5" y="-6" width="3" height="12" fill="#E8762D" rx="0.5" />
         <rect x="-6" y="-1.5" width="12" height="3" fill="#E8762D" rx="0.5" />
-        {/* Surrounding mini crosses in signature palette */}
         <rect x="-1" y="-12" width="2" height="4" fill="#1F4E79" />
         <rect x="-2" y="-11" width="4" height="2" fill="#1F4E79" />
         <rect x="-1" y="8" width="2" height="4" fill="#59A14F" />
@@ -113,53 +111,53 @@ const TECH_LOGOS = {
         <rect x="-12" y="-1" width="4" height="2" fill="#E15759" />
         <rect x="-11" y="-2" width="2" height="4" fill="#E15759" />
       </g>
-      <text x="34" y="23" fill="#1F4E79" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
+      <text x="34" y="23" fill={isDark ? '#58A6FF' : '#1F4E79'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
         tableau
       </text>
     </svg>
   ),
 
   openai: (
-    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(14, 17) scale(0.62)">
         <path d="M19.4 13.9a8.6 8.6 0 0 0-.7-7.2 8.7 8.7 0 0 0-8.9-4.2A8.6 8.6 0 0 0 3.3 5a8.7 8.7 0 0 0-4.7 7.7v1.8a8.6 8.6 0 0 0 .7 7.2 8.7 8.7 0 0 0 8.9 4.2 8.6 8.6 0 0 0 6.5-2.5 8.7 8.7 0 0 0 4.7-7.7v-1.8z" stroke="#10A37F" strokeWidth="3.2" fill="none" />
         <path d="M0 0L8 -4.6M0 0L8 4.6M0 0L0 9.2M0 0L-8 4.6M0 0L-8 -4.6M0 0L0 -9.2" stroke="#10A37F" strokeWidth="2.8" />
       </g>
-      <text x="34" y="23" fill="#0A0A0A" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.3">
+      <text x="34" y="23" fill={isDark ? '#FFFFFF' : '#0A0A0A'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.3">
         OpenAI
       </text>
     </svg>
   ),
 
   'azure ml': (
-    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(0, 4)">
         <rect x="0" y="0" width="26" height="26" rx="6" fill="#0078D4" />
         <path d="M10 7H16M11 7V12L7 19H19L15 12V7" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="13" cy="15" r="1.5" fill="#50E6FF" />
       </g>
-      <text x="34" y="23" fill="#0078D4" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="15.5" letterSpacing="-0.2">
+      <text x="34" y="23" fill={isDark ? '#38BDF8' : '#0078D4'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="15.5" letterSpacing="-0.2">
         Azure ML
       </text>
     </svg>
   ),
 
   react: (
-    <svg viewBox="0 0 105 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 105 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(14, 17)">
         <ellipse rx="13" ry="5" stroke="#61DAFB" strokeWidth="1.8" fill="none" />
         <ellipse rx="13" ry="5" transform="rotate(60)" stroke="#61DAFB" strokeWidth="1.8" fill="none" />
         <ellipse rx="13" ry="5" transform="rotate(120)" stroke="#61DAFB" strokeWidth="1.8" fill="none" />
         <circle r="2.5" fill="#61DAFB" />
       </g>
-      <text x="34" y="23" fill="#087EA4" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
+      <text x="34" y="23" fill={isDark ? '#38BDF8' : '#087EA4'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
         React
       </text>
     </svg>
   ),
 
   snowflake: (
-    <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <g transform="translate(14, 17)">
         <path d="M0 -11V11M-9.5 -5.5L9.5 5.5M-9.5 5.5L9.5 -5.5" stroke="#29B5E8" strokeWidth="2.5" strokeLinecap="round" />
         <circle cx="0" cy="-11" r="1.5" fill="#29B5E8" />
@@ -176,7 +174,7 @@ const TECH_LOGOS = {
   ),
 
   domo: (
-    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <circle cx="14" cy="17" r="12" fill="#E85D04" />
       <circle cx="14" cy="17" r="6" fill="#FFFFFF" />
       <text x="32" y="23" fill="#E85D04" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="900" fontSize="17" letterSpacing="-0.2">
@@ -186,48 +184,76 @@ const TECH_LOGOS = {
   ),
 
   spotfire: (
-    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 125 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <path d="M7 25C7 19 14 15 14 9C14 15 21 19 21 25C21 29 17.5 31 14 31C10.5 31 7 29 7 25Z" fill="#0080FF" />
       <circle cx="14" cy="24" r="3" fill="#FFA500" />
-      <text x="28" y="23" fill="#052D5D" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
+      <text x="28" y="23" fill={isDark ? '#60A5FA' : '#052D5D'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="16" letterSpacing="-0.2">
         Spotfire
       </text>
     </svg>
   ),
 
   'data science & ml': (
-    <svg viewBox="0 0 160 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '28px', width: 'auto' }}>
+    <svg viewBox="0 0 160 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '36px', width: 'auto' }}>
       <circle cx="8" cy="17" r="4.5" fill="#38BDF8" />
       <circle cx="18" cy="10" r="3.5" fill="#818CF8" />
       <circle cx="18" cy="24" r="3.5" fill="#34D399" />
       <line x1="8" y1="17" x2="18" y2="10" stroke="#94A3B8" strokeWidth="1.5" />
       <line x1="8" y1="17" x2="18" y2="24" stroke="#94A3B8" strokeWidth="1.5" />
-      <text x="28" y="23" fill="#0F172A" fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="13.5" letterSpacing="-0.2">
+      <text x="28" y="23" fill={isDark ? '#F1F5F9' : '#0F172A'} fontFamily="Plus Jakarta Sans, Inter, sans-serif" fontWeight="800" fontSize="13.5" letterSpacing="-0.2">
         Data Science &amp; ML
       </text>
     </svg>
   ),
-};
+});
 
 export default function PartnersMarquee({ partners = [], isDark = false }) {
-  const defaultPartners = [
-    { name: 'Snowflake' },
+  // Rich Enterprise Partner Sets
+  const defaultRow1 = [
     { name: 'AWS' },
-    { name: 'Domo' },
+    { name: 'Snowflake' },
     { name: 'Databricks' },
     { name: 'Qlik' },
     { name: 'Tableau' },
     { name: 'Spotfire' },
-    { name: 'Data Science & ML' },
-    { name: 'Power BI' },
-    { name: 'Python' },
-    { name: 'Microsoft Azure' },
-    { name: 'Next.js' },
+    { name: 'OpenAI' },
+    { name: 'React' },
   ];
 
-  const items = partners && partners.length > 0 ? partners : defaultPartners;
-  // Duplicate for seamless 3-repeat infinite marquee scroll
-  const marqueeItems = [...items, ...items, ...items];
+  const defaultRow2 = [
+    { name: 'Microsoft Azure' },
+    { name: 'Power BI' },
+    { name: 'Python' },
+    { name: 'Next.js' },
+    { name: 'Domo' },
+    { name: 'Azure ML' },
+    { name: 'Data Science & ML' },
+    { name: 'Laravel' },
+  ];
+
+  // Distribute custom or default partners into 2 balanced rows
+  let row1Base;
+  let row2Base;
+
+  if (partners && partners.length >= 4) {
+    row1Base = partners.filter((_, idx) => idx % 2 === 0);
+    row2Base = partners.filter((_, idx) => idx % 2 !== 0);
+    // Guarantee minimal width repetition
+    if (row1Base.length < 6) row1Base = [...row1Base, ...row1Base];
+    if (row2Base.length < 6) row2Base = [...row2Base, ...row2Base];
+  } else if (partners && partners.length > 0) {
+    row1Base = partners;
+    row2Base = [...partners].reverse();
+  } else {
+    row1Base = defaultRow1;
+    row2Base = defaultRow2;
+  }
+
+  // Duplicate each row 4 times for infinite seamless loop without jumps
+  const row1Items = [...row1Base, ...row1Base, ...row1Base, ...row1Base];
+  const row2Items = [...row2Base, ...row2Base, ...row2Base, ...row2Base];
+
+  const techLogos = getTechLogos(isDark);
 
   const renderLogo = (partner) => {
     if (partner.logoUrl) {
@@ -235,23 +261,23 @@ export default function PartnersMarquee({ partners = [], isDark = false }) {
         <img
           src={partner.logoUrl}
           alt={partner.name}
-          style={{ height: '30px', width: 'auto', objectFit: 'contain' }}
+          style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
         />
       );
     }
 
     const key = (partner.name || '').trim().toLowerCase();
-    const svgLogo = TECH_LOGOS[key];
+    const svgLogo = techLogos[key];
 
     if (svgLogo) {
       return svgLogo;
     }
 
-    // Elegant fallback typography badge if custom name without SVG
+    // Elegant typography badge fallback
     return (
       <span
         style={{
-          fontSize: '1rem',
+          fontSize: '1.05rem',
           fontWeight: 800,
           color: isDark ? '#FFFFFF' : 'var(--navy)',
           letterSpacing: '-0.2px',
@@ -265,7 +291,7 @@ export default function PartnersMarquee({ partners = [], isDark = false }) {
   return (
     <div
       style={{
-        padding: '2.25rem 0',
+        padding: '1.25rem 0',
         background: isDark ? '#000000' : '#FFFFFF',
         borderTop: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
         borderBottom: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
@@ -276,42 +302,61 @@ export default function PartnersMarquee({ partners = [], isDark = false }) {
       <div
         style={{
           textAlign: 'center',
-          fontSize: '0.75rem',
+          fontSize: '0.72rem',
           fontWeight: 800,
           color: isDark ? '#888888' : 'var(--muted)',
           letterSpacing: '2.5px',
           textTransform: 'uppercase',
-          marginBottom: '1.5rem',
+          marginBottom: '0.65rem',
         }}
       >
         Technology Partners &amp; Enterprise Ecosystem
       </div>
 
-      {/* Marquee Track with Smooth Edge Gradient Fades */}
+      {/* 2-Row Dual Marquee Tracks Moving in Opposite Directions */}
       <div
         style={{
           display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
           overflow: 'hidden',
           width: '100%',
           position: 'relative',
-          padding: '0.85rem 0',
-          maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          padding: '0.2rem 0',
+          maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
         }}
       >
-        <div className="animate-marquee tech-partners-track">
-          {marqueeItems.map((p, idx) => (
-            <div
-              key={`${p.id || p.name}-${idx}`}
-              className="tech-partner-logo-item"
-              title={p.name}
-            >
-              {renderLogo(p)}
-            </div>
-          ))}
+        {/* Row 1: Moving to the RIGHT (-->) */}
+        <div style={{ display: 'flex', overflow: 'hidden', width: '100%' }}>
+          <div className="tech-partners-track-right">
+            {row1Items.map((p, idx) => (
+              <div
+                key={`r1-${p.id || p.name}-${idx}`}
+                className="tech-partner-logo-item"
+                title={p.name}
+              >
+                {renderLogo(p)}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2: Moving to the LEFT (<--) */}
+        <div style={{ display: 'flex', overflow: 'hidden', width: '100%' }}>
+          <div className="tech-partners-track-left">
+            {row2Items.map((p, idx) => (
+              <div
+                key={`r2-${p.id || p.name}-${idx}`}
+                className="tech-partner-logo-item"
+                title={p.name}
+              >
+                {renderLogo(p)}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
     </div>
   );
 }
