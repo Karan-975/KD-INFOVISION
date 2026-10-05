@@ -121,7 +121,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Autonomous Multi-Agent Copilot for Enterprise Decision Intelligence',
       metricNum: '90%',
       metricLabel: 'Routine Query Automation',
-      image: '/images/about_enterprise_team.jpg',
+      image: '/images/about_analytics_illustration.jpg',
       summary:
         'Engineered an autonomous multi-agent system where specialized AI agents collaborate to answer complex cross-functional business questions directly from lakehouse tables.',
       stack: ['LangGraph', 'LlamaIndex', 'Python', 'OpenAI', 'Redis', 'Next.js'],

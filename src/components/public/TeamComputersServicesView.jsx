@@ -136,7 +136,7 @@ export default function TeamComputersServicesView({
     '/images/service_cloud_real.jpg',
     '/images/service_software_real.jpg',
     '/images/hero_realistic_analytics.jpg',
-    '/images/about_enterprise_team.jpg',
+    '/images/about_analytics_illustration.jpg',
     '/images/hero_enterprise_tech.jpg',
     '/images/service_analytics_real.jpg',
     '/images/service_cloud_real.jpg',
