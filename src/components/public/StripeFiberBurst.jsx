@@ -13,7 +13,7 @@ import React, { useEffect, useRef } from 'react';
  * 3. Origin circle/bead completely removed for a natural, seamless emission from the baseline.
  */
 export default function StripeFiberBurst({
-  height = 290,
+  height = 320,
   fiberCount = 210,
   className = '',
 }) {
@@ -211,8 +211,8 @@ export default function StripeFiberBurst({
       canvas.style.width = `${width}px`;
       canvas.style.height = `${heightPx}px`;
 
-      // Update fiber base lengths on resize
-      const maxRadius = Math.min(width * 0.50, heightPx * 0.90) * dpr;
+      // Update fiber base lengths on resize with guaranteed headroom
+      const maxRadius = Math.min(width * 0.48, (heightPx - 45) / 1.18) * dpr;
       fibers.forEach(f => {
         f.currentLength = maxRadius * f.baseLengthFactor;
       });
@@ -266,8 +266,9 @@ export default function StripeFiberBurst({
 
       // Origin point: bottom center of the canvas
       const originX = canvas.width / 2;
-      const originY = canvas.height - 2 * dpr;
-      const maxRadius = Math.min(canvas.width * 0.50, canvas.height * 0.90);
+      const originY = canvas.height - 4 * dpr;
+      // Headroom guarantee: (canvas.height - 45 * dpr) / 1.18 ensures tallest fiber tip + glow is never cut
+      const maxRadius = Math.min(canvas.width * 0.48, (canvas.height - 45 * dpr) / 1.18);
 
       // Soft ambient base glow where fibers emerge (no bright circular core bead/circle)
       const baseGlowRadius = 120 * dpr;
@@ -318,7 +319,7 @@ export default function StripeFiberBurst({
         position: 'relative',
         width: '100%',
         height: `${height}px`,
-        overflow: 'hidden',
+        overflow: 'visible',
         pointerEvents: 'auto',
         cursor: 'crosshair',
         userSelect: 'none',
