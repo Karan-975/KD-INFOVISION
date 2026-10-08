@@ -353,7 +353,7 @@ export default function TeamComputersServicesView({
 
                       <span className="learn-more">
                         <span>Learn More</span>
-                        <ArrowRight size={14} className="learn-more-icon" />
+                        <ArrowRight size={15} className="learn-more-icon" />
                       </span>
                     </figcaption>
 
@@ -1214,7 +1214,7 @@ export default function TeamComputersServicesView({
           height: 100%;
           top: 0;
           left: 0;
-          padding: 26px 22px;
+          padding: 28px 24px;
           z-index: 3;
           display: flex;
           flex-direction: column;
@@ -1226,47 +1226,60 @@ export default function TeamComputersServicesView({
 
         @media (max-width: 575px) {
           .tc-services-root .solution-box figure figcaption {
-            padding: 22px 18px;
+            padding: 24px 18px;
           }
         }
 
         .tc-services-root .solution-box figure figcaption h3 {
+          width: 100%;
           color: #ffffff;
-          font-size: 22px;
+          font-size: 28px;
           line-height: 122%;
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
           margin: 0;
           padding: 0;
+          letter-spacing: -0.01em;
           text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tc-services-root .solution-box:hover figure figcaption h3 {
-          font-size: 21px;
+          font-size: 26px;
         }
 
         @media (max-width: 1199px) {
           .tc-services-root .solution-box figure figcaption h3 {
-            font-size: 20px;
+            font-size: 24px;
           }
           .tc-services-root .solution-box:hover figure figcaption h3 {
-            font-size: 19px;
+            font-size: 23px;
+          }
+        }
+
+        @media (max-width: 575px) {
+          .tc-services-root .solution-box figure figcaption h3 {
+            font-size: 22px;
+          }
+          .tc-services-root .solution-box:hover figure figcaption h3 {
+            font-size: 21px;
           }
         }
 
         .tc-services-root .solution-box figure figcaption p {
+          width: 100%;
           opacity: 0;
           visibility: hidden;
-          font-size: 13.5px;
-          line-height: 20.5px;
-          color: rgba(255, 255, 255, 0.95);
+          font-size: 16px;
+          line-height: 25px;
+          color: rgba(255, 255, 255, 0.96);
+          letter-spacing: 0.01em;
           margin: 0;
           padding: 0;
           transform: translateY(8px);
           transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
           display: -webkit-box;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 6;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
@@ -1278,23 +1291,37 @@ export default function TeamComputersServicesView({
           transform: translateY(0);
         }
 
+        @media (max-width: 1199px) {
+          .tc-services-root .solution-box figure figcaption p {
+            font-size: 15px;
+            line-height: 23px;
+          }
+        }
+
+        @media (max-width: 575px) {
+          .tc-services-root .solution-box figure figcaption p {
+            font-size: 14.5px;
+            line-height: 22px;
+          }
+        }
+
         .tc-services-root .solution-box figure figcaption .learn-more {
           opacity: 0;
           visibility: hidden;
           background: linear-gradient(93.05deg, #1ec9f2 -14.26%, #0db16a 85.74%);
-          padding: 8px 20px;
+          padding: 10px 24px;
           border-radius: 40px;
-          font-size: 13px;
+          font-size: 14px;
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
           color: #ffffff;
-          line-height: 18px;
+          line-height: 19px;
           text-decoration: none;
           transform: translateY(8px);
           transition: all 0.4s ease;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 9px;
           width: fit-content;
           box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
           margin: 0;
