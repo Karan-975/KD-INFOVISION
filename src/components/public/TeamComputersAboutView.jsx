@@ -1037,9 +1037,40 @@ export default function TeamComputersAboutView({
            5. REACH & SCALE NUMBERS: (.every-where-outer)
            ------------------------------------------------------------- */
         .tc-about-root .every-where-outer {
-          padding: 80px 0 90px;
+          padding: 85px 0 95px;
           position: relative;
           overflow: hidden;
+        }
+
+        .tc-about-root .every-where-outer .head {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .tc-about-root .every-where-outer .head span {
+          display: inline-block;
+          color: #0284c7 !important;
+          background: rgba(2, 132, 199, 0.08);
+          border: 1px solid rgba(2, 132, 199, 0.24);
+          padding: 5px 18px;
+          border-radius: 30px;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 1.6px;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+          font-family: 'Montserrat', sans-serif;
+          box-shadow: 0 2px 10px rgba(2, 132, 199, 0.08);
+        }
+
+        .tc-about-root .every-where-outer .head h2 {
+          color: #0f172a !important;
+          font-size: clamp(34px, 4.2vw, 48px);
+          font-weight: 700;
+          line-height: 1.25;
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
+          letter-spacing: -0.02em;
         }
 
         .tc-about-root .every-where-main {
@@ -1059,7 +1090,7 @@ export default function TeamComputersAboutView({
           height: auto;
           display: block;
           margin: 0 auto;
-          filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+          filter: drop-shadow(0 15px 35px rgba(2, 132, 199, 0.22));
         }
 
         .tc-about-root .every-india-number {
@@ -1077,15 +1108,15 @@ export default function TeamComputersAboutView({
           position: absolute;
           text-align: center;
           pointer-events: auto;
-          transition: transform 0.3s ease;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tc-about-root .every-bx:hover {
-          transform: translateY(-4px);
+          transform: translateY(-5px);
         }
 
         .tc-about-root .every-bx h3 {
-          background: linear-gradient(91.06deg, #1DCAF6 0%, #08B066 100%) !important;
+          background: linear-gradient(91.06deg, #0284c7 0%, #0d9488 100%) !important;
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           font-size: clamp(45px, 5.2vw, 75px);
@@ -1093,15 +1124,23 @@ export default function TeamComputersAboutView({
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
           margin: 0 0 8px 0;
+          filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.12));
         }
 
-        .tc-about-root .every-bx p {
-          font-size: 20px;
+        .tc-about-root .every-bx h3 .count-digit {
+          background: linear-gradient(91.06deg, #0284c7 0%, #0d9488 100%) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+        }
+
+        .tc-about-root .every-where-outer .every-bx p {
+          font-size: 18px;
           font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          color: #ffffff;
+          font-weight: 600;
+          color: #1e293b !important;
           margin: 0;
-          opacity: 0.9;
+          opacity: 1 !important;
+          line-height: 1.35;
         }
 
         /* Exact Team Computers Desktop Coordinates */
