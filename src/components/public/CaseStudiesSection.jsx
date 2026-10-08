@@ -28,7 +28,7 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       title: 'Building a Future-Ready Workforce for a European Retail GCC',
       metricNum: '40%',
       metricLabel: 'Faster Project Delivery (500+ Engineers)',
-      image: '/images/case_study_workforce.png',
+      image: '/images/about_enterprise_team.jpg',
       summary:
         'To scale rapidly in India, a European retail giant’s GCC required a skilled tech workforce across cloud, data, and security. We delivered vetted professionals in record time.',
       problem:
@@ -46,7 +46,7 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       title: 'Enabling 99.999% Uptime for a Global Finance Corporation GCC',
       metricNum: '99.999%',
       metricLabel: 'Continuous High-Availability (Zero Disruption)',
-      image: '/images/case_study_uptime.png',
+      image: '/images/hero_enterprise_tech.jpg',
       summary:
         'A leading financial services GCC faced frequent IT disruptions impacting service continuity. By deploying our Zero Incident Framework and 24/7 monitoring, we helped them achieve 99.999% uptime.',
       problem:
@@ -64,7 +64,7 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       title: 'Seamless Cloud Transformation for a US-based Tech Company',
       metricNum: '55%',
       metricLabel: 'Annual Compute Cost Reduction (9× Deploy Speed)',
-      image: '/images/case_study_cloud_transform.png',
+      image: '/images/service_cloud_real.jpg',
       summary:
         'A US-based tech company needed to modernize its IT infrastructure to support global development teams. We enabled a secure, scalable migration to a multi-cloud architecture.',
       problem:
