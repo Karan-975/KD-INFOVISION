@@ -352,15 +352,8 @@ export default function TeamComputersServicesView({
                       <p>{srv.description}</p>
 
                       <span className="learn-more">
-                        Learn More
-                        <img
-                          src="https://teamcomputers.com/wp-content/themes/teamcomputers/images/learn-more-arrow.svg"
-                          alt="arrow"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                        <span className="fallback-arrow">→</span>
+                        <span>Learn More</span>
+                        <ArrowRight size={14} className="learn-more-icon" />
                       </span>
                     </figcaption>
 
@@ -412,15 +405,8 @@ export default function TeamComputersServicesView({
                         <h3>{cs.title}</h3>
                         <p>{cs.results || cs.challenge || cs.solution}</p>
                         <Link href="/case-studies" className="learn-more">
-                          Learn More
-                          <img
-                            src="https://teamcomputers.com/wp-content/themes/teamcomputers/images/learn-more-arrow.svg"
-                            alt="arrow"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                          <span className="fallback-arrow">→</span>
+                          <span>Learn More</span>
+                          <ArrowRight size={14} className="learn-more-icon" />
                         </Link>
                       </div>
                     );
@@ -652,15 +638,8 @@ export default function TeamComputersServicesView({
 
             <div className="view-more">
               <a href="#cta" className="learn-more">
-                Load More
-                <img
-                  src="https://teamcomputers.com/wp-content/themes/teamcomputers/images/learn-more-arrow.svg"
-                  alt="arrow"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <span className="fallback-arrow">→</span>
+                <span>Load More</span>
+                <ArrowRight size={14} className="learn-more-icon" />
               </a>
             </div>
           </div>
@@ -1204,12 +1183,12 @@ export default function TeamComputersServicesView({
           transform: scale(1.08);
         }
 
-        /* Default bottom vignette overlay */
+        /* Default dual vignette overlay for contrast at top heading and bottom edge */
         .tc-services-root .solution-box figure::after {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.95) 100%);
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.2) 42%, rgba(0, 0, 0, 0.65) 100%);
           z-index: 1;
         }
 
@@ -1235,27 +1214,36 @@ export default function TeamComputersServicesView({
           height: 100%;
           top: 0;
           left: 0;
-          padding: 24px 20px;
+          padding: 26px 22px;
           z-index: 3;
           display: flex;
           flex-direction: column;
-          justifyContent: flex-end;
+          justify-content: space-between;
+          align-items: flex-start;
           background: transparent;
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 575px) {
+          .tc-services-root .solution-box figure figcaption {
+            padding: 22px 18px;
+          }
         }
 
         .tc-services-root .solution-box figure figcaption h3 {
           color: #ffffff;
-          font-size: 23px;
+          font-size: 22px;
           line-height: 122%;
           font-family: 'Montserrat', sans-serif;
-          font-weight: 600;
-          margin: 0 0 6px 0;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          font-weight: 700;
+          margin: 0;
+          padding: 0;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tc-services-root .solution-box:hover figure figcaption h3 {
-          font-size: 19px;
-          margin-bottom: 10px;
+          font-size: 21px;
         }
 
         @media (max-width: 1199px) {
@@ -1263,7 +1251,7 @@ export default function TeamComputersServicesView({
             font-size: 20px;
           }
           .tc-services-root .solution-box:hover figure figcaption h3 {
-            font-size: 17px;
+            font-size: 19px;
           }
         }
 
@@ -1271,19 +1259,23 @@ export default function TeamComputersServicesView({
           opacity: 0;
           visibility: hidden;
           font-size: 13.5px;
-          line-height: 20px;
-          color: #ffffff;
-          margin: 0 0 16px 0;
-          transition: opacity 0.35s ease, visibility 0.35s;
+          line-height: 20.5px;
+          color: rgba(255, 255, 255, 0.95);
+          margin: 0;
+          padding: 0;
+          transform: translateY(8px);
+          transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
           display: -webkit-box;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
         }
 
         .tc-services-root .solution-box:hover figure figcaption p {
           opacity: 1;
           visibility: visible;
+          transform: translateY(0);
         }
 
         .tc-services-root .solution-box figure figcaption .learn-more {
@@ -1298,41 +1290,37 @@ export default function TeamComputersServicesView({
           color: #ffffff;
           line-height: 18px;
           text-decoration: none;
-          transition: all 0.35s ease;
+          transform: translateY(8px);
+          transition: all 0.4s ease;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           width: fit-content;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+          margin: 0;
         }
 
         .tc-services-root .solution-box:hover figure figcaption .learn-more {
           opacity: 1;
           visibility: visible;
+          transform: translateY(0);
         }
 
         .tc-services-root .solution-box figure figcaption .learn-more:hover {
           background: linear-gradient(93.05deg, #0db16a -14.26%, #1ec9f2 85.74%);
+          box-shadow: 0 8px 20px rgba(13, 177, 106, 0.45);
         }
 
-        .tc-services-root .solution-box figure figcaption .learn-more img {
-          position: static !important;
-          width: 14px !important;
-          height: auto !important;
-          display: inline-block !important;
-          margin-left: 4px;
-          transition: margin-left 0.4s ease;
-        }
-
-        .tc-services-root .solution-box figure figcaption .learn-more:hover img {
-          margin-left: 8px;
-        }
-
-        .tc-services-root .fallback-arrow {
+        .tc-services-root .solution-box figure figcaption .learn-more .learn-more-icon,
+        .tc-services-root .showcase_card .learn-more .learn-more-icon,
+        .tc-services-root .view-more .learn-more .learn-more-icon {
           display: inline-block;
-          transition: transform 0.4s ease;
+          transition: transform 0.35s ease;
         }
 
-        .tc-services-root .learn-more:hover .fallback-arrow {
+        .tc-services-root .solution-box figure figcaption .learn-more:hover .learn-more-icon,
+        .tc-services-root .showcase_card .learn-more:hover .learn-more-icon,
+        .tc-services-root .view-more .learn-more:hover .learn-more-icon {
           transform: translateX(4px);
         }
 
