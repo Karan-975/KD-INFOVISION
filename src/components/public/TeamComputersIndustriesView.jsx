@@ -216,6 +216,24 @@ export default function TeamComputersIndustriesView({ settings }) {
     return matchesCategory && matchesSearch;
   });
 
+  const handleSpotlightMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    e.currentTarget.style.setProperty('--spot-opacity', '1');
+  };
+
+  const handleSpotlightEnter = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    e.currentTarget.style.setProperty('--spot-opacity', '1');
+  };
+
+  const handleSpotlightLeave = (e) => {
+    e.currentTarget.style.setProperty('--spot-opacity', '0');
+  };
+
   return (
     <div className="tc-career-work-root">
       {/* =========================================================================
@@ -224,6 +242,9 @@ export default function TeamComputersIndustriesView({ settings }) {
           ========================================================================= */}
       <section
         className="career-banner-outer"
+        onPointerMove={handleSpotlightMove}
+        onPointerEnter={handleSpotlightEnter}
+        onPointerLeave={handleSpotlightLeave}
         style={{
           background: "url('/images/carrer-bg-1.webp') no-repeat center center",
           backgroundSize: 'cover',
@@ -507,7 +528,13 @@ export default function TeamComputersIndustriesView({ settings }) {
           <div className="job-listing-inner">
             <div className="job-grid">
               {filteredPractices.map((practice) => (
-                <div key={practice.id} className="job-box wow fadeInUp">
+                <div
+                  key={practice.id}
+                  className="job-box wow fadeInUp"
+                  onPointerMove={handleSpotlightMove}
+                  onPointerEnter={handleSpotlightEnter}
+                  onPointerLeave={handleSpotlightLeave}
+                >
                   <div className="job-box-header">
                     <h4>
                       <span className="cat-dot">•</span> {practice.categoryLabel}
@@ -621,6 +648,30 @@ export default function TeamComputersIndustriesView({ settings }) {
           align-items: center;
           text-align: center;
           position: relative;
+          overflow: hidden;
+          --x: -999px;
+          --y: -999px;
+          --spot-opacity: 0;
+        }
+
+        .career-banner-outer::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            340px circle at var(--x, -999px) var(--y, -999px),
+            rgba(139, 124, 255, 0.16) 0%,
+            transparent 100%
+          );
+          opacity: var(--spot-opacity, 0);
+          transition: opacity 0.35s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .career-banner-outer > * {
+          position: relative;
+          z-index: 2;
         }
 
         .career-banner-main {
@@ -1058,8 +1109,35 @@ export default function TeamComputersIndustriesView({ settings }) {
           flex-direction: column;
           justify-content: space-between;
           position: relative;
+          overflow: hidden;
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+          --x: -999px;
+          --y: -999px;
+          --spot-opacity: 0;
+        }
+
+        /* Cursor-following spotlight glow: 340px wide fading from faint indigo (#8B7CFF at ~16% opacity) to transparent */
+        .job-box::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: radial-gradient(
+            340px circle at var(--x, -999px) var(--y, -999px),
+            rgba(139, 124, 255, 0.16) 0%,
+            transparent 100%
+          );
+          opacity: var(--spot-opacity, 0);
+          transition: opacity 0.35s ease;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* Content layers sit on top of the spotlight */
+        .job-box > * {
+          position: relative;
+          z-index: 1;
         }
 
         .job-box:hover {
@@ -1218,9 +1296,9 @@ export default function TeamComputersIndustriesView({ settings }) {
           transform: scale(1.06);
         }
 
-        .job-box:hover .job-btn-arrow,
-        .job-apply-btn:hover .job-btn-arrow {
-          transform: translateX(2px);
+        .job-box:hover :global(.job-btn-arrow),
+        .job-apply-btn:hover :global(.job-btn-arrow) {
+          transform: translateX(4px);
           color: #ffffff;
         }
 
@@ -1348,6 +1426,36 @@ export default function TeamComputersIndustriesView({ settings }) {
 
           .dir-search-input {
             width: 100%;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .job-box::before,
+          .career-banner-outer::before {
+            display: none !important;
+            opacity: 0 !important;
+            transition: none !important;
+          }
+          .job-box,
+          .job-apply-btn,
+          :global(.job-btn-arrow) {
+            transition: none !important;
+            transform: none !important;
+          }
+          .job-box:hover {
+            transform: none !important;
+          }
+          .job-box:hover :global(.job-btn-arrow),
+          .job-apply-btn:hover :global(.job-btn-arrow) {
+            transform: none !important;
+          }
+        }
+
+        @media (hover: none) {
+          .job-box::before,
+          .career-banner-outer::before {
+            display: none !important;
+            opacity: 0 !important;
           }
         }
       `}</style>

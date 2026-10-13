@@ -5,9 +5,31 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection({ slides = [] }) {
+  const handlePointerMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    e.currentTarget.style.setProperty('--spot-opacity', '1');
+  };
+
+  const handlePointerEnter = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    e.currentTarget.style.setProperty('--spot-opacity', '1');
+  };
+
+  const handlePointerLeave = (e) => {
+    e.currentTarget.style.setProperty('--spot-opacity', '0');
+  };
+
   return (
     <section
       id="hero"
+      className="hero-section"
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
       style={{
         position: 'relative',
         minHeight: 'clamp(560px, 48vw, 740px)',
@@ -67,7 +89,7 @@ export default function HeroSection({ slides = [] }) {
         className="container"
         style={{
           position: 'relative',
-          zIndex: 2,
+          zIndex: 3,
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
@@ -128,7 +150,6 @@ export default function HeroSection({ slides = [] }) {
             <span
               style={{
                 display: 'block',
-                // Increased text size to commanding enterprise scale
                 fontSize: 'clamp(2.35rem, 3.8vw, 3.65rem)',
                 fontWeight: 800,
                 lineHeight: 1.2,
@@ -142,46 +163,106 @@ export default function HeroSection({ slides = [] }) {
             </span>
           </h1>
 
-          {/* Centered Transparent Outline Pill Button (No solid background) */}
+          {/* Centered Transparent Outline Pill Button with Lift & Arrow Nudge Animation */}
           <div style={{ marginTop: '3.5rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                backgroundColor: 'transparent',
-                color: '#FFFFFF',
-                borderRadius: '9999px',
-                border: '1.5px solid rgba(255, 255, 255, 0.85)',
-                padding: '0.75rem 2.1rem',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                letterSpacing: '0.02em',
-                textDecoration: 'none',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                transition: 'all 0.22s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-                e.currentTarget.style.borderColor = '#FFFFFF';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.85)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
+              className="hero-cta-btn"
+              id="hero-cta-button"
             >
               <span>Get Started</span>
-              <ArrowRight size={17} />
+              <ArrowRight size={17} className="hero-btn-arrow" />
             </Link>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        #hero {
+          --x: -999px;
+          --y: -999px;
+          --spot-opacity: 0;
+        }
+
+        /* Cursor-following spotlight glow */
+        #hero::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            340px circle at var(--x, -999px) var(--y, -999px),
+            rgba(139, 124, 255, 0.16) 0%,
+            transparent 100%
+          );
+          opacity: var(--spot-opacity, 0);
+          transition: opacity 0.35s ease;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        .hero-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background-color: transparent;
+          color: #FFFFFF;
+          border-radius: 9999px;
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          padding: 0.75rem 2.1rem;
+          font-size: 0.95rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          text-decoration: none;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                      background-color 0.25s ease,
+                      border-color 0.25s ease,
+                      box-shadow 0.28s ease;
+          cursor: pointer;
+        }
+
+        .hero-cta-btn:hover {
+          background-color: rgba(255, 255, 255, 0.16);
+          border-color: #FFFFFF;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(139, 124, 255, 0.25), 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+
+        :global(.hero-btn-arrow) {
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-cta-btn:hover :global(.hero-btn-arrow) {
+          transform: translateX(5px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          #hero::before {
+            display: none !important;
+            opacity: 0 !important;
+            transition: none !important;
+          }
+          .hero-cta-btn,
+          :global(.hero-btn-arrow) {
+            transition: none !important;
+            transform: none !important;
+          }
+          .hero-cta-btn:hover {
+            transform: none !important;
+          }
+          .hero-cta-btn:hover :global(.hero-btn-arrow) {
+            transform: none !important;
+          }
+        }
+
+        @media (hover: none) {
+          #hero::before {
+            display: none !important;
+            opacity: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
