@@ -163,8 +163,8 @@ export default function HeroSection({ slides = [] }) {
             </span>
           </h1>
 
-          {/* Centered High-Contrast Executive CTA Button */}
-          <div style={{ marginTop: '2.4rem', display: 'flex', justifyContent: 'center' }}>
+          {/* Centered Transparent Outline Pill Button with Hover Shine Sweep */}
+          <div style={{ marginTop: '3.6rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
               className="hero-cta-btn"
@@ -172,70 +172,56 @@ export default function HeroSection({ slides = [] }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '12px',
-                background: 'linear-gradient(135deg, #158AE2 0%, #0D7CD4 50%, #0A58CA 100%)',
+                gap: '10px',
+                backgroundColor: 'transparent',
                 color: '#FFFFFF',
                 borderRadius: '9999px',
-                border: '1px solid rgba(255, 255, 255, 0.35)',
-                padding: '0.85rem 2.25rem',
-                fontSize: '1rem',
-                fontWeight: 700,
+                border: '1.5px solid rgba(255, 255, 255, 0.85)',
+                padding: '0.8rem 2.25rem',
+                fontSize: '0.95rem',
+                fontWeight: 600,
                 letterSpacing: '0.02em',
                 textDecoration: 'none',
-                boxShadow:
-                  '0 6px 24px rgba(21, 138, 226, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-                cursor: 'pointer',
-                position: 'relative',
-                transition: 'all 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
                 backdropFilter: 'blur(8px)',
                 WebkitBackdropFilter: 'blur(8px)',
+                cursor: 'pointer',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background =
-                  'linear-gradient(135deg, #38BDF8 0%, #158AE2 50%, #0D7CD4 100%)';
-                e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.16)';
+                e.currentTarget.style.borderColor = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-2px)';
                 e.currentTarget.style.boxShadow =
-                  '0 10px 32px rgba(21, 138, 226, 0.65), 0 0 25px rgba(56, 189, 248, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.7)';
+                  '0 0 25px rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 0 14px rgba(255, 255, 255, 0.18)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background =
-                  'linear-gradient(135deg, #158AE2 0%, #0D7CD4 50%, #0A58CA 100%)';
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow =
-                  '0 6px 24px rgba(21, 138, 226, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.85)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <span
                 className="hero-btn-text"
                 style={{
                   color: '#FFFFFF',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   letterSpacing: '0.02em',
-                  fontSize: '1rem',
-                  textShadow: '0 1px 2px rgba(0, 0, 0, 0.35)',
+                  fontSize: '0.95rem',
+                  position: 'relative',
+                  zIndex: 2,
                 }}
               >
                 Get Started
               </span>
-              <span
-                className="hero-btn-icon-wrap"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
-                  transition:
-                    'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.28s ease',
-                }}
-              >
-                <ArrowRight size={16} strokeWidth={2.4} color="#FFFFFF" className="hero-btn-arrow" />
-              </span>
+              <ArrowRight
+                size={17}
+                color="#FFFFFF"
+                className="hero-btn-arrow"
+                style={{ position: 'relative', zIndex: 2 }}
+              />
             </Link>
           </div>
         </div>
@@ -275,9 +261,28 @@ export default function HeroSection({ slides = [] }) {
           text-decoration: none !important;
         }
 
-        :global(.hero-cta-btn:hover .hero-btn-icon-wrap) {
-          background: rgba(255, 255, 255, 0.32) !important;
-          transform: translateX(4px);
+        /* Specular light beam that sweeps across the transparent button on hover */
+        :global(.hero-cta-btn::after) {
+          content: '';
+          position: absolute;
+          top: -60%;
+          left: -130%;
+          width: 65%;
+          height: 220%;
+          background: linear-gradient(
+            105deg,
+            transparent 15%,
+            rgba(255, 255, 255, 0.5) 50%,
+            transparent 85%
+          );
+          transform: rotate(25deg);
+          transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        :global(.hero-cta-btn:hover::after) {
+          left: 150%;
         }
 
         :global(.hero-btn-arrow) {
@@ -286,25 +291,22 @@ export default function HeroSection({ slides = [] }) {
         }
 
         :global(.hero-cta-btn:hover .hero-btn-arrow) {
-          transform: translateX(2px);
+          transform: translateX(5px);
         }
 
         @media (prefers-reduced-motion: reduce) {
-          #hero::before {
+          #hero::before,
+          :global(.hero-cta-btn::after) {
             display: none !important;
             opacity: 0 !important;
             transition: none !important;
           }
           :global(.hero-cta-btn),
-          :global(.hero-btn-icon-wrap),
           :global(.hero-btn-arrow) {
             transition: none !important;
             transform: none !important;
           }
           :global(.hero-cta-btn:hover) {
-            transform: none !important;
-          }
-          :global(.hero-cta-btn:hover .hero-btn-icon-wrap) {
             transform: none !important;
           }
           :global(.hero-cta-btn:hover .hero-btn-arrow) {
@@ -313,7 +315,8 @@ export default function HeroSection({ slides = [] }) {
         }
 
         @media (hover: none) {
-          #hero::before {
+          #hero::before,
+          :global(.hero-cta-btn::after) {
             display: none !important;
             opacity: 0 !important;
           }
