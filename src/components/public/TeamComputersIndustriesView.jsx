@@ -86,7 +86,7 @@ export default function TeamComputersIndustriesView({ settings }) {
   // Alternating Deep-Dive Showcases matching .why-team-benifit-outer
   const benefitShowcases = [
     {
-      num: '1',
+      num: '01',
       title: 'Banking, Financial Services & FinTech (BFSI)',
       image: '/images/hero_realistic_analytics.jpg',
       desc: 'Tier-1 commercial banks, payment processors, and NBFCs require zero-latency transaction monitoring and complete regulatory auditability. We engineer Kafka streaming lakehouses coupled with Databricks ML anomaly scoring to process 10M+ daily transactions with sub-85ms decision latency, preventing millions in annual fraud while satisfying strict RBI Master Directions and SEBI guidelines.',
@@ -98,7 +98,7 @@ export default function TeamComputersIndustriesView({ settings }) {
       badges: ['85ms Anomaly SLA', '$4.2M Fraud Prevented', 'RBI & SOC 2 Type II'],
     },
     {
-      num: '2',
+      num: '02',
       title: 'Smart Manufacturing & Industrial OT',
       image: '/images/service_cloud_real.jpg',
       desc: 'Modern discrete and continuous processing plants cannot tolerate unplanned machine downtime. We deploy shop-floor MQTT and OPC-UA edge ingestion pipelines with predictive thermal and vibration ML diagnostics, detecting bearing and motor failures 72 hours ahead of catastrophic breakdowns and boosting overall equipment effectiveness (OEE) by 24%.',
@@ -110,7 +110,7 @@ export default function TeamComputersIndustriesView({ settings }) {
       badges: ['+24% OEE Boost', 'Zero Unplanned Downtime', 'IEC 62443 OT Security'],
     },
     {
-      num: '3',
+      num: '03',
       title: 'Healthcare, Life Sciences & Clinical RAG',
       image: '/images/service_software_real.jpg',
       desc: 'Clinical trial documentation and diagnostic histories are heavily unstructured and subject to strict patient confidentiality. We architect HIPAA-compliant sovereign RAG assistants using private vector embeddings and deterministic citation tracking, accelerating clinical researcher review turnaround from 4 days to 45 minutes.',
@@ -122,7 +122,7 @@ export default function TeamComputersIndustriesView({ settings }) {
       badges: ['85% Faster Review', '99.4% Citation Accuracy', 'HIPAA HITECH Validated'],
     },
     {
-      num: '4',
+      num: '04',
       title: 'Retail, E-Commerce & Multi-Modal Supply Chain',
       image: '/images/service_analytics_real.jpg',
       desc: 'Siloed warehouse inventories and fragmented POS channels cause recurring stockouts and customer churn. We create dbt-governed medallion semantic layers and real-time cold-chain IoT telemetry cockpits, reducing warehouse stockouts by 34% across 200+ distribution centers and maintaining 99.98% transit temperature compliance.',
@@ -249,13 +249,12 @@ export default function TeamComputersIndustriesView({ settings }) {
 
       {/* =========================================================================
           2. HIGHLIGHTS STRIP: (.why-career-outer)
-          Exact styling with carrer-life-bg-1.webp & horizontal showcase cards
+          Obsidian dark styling with ambient violet glow
           ========================================================================= */}
       <section
         className="why-career-outer"
         style={{
-          background: "url('/images/carrer-life-bg-1.webp') no-repeat center center",
-          backgroundSize: 'cover',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.16) 0%, transparent 65%), #040208',
         }}
       >
         <div className="container">
@@ -288,13 +287,12 @@ export default function TeamComputersIndustriesView({ settings }) {
 
       {/* =========================================================================
           3. VALUES & PILLARS: (.values-deffine-slide-outer)
-          Exact styling with Values-carrer-bg-1.webp & clean horizontal cards
+          Obsidian dark styling with ambient purple glow
           ========================================================================= */}
       <section
         className="values-deffine-slide-outer"
         style={{
-          background: "url('/images/Values-carrer-bg-1.webp') no-repeat center center",
-          backgroundSize: 'cover',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(183, 0, 255, 0.08) 0%, transparent 60%), #06030c',
         }}
       >
         <div className="container">
@@ -323,13 +321,12 @@ export default function TeamComputersIndustriesView({ settings }) {
 
       {/* =========================================================================
           4. FLAGSHIP ALTERNATING SHOWCASE: (.why-team-benifit-outer)
-          Exact styling with career-page-bg-1.webp & alternating .why-benifit-row
+          Obsidian dark styling with ambient violet glow
           ========================================================================= */}
       <section
         className="why-team-benifit-outer"
         style={{
-          background: "url('/images/career-page-bg-1.webp') no-repeat center top",
-          backgroundSize: 'cover',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.14) 0%, transparent 65%), #030206',
         }}
       >
         <div className="container">
@@ -513,7 +510,6 @@ export default function TeamComputersIndustriesView({ settings }) {
                 <div key={practice.id} className="job-box wow fadeInUp">
                   <div className="job-box-header">
                     <h4>{practice.categoryLabel}</h4>
-                    <span className="job-kpi-badge">{practice.kpi}</span>
                   </div>
 
                   <h6>{practice.title}</h6>
@@ -534,7 +530,7 @@ export default function TeamComputersIndustriesView({ settings }) {
                   <div className="job-box-cta">
                     <Link href="/case-studies" className="job-apply-btn">
                       <span>View Related Case Study</span>
-                      <img src="/images/learn-more-arrow.svg" alt="arrow" />
+                      <ArrowRight size={15} className="job-btn-arrow" />
                     </Link>
                   </div>
                 </div>
@@ -546,13 +542,12 @@ export default function TeamComputersIndustriesView({ settings }) {
 
       {/* =========================================================================
           6. CONSULTATION ADVISORY CALLOUT: (.future-outer)
-          Exact styling with Values-carrer-bg-1.webp & centered CTA
+          Obsidian dark styling with ambient violet glow
           ========================================================================= */}
       <section
         className="future-outer"
         style={{
-          background: "url('/images/Values-carrer-bg-1.webp') no-repeat center center",
-          backgroundSize: 'cover',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(124, 58, 237, 0.18) 0%, transparent 70%), #05020a',
         }}
       >
         <div className="container">
@@ -630,16 +625,19 @@ export default function TeamComputersIndustriesView({ settings }) {
           font-size: clamp(2.2rem, 3.8vw, 3.2rem);
           font-weight: 800;
           color: #ffffff;
-          margin-bottom: 12px;
+          margin-bottom: 14px;
           line-height: 1.2;
+          letter-spacing: -0.02em;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
         }
 
         .head p {
-          font-size: 1.1rem;
-          color: rgba(255, 255, 255, 0.65);
+          font-size: 1.15rem;
+          color: rgba(255, 255, 255, 0.82);
           max-width: 720px;
           margin: 0 auto 50px auto;
-          line-height: 1.6;
+          line-height: 1.65;
+          text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
         }
 
         .showcase-cards-row {
@@ -716,12 +714,12 @@ export default function TeamComputersIndustriesView({ settings }) {
         .showcase-metric {
           font-size: 12px;
           font-weight: 700;
-          color: #00F7FF;
-          background: rgba(0, 200, 255, 0.15);
-          padding: 4px 10px;
+          color: #C084FC;
+          background: rgba(179, 139, 255, 0.14);
+          padding: 4px 12px;
           border-radius: 12px;
           align-self: flex-start;
-          border: 1px solid rgba(0, 200, 255, 0.3);
+          border: 1px solid rgba(179, 139, 255, 0.3);
         }
 
         /* 3. VALUES & PILLARS: (.values-deffine-slide-outer) */
@@ -864,26 +862,30 @@ export default function TeamComputersIndustriesView({ settings }) {
           font-size: clamp(1.6rem, 2.5vw, 2.2rem);
           font-weight: 800;
           color: #ffffff;
-          line-height: 1.25;
+          line-height: 1.3;
           margin-bottom: 18px;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           gap: 16px;
         }
 
         .why-benifit-details h2 span {
-          background: linear-gradient(92.99deg, #B38BFF 32.03%, #B700FF 68.49%);
-          WebkitBackgroundClip: text;
-          WebkitTextFillColor: transparent;
-          font-size: 2.4rem;
+          background: linear-gradient(92.99deg, #B38BFF 30%, #D8B4FE 60%, #B700FF 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+          font-size: 2.2rem;
           line-height: 1;
           font-weight: 900;
+          display: inline-block;
+          letter-spacing: -1px;
         }
 
         .why-benifit-details p {
           font-size: 1rem;
           line-height: 1.75;
-          color: rgba(255, 255, 255, 0.75);
+          color: rgba(255, 255, 255, 0.8);
           margin-bottom: 22px;
         }
 
@@ -908,7 +910,7 @@ export default function TeamComputersIndustriesView({ settings }) {
           content: '•';
           position: absolute;
           left: 0;
-          color: #00F7FF;
+          color: #B38BFF;
           font-size: 20px;
           line-height: 14px;
         }
@@ -1013,122 +1015,144 @@ export default function TeamComputersIndustriesView({ settings }) {
         .job-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          gap: 30px;
+          margin-top: 10px;
         }
 
         .job-box {
-          background: #10081c;
-          border: 1px solid rgba(179, 139, 255, 0.2);
-          border-radius: 20px;
-          padding: 32px 24px;
+          background: linear-gradient(180deg, rgba(22, 14, 38, 0.85) 0%, rgba(12, 7, 22, 0.96) 100%);
+          border: 1px solid rgba(179, 139, 255, 0.18);
+          border-radius: 24px;
+          padding: 38px 32px 34px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           position: relative;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
         }
 
         .job-box:hover {
           transform: translateY(-6px);
-          border-color: rgba(179, 139, 255, 0.6);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-          background: #140b24;
+          border-color: rgba(179, 139, 255, 0.45);
+          box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 25px rgba(179, 139, 255, 0.14);
+          background: linear-gradient(180deg, rgba(28, 18, 48, 0.9) 0%, rgba(15, 9, 28, 0.98) 100%);
         }
 
         .job-box-header {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          margin-bottom: 12px;
+          justify-content: flex-start;
+          margin-bottom: 18px;
         }
 
         .job-box h4 {
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 700;
-          color: #B38BFF;
+          color: #C084FC;
           text-transform: uppercase;
-          letter-spacing: 1px;
+          letter-spacing: 1.5px;
+          background: rgba(179, 139, 255, 0.1);
+          border: 1px solid rgba(179, 139, 255, 0.22);
+          padding: 4px 12px;
+          border-radius: 20px;
+          display: inline-block;
           margin: 0;
         }
 
-        .job-kpi-badge {
-          background: rgba(0, 200, 255, 0.1);
-          border: 1px solid rgba(0, 200, 255, 0.3);
-          color: #00F7FF;
-          font-size: 11px;
-          font-weight: 700;
-          padding: 3px 8px;
-          border-radius: 10px;
-        }
-
         .job-box h6 {
-          font-size: 1.2rem;
+          font-size: 1.28rem;
           font-weight: 700;
           color: #ffffff;
-          line-height: 1.35;
-          margin: 0 0 12px 0;
+          line-height: 1.4;
+          margin: 0 0 14px 0;
         }
 
         .job-box p {
-          font-size: 13px;
-          line-height: 1.65;
-          color: rgba(255, 255, 255, 0.65);
-          margin-bottom: 16px;
+          font-size: 14px;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.75);
+          margin-bottom: 22px;
         }
 
         .job-compliance-note {
-          font-size: 11px;
-          color: rgba(255, 255, 255, 0.5);
-          margin-bottom: 14px;
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.65);
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.07);
+          border-radius: 10px;
+          padding: 8px 14px;
+          margin-bottom: 22px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .job-compliance-note b {
-          color: #fffa65;
+          color: #E2E8F0;
+          font-weight: 700;
         }
 
         .job-stack-chips {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
-          margin-bottom: 24px;
+          gap: 8px;
+          margin-bottom: 30px;
         }
 
         .job-chip {
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: #94a3b8;
-          font-size: 11px;
-          padding: 3px 8px;
-          border-radius: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.09);
+          color: #CBD5E1;
+          font-size: 12px;
+          font-weight: 500;
+          padding: 4px 12px;
+          border-radius: 12px;
+          transition: all 0.2s ease;
+        }
+
+        .job-chip:hover {
+          background: rgba(179, 139, 255, 0.12);
+          border-color: rgba(179, 139, 255, 0.3);
+          color: #ffffff;
         }
 
         .job-box-cta {
-          padding-top: 14px;
+          margin-top: auto;
+          padding-top: 20px;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .job-apply-btn {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #ffffff;
-          background: linear-gradient(93.05deg, #B28AFF -14.26%, #8800BE 85.74%);
-          padding: 8px 18px;
-          border-radius: 20px;
+          gap: 9px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #C084FC;
+          background: transparent;
+          padding: 0;
+          border: none;
           text-decoration: none;
-          transition: all 0.3s ease;
+          transition: all 0.25s ease;
+          letter-spacing: 0.2px;
+          cursor: pointer;
         }
 
         .job-apply-btn:hover {
-          filter: brightness(1.15);
-          transform: translateX(3px);
+          color: #ffffff;
+          transform: translateX(4px);
+          text-shadow: 0 0 14px rgba(192, 132, 252, 0.6);
         }
 
-        .job-apply-btn img {
-          width: 12px;
-          height: auto;
+        .job-btn-arrow {
+          color: #C084FC;
+          transition: transform 0.25s ease, color 0.25s ease;
+        }
+
+        .job-apply-btn:hover .job-btn-arrow {
+          color: #ffffff;
+          transform: translateX(4px);
         }
 
         /* 6. CONSULTATION ADVISORY CALLOUT: (.future-outer) */
@@ -1154,12 +1178,12 @@ export default function TeamComputersIndustriesView({ settings }) {
         .future-main p {
           font-size: 1.15rem;
           line-height: 1.75;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(255, 255, 255, 0.8);
           margin-bottom: 36px;
         }
 
         .future-cta-btn {
-          background: linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%);
+          background: linear-gradient(93.05deg, #7C3AED -14.26%, #B700FF 85.74%);
           padding: 14px 36px;
           display: inline-flex;
           align-items: center;
@@ -1170,12 +1194,12 @@ export default function TeamComputersIndustriesView({ settings }) {
           border-radius: 40px;
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 15px rgba(30, 201, 242, 0.25);
+          box-shadow: 0 4px 15px rgba(183, 0, 255, 0.3);
         }
 
         .future-cta-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(30, 201, 242, 0.4);
+          box-shadow: 0 8px 25px rgba(183, 0, 255, 0.45);
           filter: brightness(1.08);
         }
 
