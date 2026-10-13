@@ -348,20 +348,20 @@ export default function TeamComputersServicesView({
                     <img src={bgImg} alt={srv.title} />
 
                     <figcaption>
-                      <h3>{srv.title}</h3>
-                      <p>{srv.description}</p>
+                      <div className="card-top-header">
+                        <h3>{srv.title}</h3>
+                      </div>
 
-                      <span className="learn-more">
-                        Learn More
-                        <img
-                          src="https://teamcomputers.com/wp-content/themes/teamcomputers/images/learn-more-arrow.svg"
-                          alt="arrow"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                        <span className="fallback-arrow">→</span>
-                      </span>
+                      <div className="card-middle-content">
+                        <p>{srv.description}</p>
+                      </div>
+
+                      <div className="card-bottom-action">
+                        <span className="learn-more">
+                          <span>Learn More</span>
+                          <ArrowRight size={15} className="learn-more-arrow" />
+                        </span>
+                      </div>
                     </figcaption>
 
                     {/* Exact Team Computers colored layer sliding up on hover */}
@@ -1159,7 +1159,7 @@ export default function TeamComputersServicesView({
 
         .tc-services-root .solution-box {
           position: relative;
-          height: 480px;
+          height: 380px;
           border-radius: 18px;
           overflow: hidden;
           background: #0c0c0e;
@@ -1187,13 +1187,20 @@ export default function TeamComputersServicesView({
           transform: scale(1.08);
         }
 
-        /* Default bottom vignette overlay */
+        /* Top and bottom vignette overlay for crystal clear contrast */
         .tc-services-root .solution-box figure::after {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.95) 100%);
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.25) 35%,
+            rgba(0, 0, 0, 0.3) 65%,
+            rgba(0, 0, 0, 0.88) 100%
+          );
           z-index: 1;
+          pointer-events: none;
         }
 
         /* Exact sliding color gradient layer */
@@ -1218,39 +1225,56 @@ export default function TeamComputersServicesView({
           height: 100%;
           top: 0;
           left: 0;
-          padding: 28px 24px;
+          padding: 26px 22px;
           z-index: 3;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: space-between;
+          align-items: flex-start;
+          box-sizing: border-box;
           background: transparent;
+        }
+
+        .tc-services-root .card-top-header {
+          width: 100%;
+          display: block;
         }
 
         .tc-services-root .solution-box figure figcaption h3 {
           color: #ffffff;
-          font-size: 34px;
-          line-height: 115%;
+          font-size: 24px;
+          line-height: 1.25;
           font-family: 'Montserrat', sans-serif;
-          font-weight: 600;
-          margin: 0 0 6px 0;
-          transition: all 0.4s ease;
+          font-weight: 700;
+          margin: 0;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+          transition: all 0.35s ease;
         }
 
         .tc-services-root .solution-box:hover figure figcaption h3 {
           font-size: 22px;
-          margin-bottom: 12px;
+        }
+
+        .tc-services-root .card-middle-content {
+          width: 100%;
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin: 12px 0;
         }
 
         .tc-services-root .solution-box figure figcaption p {
           opacity: 0;
           visibility: hidden;
-          font-size: 14px;
-          line-height: 22px;
-          color: #ffffff;
-          margin: 0 0 20px 0;
-          transition: opacity 0.4s ease, visibility 0.4s;
+          font-size: 13.5px;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.95);
+          margin: 0;
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+          transition: opacity 0.35s ease, visibility 0.35s ease;
           display: -webkit-box;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
@@ -1260,23 +1284,32 @@ export default function TeamComputersServicesView({
           visibility: visible;
         }
 
+        .tc-services-root .card-bottom-action {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          margin-top: auto;
+        }
+
         .tc-services-root .solution-box figure figcaption .learn-more {
           opacity: 0;
           visibility: hidden;
           background: linear-gradient(93.05deg, #1ec9f2 -14.26%, #0db16a 85.74%);
-          padding: 9px 24px;
+          padding: 8px 20px;
           border-radius: 40px;
-          font-size: 14px;
+          font-size: 13.5px;
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
           color: #ffffff;
           line-height: 19px;
           text-decoration: none;
-          transition: all 0.4s ease;
+          transition: all 0.35s ease;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           width: fit-content;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         }
 
         .tc-services-root .solution-box:hover figure figcaption .learn-more {
@@ -1286,27 +1319,16 @@ export default function TeamComputersServicesView({
 
         .tc-services-root .solution-box figure figcaption .learn-more:hover {
           background: linear-gradient(93.05deg, #0db16a -14.26%, #1ec9f2 85.74%);
+          box-shadow: 0 6px 18px rgba(30, 201, 242, 0.35);
         }
 
-        .tc-services-root .solution-box figure figcaption .learn-more img {
-          position: static !important;
-          width: 14px !important;
-          height: auto !important;
-          display: inline-block !important;
-          margin-left: 4px;
-          transition: margin-left 0.4s ease;
-        }
-
-        .tc-services-root .solution-box figure figcaption .learn-more:hover img {
-          margin-left: 8px;
-        }
-
-        .tc-services-root .fallback-arrow {
+        .tc-services-root .learn-more-arrow {
           display: inline-block;
-          transition: transform 0.4s ease;
+          transition: transform 0.3s ease;
         }
 
-        .tc-services-root .learn-more:hover .fallback-arrow {
+        .tc-services-root .learn-more:hover .learn-more-arrow,
+        .tc-services-root .solution-box:hover .learn-more-arrow {
           transform: translateX(4px);
         }
 
