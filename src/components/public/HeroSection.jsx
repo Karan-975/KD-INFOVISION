@@ -163,15 +163,21 @@ export default function HeroSection({ slides = [] }) {
             </span>
           </h1>
 
-          {/* Centered Transparent Outline Pill Button with Lift & Arrow Nudge Animation */}
-          <div style={{ marginTop: '3.5rem', display: 'flex', justifyContent: 'center' }}>
+          {/* Centered High-Contrast Executive CTA Button */}
+          <div style={{ marginTop: '2.4rem', display: 'flex', justifyContent: 'center' }}>
             <Link
               href="/contact"
               className="hero-cta-btn"
               id="hero-cta-button"
+              style={{
+                color: '#FFFFFF',
+                textDecoration: 'none',
+              }}
             >
-              <span>Get Started</span>
-              <ArrowRight size={17} className="hero-btn-arrow" />
+              <span className="hero-btn-text">Get Started</span>
+              <span className="hero-btn-icon-wrap">
+                <ArrowRight size={16} strokeWidth={2.4} className="hero-btn-arrow" />
+              </span>
             </Link>
           </div>
         </div>
@@ -200,41 +206,81 @@ export default function HeroSection({ slides = [] }) {
           z-index: 2;
         }
 
+        /* Premium Executive Enterprise CTA Button */
         .hero-cta-btn {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
-          background-color: transparent;
-          color: #FFFFFF;
+          gap: 12px;
+          background: linear-gradient(135deg, #158AE2 0%, #0D7CD4 50%, #085CA6 100%);
+          color: #FFFFFF !important;
           border-radius: 9999px;
-          border: 1.5px solid rgba(255, 255, 255, 0.85);
-          padding: 0.75rem 2.1rem;
-          font-size: 0.95rem;
-          font-weight: 600;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          padding: 0.85rem 2.2rem;
+          font-size: 1rem;
+          font-weight: 700;
           letter-spacing: 0.02em;
-          text-decoration: none;
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          text-decoration: none !important;
+          box-shadow: 0 6px 24px rgba(21, 138, 226, 0.45),
+                      0 2px 8px rgba(0, 0, 0, 0.35),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.35);
           transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                      background-color 0.25s ease,
-                      border-color 0.25s ease,
-                      box-shadow 0.28s ease;
+                      background 0.28s ease,
+                      box-shadow 0.28s ease,
+                      border-color 0.28s ease;
           cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-cta-btn:link,
+        .hero-cta-btn:visited,
+        .hero-cta-btn:active {
+          color: #FFFFFF !important;
+          text-decoration: none !important;
         }
 
         .hero-cta-btn:hover {
-          background-color: rgba(255, 255, 255, 0.16);
-          border-color: #FFFFFF;
-          transform: translateY(-3px);
-          box-shadow: 0 10px 25px rgba(139, 124, 255, 0.25), 0 4px 12px rgba(255, 255, 255, 0.15);
+          background: linear-gradient(135deg, #38BDF8 0%, #158AE2 50%, #0D7CD4 100%);
+          border-color: rgba(255, 255, 255, 0.7);
+          color: #FFFFFF !important;
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 10px 32px rgba(21, 138, 226, 0.65),
+                      0 0 25px rgba(56, 189, 248, 0.45),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-btn-text {
+          color: #FFFFFF !important;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+        }
+
+        .hero-btn-icon-wrap {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.18);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                      background-color 0.28s ease;
+        }
+
+        .hero-cta-btn:hover .hero-btn-icon-wrap {
+          background: rgba(255, 255, 255, 0.28);
+          transform: translateX(4px);
         }
 
         :global(.hero-btn-arrow) {
+          color: #FFFFFF !important;
           transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .hero-cta-btn:hover :global(.hero-btn-arrow) {
-          transform: translateX(5px);
+          transform: translateX(2px);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -244,11 +290,15 @@ export default function HeroSection({ slides = [] }) {
             transition: none !important;
           }
           .hero-cta-btn,
+          .hero-btn-icon-wrap,
           :global(.hero-btn-arrow) {
             transition: none !important;
             transform: none !important;
           }
           .hero-cta-btn:hover {
+            transform: none !important;
+          }
+          .hero-cta-btn:hover .hero-btn-icon-wrap {
             transform: none !important;
           }
           .hero-cta-btn:hover :global(.hero-btn-arrow) {
