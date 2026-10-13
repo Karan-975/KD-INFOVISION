@@ -509,28 +509,36 @@ export default function TeamComputersIndustriesView({ settings }) {
               {filteredPractices.map((practice) => (
                 <div key={practice.id} className="job-box wow fadeInUp">
                   <div className="job-box-header">
-                    <h4>{practice.categoryLabel}</h4>
+                    <h4>
+                      <span className="cat-dot">•</span> {practice.categoryLabel}
+                    </h4>
                   </div>
 
                   <h6>{practice.title}</h6>
                   <p>{practice.summary}</p>
 
-                  <div className="job-compliance-note">
-                    <b>Compliance:</b> {practice.compliance}
+                  <div className="job-compliance-group">
+                    <span className="job-group-label">COMPLIANCE</span>
+                    <p className="job-compliance-text">{practice.compliance}</p>
                   </div>
 
-                  <div className="job-stack-chips">
-                    {practice.stack.map((stk, sIdx) => (
-                      <span key={sIdx} className="job-chip">
-                        {stk}
-                      </span>
-                    ))}
+                  <div className="job-tech-group">
+                    <span className="job-group-label">TECHNOLOGY STACK</span>
+                    <div className="job-stack-chips">
+                      {practice.stack.map((stk, sIdx) => (
+                        <span key={sIdx} className="job-chip">
+                          {stk}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="job-box-cta">
                     <Link href="/case-studies" className="job-apply-btn">
-                      <span>View Related Case Study</span>
-                      <ArrowRight size={15} className="job-btn-arrow" />
+                      <span className="job-apply-text">View Related Case Study</span>
+                      <div className="job-arrow-circle">
+                        <ArrowRight size={14} className="job-btn-arrow" />
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -1042,8 +1050,7 @@ export default function TeamComputersIndustriesView({ settings }) {
         .job-box-header {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          margin-bottom: 18px;
+          margin-bottom: 16px;
         }
 
         .job-box h4 {
@@ -1052,59 +1059,70 @@ export default function TeamComputersIndustriesView({ settings }) {
           color: #C084FC;
           text-transform: uppercase;
           letter-spacing: 1.5px;
-          background: rgba(179, 139, 255, 0.1);
-          border: 1px solid rgba(179, 139, 255, 0.22);
-          padding: 4px 12px;
-          border-radius: 20px;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
           margin: 0;
         }
 
+        .cat-dot {
+          color: #B38BFF;
+          font-size: 14px;
+          line-height: 1;
+        }
+
         .job-box h6 {
-          font-size: 1.28rem;
+          font-size: 1.25rem;
           font-weight: 700;
           color: #ffffff;
           line-height: 1.4;
-          margin: 0 0 14px 0;
+          margin: 0 0 12px 0;
         }
 
         .job-box p {
-          font-size: 14px;
+          font-size: 13.5px;
           line-height: 1.7;
-          color: rgba(255, 255, 255, 0.75);
-          margin-bottom: 22px;
+          color: rgba(255, 255, 255, 0.72);
+          margin-bottom: 20px;
         }
 
-        .job-compliance-note {
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.65);
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.07);
-          border-radius: 10px;
-          padding: 8px 14px;
-          margin-bottom: 22px;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .job-compliance-note b {
-          color: #E2E8F0;
+        .job-group-label {
+          font-size: 10px;
           font-weight: 700;
+          color: #64748b;
+          letter-spacing: 1.3px;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        .job-compliance-group {
+          margin-bottom: 18px;
+        }
+
+        .job-compliance-text {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.75);
+          line-height: 1.5;
+          margin: 0 !important;
+          font-weight: 500;
+        }
+
+        .job-tech-group {
+          margin-bottom: 24px;
         }
 
         .job-stack-chips {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
-          margin-bottom: 30px;
         }
 
         .job-chip {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.09);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           color: #CBD5E1;
-          font-size: 12px;
+          font-size: 11.5px;
           font-weight: 500;
           padding: 4px 12px;
           border-radius: 12px;
@@ -1119,40 +1137,65 @@ export default function TeamComputersIndustriesView({ settings }) {
 
         .job-box-cta {
           margin-top: auto;
-          padding-top: 20px;
+          padding-top: 18px;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
+          width: 100%;
         }
 
         .job-apply-btn {
-          display: inline-flex;
+          display: flex;
           align-items: center;
-          gap: 9px;
-          font-size: 14px;
-          font-weight: 700;
-          color: #C084FC;
-          background: transparent;
-          padding: 0;
-          border: none;
+          justify-content: space-between;
+          width: 100%;
           text-decoration: none;
-          transition: all 0.25s ease;
-          letter-spacing: 0.2px;
           cursor: pointer;
+          transition: all 0.3s ease;
         }
 
-        .job-apply-btn:hover {
-          color: #ffffff;
-          transform: translateX(4px);
-          text-shadow: 0 0 14px rgba(192, 132, 252, 0.6);
+        .job-apply-text {
+          font-size: 13.5px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.85);
+          letter-spacing: -0.1px;
+          transition: color 0.25s ease;
+        }
+
+        .job-arrow-circle {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #C084FC;
+          flex-shrink: 0;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .job-btn-arrow {
-          color: #C084FC;
           transition: transform 0.25s ease, color 0.25s ease;
         }
 
-        .job-apply-btn:hover .job-btn-arrow {
+        .job-box:hover .job-apply-text,
+        .job-apply-btn:hover .job-apply-text {
           color: #ffffff;
-          transform: translateX(4px);
+        }
+
+        .job-box:hover .job-arrow-circle,
+        .job-apply-btn:hover .job-arrow-circle {
+          background: linear-gradient(135deg, #7C3AED 0%, #B700FF 100%);
+          border-color: rgba(183, 0, 255, 0.6);
+          color: #ffffff;
+          box-shadow: 0 4px 16px rgba(183, 0, 255, 0.45);
+          transform: scale(1.06);
+        }
+
+        .job-box:hover .job-btn-arrow,
+        .job-apply-btn:hover .job-btn-arrow {
+          transform: translateX(2px);
+          color: #ffffff;
         }
 
         /* 6. CONSULTATION ADVISORY CALLOUT: (.future-outer) */
