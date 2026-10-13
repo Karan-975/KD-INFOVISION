@@ -534,11 +534,33 @@ export default function TeamComputersIndustriesView({ settings }) {
                   </div>
 
                   <div className="job-box-cta">
-                    <Link href="/case-studies" className="job-apply-btn">
-                      <span className="job-apply-text">View Related Case Study</span>
-                      <div className="job-arrow-circle">
+                    <Link
+                      href="/case-studies"
+                      className="job-apply-btn"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      <span className="job-apply-text" style={{ whiteSpace: 'nowrap' }}>
+                        View Related Case Study
+                      </span>
+                      <span
+                        className="job-arrow-circle"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          marginLeft: 'auto',
+                        }}
+                      >
                         <ArrowRight size={14} className="job-btn-arrow" />
-                      </div>
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -1143,11 +1165,13 @@ export default function TeamComputersIndustriesView({ settings }) {
         }
 
         .job-apply-btn {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          text-decoration: none;
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          flex-wrap: nowrap !important;
+          width: 100% !important;
+          text-decoration: none !important;
           cursor: pointer;
           transition: all 0.3s ease;
         }
@@ -1158,6 +1182,7 @@ export default function TeamComputersIndustriesView({ settings }) {
           color: rgba(255, 255, 255, 0.85);
           letter-spacing: -0.1px;
           transition: color 0.25s ease;
+          white-space: nowrap !important;
         }
 
         .job-arrow-circle {
@@ -1166,11 +1191,12 @@ export default function TeamComputersIndustriesView({ settings }) {
           border-radius: 50%;
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid rgba(255, 255, 255, 0.12);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
           color: #C084FC;
-          flex-shrink: 0;
+          flex-shrink: 0 !important;
+          margin-left: auto !important;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
