@@ -637,9 +637,26 @@ export default function TeamComputersIndustriesView({ settings }) {
               Schedule an architecture advisory session with our vertical practice directors to audit your existing telemetry pipelines, cloud spend, and compliance posture.
             </p>
             <div className="future-action">
-              <Link href="/contact" className="future-cta-btn">
+              <Link
+                href="/contact"
+                className="future-cta-btn"
+                style={{
+                  background: 'linear-gradient(93.05deg, #7C3AED -14.26%, #B700FF 85.74%)',
+                  padding: '14px 36px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '12px',
+                  fontSize: '15px',
+                  fontWeight: '700',
+                  color: '#ffffff',
+                  borderRadius: '40px',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 20px rgba(183, 0, 255, 0.4)',
+                }}
+              >
                 <span>Schedule Architecture Consultation</span>
-                <img src="/images/learn-more-arrow.svg" alt="arrow" />
+                <ArrowRight size={16} className="future-arrow" />
               </Link>
             </div>
           </div>
@@ -1455,35 +1472,43 @@ export default function TeamComputersIndustriesView({ settings }) {
           margin-bottom: 36px;
         }
 
-        .future-cta-btn {
-          background: linear-gradient(93.05deg, #7C3AED -14.26%, #B700FF 85.74%);
-          padding: 14px 36px;
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          font-size: 14px;
-          font-weight: 600;
-          color: #ffffff;
-          border-radius: 40px;
-          text-decoration: none;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 15px rgba(183, 0, 255, 0.3);
+        .future-cta-btn,
+        :global(.future-cta-btn),
+        :global(.future-action a.future-cta-btn) {
+          background: linear-gradient(93.05deg, #7C3AED -14.26%, #B700FF 85.74%) !important;
+          padding: 14px 36px !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 12px !important;
+          font-size: 15px !important;
+          font-weight: 700 !important;
+          color: #ffffff !important;
+          border-radius: 40px !important;
+          text-decoration: none !important;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          box-shadow: 0 4px 20px rgba(183, 0, 255, 0.4) !important;
+          cursor: pointer !important;
         }
 
-        .future-cta-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(183, 0, 255, 0.45);
-          filter: brightness(1.08);
+        .future-cta-btn:hover,
+        :global(.future-cta-btn:hover),
+        :global(.future-action a.future-cta-btn:hover) {
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 30px rgba(183, 0, 255, 0.6) !important;
+          filter: brightness(1.12) !important;
+          color: #ffffff !important;
         }
 
-        .future-cta-btn img {
-          width: 14px;
-          height: auto;
-          transition: transform 0.2s ease;
+        :global(.future-arrow) {
+          display: inline-block !important;
+          color: #ffffff !important;
+          transition: transform 0.25s ease !important;
         }
 
-        .future-cta-btn:hover img {
-          transform: translateX(4px);
+        .future-cta-btn:hover :global(.future-arrow),
+        :global(.future-cta-btn:hover .future-arrow) {
+          transform: translateX(5px) !important;
         }
 
         /* Responsive */
