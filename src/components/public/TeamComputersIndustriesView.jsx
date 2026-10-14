@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Landmark,
@@ -22,6 +22,35 @@ export default function TeamComputersIndustriesView({ settings }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [flippedPillarIdx, setFlippedPillarIdx] = useState(null);
+  const [cardsSpread, setCardsSpread] = useState(false);
+  const gridSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCardsSpread(true);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    if (gridSectionRef.current) {
+      observer.observe(gridSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleCategoryChange = (key) => {
+    setSelectedCategory(key);
+    setCardsSpread(false);
+    setTimeout(() => {
+      setCardsSpread(true);
+    }, 60);
+  };
 
   // Domain Highlight Carousel / Photo Cards
   const domainHighlights = [
@@ -528,7 +557,7 @@ export default function TeamComputersIndustriesView({ settings }) {
                 <button
                   key={tab.key}
                   className={`dir-filter-btn ${selectedCategory === tab.key ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(tab.key)}
+                  onClick={() => handleCategoryChange(tab.key)}
                 >
                   {tab.label}
                 </button>
@@ -549,21 +578,15 @@ export default function TeamComputersIndustriesView({ settings }) {
 
           {/* Practice Cards Grid matching .job-listing-inner */}
           <div className="job-listing-inner">
-            <div className="job-grid">
+            <div ref={gridSectionRef} className={`job-grid ${cardsSpread ? 'is-spread' : ''}`}>
               {filteredPractices.map((practice) => (
                 <div
                   key={practice.id}
-                  className="job-box wow fadeInUp"
+                  className="job-box"
                   onPointerMove={handleSpotlightMove}
                   onPointerEnter={handleSpotlightEnter}
                   onPointerLeave={handleSpotlightLeave}
                 >
-                  <div className="job-box-header">
-                    <h4>
-                      <span className="cat-dot">•</span> {practice.categoryLabel}
-                    </h4>
-                  </div>
-
                   <h6>{practice.title}</h6>
                   <p>{practice.summary}</p>
 
@@ -1241,26 +1264,34 @@ export default function TeamComputersIndustriesView({ settings }) {
           grid-template-columns: repeat(3, 1fr);
           gap: 30px;
           margin-top: 10px;
+          perspective: 1400px;
+          position: relative;
         }
 
+        /* -------------------------------------------------------------
+           WHITE CARD COLOR COMBINATION MATCHING IMAGE-2:
+           Pure white card background, deep obsidian purple text (#11052C),
+           deep purple-slate description (#3b1d60), vibrant purple accents.
+           ------------------------------------------------------------- */
         .job-box {
-          background: linear-gradient(180deg, rgba(22, 14, 38, 0.85) 0%, rgba(12, 7, 22, 0.96) 100%);
-          border: 1px solid rgba(179, 139, 255, 0.18);
-          border-radius: 24px;
+          background: #ffffff !important;
+          border: 1px solid rgba(255, 255, 255, 0.95);
+          border-radius: 26px;
           padding: 38px 32px 34px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           position: relative;
           overflow: hidden;
-          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+          box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35), 0 0 35px rgba(124, 58, 237, 0.12);
+          will-change: transform, opacity;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
           --x: -999px;
           --y: -999px;
           --spot-opacity: 0;
         }
 
-        /* Cursor-following spotlight glow: 340px wide fading from faint indigo (#8B7CFF at ~16% opacity) to transparent */
+        /* Cursor spotlight on white card: soft violet highlight */
         .job-box::before {
           content: '';
           position: absolute;
@@ -1268,7 +1299,7 @@ export default function TeamComputersIndustriesView({ settings }) {
           border-radius: inherit;
           background: radial-gradient(
             340px circle at var(--x, -999px) var(--y, -999px),
-            rgba(139, 124, 255, 0.16) 0%,
+            rgba(124, 58, 237, 0.08) 0%,
             transparent 100%
           );
           opacity: var(--spot-opacity, 0);
@@ -1277,63 +1308,40 @@ export default function TeamComputersIndustriesView({ settings }) {
           z-index: 0;
         }
 
-        /* Content layers sit on top of the spotlight */
         .job-box > * {
           position: relative;
           z-index: 1;
         }
 
+        /* Hover lift state once spread */
         .job-box:hover {
-          transform: translateY(-6px);
-          border-color: rgba(179, 139, 255, 0.45);
-          box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 25px rgba(179, 139, 255, 0.14);
-          background: linear-gradient(180deg, rgba(28, 18, 48, 0.9) 0%, rgba(15, 9, 28, 0.98) 100%);
-        }
-
-        .job-box-header {
-          display: flex;
-          align-items: center;
-          margin-bottom: 16px;
-        }
-
-        .job-box h4 {
-          font-size: 11px;
-          font-weight: 700;
-          color: #C084FC;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          margin: 0;
-        }
-
-        .cat-dot {
-          color: #B38BFF;
-          font-size: 14px;
-          line-height: 1;
+          transform: translateY(-8px) scale(1.02) !important;
+          border-color: rgba(124, 58, 237, 0.35);
+          box-shadow: 0 24px 55px rgba(0, 0, 0, 0.42), 0 0 45px rgba(124, 58, 237, 0.22) !important;
         }
 
         .job-box h6 {
           font-size: 1.25rem;
-          font-weight: 700;
-          color: #ffffff;
-          line-height: 1.4;
-          margin: 0 0 12px 0;
+          font-weight: 800;
+          color: #11052C;
+          line-height: 1.35;
+          margin: 0 0 14px 0;
+          letter-spacing: -0.01em;
         }
 
         .job-box p {
-          font-size: 13.5px;
-          line-height: 1.7;
-          color: rgba(255, 255, 255, 0.72);
-          margin-bottom: 20px;
+          font-size: 14px;
+          line-height: 1.65;
+          color: #3b1d60;
+          margin-bottom: 22px;
+          font-weight: 500;
         }
 
         .job-group-label {
-          font-size: 10px;
-          font-weight: 700;
-          color: #64748b;
-          letter-spacing: 1.3px;
+          font-size: 10.5px;
+          font-weight: 800;
+          color: #7c3aed;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
           display: block;
           margin-bottom: 6px;
@@ -1344,11 +1352,11 @@ export default function TeamComputersIndustriesView({ settings }) {
         }
 
         .job-compliance-text {
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.75);
+          font-size: 13px;
+          color: #1e0a3c;
           line-height: 1.5;
           margin: 0 !important;
-          font-weight: 500;
+          font-weight: 600;
         }
 
         .job-tech-group {
@@ -1362,26 +1370,26 @@ export default function TeamComputersIndustriesView({ settings }) {
         }
 
         .job-chip {
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: #CBD5E1;
+          background: rgba(124, 58, 237, 0.08);
+          border: 1px solid rgba(124, 58, 237, 0.18);
+          color: #6b21a8;
           font-size: 11.5px;
-          font-weight: 500;
-          padding: 4px 12px;
-          border-radius: 12px;
-          transition: all 0.2s ease;
+          font-weight: 600;
+          padding: 5px 12px;
+          border-radius: 8px;
+          transition: all 0.25s ease;
         }
 
         .job-chip:hover {
-          background: rgba(179, 139, 255, 0.12);
-          border-color: rgba(179, 139, 255, 0.3);
-          color: #ffffff;
+          background: rgba(124, 58, 237, 0.18);
+          border-color: rgba(124, 58, 237, 0.35);
+          color: #4c1d95;
         }
 
         .job-box-cta {
           margin-top: auto;
           padding-top: 18px;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          border-top: 1px solid rgba(124, 58, 237, 0.12);
           width: 100%;
         }
 
@@ -1399,50 +1407,188 @@ export default function TeamComputersIndustriesView({ settings }) {
 
         .job-apply-text {
           font-size: 13.5px;
-          font-weight: 600;
-          color: rgba(255, 255, 255, 0.85);
+          font-weight: 700;
+          color: #11052C;
           letter-spacing: -0.1px;
           transition: color 0.25s ease;
           white-space: nowrap !important;
+        }
+
+        .job-box:hover .job-apply-text,
+        .job-apply-btn:hover .job-apply-text {
+          color: #7c3aed;
         }
 
         .job-arrow-circle {
           width: 36px;
           height: 36px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: linear-gradient(135deg, #7C3AED 0%, #B700FF 100%);
+          border: none;
           display: inline-flex !important;
           align-items: center !important;
           justify-content: center !important;
-          color: #C084FC;
+          color: #ffffff;
           flex-shrink: 0 !important;
           margin-left: auto !important;
+          box-shadow: 0 4px 14px rgba(183, 0, 255, 0.35);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .job-btn-arrow {
-          transition: transform 0.25s ease, color 0.25s ease;
-        }
-
-        .job-box:hover .job-apply-text,
-        .job-apply-btn:hover .job-apply-text {
-          color: #ffffff;
         }
 
         .job-box:hover .job-arrow-circle,
         .job-apply-btn:hover .job-arrow-circle {
-          background: linear-gradient(135deg, #7C3AED 0%, #B700FF 100%);
-          border-color: rgba(183, 0, 255, 0.6);
-          color: #ffffff;
-          box-shadow: 0 4px 16px rgba(183, 0, 255, 0.45);
-          transform: scale(1.06);
+          transform: scale(1.1) translateX(3px);
+          box-shadow: 0 6px 20px rgba(183, 0, 255, 0.55);
         }
 
-        .job-box:hover :global(.job-btn-arrow),
-        .job-apply-btn:hover :global(.job-btn-arrow) {
-          transform: translateX(4px);
+        .job-btn-arrow {
           color: #ffffff;
+          transition: transform 0.25s ease;
+        }
+
+        /* -------------------------------------------------------------
+           KLARNA CARD REFERENCE ANIMATION (Dribbble 14595052):
+           Cards start bundled in central deck and spread into places one by one
+           ------------------------------------------------------------- */
+        @media (min-width: 961px) {
+          /* Deck stack state when not yet spread: bundled in the center */
+          .job-grid:not(.is-spread) .job-box {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          .job-grid:not(.is-spread) .job-box:nth-child(1) {
+            transform: translate3d(calc(100% + 30px), calc(50% + 15px), 0) rotate(-6deg) scale(0.9);
+          }
+          .job-grid:not(.is-spread) .job-box:nth-child(2) {
+            transform: translate3d(0, calc(50% + 15px), 0) rotate(2deg) scale(0.92);
+          }
+          .job-grid:not(.is-spread) .job-box:nth-child(3) {
+            transform: translate3d(calc(-100% - 30px), calc(50% + 15px), 0) rotate(7deg) scale(0.9);
+          }
+          .job-grid:not(.is-spread) .job-box:nth-child(4) {
+            transform: translate3d(calc(100% + 30px), calc(-50% - 15px), 0) rotate(4deg) scale(0.9);
+          }
+          .job-grid:not(.is-spread) .job-box:nth-child(5) {
+            transform: translate3d(0, calc(-50% - 15px), 0) rotate(-3deg) scale(0.92);
+          }
+          .job-grid:not(.is-spread) .job-box:nth-child(6) {
+            transform: translate3d(calc(-100% - 30px), calc(-50% - 15px), 0) rotate(-7deg) scale(0.9);
+          }
+
+          /* Active spread: cards deal outward into place one by one */
+          .job-grid.is-spread .job-box:nth-child(1) {
+            animation: klarnaSpread0 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+          }
+          .job-grid.is-spread .job-box:nth-child(2) {
+            animation: klarnaSpread1 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+          }
+          .job-grid.is-spread .job-box:nth-child(3) {
+            animation: klarnaSpread2 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.31s both;
+          }
+          .job-grid.is-spread .job-box:nth-child(4) {
+            animation: klarnaSpread3 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+          }
+          .job-grid.is-spread .job-box:nth-child(5) {
+            animation: klarnaSpread4 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.57s both;
+          }
+          .job-grid.is-spread .job-box:nth-child(6) {
+            animation: klarnaSpread5 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.70s both;
+          }
+
+          @keyframes klarnaSpread0 {
+            0% {
+              opacity: 0;
+              transform: translate3d(calc(100% + 30px), calc(50% + 15px), 0) rotate(-6deg) scale(0.9);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+
+          @keyframes klarnaSpread1 {
+            0% {
+              opacity: 0;
+              transform: translate3d(0, calc(50% + 15px), 0) rotate(2deg) scale(0.92);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+
+          @keyframes klarnaSpread2 {
+            0% {
+              opacity: 0;
+              transform: translate3d(calc(-100% - 30px), calc(50% + 15px), 0) rotate(7deg) scale(0.9);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+
+          @keyframes klarnaSpread3 {
+            0% {
+              opacity: 0;
+              transform: translate3d(calc(100% + 30px), calc(-50% - 15px), 0) rotate(4deg) scale(0.9);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+
+          @keyframes klarnaSpread4 {
+            0% {
+              opacity: 0;
+              transform: translate3d(0, calc(-50% - 15px), 0) rotate(-3deg) scale(0.92);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+
+          @keyframes klarnaSpread5 {
+            0% {
+              opacity: 0;
+              transform: translate3d(calc(-100% - 30px), calc(-50% - 15px), 0) rotate(-7deg) scale(0.9);
+            }
+            100% {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+            }
+          }
+        }
+
+        /* Mobile / Tablet Cascade */
+        @media (max-width: 960px) {
+          .job-grid:not(.is-spread) .job-box {
+            opacity: 0;
+            transform: translateY(35px) scale(0.96);
+          }
+          .job-grid.is-spread .job-box {
+            animation: mobileCascade 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+          }
+          .job-grid.is-spread .job-box:nth-child(1) { animation-delay: 0.05s; }
+          .job-grid.is-spread .job-box:nth-child(2) { animation-delay: 0.15s; }
+          .job-grid.is-spread .job-box:nth-child(3) { animation-delay: 0.25s; }
+          .job-grid.is-spread .job-box:nth-child(4) { animation-delay: 0.35s; }
+          .job-grid.is-spread .job-box:nth-child(5) { animation-delay: 0.45s; }
+          .job-grid.is-spread .job-box:nth-child(6) { animation-delay: 0.55s; }
+
+          @keyframes mobileCascade {
+            0% {
+              opacity: 0;
+              transform: translateY(35px) scale(0.96);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          }
         }
 
         /* 6. CONSULTATION ADVISORY CALLOUT: (.future-outer) */
