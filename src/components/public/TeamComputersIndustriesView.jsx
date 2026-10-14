@@ -21,6 +21,7 @@ import {
 export default function TeamComputersIndustriesView({ settings }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [flippedPillarIdx, setFlippedPillarIdx] = useState(null);
 
   // Domain Highlight Carousel / Photo Cards
   const domainHighlights = [
@@ -324,17 +325,39 @@ export default function TeamComputersIndustriesView({ settings }) {
 
           <div className="values-deffine-container">
             <div className="values-row wow fadeInUp">
-              {domainPillars.map((pillar, idx) => (
-                <div key={idx} className="values-bx">
-                  <div className="values-card-inner">
-                    <figure className="values-figure">
-                      <img src={pillar.icon} alt={pillar.name} />
-                    </figure>
-                    <h3>{pillar.name}</h3>
-                    <p>{pillar.sub}</p>
+              {domainPillars.map((pillar, idx) => {
+                const isFlipped = flippedPillarIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    className={`values-bx ${isFlipped ? 'is-flipped' : ''}`}
+                    onClick={() => setFlippedPillarIdx(isFlipped ? null : idx)}
+                  >
+                    <div className="values-card-inner">
+                      {/* FRONT FACE: Icon & Domain Title */}
+                      <div className="values-card-front">
+                        <figure className="values-figure">
+                          <img src={pillar.icon} alt={pillar.name} />
+                        </figure>
+                        <h3>{pillar.name}</h3>
+                        <span className="values-flip-hint">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                          </svg>
+                          <span>Flip</span>
+                        </span>
+                      </div>
+
+                      {/* BACK FACE: 3D Flipped side with Pillar Details */}
+                      <div className="values-card-back">
+                        <span className="values-back-tag">Pillar 0{idx + 1}</span>
+                        <h4>{pillar.name}</h4>
+                        <p>{pillar.sub}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -820,61 +843,161 @@ export default function TeamComputersIndustriesView({ settings }) {
           gap: 20px;
         }
 
+        /* 3D Flip Card Container matching GammaStack Animation */
         .values-bx {
+          perspective: 1000px;
+          -webkit-perspective: 1000px;
+          background: transparent;
           border-radius: 20px;
-          transition: all 0.4s ease;
+          height: 250px;
+          cursor: pointer;
         }
 
+        /* Inner Rotating Element */
         .values-card-inner {
-          background: rgba(20, 10, 36, 0.75);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 20px;
-          padding: 32px 20px;
-          text-align: center;
+          position: relative;
+          width: 100%;
           height: 100%;
+          text-align: center;
+          transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-style: preserve-3d;
+          -webkit-transform-style: preserve-3d;
+          border-radius: 20px;
+        }
+
+        /* Flip trigger on hover and when clicked/active on touch */
+        .values-bx:hover .values-card-inner,
+        .values-bx.is-flipped .values-card-inner {
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
+        }
+
+        /* Shared face setup with backface hidden */
+        .values-card-front,
+        .values-card-back {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          padding: 26px 20px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          backdrop-filter: blur(10px);
-          transition: all 0.3s ease;
+          box-sizing: border-box;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
         }
 
-        .values-bx:hover .values-card-inner {
-          transform: translateY(-6px);
-          border-color: rgba(179, 139, 255, 0.5);
-          background: rgba(30, 15, 55, 0.85);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+        /* FRONT FACE: Deep obsidian purple matching Industries page theme */
+        .values-card-front {
+          background: linear-gradient(155deg, rgba(24, 12, 42, 0.88) 0%, rgba(12, 6, 22, 0.96) 100%);
+          border: 1px solid rgba(168, 85, 247, 0.22);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          z-index: 2;
+          transform: rotateY(0deg);
+          -webkit-transform: rotateY(0deg);
+        }
+
+        .values-bx:hover .values-card-front {
+          border-color: rgba(192, 132, 252, 0.45);
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
         }
 
         .values-figure {
-          width: 58px;
-          height: 58px;
-          margin: 0 auto 18px auto;
+          width: 62px;
+          height: 62px;
+          margin: 0 auto 16px auto;
           display: flex;
           align-items: center;
           justify-content: center;
+          background: rgba(168, 85, 247, 0.1);
+          border: 1px solid rgba(168, 85, 247, 0.25);
+          border-radius: 16px;
+          transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .values-bx:hover .values-figure {
+          transform: scale(1.08);
+          background: rgba(168, 85, 247, 0.18);
+          border-color: rgba(34, 211, 238, 0.4);
         }
 
         .values-figure img {
-          max-width: 44px;
-          max-height: 44px;
-          filter: drop-shadow(0 4px 12px rgba(179, 139, 255, 0.4));
+          max-width: 42px;
+          max-height: 42px;
+          filter: drop-shadow(0 4px 12px rgba(34, 211, 238, 0.45));
         }
 
-        .values-card-inner h3 {
+        .values-card-front h3 {
           font-size: 1.05rem;
           font-weight: 700;
           color: #ffffff;
-          margin-bottom: 8px;
-          line-height: 1.3;
+          margin: 0;
+          line-height: 1.35;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
-        .values-card-inner p {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.65);
-          line-height: 1.5;
+        .values-flip-hint {
+          margin-top: 14px;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 11px;
+          font-weight: 600;
+          color: rgba(192, 132, 252, 0.7);
+          letter-spacing: 0.5px;
+          transition: color 0.3s ease;
+        }
+
+        .values-bx:hover .values-flip-hint {
+          color: #22d3ee;
+        }
+
+        /* BACK FACE: Rich royal purple gradient matching page ambiance */
+        .values-card-back {
+          background: linear-gradient(145deg, rgba(76, 29, 149, 0.95) 0%, rgba(30, 12, 58, 0.98) 55%, rgba(11, 5, 22, 0.99) 100%);
+          border: 1px solid rgba(192, 132, 252, 0.55);
+          box-shadow: 0 16px 40px rgba(124, 58, 237, 0.35), 0 0 24px rgba(34, 211, 238, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
+          z-index: 1;
+        }
+
+        .values-bx:hover .values-card-back,
+        .values-bx.is-flipped .values-card-back {
+          z-index: 3;
+        }
+
+        .values-back-tag {
+          font-size: 10.5px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1.2px;
+          color: #22d3ee;
+          margin-bottom: 8px;
+          display: inline-block;
+        }
+
+        .values-card-back h4 {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 10px 0;
+          line-height: 1.3;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .values-card-back p {
+          font-size: 13.5px;
+          color: rgba(255, 255, 255, 0.92);
+          line-height: 1.6;
           margin: 0;
+          text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
         }
 
         /* 4. FLAGSHIP ALTERNATING SHOWCASE: (.why-team-benifit-outer) */
@@ -1409,6 +1532,12 @@ export default function TeamComputersIndustriesView({ settings }) {
 
           .values-row {
             grid-template-columns: 1fr;
+            max-width: 360px;
+            margin: 0 auto;
+          }
+
+          .values-bx {
+            height: 230px;
           }
 
           .job-grid {
@@ -1430,6 +1559,9 @@ export default function TeamComputersIndustriesView({ settings }) {
         }
 
         @media (prefers-reduced-motion: reduce) {
+          .values-card-inner {
+            transition: transform 0.1s ease !important;
+          }
           .job-box::before,
           .career-banner-outer::before {
             display: none !important;
