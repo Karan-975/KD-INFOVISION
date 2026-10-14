@@ -1159,7 +1159,7 @@ export default function TeamComputersServicesView({
 
         .tc-services-root .solution-box {
           position: relative;
-          height: 380px;
+          height: 430px;
           border-radius: 18px;
           overflow: hidden;
           background: #0c0c0e;
@@ -1225,7 +1225,7 @@ export default function TeamComputersServicesView({
           height: 100%;
           top: 0;
           left: 0;
-          padding: 26px 22px;
+          padding: 28px 24px;
           z-index: 3;
           display: flex;
           flex-direction: column;
@@ -1261,20 +1261,20 @@ export default function TeamComputersServicesView({
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          margin: 12px 0;
+          margin: 14px 0;
         }
 
         .tc-services-root .solution-box figure figcaption p {
           opacity: 0;
           visibility: hidden;
-          font-size: 13.5px;
-          line-height: 1.55;
+          font-size: 14px;
+          line-height: 1.6;
           color: rgba(255, 255, 255, 0.95);
           margin: 0;
           text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
           transition: opacity 0.35s ease, visibility 0.35s ease;
           display: -webkit-box;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 6;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
