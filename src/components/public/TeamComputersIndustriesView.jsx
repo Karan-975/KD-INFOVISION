@@ -958,11 +958,11 @@ export default function TeamComputersIndustriesView({ settings }) {
           color: #22d3ee;
         }
 
-        /* BACK FACE: Rich royal purple gradient matching page ambiance */
+        /* BACK FACE: Pure white card background with deep purple text matching the card's theme */
         .values-card-back {
-          background: linear-gradient(145deg, rgba(76, 29, 149, 0.95) 0%, rgba(30, 12, 58, 0.98) 55%, rgba(11, 5, 22, 0.99) 100%);
-          border: 1px solid rgba(192, 132, 252, 0.55);
-          box-shadow: 0 16px 40px rgba(124, 58, 237, 0.35), 0 0 24px rgba(34, 211, 238, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          background: #ffffff;
+          border: 1px solid #ffffff;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(255, 255, 255, 0.25);
           transform: rotateY(180deg);
           -webkit-transform: rotateY(180deg);
           z-index: 1;
@@ -978,26 +978,29 @@ export default function TeamComputersIndustriesView({ settings }) {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1.2px;
-          color: #22d3ee;
+          color: #7c3aed;
           margin-bottom: 8px;
           display: inline-block;
+          background: rgba(124, 58, 237, 0.08);
+          padding: 3px 10px;
+          border-radius: 20px;
         }
 
         .values-card-back h4 {
-          font-size: 1rem;
-          font-weight: 700;
-          color: #ffffff;
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: #1e0a3c;
           margin: 0 0 10px 0;
           line-height: 1.3;
-          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+          letter-spacing: -0.01em;
         }
 
         .values-card-back p {
           font-size: 13.5px;
-          color: rgba(255, 255, 255, 0.92);
+          color: #3b1d60;
           line-height: 1.6;
           margin: 0;
-          text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+          font-weight: 500;
         }
 
         /* 4. FLAGSHIP ALTERNATING SHOWCASE: (.why-team-benifit-outer) */
