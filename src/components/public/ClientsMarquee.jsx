@@ -125,21 +125,95 @@ export default function ClientsMarquee() {
         </svg>
       ),
     },
+    {
+      name: 'Deloitte',
+      svg: (
+        <svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '30px', width: 'auto' }}>
+          <text x="0" y="27" fill="#111827" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="800" fontSize="24" letterSpacing="-0.5">
+            Deloitte
+          </text>
+          <circle cx="98" cy="24" r="3.5" fill="#86BC25" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Infosys',
+      svg: (
+        <svg viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '30px', width: 'auto' }}>
+          <text x="0" y="28" fill="#007CC3" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="800" fontSize="25" letterSpacing="-0.5">
+            Infosys
+          </text>
+          <text x="96" y="16" fill="#007CC3" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="600" fontSize="11">
+            ®
+          </text>
+        </svg>
+      ),
+    },
+    {
+      name: 'Cognizant',
+      svg: (
+        <svg viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '30px', width: 'auto' }}>
+          <text x="0" y="27" fill="#0033A0" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="800" fontSize="23" letterSpacing="-0.2">
+            cognizant
+          </text>
+          <path d="M126 12C126 12 133 15 133 21C133 26 128 28 126 28" stroke="#0033A0" strokeWidth="2.8" strokeLinecap="round" fill="none" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Wipro',
+      svg: (
+        <svg viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: '32px', width: 'auto' }}>
+          <text x="0" y="27" fill="#24272C" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="800" fontSize="24" letterSpacing="-0.5">
+            wipro
+          </text>
+          <g transform="translate(86, 11)">
+            <circle cx="6" cy="6" r="3.5" fill="#D32F2F" />
+            <circle cx="14" cy="2" r="3" fill="#1976D2" />
+            <circle cx="14" cy="11" r="3" fill="#388E3C" />
+            <circle cx="21" cy="6" r="2.5" fill="#FBC02D" />
+          </g>
+        </svg>
+      ),
+    },
   ];
+
+  // Distribute clients into 2 balanced rows
+  const row1Base = [
+    clients[0], // Walmart
+    clients[2], // Accenture
+    clients[4], // Gupshup
+    clients[6], // IMPENDI
+    clients[8], // Deloitte
+    clients[9], // Infosys
+  ];
+
+  const row2Base = [
+    clients[5], // UST
+    clients[1], // Capital One
+    clients[7], // SupplyCopia
+    clients[3], // MINT
+    clients[10], // Cognizant
+    clients[11], // Wipro
+  ];
+
+  // Repeat each row 4 times for infinite seamless loop without jump
+  const row1Items = [...row1Base, ...row1Base, ...row1Base, ...row1Base];
+  const row2Items = [...row2Base, ...row2Base, ...row2Base, ...row2Base];
 
   return (
     <section
       id="clients"
       style={{
         background: '#FFFFFF',
-        padding: '3.5rem 0',
+        padding: '3.25rem 0',
         borderTop: '1px solid var(--gray-200)',
         borderBottom: '1px solid var(--gray-200)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      <div className="container" style={{ marginBottom: '1.75rem', textAlign: 'center' }}>
+      <div className="container" style={{ marginBottom: '2rem', textAlign: 'center' }}>
         <div
           style={{
             fontSize: '0.8rem',
@@ -153,55 +227,70 @@ export default function ClientsMarquee() {
           }}
         >
           <span style={{ width: '20px', height: '1.5px', background: 'var(--blue)' }} />
-          Trusted by Industry Leaders & Fast-Growing Enterprises
+          Trusted by Industry Leaders &amp; Fast-Growing Enterprises
           <span style={{ width: '20px', height: '1.5px', background: 'var(--blue)' }} />
         </div>
       </div>
 
-      {/* Marquee Wrapper with Side Fade Gradients */}
+      {/* 2-Row Dual Client Marquee Tracks Moving in Opposite Directions */}
       <div
         style={{
-          position: 'relative',
-          width: '100%',
-          overflow: 'hidden',
           display: 'flex',
-          maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          overflow: 'hidden',
+          width: '100%',
+          position: 'relative',
+          padding: '0.35rem 0',
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
         }}
       >
-        <div className="clients-marquee-track">
-          {/* First Set */}
-          {clients.map((client, index) => (
-            <div key={`c1-${index}`} className="client-logo-item">
-              {client.svg}
-            </div>
-          ))}
-          {/* Duplicate Set for Seamless Loop */}
-          {clients.map((client, index) => (
-            <div key={`c2-${index}`} className="client-logo-item">
-              {client.svg}
-            </div>
-          ))}
-          {/* Third Set for Ultrawide displays */}
-          {clients.map((client, index) => (
-            <div key={`c3-${index}`} className="client-logo-item">
-              {client.svg}
-            </div>
-          ))}
+        {/* Row 1: Moving to the RIGHT (-->) */}
+        <div style={{ display: 'flex', overflow: 'hidden', width: '100%' }}>
+          <div className="clients-track-right">
+            {row1Items.map((client, index) => (
+              <div key={`r1-${client.name}-${index}`} className="client-logo-item" title={client.name}>
+                {client.svg}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2: Moving to the LEFT (<--) */}
+        <div style={{ display: 'flex', overflow: 'hidden', width: '100%' }}>
+          <div className="clients-track-left">
+            {row2Items.map((client, index) => (
+              <div key={`r2-${client.name}-${index}`} className="client-logo-item" title={client.name}>
+                {client.svg}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
-        .clients-marquee-track {
+        .clients-track-right {
           display: flex;
           align-items: center;
           gap: 4.5rem;
           width: max-content;
-          animation: clientsMarquee 32s linear infinite;
+          animation: clientsMarqueeRight 38s linear infinite;
         }
-        .clients-marquee-track:hover {
+
+        .clients-track-left {
+          display: flex;
+          align-items: center;
+          gap: 4.5rem;
+          width: max-content;
+          animation: clientsMarqueeLeft 38s linear infinite;
+        }
+
+        .clients-track-right:hover,
+        .clients-track-left:hover {
           animation-play-state: paused !important;
         }
+
         .client-logo-item {
           display: flex;
           align-items: center;
@@ -215,17 +304,28 @@ export default function ClientsMarquee() {
           will-change: transform;
           cursor: pointer;
         }
+
         .client-logo-item:hover {
-          transform: scale(1.22);
+          transform: scale(1.18);
           z-index: 10;
           filter: drop-shadow(0 6px 14px rgba(5, 45, 93, 0.12));
         }
-        @keyframes clientsMarquee {
+
+        @keyframes clientsMarqueeLeft {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-100% / 3));
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes clientsMarqueeRight {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
           }
         }
       `}</style>
