@@ -390,6 +390,7 @@ export default function Footer({ settings }) {
           height: 38px;
           width: auto;
           display: block;
+          filter: drop-shadow(0 2px 10px rgba(0, 210, 255, 0.28));
         }
 
         .brand-summary {

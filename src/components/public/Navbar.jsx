@@ -171,7 +171,8 @@ export default function Navbar({ settings }) {
                   maxHeight: '42px',
                   objectFit: 'contain',
                   display: 'block',
-                  transition: 'opacity 0.2s ease',
+                  filter: 'drop-shadow(0 2px 10px rgba(0, 210, 255, 0.32))',
+                  transition: 'opacity 0.2s ease, filter 0.25s ease, transform 0.2s ease',
                 }}
               />
             </Link>
@@ -421,7 +422,12 @@ export default function Navbar({ settings }) {
             <img
               src="/logo-mark.png"
               alt="KD Infovision"
-              style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+              style={{
+                height: '36px',
+                width: 'auto',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 10px rgba(0, 210, 255, 0.32))',
+              }}
             />
             <span
               style={{
