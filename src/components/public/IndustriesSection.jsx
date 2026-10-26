@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, TrendingUp, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function IndustriesSection({ industries = [] }) {
   const defaultSectors = [
@@ -66,7 +66,7 @@ export default function IndustriesSection({ industries = [] }) {
     <section
       id="industry"
       style={{
-        background: '#0E081D',
+        background: '#01162e',
         color: '#ffffff',
         padding: '6.5rem 0',
         position: 'relative',
@@ -77,17 +77,28 @@ export default function IndustriesSection({ industries = [] }) {
       <div
         style={{
           position: 'absolute',
-          top: '-20%',
+          top: '-15%',
           right: '-10%',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(207, 163, 255, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-15%',
+          left: '-10%',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        {/* Section Header matching Team Computers aesthetics */}
+        {/* Section Header */}
         <div
           style={{
             display: 'flex',
@@ -101,12 +112,12 @@ export default function IndustriesSection({ industries = [] }) {
           <div style={{ maxWidth: '720px' }}>
             <div
               style={{
-                fontSize: '13px',
-                fontWeight: 700,
+                fontSize: '12px',
+                fontWeight: 800,
                 textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                color: '#fffa65',
-                marginBottom: '0.75rem',
+                letterSpacing: '2px',
+                color: '#2DD4BF',
+                marginBottom: '0.85rem',
                 fontFamily: "'Montserrat', sans-serif",
               }}
             >
@@ -115,7 +126,7 @@ export default function IndustriesSection({ industries = [] }) {
             <h2
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: 'clamp(2.2rem, 3.5vw, 3rem)',
+                fontSize: 'clamp(2.1rem, 3.4vw, 2.9rem)',
                 fontWeight: 800,
                 color: '#ffffff',
                 letterSpacing: '-0.02em',
@@ -126,7 +137,7 @@ export default function IndustriesSection({ industries = [] }) {
               Industry Domain Reach.{' '}
               <span
                 style={{
-                  background: 'linear-gradient(259.44deg, #CFA3FF 25.03%, #EE7AE2 90.57%)',
+                  background: 'linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -140,23 +151,23 @@ export default function IndustriesSection({ industries = [] }) {
             href="/industries"
             className="home-industry-cta-btn"
             style={{
-              background: 'linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%)',
+              background: 'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
               color: '#ffffff',
-              padding: '12px 30px',
-              borderRadius: '40px',
+              padding: '12px 28px',
+              borderRadius: '8px',
               fontSize: '14px',
-              fontWeight: 600,
+              fontWeight: 700,
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
               textDecoration: 'none',
               transition: 'all 0.3s ease',
               fontFamily: "'Montserrat', sans-serif",
-              boxShadow: '0 4px 15px rgba(30, 201, 242, 0.2)',
+              boxShadow: '0 4px 15px rgba(0, 133, 89, 0.35)',
             }}
           >
             <span>Explore All Verticals</span>
-            <img src="/images/learn-more-arrow.svg" alt="arrow" style={{ width: '14px' }} />
+            <ArrowRight size={16} />
           </Link>
         </div>
 
@@ -165,7 +176,7 @@ export default function IndustriesSection({ industries = [] }) {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.5rem',
+            gap: '1.75rem',
           }}
           className="home-industry-grid"
         >
@@ -178,13 +189,15 @@ export default function IndustriesSection({ industries = [] }) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: '2.2rem 2rem',
-                borderRadius: '32px',
-                background: '#140d2a',
+                padding: '2rem 1.85rem',
+                borderRadius: '16px',
+                background: 'rgba(255, 255, 255, 0.035)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 textDecoration: 'none',
                 color: '#ffffff',
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -200,10 +213,11 @@ export default function IndustriesSection({ industries = [] }) {
                 >
                   <div
                     style={{
-                      width: '54px',
-                      height: '54px',
-                      borderRadius: '16px',
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '10px',
                       background: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -213,9 +227,9 @@ export default function IndustriesSection({ industries = [] }) {
                       src={ind.icon}
                       alt={ind.name}
                       style={{
-                        maxWidth: '38px',
-                        maxHeight: '38px',
-                        filter: 'drop-shadow(0 2px 8px rgba(0, 200, 255, 0.25))',
+                        maxWidth: '34px',
+                        maxHeight: '34px',
+                        filter: 'drop-shadow(0 2px 6px rgba(45, 212, 191, 0.3))',
                       }}
                     />
                   </div>
@@ -225,11 +239,11 @@ export default function IndustriesSection({ industries = [] }) {
                       fontSize: '11px',
                       fontWeight: 700,
                       letterSpacing: '1px',
-                      color: '#fffa65',
-                      background: 'rgba(255, 250, 101, 0.1)',
-                      border: '1px solid rgba(255, 250, 101, 0.25)',
-                      padding: '4px 10px',
-                      borderRadius: '12px',
+                      color: '#2DD4BF',
+                      background: 'rgba(45, 212, 191, 0.1)',
+                      border: '1px solid rgba(45, 212, 191, 0.25)',
+                      padding: '3px 8px',
+                      borderRadius: '4px',
                       textTransform: 'uppercase',
                     }}
                   >
@@ -240,12 +254,14 @@ export default function IndustriesSection({ industries = [] }) {
                 <h3
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
-                    fontSize: '1.25rem',
+                    fontSize: '1.2rem',
                     fontWeight: 700,
                     color: '#ffffff',
                     marginBottom: '0.65rem',
-                    lineHeight: 1.3,
+                    lineHeight: 1.35,
+                    transition: 'color 0.2s ease',
                   }}
+                  className="ind-card-title"
                 >
                   {ind.name}
                 </h3>
@@ -254,8 +270,8 @@ export default function IndustriesSection({ industries = [] }) {
                   style={{
                     fontSize: '0.92rem',
                     lineHeight: 1.65,
-                    color: 'rgba(255, 255, 255, 0.65)',
-                    marginBottom: '1.75rem',
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    marginBottom: '1.5rem',
                   }}
                 >
                   {ind.desc}
@@ -275,11 +291,11 @@ export default function IndustriesSection({ industries = [] }) {
                   style={{
                     fontSize: '11px',
                     fontWeight: 700,
-                    color: '#00F7FF',
-                    background: 'rgba(0, 200, 255, 0.1)',
-                    padding: '4px 10px',
-                    borderRadius: '10px',
-                    border: '1px solid rgba(0, 200, 255, 0.2)',
+                    color: '#38BDF8',
+                    background: 'rgba(56, 189, 248, 0.1)',
+                    padding: '3px 8px',
+                    borderRadius: '4px',
+                    border: '1px solid rgba(56, 189, 248, 0.25)',
                   }}
                 >
                   {ind.kpi}
@@ -288,7 +304,7 @@ export default function IndustriesSection({ industries = [] }) {
                 <span
                   className="card-explore-arrow"
                   style={{
-                    color: 'rgba(255, 255, 255, 0.6)',
+                    color: 'rgba(255, 255, 255, 0.7)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '4px',
@@ -309,12 +325,17 @@ export default function IndustriesSection({ industries = [] }) {
       <style jsx>{`
         :global(.industry-grid-card:hover) {
           transform: translateY(-6px);
-          border-color: rgba(0, 200, 255, 0.4) !important;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+          border-color: rgba(45, 212, 191, 0.45) !important;
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+          background: rgba(255, 255, 255, 0.055) !important;
+        }
+
+        :global(.industry-grid-card:hover .ind-card-title) {
+          color: #2DD4BF !important;
         }
 
         :global(.industry-grid-card:hover .card-explore-arrow) {
-          color: #fffa65 !important;
+          color: #2DD4BF !important;
           transform: translateX(4px);
         }
 

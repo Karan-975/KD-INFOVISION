@@ -4,14 +4,9 @@ import React, { useState } from 'react';
 import {
   BrainCircuit,
   BarChart3,
-  Code2,
-  Cloud,
   ShieldCheck,
-  Server,
   Layers,
-  Activity,
   ArrowRight,
-  ChevronRight,
   CheckCircle2,
   X,
 } from 'lucide-react';
@@ -107,41 +102,100 @@ export default function ServicesSection({ services = [] }) {
     : defaultPractices;
 
   return (
-    <section id="solutions" style={{ background: '#FFFFFF', padding: '6.5rem 0' }}>
-      <div className="container">
-        {/* Section Header: Clean Enterprise */}
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 4rem auto' }}>
-          <h2
+    <section
+      id="solutions"
+      style={{
+        background: '#011E41',
+        padding: '6.5rem 0',
+        position: 'relative',
+        overflow: 'hidden',
+        color: '#FFFFFF',
+      }}
+    >
+      {/* Ambient subtle glow */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-15%',
+          left: '20%',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-15%',
+          right: '15%',
+          width: '550px',
+          height: '550px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        {/* Section Header: BCG Corporate Editorial */}
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 4rem auto' }}>
+          <div
             style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(2rem, 3.2vw, 2.85rem)',
+              fontSize: '12px',
               fontWeight: 800,
-              color: 'var(--navy)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.2,
-              marginBottom: '1rem',
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              color: '#2DD4BF',
+              marginBottom: '0.85rem',
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
-            End-to-End <span style={{ color: 'var(--blue)' }}>Enterprise Technology</span> Practices
+            ENTERPRISE ARCHITECTURE PRACTICES
+          </div>
+
+          <h2
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 'clamp(2.1rem, 3.4vw, 2.9rem)',
+              fontWeight: 800,
+              color: '#FFFFFF',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2,
+              marginBottom: '1.15rem',
+            }}
+          >
+            End-to-End{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Enterprise Technology
+            </span>{' '}
+            Practices
           </h2>
 
           <p
             style={{
               fontSize: '1.05rem',
-              color: 'var(--muted)',
-              lineHeight: 1.7,
+              color: 'rgba(255, 255, 255, 0.72)',
+              lineHeight: 1.75,
+              margin: '0 auto',
+              maxWidth: '680px',
             }}
           >
-            Scalable, high-performance IT solutions engineered to accelerate digital transformation, modernize infrastructure, and deliver quantifiable business agility.
+            Scalable, high-performance IT solutions engineered to accelerate digital transformation, modernize lakehouse infrastructure, and deliver quantifiable business agility.
           </p>
         </div>
 
-        {/* 4 Clean Solution Practice Cards (2x2 Grid) - In the reference editorial design */}
+        {/* 4 Clean Solution Practice Cards (2x2 Grid) */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2.25rem',
+            gap: '2rem',
           }}
           className="practices-grid"
         >
@@ -150,30 +204,33 @@ export default function ServicesSection({ services = [] }) {
               key={item.id}
               className="solution-practice-card"
               style={{
-                background: '#FFFFFF',
-                borderRadius: '20px',
-                border: '1px solid #E2EAF4',
+                background: 'rgba(255, 255, 255, 0.035)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: '1.25rem 1.25rem 1.65rem 1.25rem',
-                boxShadow: '0 8px 30px rgba(5, 45, 93, 0.06), 0 1px 3px rgba(5, 45, 93, 0.04)',
+                padding: '1.5rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
                 transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'pointer',
               }}
               onClick={() => setActiveModal(item)}
             >
               <div>
-                {/* Top Rounded Photo (Clean 16:9 Inset Frame matching reference Image-2) */}
+                {/* Top Rounded Photo (Clean 16:9 Inset Frame) */}
                 <div
                   style={{
                     position: 'relative',
                     width: '100%',
                     aspectRatio: '16 / 9',
-                    borderRadius: '14px',
+                    borderRadius: '12px',
                     overflow: 'hidden',
-                    background: '#F1F5F9',
+                    background: '#011224',
+                    border: '1px solid rgba(255, 255, 255, 0.06)',
                     marginBottom: '1.5rem',
                   }}
                 >
@@ -189,18 +246,37 @@ export default function ServicesSection({ services = [] }) {
                     }}
                     className="practice-img"
                   />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      background: 'rgba(1, 22, 46, 0.75)',
+                      backdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(45, 212, 191, 0.3)',
+                      color: '#2DD4BF',
+                      padding: '4px 10px',
+                      borderRadius: '4px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      letterSpacing: '1px',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {item.kicker}
+                  </div>
                 </div>
 
-                {/* Editorial Content Area - Perfectly left-aligned with image */}
+                {/* Editorial Content Area */}
                 <div>
                   <h3
                     style={{
-                      fontFamily: 'var(--font-heading)',
+                      fontFamily: "'Montserrat', sans-serif",
                       fontSize: 'clamp(1.3rem, 1.7vw, 1.55rem)',
                       fontWeight: 800,
-                      color: 'var(--navy)',
-                      marginBottom: '0.85rem',
-                      lineHeight: 1.32,
+                      color: '#FFFFFF',
+                      marginBottom: '0.75rem',
+                      lineHeight: 1.3,
                       letterSpacing: '-0.015em',
                       transition: 'color 0.2s ease',
                     }}
@@ -211,26 +287,53 @@ export default function ServicesSection({ services = [] }) {
 
                   <p
                     style={{
-                      fontSize: '0.96rem',
-                      color: '#64748B',
+                      fontSize: '0.94rem',
+                      color: 'rgba(255, 255, 255, 0.7)',
                       lineHeight: 1.7,
                       margin: 0,
                     }}
                   >
                     {item.desc}
                   </p>
+
+                  {/* Capabilities Tags */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '8px',
+                      marginTop: '1.25rem',
+                    }}
+                  >
+                    {item.capabilities.slice(0, 3).map((cap, cIdx) => (
+                      <span
+                        key={cIdx}
+                        style={{
+                          fontSize: '11.5px',
+                          fontWeight: 600,
+                          color: '#E2E8F0',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          padding: '3px 9px',
+                          borderRadius: '4px',
+                        }}
+                      >
+                        {cap}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Clean Editorial CTA Link */}
               <div
                 style={{
-                  marginTop: '1.5rem',
+                  marginTop: '1.75rem',
                   paddingTop: '1.15rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  borderTop: '1px solid #F1F5F9',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
               >
                 <span
@@ -238,7 +341,7 @@ export default function ServicesSection({ services = [] }) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    color: 'var(--blue)',
+                    color: '#2DD4BF',
                     fontSize: '0.92rem',
                     fontWeight: 700,
                     transition: 'gap 0.2s ease',
@@ -252,11 +355,11 @@ export default function ServicesSection({ services = [] }) {
                 <span
                   style={{
                     fontSize: '0.8rem',
-                    color: '#94A3B8',
+                    color: 'rgba(255, 255, 255, 0.5)',
                     fontWeight: 600,
                   }}
                 >
-                  Enterprise Advisory &rarr;
+                  Advisory Spec &rarr;
                 </span>
               </div>
             </div>
@@ -266,16 +369,34 @@ export default function ServicesSection({ services = [] }) {
 
       {/* Interactive Detail Modal: Deep Technical Feasibility */}
       {activeModal && (
-        <div className="modal-overlay" onClick={() => setActiveModal(null)}>
+        <div
+          className="modal-overlay"
+          onClick={() => setActiveModal(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(1, 18, 36, 0.85)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '1.5rem',
+          }}
+        >
           <div
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{
               padding: '2.5rem',
               maxWidth: '680px',
-              borderRadius: '20px',
-              background: '#FFFFFF',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+              width: '100%',
+              borderRadius: '16px',
+              background: '#01162e',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85)',
+              color: '#FFFFFF',
             }}
           >
             <div
@@ -286,23 +407,32 @@ export default function ServicesSection({ services = [] }) {
                 marginBottom: '1.5rem',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div
                   style={{
-                    width: '40px',
-                    height: '40px',
+                    width: '42px',
+                    height: '42px',
                     borderRadius: '10px',
-                    background: 'rgba(21, 138, 226, 0.1)',
+                    background: 'rgba(45, 212, 191, 0.12)',
+                    border: '1px solid rgba(45, 212, 191, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--blue)',
+                    color: '#2DD4BF',
                   }}
                 >
                   <activeModal.icon size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--navy)' }}>
+                  <h3
+                    style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '1.35rem',
+                      fontWeight: 800,
+                      color: '#FFFFFF',
+                      margin: 0,
+                    }}
+                  >
                     {activeModal.title}
                   </h3>
                 </div>
@@ -311,8 +441,8 @@ export default function ServicesSection({ services = [] }) {
               <button
                 onClick={() => setActiveModal(null)}
                 style={{
-                  background: '#F1F5F9',
-                  border: 'none',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
                   borderRadius: '50%',
                   width: '36px',
                   height: '36px',
@@ -320,25 +450,35 @@ export default function ServicesSection({ services = [] }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  color: '#64748B',
+                  color: '#FFFFFF',
+                  transition: 'all 0.2s ease',
                 }}
               >
                 <X size={18} />
               </button>
             </div>
 
-            <p style={{ fontSize: '1rem', color: '#475569', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '0.98rem', color: 'rgba(255, 255, 255, 0.78)', lineHeight: 1.75, marginBottom: '1.75rem' }}>
               {activeModal.detail}
             </p>
 
             <div style={{ marginBottom: '2rem' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--navy)', marginBottom: '0.75rem' }}>
+              <div
+                style={{
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  color: '#2DD4BF',
+                  marginBottom: '0.85rem',
+                }}
+              >
                 Core Engineered Capabilities:
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {activeModal.capabilities.map((cap, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: '#334155' }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--blue)' }} />
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.92rem', color: '#E2E8F0' }}>
+                    <CheckCircle2 size={16} style={{ color: '#2DD4BF', flexShrink: 0 }} />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -352,25 +492,26 @@ export default function ServicesSection({ services = [] }) {
                 style={{
                   flex: 1,
                   textAlign: 'center',
-                  background: 'var(--blue)',
+                  background: 'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
                   color: '#FFFFFF',
-                  padding: '0.85rem',
+                  padding: '0.9rem',
                   borderRadius: '8px',
                   fontWeight: 700,
                   fontSize: '0.925rem',
                   textDecoration: 'none',
+                  boxShadow: '0 4px 15px rgba(0, 133, 89, 0.35)',
                 }}
               >
-                Schedule Technical Consultation
+                Schedule Architecture Consultation
               </a>
               <button
                 onClick={() => setActiveModal(null)}
                 style={{
-                  padding: '0.85rem 1.5rem',
+                  padding: '0.9rem 1.75rem',
                   borderRadius: '8px',
-                  border: '1px solid #CBD5E1',
-                  background: '#FFFFFF',
-                  color: '#475569',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  color: '#FFFFFF',
                   fontWeight: 600,
                   cursor: 'pointer',
                 }}
@@ -384,15 +525,15 @@ export default function ServicesSection({ services = [] }) {
 
       <style jsx>{`
         :global(.solution-practice-card:hover) {
-          border-color: rgba(21, 138, 226, 0.45) !important;
-          box-shadow: 0 24px 48px -10px rgba(5, 45, 93, 0.12), 0 0 25px rgba(21, 138, 226, 0.08) !important;
-          transform: translateY(-8px);
+          border-color: rgba(45, 212, 191, 0.45) !important;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(45, 212, 191, 0.12) !important;
+          transform: translateY(-6px);
         }
         :global(.solution-practice-card:hover .practice-img) {
-          transform: scale(1.04);
+          transform: scale(1.05);
         }
         :global(.solution-practice-card:hover .practice-title) {
-          color: var(--blue) !important;
+          color: #2DD4BF !important;
         }
         :global(.solution-practice-card:hover .practice-cta) {
           gap: 12px !important;

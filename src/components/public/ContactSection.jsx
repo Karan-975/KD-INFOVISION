@@ -86,14 +86,14 @@ export default function ContactSection({ settings }) {
       id="contact"
       style={{
         padding: '5rem 0 7rem',
-        background: '#040612',
+        background: '#01162e',
         position: 'relative',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
     >
-      {/* Background Ambient Lighting Combination matching Image 3 */}
-      {/* Left Purple/Violet Glowing Nebula */}
+      {/* Background Ambient Lighting Combination matching BCG Corporate Aesthetic */}
+      {/* Left Mint/Teal Glowing Nebula */}
       <div
         style={{
           position: 'absolute',
@@ -103,13 +103,13 @@ export default function ContactSection({ settings }) {
           height: '700px',
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(124, 58, 237, 0.1) 45%, transparent 70%)',
+            'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(0, 133, 89, 0.04) 45%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Right Teal/Cyan/Emerald Glowing Nebula */}
+      {/* Right Cyan/Sky Glowing Nebula */}
       <div
         style={{
           position: 'absolute',
@@ -119,7 +119,7 @@ export default function ContactSection({ settings }) {
           height: '700px',
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.12) 45%, transparent 70%)',
+            'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(0, 163, 137, 0.04) 45%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
@@ -480,7 +480,7 @@ export default function ContactSection({ settings }) {
               />
             </div>
 
-            {/* Submit Button (Matching Image 3 "Let's Connect ->" gradient) */}
+            {/* Submit Button (BCG Emerald Gradient) */}
             <div style={{ marginTop: '0.5rem' }}>
               <button
                 type="submit"
@@ -488,10 +488,10 @@ export default function ContactSection({ settings }) {
                 className="contact-submit-btn"
                 style={{
                   background:
-                    'linear-gradient(259.44deg, #9DA8FB 25.03%, #9266FD 90.57%)',
+                    'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
                   color: '#FFFFFF',
-                  padding: '14px 40px',
-                  borderRadius: '40px',
+                  padding: '13px 36px',
+                  borderRadius: '8px',
                   fontSize: '15px',
                   fontWeight: 700,
                   fontFamily: "'Montserrat', sans-serif",
@@ -501,7 +501,7 @@ export default function ContactSection({ settings }) {
                   alignItems: 'center',
                   gap: '10px',
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: '0 8px 24px rgba(157, 168, 251, 0.3)',
+                  boxShadow: '0 4px 15px rgba(0, 133, 89, 0.35)',
                 }}
               >
                 {status.loading ? (
@@ -535,8 +535,8 @@ export default function ContactSection({ settings }) {
 
         .contact-dark-input {
           width: 100%;
-          background: #11141c;
-          border: 1px solid #1f2535;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 8px;
           padding: 13px 16px;
           color: #ffffff;
@@ -552,19 +552,14 @@ export default function ContactSection({ settings }) {
 
         .contact-dark-input:focus {
           outline: none;
-          border-color: #9da8fb;
-          background: #141722;
-          box-shadow: 0 0 12px rgba(157, 168, 251, 0.25);
+          border-color: #2DD4BF;
+          background: rgba(255, 255, 255, 0.07);
+          box-shadow: 0 0 12px rgba(45, 212, 191, 0.25);
         }
 
         .contact-submit-btn:hover {
-          background: linear-gradient(
-            259.44deg,
-            #9266fd 25.03%,
-            #9da8fb 90.57%
-          ) !important;
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(157, 168, 251, 0.45) !important;
+          box-shadow: 0 8px 24px rgba(0, 133, 89, 0.5) !important;
         }
 
         @media (max-width: 960px) {

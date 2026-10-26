@@ -33,14 +33,19 @@ export default async function HomePage() {
   ]);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+    <main style={{ minHeight: '100vh', background: '#01162e' }}>
       <Navbar settings={settings} />
       
       {/* Dynamic 3-Slide Hero Carousel with Realistic Photography & Multi-Color Accents */}
       <HeroSection slides={heroSlides} />
 
       {/* Technology Partners Marquee */}
-      <PartnersMarquee partners={partners} isDark={true} />
+      <PartnersMarquee
+        partners={partners}
+        isDark={true}
+        bgColor="#011224"
+        borderColor="rgba(255, 255, 255, 0.08)"
+      />
 
       {/* About Us / Our Story with Team Photo & 4 Metric Counters */}
       <AboutSection statCounters={statCounters} />
@@ -55,10 +60,14 @@ export default async function HomePage() {
       <WhyUsSection />
 
       {/* Featured Proven Enterprise Case Studies */}
-      <CaseStudiesSection caseStudies={caseStudies.slice(0, 2)} />
+      <CaseStudiesSection caseStudies={caseStudies.slice(0, 3)} />
 
       {/* Client Enterprise Trust Marquee */}
-      <ClientsMarquee />
+      <ClientsMarquee
+        isDark={true}
+        bgColor="#011224"
+        borderColor="rgba(255, 255, 255, 0.08)"
+      />
 
       {/* Architecture Consultation Contact Form */}
       <ContactSection settings={settings} />

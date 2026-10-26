@@ -48,12 +48,12 @@ function CounterItem({ target, suffix, label, context }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        background: 'rgba(17, 20, 28, 0.75)',
+        background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderRadius: '16px',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
-        transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+        borderRadius: '12px',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.35)',
+        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
       }}
     >
@@ -62,15 +62,16 @@ function CounterItem({ target, suffix, label, context }) {
           fontFamily: "'Montserrat', sans-serif",
           fontSize: 'clamp(2rem, 2.7vw, 2.85rem)',
           fontWeight: 800,
-          color: '#FFD028',
-          textShadow: '0 2px 20px rgba(255, 208, 40, 0.3)',
+          background: 'linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
           lineHeight: 1,
           marginBottom: '0.45rem',
           letterSpacing: '-0.02em',
         }}
       >
         {count}
-        <span style={{ color: '#FFFFFF', marginLeft: '2px' }}>{suffix}</span>
+        <span style={{ color: '#FFFFFF', WebkitTextFillColor: '#FFFFFF', marginLeft: '2px' }}>{suffix}</span>
       </div>
       <div
         style={{
@@ -132,13 +133,13 @@ export default function AboutSection({ statCounters = [] }) {
       id="about"
       style={{
         padding: 0,
-        background: '#040612',
+        background: '#01162e',
         color: '#ffffff',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background Left Violet/Purple Aurora Glow (matching multi-page theme) */}
+      {/* Background Subtle Emerald Gradient Glow (matching BCG / Case Studies multi-page palette) */}
       <div
         style={{
           position: 'absolute',
@@ -147,13 +148,13 @@ export default function AboutSection({ statCounters = [] }) {
           width: '700px',
           height: '700px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(124, 58, 237, 0.1) 40%, transparent 70%)',
-          filter: 'blur(60px)',
+          background: 'radial-gradient(circle, rgba(0, 133, 89, 0.18) 0%, rgba(1, 30, 65, 0.1) 40%, transparent 70%)',
+          filter: 'blur(70px)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Background Right Teal/Cyan Aurora Glow (matching multi-page theme) */}
+      {/* Background Subtle Cyan/Teal Gradient Glow */}
       <div
         style={{
           position: 'absolute',
@@ -162,54 +163,11 @@ export default function AboutSection({ statCounters = [] }) {
           width: '700px',
           height: '700px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(6, 182, 212, 0.12) 40%, transparent 70%)',
-          filter: 'blur(60px)',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(1, 30, 65, 0.08) 40%, transparent 70%)',
+          filter: 'blur(70px)',
           pointerEvents: 'none',
         }}
       />
-
-      {/* Atmospheric Subtle Binary Digits Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          overflow: 'hidden',
-          pointerEvents: 'none',
-          opacity: 0.12,
-          userSelect: 'none',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            left: '6%',
-            top: '18%',
-            fontFamily: 'monospace',
-            fontSize: '30px',
-            fontWeight: 800,
-            color: '#A78BFA',
-            letterSpacing: '10px',
-            lineHeight: 1.8,
-          }}
-        >
-          0 1 0<br />1 0 1
-        </div>
-        <div
-          style={{
-            position: 'absolute',
-            right: '6%',
-            bottom: '15%',
-            fontFamily: 'monospace',
-            fontSize: '32px',
-            fontWeight: 800,
-            color: '#34D399',
-            letterSpacing: '12px',
-            lineHeight: 1.8,
-          }}
-        >
-          1 0 1<br />0 1 0
-        </div>
-      </div>
 
       <div
         style={{
@@ -240,7 +198,7 @@ export default function AboutSection({ statCounters = [] }) {
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '2px',
-              color: '#9DA8FB',
+              color: '#00A389',
               marginBottom: '0.85rem',
               fontFamily: "'Montserrat', sans-serif",
             }}
@@ -248,7 +206,7 @@ export default function AboutSection({ statCounters = [] }) {
             WHO WE ARE &amp; WHY WE SUCCEED
           </div>
 
-          {/* Heading with Lavender-Purple Gradient Accent */}
+          {/* Heading with BCG Emerald & Crisp White Gradient Accent */}
           <h2
             style={{
               fontFamily: "'Montserrat', sans-serif",
@@ -263,7 +221,7 @@ export default function AboutSection({ statCounters = [] }) {
             We Know That Our Clients Are The Key To Our{' '}
             <span
               style={{
-                background: 'linear-gradient(259.44deg, #9DA8FB 25.03%, #9266FD 90.57%)',
+                background: 'linear-gradient(90deg, #FFFFFF 15%, #2DD4BF 60%, #00A389 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -288,7 +246,7 @@ export default function AboutSection({ statCounters = [] }) {
             style={{
               fontSize: '0.975rem',
               lineHeight: 1.75,
-              color: 'rgba(255, 255, 255, 0.76)',
+              color: '#94A3B8',
               marginBottom: '2rem',
               maxWidth: '600px',
             }}
@@ -296,12 +254,12 @@ export default function AboutSection({ statCounters = [] }) {
             By delivering a full spectrum of advanced Data, BI, and AI services, we enable organizations to unlock the true value of their information. We transform raw data into actionable insights that accelerate decision-making, optimize operations, and achieve measurable business outcomes.
           </p>
 
-          {/* 3 Value Pillars */}
+          {/* 3 Clean Value Commitments (No Bubbly Capsules) */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '12px',
+              gap: '10px',
               marginBottom: '2.5rem',
             }}
           >
@@ -313,12 +271,12 @@ export default function AboutSection({ statCounters = [] }) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  color: '#F1F5F9',
-                  fontSize: '0.95rem',
+                  color: '#E2E8F0',
+                  fontSize: '0.93rem',
                   fontWeight: 600,
-                  background: 'rgba(17, 20, 28, 0.65)',
-                  padding: '12px 18px',
-                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  padding: '11px 16px',
+                  borderRadius: '8px',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
@@ -327,18 +285,18 @@ export default function AboutSection({ statCounters = [] }) {
               >
                 <div
                   style={{
-                    width: '24px',
-                    height: '24px',
+                    width: '22px',
+                    height: '22px',
                     borderRadius: '50%',
-                    background: 'rgba(157, 168, 251, 0.15)',
-                    border: '1px solid rgba(157, 168, 251, 0.3)',
+                    background: 'rgba(0, 163, 137, 0.15)',
+                    border: '1px solid rgba(0, 163, 137, 0.35)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
                   }}
                 >
-                  <CheckCircle2 size={15} style={{ color: '#9DA8FB' }} />
+                  <CheckCircle2 size={14} style={{ color: '#2DD4BF' }} />
                 </div>
                 <span>{pillar}</span>
               </div>
@@ -351,19 +309,19 @@ export default function AboutSection({ statCounters = [] }) {
               href="/about"
               className="about-tc-learn-more"
               style={{
-                background: 'linear-gradient(259.44deg, #9DA8FB 25.03%, #9266FD 90.57%)',
-                padding: '14px 36px',
-                borderRadius: '40px',
+                background: 'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
+                padding: '14px 34px',
+                borderRadius: '8px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '12px',
+                gap: '10px',
                 color: '#FFFFFF',
                 fontSize: '15px',
-                fontWeight: 800,
+                fontWeight: 700,
                 fontFamily: "'Montserrat', sans-serif",
                 textDecoration: 'none',
-                boxShadow: '0 8px 25px rgba(146, 102, 253, 0.35)',
-                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                boxShadow: '0 8px 24px rgba(0, 133, 89, 0.3)',
+                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
             >
               <span>Explore Our Story</span>
@@ -372,7 +330,7 @@ export default function AboutSection({ statCounters = [] }) {
           </div>
         </div>
 
-        {/* Right Pane: Seamless 3D Isometric Data Analytics Visual + 4 Quantitative Metric Counters */}
+        {/* Right Pane: High-Resolution Consulting Photo + 4 Quantitative Metric Counters */}
         <div
           style={{
             padding: '4.5rem 4rem',
@@ -385,7 +343,7 @@ export default function AboutSection({ statCounters = [] }) {
           }}
           className="about-right-pane"
         >
-          {/* Seamless 3D Analytics & AI Artwork: Dark Theme with Soft Glow Frame */}
+          {/* Photorealistic Enterprise Consulting Architecture Showcase */}
           <div
             style={{
               position: 'relative',
@@ -399,22 +357,25 @@ export default function AboutSection({ statCounters = [] }) {
             <div
               style={{
                 width: '100%',
-                borderRadius: '20px',
+                borderRadius: '16px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 92, 246, 0.12)',
+                border: '1px solid rgba(0, 163, 137, 0.28)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.65)',
+                background: '#021226',
               }}
             >
               <img
-                src="/images/about_analytics_dark.jpg"
-                alt="KD Infovision Modern Data Architecture, Cloud Lakehouse and AI Analytics"
+                src="/images/about_kd_consulting.jpg"
+                alt="KD Infovision Enterprise Data Architecture, Cloud Lakehouse and AI Consulting"
                 style={{
                   width: '100%',
                   height: 'auto',
                   maxHeight: '380px',
                   objectFit: 'cover',
                   display: 'block',
+                  transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
+                className="about-showcase-img"
               />
             </div>
           </div>
@@ -442,30 +403,34 @@ export default function AboutSection({ statCounters = [] }) {
 
       <style jsx>{`
         .about-tc-learn-more:hover {
-          background: linear-gradient(259.44deg, #9266FD 25.03%, #9DA8FB 90.57%) !important;
+          background: linear-gradient(93.05deg, #00A389 0%, #008559 100%) !important;
           transform: translateY(-2px);
-          box-shadow: 0 14px 34px rgba(157, 168, 251, 0.5) !important;
+          box-shadow: 0 12px 30px rgba(0, 133, 89, 0.45) !important;
         }
         .about-stat-counter-card:hover {
-          background: rgba(22, 27, 38, 0.95) !important;
-          border-color: #9DA8FB !important;
-          transform: translateY(-4px) !important;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(157, 168, 251, 0.2) !important;
+          background: rgba(0, 163, 137, 0.08) !important;
+          border-color: rgba(0, 163, 137, 0.4) !important;
+          transform: translateY(-3px);
+          box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45) !important;
         }
         .about-value-pillar:hover {
-          background: rgba(25, 30, 44, 0.85) !important;
-          border-color: rgba(157, 168, 251, 0.3) !important;
+          background: rgba(0, 163, 137, 0.08) !important;
+          border-color: rgba(0, 163, 137, 0.35) !important;
           transform: translateX(4px);
         }
-        @media (max-width: 960px) {
-          :global(.about-split-grid) {
+        .about-showcase-img:hover {
+          transform: scale(1.03);
+        }
+
+        @media (max-width: 1024px) {
+          .about-split-grid {
             grid-template-columns: 1fr !important;
           }
-          :global(.about-left-pane) {
-            padding: 3.5rem 1.5rem !important;
+          .about-left-pane {
+            padding: 4rem 2rem !important;
           }
-          :global(.about-right-pane) {
-            padding: 2.5rem 1.5rem 3.5rem 1.5rem !important;
+          .about-right-pane {
+            padding: 0 2rem 4rem 2rem !important;
           }
         }
       `}</style>
