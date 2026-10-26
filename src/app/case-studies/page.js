@@ -20,7 +20,7 @@ export default async function CaseStudiesPage() {
   ]);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#000000' }}>
+    <main style={{ minHeight: '100vh', background: '#01162e' }}>
       <Navbar settings={settings} />
 
       {/* Team Computers Case Study System with Filters, Split Cards & Modal */}
@@ -30,7 +30,12 @@ export default async function CaseStudiesPage() {
       />
 
       {/* Enterprise Tech Ecosystem Marquee */}
-      <PartnersMarquee partners={partners} isDark={true} />
+      <PartnersMarquee
+        partners={partners}
+        isDark={true}
+        bgColor="#011224"
+        borderColor="rgba(0, 133, 89, 0.25)"
+      />
 
       {/* Footer */}
       <Footer settings={settings} />

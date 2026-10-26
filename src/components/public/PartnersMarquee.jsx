@@ -207,7 +207,12 @@ const getTechLogos = (isDark = false) => ({
   ),
 });
 
-export default function PartnersMarquee({ partners = [], isDark = false }) {
+export default function PartnersMarquee({
+  partners = [],
+  isDark = false,
+  bgColor = null,
+  borderColor = null,
+}) {
   // Rich Enterprise Partner Sets
   const defaultRow1 = [
     { name: 'AWS' },
@@ -292,9 +297,9 @@ export default function PartnersMarquee({ partners = [], isDark = false }) {
     <div
       style={{
         padding: '1.25rem 0',
-        background: isDark ? '#000000' : '#FFFFFF',
-        borderTop: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
-        borderBottom: isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)',
+        background: bgColor || (isDark ? '#000000' : '#FFFFFF'),
+        borderTop: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)'),
+        borderBottom: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)'),
         overflow: 'hidden',
         position: 'relative',
       }}

@@ -31,7 +31,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Real-Time Fraud Detection & Enterprise Streaming Lakehouse',
       metricNum: '65%',
       metricLabel: 'Latency Reduction (85ms SLA)',
-      image: '/images/case_study_uptime.png',
+      image: '/images/cs_fintech_streaming.jpg',
       summary:
         'Architected an event-driven data streaming engine ingesting over 10M+ daily financial transactions with real-time ML anomaly scoring and sub-second decision latency.',
       stack: ['Snowflake', 'Apache Kafka', 'Python ML', 'Azure AKS', 'FinOps'],
@@ -49,7 +49,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Unified Customer 360 & Predictive Demand Forecasting Engine',
       metricNum: '3.2×',
       metricLabel: 'Forecast Precision (-34% Stockouts)',
-      image: '/images/case_study_workforce.png',
+      image: '/images/cs_retail_forecasting.jpg',
       summary:
         'Centralized 14 fragmented ERP and CRM databases into an executive Power BI semantic layer and automated demand forecasting pipeline across 200+ distribution centers.',
       stack: ['Power BI', 'Databricks', 'Azure Synapse', 'dbt', 'SQL'],
@@ -67,7 +67,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'HIPAA-Compliant Intelligent Clinical Document Processing & Sovereign RAG',
       metricNum: '85%',
       metricLabel: 'Turnaround Acceleration',
-      image: '/images/case_study_cloud_transform.png',
+      image: '/images/cs_clinical_healthcare.jpg',
       summary:
         'Developed an automated OCR and Retrieval-Augmented Generation (RAG) assistant for complex clinical trial reports, protocol documents, and diagnostic telemetry.',
       stack: ['Azure OpenAI', 'LangChain', 'PostgreSQL pgvector', 'Docker', 'FastAPI'],
@@ -85,7 +85,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'IoT Sensor Telemetry Pipeline & Real-Time Logistics Routing Cockpit',
       metricNum: '99.98%',
       metricLabel: 'SLA Cold-Chain Compliance',
-      image: '/images/case_study_uptime.png',
+      image: '/images/cs_iot_aerospace.jpg',
       summary:
         'Engineered a real-time IoT fleet monitoring telemetry system tracking temperature-controlled pharmaceutical freight across multi-modal national transit corridors.',
       stack: ['AWS IoT Core', 'Apache Airflow', 'Tableau', 'TimescaleDB', 'Lambda'],
@@ -103,7 +103,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Petabyte-Scale Legacy Modernization to Distributed Cloud Lakehouse',
       metricNum: '-55%',
       metricLabel: 'Cloud Compute Spend',
-      image: '/images/case_study_cloud_transform.png',
+      image: '/images/cs_cloud_lakehouse.jpg',
       summary:
         'Modernized a 15-year-old on-premise data warehouse to a serverless multi-cluster Snowflake lakehouse with automated CI/CD and cost observability.',
       stack: ['Snowflake', 'AWS Glue', 'Airflow', 'Terraform', 'FinOps'],
@@ -121,7 +121,7 @@ export default function TeamComputersCaseStudiesView({
       title: 'Autonomous Multi-Agent Copilot for Enterprise Decision Intelligence',
       metricNum: '90%',
       metricLabel: 'Routine Query Automation',
-      image: '/images/about_analytics_seamless.png',
+      image: '/images/cs_agentic_copilot.jpg',
       summary:
         'Engineered an autonomous multi-agent system where specialized AI agents collaborate to answer complex cross-functional business questions directly from lakehouse tables.',
       stack: ['LangGraph', 'LlamaIndex', 'Python', 'OpenAI', 'Redis', 'Next.js'],
@@ -160,7 +160,7 @@ export default function TeamComputersCaseStudiesView({
           <div className="case-study-main wow fadeInUp">
             <h1
               style={{
-                background: 'linear-gradient(90.21deg, #00C8FF 10.33%, #00F7FF 87.54%)',
+                background: 'linear-gradient(90deg, #FFFFFF 15%, #E6FAF2 55%, #008559 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -244,11 +244,12 @@ export default function TeamComputersCaseStudiesView({
                   <div className="card-details">
                     {/* Left: Text & Metrics */}
                     <div className="card-text">
-                      <div className="card-header-tags">
-                        <span className="card-label">{item.tag}</span>
-                        <span className="card-metric-pill">
-                          <TrendingUp size={14} />
-                          <b>{item.metricNum}</b> {item.metricLabel}
+                      <div className="card-meta-bar">
+                        <span className="meta-tag">{item.tag}</span>
+                        <span className="meta-divider" aria-hidden="true">•</span>
+                        <span className="meta-metric">
+                          <span className="metric-highlight">{item.metricNum}</span>
+                          <span className="metric-label">{item.metricLabel}</span>
                         </span>
                       </div>
 
@@ -269,7 +270,7 @@ export default function TeamComputersCaseStudiesView({
                         onClick={() => setSelectedCase(item)}
                       >
                         <span>Know More</span>
-                        <img src="/images/blue-arrow.svg" alt="arrow" />
+                        <img src="/images/green-arrow.svg" alt="arrow" />
                       </button>
                     </div>
 
@@ -318,11 +319,12 @@ export default function TeamComputersCaseStudiesView({
           >
             {/* Modal Header */}
             <div className="modal-header">
-              <div className="modal-tag-row">
-                <span className="modal-tag">{selectedCase.tag}</span>
-                <span className="modal-roi-pill">
-                  <TrendingUp size={15} />
-                  <b>{selectedCase.metricNum}</b> {selectedCase.metricLabel}
+              <div className="modal-meta-bar">
+                <span className="meta-tag">{selectedCase.tag}</span>
+                <span className="meta-divider" aria-hidden="true">•</span>
+                <span className="meta-metric">
+                  <span className="metric-highlight">{selectedCase.metricNum}</span>
+                  <span className="metric-label">{selectedCase.metricLabel}</span>
                 </span>
               </div>
               <button
@@ -402,7 +404,7 @@ export default function TeamComputersCaseStudiesView({
         dangerouslySetInnerHTML={{
           __html: `
         .tc-casestudy-root {
-          background-color: #000000 !important;
+          background-color: #01162e !important;
           color: #ffffff;
           font-family: 'Montserrat', sans-serif;
           overflow-x: hidden;
@@ -424,7 +426,7 @@ export default function TeamComputersCaseStudiesView({
         .tc-casestudy-root .case-study-banner-outer {
           padding: 160px 0 75px;
           text-align: center;
-          background: #000000;
+          background: radial-gradient(circle at 50% -10%, rgba(0, 133, 89, 0.22) 0%, rgba(1, 22, 46, 0.95) 55%, #01162e 100%);
           position: relative;
         }
 
@@ -452,7 +454,7 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .case-study-main p {
-          color: #a1a1aa;
+          color: #94a3b8;
           font-size: 18px;
           line-height: 27px;
           max-width: 780px;
@@ -463,9 +465,9 @@ export default function TeamComputersCaseStudiesView({
            2. IMPACT NUMBERS BAR
            ------------------------------------------------------------- */
         .tc-casestudy-root .case-study-metrics-bar {
-          background: #060608;
-          border-top: 1px solid #161618;
-          border-bottom: 1px solid #161618;
+          background: #011224;
+          border-top: 1px solid rgba(0, 133, 89, 0.25);
+          border-bottom: 1px solid rgba(0, 133, 89, 0.25);
           padding: 30px 0;
         }
 
@@ -480,7 +482,7 @@ export default function TeamComputersCaseStudiesView({
           display: flex;
           flex-direction: column;
           gap: 6px;
-          border-right: 1px solid rgba(255, 255, 255, 0.08);
+          border-right: 1px solid rgba(0, 133, 89, 0.2);
         }
 
         .tc-casestudy-root .metric-col:last-child {
@@ -491,7 +493,7 @@ export default function TeamComputersCaseStudiesView({
           font-size: clamp(28px, 3.2vw, 42px);
           font-weight: 800;
           font-family: 'Montserrat', sans-serif;
-          background: linear-gradient(91.06deg, #1DCAF6 0%, #08B066 100%);
+          background: linear-gradient(91.06deg, #008559 0%, #2DD4BF 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           line-height: 1.1;
@@ -521,6 +523,7 @@ export default function TeamComputersCaseStudiesView({
         .tc-casestudy-root .case-study-listing-outer {
           padding: 70px 0 90px;
           position: relative;
+          background: radial-gradient(circle at 85% 15%, rgba(0, 133, 89, 0.09) 0%, transparent 60%), #01162e;
         }
 
         /* Filter Tabs */
@@ -533,30 +536,30 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .filter-tabs .tab {
-          background: transparent;
-          border: 1px solid #44444c;
-          color: #ffffff;
-          font-size: 15px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: #e2e8f0;
+          font-size: 14px;
           font-weight: 600;
-          padding: 10px 28px;
-          border-radius: 44px;
+          padding: 8px 20px;
+          border-radius: 6px;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: all 0.25s ease;
           font-family: 'Montserrat', sans-serif;
         }
 
         .tc-casestudy-root .filter-tabs .tab:hover {
-          background: #0089C4;
-          border-color: #0089C4;
+          background: rgba(0, 133, 89, 0.2);
+          border-color: #008559;
           color: #ffffff;
-          transform: translateY(-2px);
+          transform: translateY(-1px);
         }
 
         .tc-casestudy-root .filter-tabs .tab.active {
-          background: #0089C4;
+          background: #008559;
           color: #ffffff;
-          border-color: #0089C4;
-          box-shadow: 0 4px 16px rgba(0, 137, 196, 0.45);
+          border-color: #008559;
+          box-shadow: 0 4px 14px rgba(0, 133, 89, 0.35);
         }
 
         /* Case Study Cards (Alternating Rows) */
@@ -568,7 +571,7 @@ export default function TeamComputersCaseStudiesView({
 
         .tc-casestudy-root .content-card {
           padding: 55px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+          border-bottom: 1px solid rgba(0, 133, 89, 0.2);
         }
 
         .tc-casestudy-root .content-card:last-child {
@@ -590,37 +593,46 @@ export default function TeamComputersCaseStudiesView({
           width: 50%;
         }
 
-        .tc-casestudy-root .card-header-tags {
+        /* Professional Editorial Meta Header (Replaced Bubbly Capsules) */
+        .tc-casestudy-root .card-meta-bar {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           flex-wrap: wrap;
-          margin-bottom: 18px;
+          margin-bottom: 14px;
         }
 
-        .tc-casestudy-root .card-label {
-          display: inline-block;
-          background: linear-gradient(91.29deg, rgba(8, 32, 93, 0.75) 50%, rgba(24, 71, 153, 0.75) 115%);
-          color: #fffa65;
-          padding: 8px 20px;
-          font-size: 13px;
-          border-radius: 30px;
+        .tc-casestudy-root .meta-tag {
+          font-size: 12.5px;
           font-weight: 700;
-          letter-spacing: 0.5px;
-          border: 1px solid rgba(255, 250, 101, 0.25);
+          text-transform: uppercase;
+          letter-spacing: 1.2px;
+          color: #00A389;
+          display: inline-block;
         }
 
-        .tc-casestudy-root .card-metric-pill {
+        .tc-casestudy-root .meta-divider {
+          color: rgba(255, 255, 255, 0.28);
+          font-size: 11px;
+          user-select: none;
+        }
+
+        .tc-casestudy-root .meta-metric {
+          font-size: 13px;
+          color: #94a3b8;
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: rgba(29, 202, 246, 0.12);
-          border: 1px solid rgba(29, 202, 246, 0.35);
-          color: #00F7FF;
-          padding: 6px 16px;
-          border-radius: 30px;
-          font-size: 12px;
-          font-weight: 600;
+          font-weight: 500;
+        }
+
+        .tc-casestudy-root .metric-highlight {
+          color: #38BDF8;
+          font-weight: 700;
+        }
+
+        .tc-casestudy-root .metric-label {
+          color: #cbd5e1;
         }
 
         .tc-casestudy-root .card-text h3 {
@@ -630,6 +642,11 @@ export default function TeamComputersCaseStudiesView({
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
           line-height: 1.32;
+          transition: color 0.3s ease;
+        }
+
+        .tc-casestudy-root .card-text h3:hover {
+          color: #2DD4BF;
         }
 
         .tc-casestudy-root .card-text p {
@@ -647,13 +664,21 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .stack-chip {
-          background: #111116;
-          border: 1px solid #282830;
-          color: #94a3b8;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #cbd5e1;
           font-size: 12px;
-          font-weight: 600;
-          padding: 5px 14px;
-          border-radius: 20px;
+          font-weight: 500;
+          padding: 4px 10px;
+          border-radius: 4px;
+          transition: all 0.2s ease;
+          letter-spacing: 0.2px;
+        }
+
+        .tc-casestudy-root .stack-chip:hover {
+          border-color: rgba(0, 163, 137, 0.5);
+          color: #2DD4BF;
+          background: rgba(0, 163, 137, 0.08);
         }
 
         .tc-casestudy-root .know-more {
@@ -662,7 +687,7 @@ export default function TeamComputersCaseStudiesView({
           font-size: 16px;
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
-          background: linear-gradient(88.81deg, #00C8FF 3.08%, #00F7FF 79.39%);
+          background: linear-gradient(88.81deg, #008559 3.08%, #2DD4BF 79.39%);
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           display: inline-flex;
@@ -687,12 +712,13 @@ export default function TeamComputersCaseStudiesView({
         .tc-casestudy-root .card-img {
           width: 50%;
           border-radius: 16px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
+          border: 1px solid rgba(0, 133, 89, 0.28);
           height: 380px;
           overflow: hidden;
           position: relative;
           cursor: pointer;
+          background: #021226;
         }
 
         .tc-casestudy-root .card-img img {
@@ -704,13 +730,13 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .card-img:hover img {
-          transform: scale(1.06);
+          transform: scale(1.05);
         }
 
         .tc-casestudy-root .card-img-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+          background: linear-gradient(180deg, transparent 40%, rgba(1, 22, 46, 0.92) 100%);
           display: flex;
           align-items: flex-end;
           padding: 24px;
@@ -723,13 +749,14 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .card-img-overlay span {
-          background: rgba(0, 137, 196, 0.85);
+          background: rgba(0, 133, 89, 0.95);
           color: #ffffff;
           padding: 8px 18px;
           border-radius: 20px;
           font-size: 13px;
           font-weight: 600;
           backdrop-filter: blur(4px);
+          box-shadow: 0 4px 14px rgba(0, 133, 89, 0.4);
         }
 
         @media (max-width: 960px) {
@@ -754,7 +781,7 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .learn-more {
-          background: linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%);
+          background: linear-gradient(93.05deg, #008559 0%, #00A389 100%);
           padding: 14px 42px;
           border-radius: 40px;
           display: inline-flex;
@@ -768,12 +795,13 @@ export default function TeamComputersCaseStudiesView({
           transition: all 0.4s ease;
           border: none;
           cursor: pointer;
+          box-shadow: 0 8px 24px rgba(0, 133, 89, 0.3);
         }
 
         .tc-casestudy-root .learn-more:hover {
-          background: linear-gradient(93.05deg, #0DB16A -14.26%, #1EC9F2 85.74%);
+          background: linear-gradient(93.05deg, #00A389 0%, #008559 100%);
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(13, 177, 106, 0.35);
+          box-shadow: 0 12px 30px rgba(0, 133, 89, 0.45);
         }
 
         .tc-casestudy-root .learn-more img {
@@ -791,8 +819,8 @@ export default function TeamComputersCaseStudiesView({
         .tc-casestudy-root .modal-backdrop {
           position: fixed;
           inset: 0;
-          background: rgba(0, 0, 0, 0.82);
-          backdrop-filter: blur(8px);
+          background: rgba(1, 15, 33, 0.85);
+          backdrop-filter: blur(10px);
           z-index: 99999;
           display: flex;
           align-items: center;
@@ -802,14 +830,14 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .modal-container {
-          background: #0d0d12;
-          border: 1px solid rgba(255, 250, 101, 0.2);
+          background: #031733;
+          border: 1px solid rgba(0, 133, 89, 0.35);
           border-radius: 22px;
           max-width: 860px;
           width: 100%;
           max-height: 88vh;
           overflow-y: auto;
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95);
           animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -818,44 +846,22 @@ export default function TeamComputersCaseStudiesView({
           align-items: center;
           justify-content: space-between;
           padding: 24px 30px;
-          border-bottom: 1px solid #1a1a24;
+          border-bottom: 1px solid rgba(0, 133, 89, 0.2);
           position: sticky;
           top: 0;
-          background: #0d0d12;
+          background: #031733;
           z-index: 10;
         }
 
-        .tc-casestudy-root .modal-tag-row {
+        .tc-casestudy-root .modal-meta-bar {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           flex-wrap: wrap;
         }
 
-        .tc-casestudy-root .modal-tag {
-          background: rgba(255, 250, 101, 0.1);
-          color: #fffa65;
-          padding: 6px 16px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 700;
-          border: 1px solid rgba(255, 250, 101, 0.3);
-        }
-
-        .tc-casestudy-root .modal-roi-pill {
-          background: rgba(29, 202, 246, 0.12);
-          color: #00F7FF;
-          padding: 6px 16px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-
         .tc-casestudy-root .modal-close-btn {
-          background: #1a1a24;
+          background: rgba(255, 255, 255, 0.08);
           border: none;
           color: #94a3b8;
           width: 38px;
@@ -869,7 +875,7 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .modal-close-btn:hover {
-          background: #ff5e7e;
+          background: #e11d48;
           color: #ffffff;
         }
 
@@ -891,6 +897,7 @@ export default function TeamComputersCaseStudiesView({
           overflow: hidden;
           margin-bottom: 25px;
           max-height: 320px;
+          border: 1px solid rgba(0, 133, 89, 0.3);
         }
 
         .tc-casestudy-root .modal-hero-image img {
@@ -908,8 +915,9 @@ export default function TeamComputersCaseStudiesView({
           font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 1px;
-          color: #fffa65;
+          color: #2DD4BF;
           margin: 0 0 10px 0;
+          font-weight: 700;
         }
 
         .tc-casestudy-root .modal-stack-chips {
@@ -919,13 +927,14 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .modal-stack-chip {
-          background: #181822;
-          border: 1px solid #2e2e3e;
-          color: #e2e8f0;
-          padding: 6px 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #cbd5e1;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.2px;
         }
 
         .tc-casestudy-root .modal-two-col {
@@ -942,15 +951,20 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .modal-block {
-          background: #13131c;
-          border: 1px solid #222230;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 14px;
           padding: 22px;
         }
 
+        .tc-casestudy-root .modal-block.solution {
+          background: rgba(0, 133, 89, 0.07);
+          border-color: rgba(0, 133, 89, 0.28);
+        }
+
         .tc-casestudy-root .modal-block.impact {
-          border-color: rgba(29, 202, 246, 0.3);
-          background: rgba(29, 202, 246, 0.04);
+          border-color: rgba(0, 163, 224, 0.3);
+          background: rgba(0, 163, 224, 0.06);
           margin-bottom: 30px;
         }
 
@@ -973,13 +987,13 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .block-title .dot.green {
-          background: #0db16a;
-          box-shadow: 0 0 8px #0db16a;
+          background: #008559;
+          box-shadow: 0 0 8px #008559;
         }
 
         .tc-casestudy-root .block-title .dot.blue {
-          background: #00F7FF;
-          box-shadow: 0 0 8px #00F7FF;
+          background: #00A3E0;
+          box-shadow: 0 0 8px #00A3E0;
         }
 
         .tc-casestudy-root .block-title h3 {
@@ -998,8 +1012,8 @@ export default function TeamComputersCaseStudiesView({
 
         .tc-casestudy-root .modal-footer-cta {
           text-align: center;
-          padding-top: 10px;
-          border-top: 1px solid #1a1a24;
+          padding-top: 15px;
+          border-top: 1px solid rgba(0, 133, 89, 0.2);
         }
 
         .tc-casestudy-root .modal-footer-cta p {
@@ -1009,7 +1023,7 @@ export default function TeamComputersCaseStudiesView({
         }
 
         .tc-casestudy-root .modal-cta-btn {
-          background: linear-gradient(93.05deg, #1EC9F2 -14.26%, #0DB16A 85.74%);
+          background: linear-gradient(93.05deg, #008559 0%, #00A389 100%);
           color: #ffffff;
           padding: 12px 34px;
           border-radius: 40px;
@@ -1020,11 +1034,13 @@ export default function TeamComputersCaseStudiesView({
           gap: 10px;
           text-decoration: none;
           transition: all 0.3s ease;
+          box-shadow: 0 8px 20px rgba(0, 133, 89, 0.35);
         }
 
         .tc-casestudy-root .modal-cta-btn:hover {
-          background: linear-gradient(93.05deg, #0DB16A -14.26%, #1EC9F2 85.74%);
+          background: linear-gradient(93.05deg, #00A389 0%, #008559 100%);
           transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(0, 133, 89, 0.45);
         }
 
         @keyframes fadeIn {
