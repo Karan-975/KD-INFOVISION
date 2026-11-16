@@ -68,15 +68,15 @@ export default function ServicesSection({ services = [] }) {
         'With our intelligent AI and Agentic AI solutions that go beyond automation. By combining advanced machine learning, natural language understanding, and autonomous agents, we help organizations streamline operations, enhance decision-making, and foster innovation and growth.',
     },
     {
-      id: 'technology-consulting',
+      id: 'tech-management-consulting',
       title: 'Technology & Management Consulting',
-      kicker: 'Strategic Advisory',
+      kicker: 'Strategic Value',
       icon: ShieldCheck,
-      image: '/images/hero_realistic_analytics.jpg',
-      alt: 'KDI Framework Strategic Management Consulting',
+      image: '/images/service_consulting_real.jpg',
+      alt: 'KD Infovision Technology Management & Enterprise Advisory Spec',
       desc: 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients.',
       capabilities: [
-        'KDI Strategic Advisory Framework',
+        'Certified Cloud Architects',
         'Staff Augmentation & Certified Talent',
         'Enterprise Governance & Global Best Practices',
         'We Only Suggest What You Need',
@@ -105,49 +105,32 @@ export default function ServicesSection({ services = [] }) {
     <section
       id="solutions"
       style={{
-        background: '#000510',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-        padding: '7rem 0',
+        background: '#FFFFFF',
+        borderTop: '1px solid #E2E8F0',
+        padding: '6.5rem 0',
         position: 'relative',
         overflow: 'hidden',
-        color: '#FFFFFF',
+        color: '#0A1629',
       }}
     >
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        {/* Section Header: BCG Corporate Editorial */}
-        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 4rem auto' }}>
-          <div
-            style={{
-              fontSize: '12px',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '2px',
-              color: '#2DD4BF',
-              marginBottom: '0.85rem',
-              fontFamily: "'Montserrat', sans-serif",
-            }}
-          >
-            ENTERPRISE ARCHITECTURE PRACTICES
-          </div>
-
+        {/* Section Header: Matching Image 1 Clean White Enterprise Editorial */}
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3.5rem auto' }}>
           <h2
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: 'clamp(2.1rem, 3.4vw, 2.9rem)',
               fontWeight: 800,
-              color: '#FFFFFF',
+              color: '#0A1629',
               letterSpacing: '-0.02em',
-              lineHeight: 1.2,
+              lineHeight: 1.25,
               marginBottom: '1.15rem',
             }}
           >
             End-to-End{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: '#0077ED',
               }}
             >
               Enterprise Technology
@@ -158,13 +141,15 @@ export default function ServicesSection({ services = [] }) {
           <p
             style={{
               fontSize: '1.05rem',
-              color: 'rgba(255, 255, 255, 0.72)',
+              color: '#475569',
               lineHeight: 1.75,
               margin: '0 auto',
-              maxWidth: '680px',
+              maxWidth: '700px',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 450,
             }}
           >
-            Scalable, high-performance IT solutions engineered to accelerate digital transformation, modernize lakehouse infrastructure, and deliver quantifiable business agility.
+            Scalable, high-performance IT solutions engineered to accelerate digital transformation, modernize infrastructure, and deliver quantifiable business agility.
           </p>
         </div>
 
@@ -182,31 +167,31 @@ export default function ServicesSection({ services = [] }) {
               key={item.id}
               className="solution-practice-card"
               style={{
-                background: '#051020',
-                borderRadius: '16px',
-                border: '1px solid rgba(255, 255, 255, 0.07)',
+                background: '#FFFFFF',
+                borderRadius: '20px',
+                border: '1px solid #E2E8F0',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 padding: '1.5rem',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'pointer',
               }}
               onClick={() => setActiveModal(item)}
             >
               <div>
-                {/* Top Rounded Photo (Clean 16:9 Inset Frame) */}
+                {/* Top Rounded Photo (Clean 16:9 Inset Frame without AI-feel capsule badges) */}
                 <div
                   style={{
                     position: 'relative',
                     width: '100%',
                     aspectRatio: '16 / 9',
-                    borderRadius: '12px',
+                    borderRadius: '14px',
                     overflow: 'hidden',
-                    background: '#020814',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: '#F8FAFC',
+                    border: '1px solid #E2E8F0',
                     marginBottom: '1.5rem',
                   }}
                 >
@@ -222,25 +207,6 @@ export default function ServicesSection({ services = [] }) {
                     }}
                     className="practice-img"
                   />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '12px',
-                      left: '12px',
-                      background: 'rgba(1, 22, 46, 0.75)',
-                      backdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(45, 212, 191, 0.3)',
-                      color: '#2DD4BF',
-                      padding: '4px 10px',
-                      borderRadius: '4px',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '1px',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {item.kicker}
-                  </div>
                 </div>
 
                 {/* Editorial Content Area */}
@@ -250,7 +216,7 @@ export default function ServicesSection({ services = [] }) {
                       fontFamily: "'Montserrat', sans-serif",
                       fontSize: 'clamp(1.3rem, 1.7vw, 1.55rem)',
                       fontWeight: 800,
-                      color: '#FFFFFF',
+                      color: '#0A1629',
                       marginBottom: '0.75rem',
                       lineHeight: 1.3,
                       letterSpacing: '-0.015em',
@@ -264,9 +230,10 @@ export default function ServicesSection({ services = [] }) {
                   <p
                     style={{
                       fontSize: '0.94rem',
-                      color: 'rgba(255, 255, 255, 0.7)',
+                      color: '#475569',
                       lineHeight: 1.7,
                       margin: 0,
+                      fontFamily: "'Montserrat', sans-serif",
                     }}
                   >
                     {item.desc}
@@ -287,11 +254,12 @@ export default function ServicesSection({ services = [] }) {
                         style={{
                           fontSize: '11.5px',
                           fontWeight: 600,
-                          color: '#E2E8F0',
-                          background: 'rgba(255, 255, 255, 0.05)',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
-                          padding: '3px 9px',
-                          borderRadius: '4px',
+                          color: '#334155',
+                          background: '#F1F5F9',
+                          border: '1px solid #E2E8F0',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontFamily: "'Montserrat', sans-serif",
                         }}
                       >
                         {cap}
@@ -309,7 +277,7 @@ export default function ServicesSection({ services = [] }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderTop: '1px solid #E2E8F0',
                 }}
               >
                 <span
@@ -317,10 +285,11 @@ export default function ServicesSection({ services = [] }) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    color: '#2DD4BF',
+                    color: '#0077ED',
                     fontSize: '0.92rem',
                     fontWeight: 700,
-                    transition: 'gap 0.2s ease',
+                    transition: 'all 0.2s ease',
+                    fontFamily: "'Montserrat', sans-serif",
                   }}
                   className="practice-cta"
                 >
@@ -331,8 +300,9 @@ export default function ServicesSection({ services = [] }) {
                 <span
                   style={{
                     fontSize: '0.8rem',
-                    color: 'rgba(255, 255, 255, 0.5)',
+                    color: '#94A3B8',
                     fontWeight: 600,
+                    fontFamily: "'Montserrat', sans-serif",
                   }}
                 >
                   Advisory Spec &rarr;
@@ -351,7 +321,7 @@ export default function ServicesSection({ services = [] }) {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(1, 18, 36, 0.85)',
+            background: 'rgba(10, 22, 41, 0.65)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
             display: 'flex',
@@ -368,11 +338,11 @@ export default function ServicesSection({ services = [] }) {
               padding: '2.5rem',
               maxWidth: '680px',
               width: '100%',
-              borderRadius: '16px',
-              background: '#01162e',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85)',
-              color: '#FFFFFF',
+              borderRadius: '20px',
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.25)',
+              color: '#0A1629',
             }}
           >
             <div
@@ -386,15 +356,15 @@ export default function ServicesSection({ services = [] }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div
                   style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '10px',
-                    background: 'rgba(45, 212, 191, 0.12)',
-                    border: '1px solid rgba(45, 212, 191, 0.3)',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    background: 'rgba(0, 119, 237, 0.08)',
+                    border: '1px solid rgba(0, 119, 237, 0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#2DD4BF',
+                    color: '#0077ED',
                   }}
                 >
                   <activeModal.icon size={22} />
@@ -405,7 +375,7 @@ export default function ServicesSection({ services = [] }) {
                       fontFamily: "'Montserrat', sans-serif",
                       fontSize: '1.35rem',
                       fontWeight: 800,
-                      color: '#FFFFFF',
+                      color: '#0A1629',
                       margin: 0,
                     }}
                   >
@@ -417,8 +387,8 @@ export default function ServicesSection({ services = [] }) {
               <button
                 onClick={() => setActiveModal(null)}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: '#F1F5F9',
+                  border: '1px solid #E2E8F0',
                   borderRadius: '50%',
                   width: '36px',
                   height: '36px',
@@ -426,7 +396,7 @@ export default function ServicesSection({ services = [] }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  color: '#FFFFFF',
+                  color: '#64748B',
                   transition: 'all 0.2s ease',
                 }}
               >
@@ -434,7 +404,7 @@ export default function ServicesSection({ services = [] }) {
               </button>
             </div>
 
-            <p style={{ fontSize: '0.98rem', color: 'rgba(255, 255, 255, 0.78)', lineHeight: 1.75, marginBottom: '1.75rem' }}>
+            <p style={{ fontSize: '0.98rem', color: '#475569', lineHeight: 1.75, marginBottom: '1.75rem', fontFamily: "'Montserrat', sans-serif" }}>
               {activeModal.detail}
             </p>
 
@@ -445,16 +415,17 @@ export default function ServicesSection({ services = [] }) {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
-                  color: '#2DD4BF',
+                  color: '#0077ED',
                   marginBottom: '0.85rem',
+                  fontFamily: "'Montserrat', sans-serif",
                 }}
               >
                 Core Engineered Capabilities:
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {activeModal.capabilities.map((cap, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.92rem', color: '#E2E8F0' }}>
-                    <CheckCircle2 size={16} style={{ color: '#2DD4BF', flexShrink: 0 }} />
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.92rem', color: '#334155', fontFamily: "'Montserrat', sans-serif" }}>
+                    <CheckCircle2 size={16} style={{ color: '#0077ED', flexShrink: 0 }} />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -468,14 +439,15 @@ export default function ServicesSection({ services = [] }) {
                 style={{
                   flex: 1,
                   textAlign: 'center',
-                  background: 'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
+                  background: 'linear-gradient(93.05deg, #0077ED 0%, #0056B3 100%)',
                   color: '#FFFFFF',
                   padding: '0.9rem',
-                  borderRadius: '8px',
+                  borderRadius: '10px',
                   fontWeight: 700,
                   fontSize: '0.925rem',
                   textDecoration: 'none',
-                  boxShadow: '0 4px 15px rgba(0, 133, 89, 0.35)',
+                  boxShadow: '0 4px 15px rgba(0, 119, 237, 0.35)',
+                  fontFamily: "'Montserrat', sans-serif",
                 }}
               >
                 Schedule Architecture Consultation
@@ -484,12 +456,13 @@ export default function ServicesSection({ services = [] }) {
                 onClick={() => setActiveModal(null)}
                 style={{
                   padding: '0.9rem 1.75rem',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  color: '#FFFFFF',
+                  borderRadius: '10px',
+                  border: '1px solid #E2E8F0',
+                  background: '#F1F5F9',
+                  color: '#475569',
                   fontWeight: 600,
                   cursor: 'pointer',
+                  fontFamily: "'Montserrat', sans-serif",
                 }}
               >
                 Close
@@ -501,18 +474,19 @@ export default function ServicesSection({ services = [] }) {
 
       <style jsx>{`
         :global(.solution-practice-card:hover) {
-          border-color: rgba(45, 212, 191, 0.6) !important;
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(45, 212, 191, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-          transform: translateY(-8px) scale(1.01);
+          border-color: #0077ED !important;
+          box-shadow: 0 20px 45px rgba(0, 119, 237, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+          transform: translateY(-6px);
         }
         :global(.solution-practice-card:hover .practice-img) {
-          transform: scale(1.05);
+          transform: scale(1.04);
         }
         :global(.solution-practice-card:hover .practice-title) {
-          color: #2DD4BF !important;
+          color: #0077ED !important;
         }
         :global(.solution-practice-card:hover .practice-cta) {
           gap: 12px !important;
+          color: #0056B3 !important;
         }
         @media (max-width: 960px) {
           :global(.practices-grid) {
