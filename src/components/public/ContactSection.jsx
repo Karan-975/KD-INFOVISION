@@ -85,46 +85,14 @@ export default function ContactSection({ settings }) {
     <section
       id="contact"
       style={{
-        padding: '5rem 0 7rem',
-        background: '#01162e',
+        padding: '95px 0 100px',
+        background: '#000000',
+        color: '#FFFFFF',
         position: 'relative',
         overflow: 'hidden',
-        color: '#FFFFFF',
+        borderTop: '1px solid #141414',
       }}
     >
-      {/* Background Ambient Lighting Combination matching BCG Corporate Aesthetic */}
-      {/* Left Mint/Teal Glowing Nebula */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '20%',
-          left: '-15%',
-          width: '700px',
-          height: '700px',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(0, 133, 89, 0.04) 45%, transparent 70%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Right Cyan/Sky Glowing Nebula */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '-15%',
-          width: '700px',
-          height: '700px',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(0, 163, 137, 0.04) 45%, transparent 70%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div
           style={{
@@ -132,8 +100,8 @@ export default function ContactSection({ settings }) {
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: '1.05fr 1.35fr',
-            gap: '4.5rem',
-            alignItems: 'start',
+            gap: '60px',
+            alignItems: 'flex-start',
           }}
           className="contact-layout-grid"
         >
@@ -142,12 +110,12 @@ export default function ContactSection({ settings }) {
             <h2
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: 'clamp(2.4rem, 3.6vw, 3.4rem)',
-                fontWeight: 800,
+                fontSize: 'clamp(2.4rem, 3.6vw, 3.2rem)',
+                fontWeight: 700,
                 color: '#FFFFFF',
                 letterSpacing: '-0.02em',
-                lineHeight: 1.15,
-                marginBottom: '1.25rem',
+                lineHeight: 1.2,
+                margin: '0 0 18px 0',
               }}
             >
               Let&apos;s Connect.
@@ -155,10 +123,10 @@ export default function ContactSection({ settings }) {
 
             <p
               style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.7,
-                color: 'rgba(255, 255, 255, 0.72)',
-                marginBottom: '3rem',
+                fontSize: '16px',
+                lineHeight: 1.65,
+                color: '#9ca3af',
+                margin: '0 0 35px 0',
                 maxWidth: '460px',
               }}
             >
@@ -171,36 +139,37 @@ export default function ContactSection({ settings }) {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '2rem',
+                gap: '18px',
               }}
             >
               {/* Direct Phone */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(14, 52, 98, 0.35)',
-                    border: '1px solid rgba(0, 200, 255, 0.3)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '8px',
+                    background: '#1a1a1f',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#38BDF8',
+                    color: '#2b6df5',
                     flexShrink: 0,
                   }}
                 >
-                  <Phone size={20} />
+                  <Phone size={18} />
                 </div>
                 <div>
                   <div
                     style={{
                       fontSize: '11px',
-                      fontWeight: 800,
-                      letterSpacing: '0.8px',
-                      color: '#8b949e',
+                      color: '#9ca3af',
                       textTransform: 'uppercase',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      letterSpacing: '0.8px',
+                      marginBottom: '2px',
+                      fontFamily: "'Montserrat', sans-serif",
                     }}
                   >
                     DIRECT PHONE
@@ -210,11 +179,11 @@ export default function ContactSection({ settings }) {
                     style={{
                       color: '#FFFFFF',
                       fontSize: '15px',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       textDecoration: 'none',
                       transition: 'color 0.2s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#2b6df5')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = '#FFFFFF')}
                   >
                     {displayPhone}
@@ -223,32 +192,33 @@ export default function ContactSection({ settings }) {
               </div>
 
               {/* Official Email */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(14, 52, 98, 0.35)',
-                    border: '1px solid rgba(0, 200, 255, 0.3)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '8px',
+                    background: '#1a1a1f',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#38BDF8',
+                    color: '#2b6df5',
                     flexShrink: 0,
                   }}
                 >
-                  <Mail size={20} />
+                  <Mail size={18} />
                 </div>
                 <div>
                   <div
                     style={{
                       fontSize: '11px',
-                      fontWeight: 800,
-                      letterSpacing: '0.8px',
-                      color: '#8b949e',
+                      color: '#9ca3af',
                       textTransform: 'uppercase',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      letterSpacing: '0.8px',
+                      marginBottom: '2px',
+                      fontFamily: "'Montserrat', sans-serif",
                     }}
                   >
                     OFFICIAL EMAIL
@@ -258,11 +228,11 @@ export default function ContactSection({ settings }) {
                     style={{
                       color: '#FFFFFF',
                       fontSize: '15px',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       textDecoration: 'none',
                       transition: 'color 0.2s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#2b6df5')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = '#FFFFFF')}
                   >
                     {displayEmail}
@@ -271,33 +241,34 @@ export default function ContactSection({ settings }) {
               </div>
 
               {/* Corporate Headquarters */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
-                    borderRadius: '12px',
-                    background: 'rgba(14, 52, 98, 0.35)',
-                    border: '1px solid rgba(0, 200, 255, 0.3)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '8px',
+                    background: '#1a1a1f',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#38BDF8',
+                    color: '#2b6df5',
                     flexShrink: 0,
                     marginTop: '2px',
                   }}
                 >
-                  <MapPin size={20} />
+                  <MapPin size={18} />
                 </div>
                 <div>
                   <div
                     style={{
                       fontSize: '11px',
-                      fontWeight: 800,
-                      letterSpacing: '0.8px',
-                      color: '#8b949e',
+                      color: '#9ca3af',
                       textTransform: 'uppercase',
-                      marginBottom: '4px',
+                      fontWeight: 600,
+                      letterSpacing: '0.8px',
+                      marginBottom: '2px',
+                      fontFamily: "'Montserrat', sans-serif",
                     }}
                   >
                     CORPORATE HEADQUARTERS
@@ -306,7 +277,7 @@ export default function ContactSection({ settings }) {
                     style={{
                       color: '#FFFFFF',
                       fontSize: '14.5px',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       lineHeight: 1.5,
                       maxWidth: '380px',
                     }}
@@ -318,34 +289,38 @@ export default function ContactSection({ settings }) {
             </div>
           </div>
 
-          {/* Right Column: The Form (Exact Image-2 Fields & Layout) */}
+          {/* Right Column: The Form (Exact Image-2 Fields & Layout: NO outer card) */}
           <form
             onSubmit={handleSubmit}
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '1.25rem',
+              gap: '18px',
               width: '100%',
+              background: 'transparent',
+              border: 'none',
+              padding: 0,
+              boxShadow: 'none',
             }}
           >
             {/* Status alerts */}
             {status.success && (
               <div
                 style={{
-                  background: 'rgba(13, 177, 106, 0.15)',
-                  border: '1px solid rgba(13, 177, 106, 0.4)',
-                  color: '#19D58A',
+                  background: 'rgba(43, 109, 245, 0.1)',
+                  border: '1px solid rgba(43, 109, 245, 0.3)',
+                  color: '#60a5fa',
                   padding: '12px 18px',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
                   fontSize: '14px',
-                  fontWeight: 600,
+                  fontWeight: 500,
                 }}
               >
                 <CheckCircle2 size={18} />
-                <span>Thank you! Your message has been sent successfully. Our architects will contact you shortly.</span>
+                <span>Thank you! Your message has been sent successfully. We will contact you shortly.</span>
               </div>
             )}
 
@@ -356,12 +331,12 @@ export default function ContactSection({ settings }) {
                   border: '1px solid rgba(239, 68, 68, 0.4)',
                   color: '#f87171',
                   padding: '12px 18px',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
                   fontSize: '14px',
-                  fontWeight: 600,
+                  fontWeight: 500,
                 }}
               >
                 <AlertCircle size={18} />
@@ -374,7 +349,7 @@ export default function ContactSection({ settings }) {
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: '1.25rem',
+                gap: '18px',
               }}
               className="form-row-2col"
             >
@@ -423,7 +398,7 @@ export default function ContactSection({ settings }) {
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: '1.25rem',
+                gap: '18px',
               }}
               className="form-row-2col"
             >
@@ -476,32 +451,30 @@ export default function ContactSection({ settings }) {
                 rows={4}
                 required
                 className="contact-dark-input"
-                style={{ resize: 'vertical' }}
+                style={{ resize: 'vertical', minHeight: '110px' }}
               />
             </div>
 
-            {/* Submit Button (BCG Emerald Gradient) */}
-            <div style={{ marginTop: '0.5rem' }}>
+            {/* Submit Button (Exact Image-2 Team Computers Style: #2b6df5) */}
+            <div style={{ marginTop: '6px' }}>
               <button
                 type="submit"
                 disabled={status.loading}
                 className="contact-submit-btn"
                 style={{
-                  background:
-                    'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
-                  color: '#FFFFFF',
-                  padding: '13px 36px',
+                  background: '#2b6df5',
+                  color: '#ffffff',
+                  padding: '14px 44px',
                   borderRadius: '8px',
                   fontSize: '15px',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   fontFamily: "'Montserrat', sans-serif",
                   border: 'none',
                   cursor: status.loading ? 'not-allowed' : 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: '0 4px 15px rgba(0, 133, 89, 0.35)',
+                  transition: 'background 0.3s ease, transform 0.2s ease',
                 }}
               >
                 {status.loading ? (
@@ -511,8 +484,8 @@ export default function ContactSection({ settings }) {
                   </>
                 ) : (
                   <>
-                    <span>Let&apos;s Connect</span>
-                    <ArrowRight size={17} style={{ strokeWidth: 2.5 }} />
+                    <span>Submit</span>
+                    <ArrowRight size={16} />
                   </>
                 )}
               </button>
@@ -525,25 +498,26 @@ export default function ContactSection({ settings }) {
         .field-label {
           display: block;
           font-size: 11px;
-          font-weight: 800;
+          font-weight: 600;
           letter-spacing: 0.8px;
           text-transform: uppercase;
-          color: #8b949e;
-          margin-bottom: 6px;
+          color: #9ca3af;
+          margin-bottom: 8px;
           font-family: 'Montserrat', sans-serif;
         }
 
         .contact-dark-input {
           width: 100%;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: #1a1a1f;
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 8px;
-          padding: 13px 16px;
+          padding: 14px 18px;
           color: #ffffff;
-          font-size: 14.5px;
+          font-size: 15px;
           font-family: inherit;
-          transition: all 0.25s ease;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease;
           box-sizing: border-box;
+          outline: none;
         }
 
         .contact-dark-input::placeholder {
@@ -551,24 +525,24 @@ export default function ContactSection({ settings }) {
         }
 
         .contact-dark-input:focus {
-          outline: none;
-          border-color: #2DD4BF;
-          background: rgba(255, 255, 255, 0.07);
-          box-shadow: 0 0 12px rgba(45, 212, 191, 0.25);
+          border-color: #2b6df5;
+          box-shadow: 0 0 0 2px rgba(43, 109, 245, 0.25);
+          background: #1e1e24;
         }
 
         .contact-submit-btn:hover {
+          background: #4a84f7 !important;
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(0, 133, 89, 0.5) !important;
         }
 
         @media (max-width: 960px) {
           :global(.contact-layout-grid) {
             grid-template-columns: 1fr !important;
-            gap: 3.5rem !important;
+            gap: 40px !important;
           }
           :global(.form-row-2col) {
             grid-template-columns: 1fr !important;
+            gap: 18px !important;
           }
         }
       `}</style>

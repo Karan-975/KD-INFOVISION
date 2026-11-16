@@ -61,8 +61,8 @@ export default function WhyUsSection() {
     <section
       id="why"
       style={{
-        background: '#011E41',
-        padding: '6.5rem 0',
+        background: 'radial-gradient(ellipse at center, #012548 0%, #011E41 60%, #001025 100%)',
+        padding: '7rem 0',
         position: 'relative',
         overflow: 'hidden',
         color: '#FFFFFF',
@@ -74,9 +74,10 @@ export default function WhyUsSection() {
           position: 'absolute',
           top: '-15%',
           left: '10%',
-          width: '550px',
-          height: '550px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.05) 0%, transparent 70%)',
+          width: '650px',
+          height: '650px',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.07) 0%, transparent 70%)',
+          filter: 'blur(80px)',
           pointerEvents: 'none',
         }}
       />
@@ -85,10 +86,24 @@ export default function WhyUsSection() {
           position: 'absolute',
           bottom: '-15%',
           right: '10%',
-          width: '550px',
-          height: '550px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%)',
+          width: '650px',
+          height: '650px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 70%)',
+          filter: 'blur(80px)',
           pointerEvents: 'none',
+        }}
+      />
+
+      {/* Grid overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          opacity: 0.18,
+          pointerEvents: 'none',
+          zIndex: 1,
         }}
       />
 
@@ -331,9 +346,9 @@ export default function WhyUsSection() {
 
       <style jsx>{`
         :global(.why-pillar-card:hover) {
-          border-color: rgba(45, 212, 191, 0.45) !important;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(45, 212, 191, 0.12) !important;
-          transform: translateY(-6px);
+          border-color: rgba(45, 212, 191, 0.6) !important;
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(45, 212, 191, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+          transform: translateY(-8px) scale(1.01);
         }
         :global(.why-pillar-card:hover .pillar-title) {
           color: #2DD4BF !important;

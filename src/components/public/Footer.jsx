@@ -246,11 +246,11 @@ export default function Footer({ settings }) {
       {/* Styled JSX: Clean, Simple, Professional (Matching Raycast Reference & Contact Us Obsidian Theme) */}
       <style jsx>{`
         .kd-footer {
-          background: #040612;
+          background: radial-gradient(ellipse at top, #061030 0%, #040612 60%, #02030a 100%);
           color: #ffffff;
           font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           position: relative;
-          padding: 5rem 0 2.5rem 0;
+          padding: 5.5rem 0 2.5rem 0;
           overflow: hidden;
         }
 
@@ -261,7 +261,8 @@ export default function Footer({ settings }) {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent 0%, rgba(157, 168, 251, 0.25) 25%, rgba(6, 182, 212, 0.25) 75%, transparent 100%);
+          background: linear-gradient(90deg, transparent 0%, rgba(45, 212, 191, 0.35) 25%, rgba(56, 189, 248, 0.35) 75%, transparent 100%);
+          box-shadow: 0 0 20px rgba(45, 212, 191, 0.2);
         }
 
         /* Ambient Animated Aurora Background */

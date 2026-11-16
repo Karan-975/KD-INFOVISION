@@ -66,36 +66,63 @@ export default function IndustriesSection({ industries = [] }) {
     <section
       id="industry"
       style={{
-        background: '#01162e',
+        background: 'radial-gradient(ellipse at center, #001a3a 0%, #01162e 40%, #000814 100%)',
         color: '#ffffff',
-        padding: '6.5rem 0',
+        padding: '7.5rem 0',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background glow decoration */}
+      {/* Dynamic background elements */}
       <div
         style={{
           position: 'absolute',
-          top: '-15%',
-          right: '-10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%)',
+          top: '-20%',
+          right: '-15%',
+          width: '800px',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, rgba(0, 133, 89, 0.06) 40%, transparent 70%)',
+          filter: 'blur(100px)',
           pointerEvents: 'none',
+          animation: 'pulseGlow 8s ease-in-out infinite',
         }}
       />
       <div
         style={{
           position: 'absolute',
-          bottom: '-15%',
-          left: '-10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%)',
+          bottom: '-25%',
+          left: '-20%',
+          width: '900px',
+          height: '900px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(14, 165, 233, 0.05) 45%, transparent 75%)',
+          filter: 'blur(110px)',
           pointerEvents: 'none',
+          animation: 'pulseGlow 10s ease-in-out infinite reverse',
         }}
       />
+
+      {/* Geometric grid overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+          opacity: 0.15,
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+
+      <style jsx>{`
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.6; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+      `}</style>
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header */}
@@ -176,11 +203,11 @@ export default function IndustriesSection({ industries = [] }) {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.75rem',
+            gap: '2rem',
           }}
           className="home-industry-grid"
         >
-          {defaultSectors.map((ind) => (
+          {defaultSectors.map((ind, idx) => (
             <Link
               key={ind.id}
               href="/industries"
@@ -189,62 +216,82 @@ export default function IndustriesSection({ industries = [] }) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: '2rem 1.85rem',
-                borderRadius: '16px',
-                background: 'rgba(255, 255, 255, 0.035)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '2.25rem 2rem',
+                borderRadius: '18px',
+                background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(1, 30, 65, 0.4) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(45, 212, 191, 0.15)',
                 textDecoration: 'none',
                 color: '#ffffff',
-                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
               }}
             >
-              <div>
+              {/* Animated gradient overlay on hover */}
+              <div
+                className="industry-card-glow"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(90deg, transparent, #2DD4BF, #38BDF8, transparent)',
+                  opacity: 0,
+                  transition: 'opacity 0.4s ease',
+                }}
+              />
+
+              <div style={{ position: 'relative', zIndex: 2 }}>
                 <div
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    marginBottom: '1.25rem',
+                    marginBottom: '1.5rem',
                   }}
                 >
                   <div
                     style={{
-                      width: '50px',
-                      height: '50px',
-                      borderRadius: '10px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '14px',
+                      background: 'linear-gradient(135deg, rgba(45, 212, 191, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%)',
+                      border: '1px solid rgba(45, 212, 191, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      boxShadow: '0 4px 20px rgba(45, 212, 191, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                      transition: 'all 0.4s ease',
                     }}
+                    className="industry-icon-wrap"
                   >
                     <img
                       src={ind.icon}
                       alt={ind.name}
                       style={{
-                        maxWidth: '34px',
-                        maxHeight: '34px',
-                        filter: 'drop-shadow(0 2px 6px rgba(45, 212, 191, 0.3))',
+                        maxWidth: '36px',
+                        maxHeight: '36px',
+                        filter: 'brightness(1.1) drop-shadow(0 2px 8px rgba(45, 212, 191, 0.4))',
                       }}
                     />
                   </div>
 
                   <span
                     style={{
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '1px',
+                      fontSize: '10px',
+                      fontWeight: 800,
+                      letterSpacing: '1.2px',
                       color: '#2DD4BF',
-                      background: 'rgba(45, 212, 191, 0.1)',
-                      border: '1px solid rgba(45, 212, 191, 0.25)',
-                      padding: '3px 8px',
-                      borderRadius: '4px',
+                      background: 'rgba(45, 212, 191, 0.12)',
+                      border: '1px solid rgba(45, 212, 191, 0.35)',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
                       textTransform: 'uppercase',
+                      boxShadow: '0 2px 10px rgba(45, 212, 191, 0.15)',
                     }}
                   >
                     {ind.eyebrow}
@@ -323,20 +370,46 @@ export default function IndustriesSection({ industries = [] }) {
       </div>
 
       <style jsx>{`
+        :global(.industry-grid-card::before) {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.08) 0%, transparent 60%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+
+        :global(.industry-grid-card:hover::before) {
+          opacity: 1;
+        }
+
         :global(.industry-grid-card:hover) {
-          transform: translateY(-6px);
-          border-color: rgba(45, 212, 191, 0.45) !important;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-          background: rgba(255, 255, 255, 0.055) !important;
+          transform: translateY(-8px) scale(1.02);
+          border-color: rgba(45, 212, 191, 0.6) !important;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(45, 212, 191, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+          background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(1, 30, 65, 0.5) 100%) !important;
+        }
+
+        :global(.industry-grid-card:hover .industry-card-glow) {
+          opacity: 1;
+        }
+
+        :global(.industry-grid-card:hover .industry-icon-wrap) {
+          transform: scale(1.1) rotate(3deg);
+          background: linear-gradient(135deg, rgba(45, 212, 191, 0.25) 0%, rgba(56, 189, 248, 0.18) 100%);
+          box-shadow: 0 6px 30px rgba(45, 212, 191, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
         :global(.industry-grid-card:hover .ind-card-title) {
           color: #2DD4BF !important;
+          text-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
         }
 
         :global(.industry-grid-card:hover .card-explore-arrow) {
           color: #2DD4BF !important;
-          transform: translateX(4px);
+          transform: translateX(6px);
+          text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
         }
 
         @media (max-width: 1024px) {

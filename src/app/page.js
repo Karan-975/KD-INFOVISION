@@ -33,7 +33,7 @@ export default async function HomePage() {
   ]);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#01162e' }}>
+    <main style={{ minHeight: '100vh', background: '#000510' }}>
       <Navbar settings={settings} />
       
       {/* Dynamic 3-Slide Hero Carousel with Realistic Photography & Multi-Color Accents */}
@@ -43,8 +43,8 @@ export default async function HomePage() {
       <PartnersMarquee
         partners={partners}
         isDark={true}
-        bgColor="#011224"
-        borderColor="rgba(255, 255, 255, 0.08)"
+        bgColor="linear-gradient(90deg, #000510 0%, #000814 50%, #000510 100%)"
+        borderColor="rgba(251, 146, 60, 0.25)"
       />
 
       {/* About Us / Our Story with Team Photo & 4 Metric Counters */}
@@ -65,7 +65,7 @@ export default async function HomePage() {
       {/* Client Enterprise Trust Marquee */}
       <ClientsMarquee
         isDark={true}
-        bgColor="#011224"
+        bgColor="#000000"
         borderColor="rgba(255, 255, 255, 0.08)"
       />
 

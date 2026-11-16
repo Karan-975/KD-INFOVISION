@@ -296,23 +296,26 @@ export default function PartnersMarquee({
   return (
     <div
       style={{
-        padding: '1.25rem 0',
-        background: bgColor || (isDark ? '#000000' : '#FFFFFF'),
-        borderTop: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)'),
-        borderBottom: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid #1a1a1a' : '1px solid var(--gray-200)'),
+        padding: '1.6rem 0',
+        background: bgColor || (isDark ? 'linear-gradient(90deg, #000814 0%, #000000 50%, #000814 100%)' : 'linear-gradient(90deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%)'),
+        borderTop: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(45, 212, 191, 0.15)' : '1px solid var(--gray-200)'),
+        borderBottom: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(45, 212, 191, 0.15)' : '1px solid var(--gray-200)'),
         overflow: 'hidden',
         position: 'relative',
+        boxShadow: isDark ? '0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(45, 212, 191, 0.08)' : '0 2px 12px rgba(5, 45, 93, 0.03)',
       }}
     >
       <div
         style={{
           textAlign: 'center',
-          fontSize: '0.72rem',
+          fontSize: '0.75rem',
           fontWeight: 800,
-          color: isDark ? '#888888' : 'var(--muted)',
-          letterSpacing: '2.5px',
+          color: isDark ? '#2DD4BF' : 'var(--blue)',
+          letterSpacing: '3px',
           textTransform: 'uppercase',
-          marginBottom: '0.65rem',
+          marginBottom: '1rem',
+          fontFamily: "'Montserrat', sans-serif",
+          textShadow: isDark ? '0 0 20px rgba(45, 212, 191, 0.3)' : 'none',
         }}
       >
         Technology Partners &amp; Enterprise Ecosystem

@@ -133,7 +133,7 @@ export default function AboutSection({ statCounters = [] }) {
       id="about"
       style={{
         padding: 0,
-        background: '#01162e',
+        background: 'radial-gradient(ellipse at top, #012548 0%, #01162e 50%, #001025 100%)',
         color: '#ffffff',
         position: 'relative',
         overflow: 'hidden',
@@ -145,11 +145,11 @@ export default function AboutSection({ statCounters = [] }) {
           position: 'absolute',
           top: '-15%',
           left: '-10%',
-          width: '700px',
-          height: '700px',
+          width: '800px',
+          height: '800px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 133, 89, 0.18) 0%, rgba(1, 30, 65, 0.1) 40%, transparent 70%)',
-          filter: 'blur(70px)',
+          background: 'radial-gradient(circle, rgba(0, 133, 89, 0.22) 0%, rgba(1, 30, 65, 0.12) 40%, transparent 70%)',
+          filter: 'blur(90px)',
           pointerEvents: 'none',
         }}
       />
@@ -160,12 +160,25 @@ export default function AboutSection({ statCounters = [] }) {
           position: 'absolute',
           bottom: '-15%',
           right: '-10%',
-          width: '700px',
-          height: '700px',
+          width: '800px',
+          height: '800px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(1, 30, 65, 0.08) 40%, transparent 70%)',
-          filter: 'blur(70px)',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(1, 30, 65, 0.1) 40%, transparent 70%)',
+          filter: 'blur(90px)',
           pointerEvents: 'none',
+        }}
+      />
+
+      {/* Subtle grid overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          opacity: 0.25,
+          pointerEvents: 'none',
+          zIndex: 1,
         }}
       />
 
@@ -403,9 +416,11 @@ export default function AboutSection({ statCounters = [] }) {
 
       <style jsx>{`
         .about-tc-learn-more:hover {
-          background: linear-gradient(93.05deg, #00A389 0%, #008559 100%) !important;
-          transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(0, 133, 89, 0.45) !important;
+          background: linear-gradient(93.05deg, #00A389 0%, #008559 50%, #2DD4BF 100%) !important;
+          background-size: 200% 100% !important;
+          background-position: 100% 0 !important;
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(0, 133, 89, 0.55), 0 0 25px rgba(45, 212, 191, 0.3) !important;
         }
         .about-stat-counter-card:hover {
           background: rgba(0, 163, 137, 0.08) !important;

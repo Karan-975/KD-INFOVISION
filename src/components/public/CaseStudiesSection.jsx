@@ -107,8 +107,8 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       onMouseLeave={() => setIsPaused(false)}
       style={{
         position: 'relative',
-        padding: '6.5rem 0',
-        background: '#01162e',
+        padding: '7rem 0',
+        background: 'radial-gradient(ellipse at top, #012548 0%, #01162e 50%, #001025 100%)',
         color: '#ffffff',
         overflow: 'hidden',
       }}
@@ -119,10 +119,24 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
           position: 'absolute',
           top: '-15%',
           right: '-10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%)',
+          width: '700px',
+          height: '700px',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%)',
+          filter: 'blur(80px)',
           pointerEvents: 'none',
+        }}
+      />
+
+      {/* Grid overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'linear-gradient(rgba(45, 212, 191, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          opacity: 0.12,
+          pointerEvents: 'none',
+          zIndex: 1,
         }}
       />
 

@@ -201,31 +201,50 @@ export default function ClientsMarquee({
     <section
       id="clients"
       style={{
-        background: bgColor || (isDark ? '#011224' : '#FFFFFF'),
-        padding: '3.5rem 0',
-        borderTop: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--gray-200)'),
-        borderBottom: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid var(--gray-200)'),
+        background: bgColor || (isDark ? 'linear-gradient(90deg, #000814 0%, #001025 50%, #000814 100%)' : 'linear-gradient(90deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%)'),
+        padding: '4rem 0',
+        borderTop: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(45, 212, 191, 0.2)' : '1px solid var(--gray-200)'),
+        borderBottom: borderColor ? `1px solid ${borderColor}` : (isDark ? '1px solid rgba(45, 212, 191, 0.2)' : '1px solid var(--gray-200)'),
         position: 'relative',
         overflow: 'hidden',
+        boxShadow: isDark ? 'inset 0 1px 0 rgba(45, 212, 191, 0.1), inset 0 -1px 0 rgba(45, 212, 191, 0.1)' : 'none',
       }}
     >
-      <div className="container" style={{ marginBottom: '2rem', textAlign: 'center' }}>
+
+      {/* Subtle accent glow */}
+      {isDark && (
         <div
           style={{
-            fontSize: '0.8rem',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '60%',
+            height: '100px',
+            background: 'radial-gradient(ellipse, rgba(45, 212, 191, 0.08) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+      <div className="container" style={{ marginBottom: '2.5rem', textAlign: 'center', position: 'relative', zIndex: 2 }}>
+        <div
+          style={{
+            fontSize: '0.75rem',
             fontWeight: 800,
-            letterSpacing: '2px',
+            letterSpacing: '3px',
             textTransform: 'uppercase',
-            color: isDark ? 'rgba(255, 255, 255, 0.65)' : 'var(--muted)',
+            color: isDark ? '#2DD4BF' : 'var(--blue)',
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '12px',
             fontFamily: "'Montserrat', sans-serif",
+            textShadow: isDark ? '0 0 20px rgba(45, 212, 191, 0.4)' : 'none',
           }}
         >
-          <span style={{ width: '24px', height: '1.5px', background: isDark ? '#2DD4BF' : 'var(--blue)' }} />
-          Trusted by Industry Leaders &amp; Fast-Growing Enterprises
-          <span style={{ width: '24px', height: '1.5px', background: isDark ? '#2DD4BF' : 'var(--blue)' }} />
+          <span style={{ width: '32px', height: '1.5px', background: isDark ? 'linear-gradient(90deg, transparent, #2DD4BF)' : 'var(--blue)' }} />
+          Trusted by Industry Leaders &amp; Global Enterprises
+          <span style={{ width: '32px', height: '1.5px', background: isDark ? 'linear-gradient(90deg, #2DD4BF, transparent)' : 'var(--blue)' }} />
         </div>
       </div>
 
