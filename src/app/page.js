@@ -43,8 +43,8 @@ export default async function HomePage() {
       <PartnersMarquee
         partners={partners}
         isDark={true}
-        bgColor="linear-gradient(90deg, #000510 0%, #000814 50%, #000510 100%)"
-        borderColor="rgba(251, 146, 60, 0.25)"
+        bgColor="#000510"
+        borderColor="rgba(255, 255, 255, 0.06)"
       />
 
       {/* About Us / Our Story with Team Photo & 4 Metric Counters */}

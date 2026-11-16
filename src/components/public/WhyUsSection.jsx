@@ -61,52 +61,14 @@ export default function WhyUsSection() {
     <section
       id="why"
       style={{
-        background: 'radial-gradient(ellipse at center, #012548 0%, #011E41 60%, #001025 100%)',
+        background: '#000510',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
         padding: '7rem 0',
         position: 'relative',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
     >
-      {/* Background ambient lighting */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          left: '10%',
-          width: '650px',
-          height: '650px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.07) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-15%',
-          right: '10%',
-          width: '650px',
-          height: '650px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Grid overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'radial-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          opacity: 0.18,
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header: BCG Corporate Editorial */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 4rem auto' }}>
@@ -181,11 +143,9 @@ export default function WhyUsSection() {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   borderRadius: '16px',
-                  background: 'rgba(255, 255, 255, 0.035)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
+                  background: '#051020',
+                  border: '1px solid rgba(255, 255, 255, 0.07)',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               >

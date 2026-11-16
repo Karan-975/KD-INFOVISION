@@ -48,11 +48,9 @@ function CounterItem({ target, suffix, label, context }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        background: 'rgba(255, 255, 255, 0.03)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        background: '#051020',
         borderRadius: '12px',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.35)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
       }}
@@ -62,16 +60,14 @@ function CounterItem({ target, suffix, label, context }) {
           fontFamily: "'Montserrat', sans-serif",
           fontSize: 'clamp(2rem, 2.7vw, 2.85rem)',
           fontWeight: 800,
-          background: 'linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          color: '#2DD4BF',
           lineHeight: 1,
           marginBottom: '0.45rem',
           letterSpacing: '-0.02em',
         }}
       >
         {count}
-        <span style={{ color: '#FFFFFF', WebkitTextFillColor: '#FFFFFF', marginLeft: '2px' }}>{suffix}</span>
+        <span style={{ color: '#FFFFFF', marginLeft: '2px' }}>{suffix}</span>
       </div>
       <div
         style={{
@@ -90,7 +86,7 @@ function CounterItem({ target, suffix, label, context }) {
         <div
           style={{
             fontSize: '0.75rem',
-            color: 'rgba(255, 255, 255, 0.65)',
+            color: '#94A3B8',
             lineHeight: 1.35,
             fontWeight: 500,
           }}
@@ -133,54 +129,13 @@ export default function AboutSection({ statCounters = [] }) {
       id="about"
       style={{
         padding: 0,
-        background: 'radial-gradient(ellipse at top, #012548 0%, #01162e 50%, #001025 100%)',
+        background: '#020814',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
         color: '#ffffff',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background Subtle Emerald Gradient Glow (matching BCG / Case Studies multi-page palette) */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          left: '-10%',
-          width: '800px',
-          height: '800px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 133, 89, 0.22) 0%, rgba(1, 30, 65, 0.12) 40%, transparent 70%)',
-          filter: 'blur(90px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Background Subtle Cyan/Teal Gradient Glow */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-15%',
-          right: '-10%',
-          width: '800px',
-          height: '800px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(1, 30, 65, 0.1) 40%, transparent 70%)',
-          filter: 'blur(90px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Subtle grid overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'radial-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-          opacity: 0.25,
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
 
       <div
         style={{
@@ -287,12 +242,10 @@ export default function AboutSection({ statCounters = [] }) {
                   color: '#E2E8F0',
                   fontSize: '0.93rem',
                   fontWeight: 600,
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: '#051020',
                   padding: '11px 16px',
                   borderRadius: '8px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.07)',
                   transition: 'all 0.25s ease',
                 }}
               >
@@ -372,9 +325,9 @@ export default function AboutSection({ statCounters = [] }) {
                 width: '100%',
                 borderRadius: '16px',
                 overflow: 'hidden',
-                border: '1px solid rgba(0, 163, 137, 0.28)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.65)',
-                background: '#021226',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 16px 45px rgba(0, 0, 0, 0.5)',
+                background: '#051020',
               }}
             >
               <img

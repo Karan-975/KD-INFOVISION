@@ -313,37 +313,14 @@ export default function IndustriesSection({ industries = [] }) {
     <section
       id="industry"
       style={{
-        background: '#01162e',
+        background: '#020814',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
         color: '#ffffff',
         padding: '7.5rem 0',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background ambient lighting */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          right: '-10%',
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-15%',
-          left: '-10%',
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header */}
         <div

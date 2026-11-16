@@ -108,38 +108,12 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       style={{
         position: 'relative',
         padding: '7rem 0',
-        background: 'radial-gradient(ellipse at top, #012548 0%, #01162e 50%, #001025 100%)',
+        background: '#020814',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
         color: '#ffffff',
         overflow: 'hidden',
       }}
     >
-      {/* Background ambient lighting */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          right: '-10%',
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Grid overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'linear-gradient(rgba(45, 212, 191, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          opacity: 0.12,
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Header */}
         <div
@@ -403,7 +377,7 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
               {/* Description */}
               <p
                 style={{
-                  color: 'rgba(255, 255, 255, 0.78)',
+                  color: '#CBD5E1',
                   fontSize: '1.02rem',
                   lineHeight: 1.75,
                   marginBottom: '1.75rem',
@@ -427,13 +401,13 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
                     <span
                       key={sIdx}
                       style={{
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: '#E2E8F0',
+                        background: '#051020',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        color: '#CBD5E1',
                         fontSize: '12px',
                         fontWeight: 600,
-                        padding: '4px 10px',
-                        borderRadius: '4px',
+                        padding: '5px 12px',
+                        borderRadius: '6px',
                       }}
                     >
                       {t}
@@ -494,9 +468,9 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
                   overflow: 'hidden',
                   boxShadow:
                     idx === activeIndex
-                      ? '0 24px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.12)'
+                      ? '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08)'
                       : 'none',
-                  background: '#011224',
+                  background: '#051020',
                   cursor: 'pointer',
                   opacity: idx === activeIndex ? 1 : 0,
                   visibility: idx === activeIndex ? 'visible' : 'hidden',

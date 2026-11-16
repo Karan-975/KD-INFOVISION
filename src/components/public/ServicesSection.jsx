@@ -105,51 +105,14 @@ export default function ServicesSection({ services = [] }) {
     <section
       id="solutions"
       style={{
-        background: 'radial-gradient(ellipse at center, #012548 0%, #011E41 60%, #001025 100%)',
+        background: '#000510',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
         padding: '7rem 0',
         position: 'relative',
         overflow: 'hidden',
         color: '#FFFFFF',
       }}
     >
-      {/* Ambient subtle glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          left: '20%',
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-15%',
-          right: '15%',
-          width: '650px',
-          height: '650px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Grid overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'linear-gradient(rgba(45, 212, 191, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 212, 191, 0.04) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-          opacity: 0.15,
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header: BCG Corporate Editorial */}
@@ -219,17 +182,15 @@ export default function ServicesSection({ services = [] }) {
               key={item.id}
               className="solution-practice-card"
               style={{
-                background: 'rgba(255, 255, 255, 0.035)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                background: '#051020',
                 borderRadius: '16px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.07)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 padding: '1.5rem',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
                 transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'pointer',
               }}
@@ -244,8 +205,8 @@ export default function ServicesSection({ services = [] }) {
                     aspectRatio: '16 / 9',
                     borderRadius: '12px',
                     overflow: 'hidden',
-                    background: '#011224',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    background: '#020814',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
                     marginBottom: '1.5rem',
                   }}
                 >
