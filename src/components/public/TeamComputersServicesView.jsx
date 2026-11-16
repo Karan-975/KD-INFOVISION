@@ -1225,7 +1225,7 @@ export default function TeamComputersServicesView({
           height: 100%;
           top: 0;
           left: 0;
-          padding: 28px 24px;
+          padding: 32px 26px 28px;
           z-index: 3;
           display: flex;
           flex-direction: column;
@@ -1242,39 +1242,42 @@ export default function TeamComputersServicesView({
 
         .tc-services-root .solution-box figure figcaption h3 {
           color: #ffffff;
-          font-size: 24px;
-          line-height: 1.25;
+          font-size: clamp(23px, 2vw, 26px);
+          line-height: 1.28;
           font-family: 'Montserrat', sans-serif;
           font-weight: 700;
           margin: 0;
+          letter-spacing: -0.01em;
           text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
           transition: all 0.35s ease;
         }
 
         .tc-services-root .solution-box:hover figure figcaption h3 {
-          font-size: 22px;
+          font-size: clamp(23px, 2vw, 26px);
         }
 
         .tc-services-root .card-middle-content {
           width: 100%;
           flex: 1;
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          margin: 14px 0;
+          flex-direction: column;
+          justify-content: center;
+          margin: 18px 0;
         }
 
         .tc-services-root .solution-box figure figcaption p {
           opacity: 0;
           visibility: hidden;
-          font-size: 14px;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.95);
+          font-size: clamp(16.5px, 1.2vw, 18.5px);
+          line-height: 1.72;
+          font-weight: 450;
+          letter-spacing: -0.005em;
+          color: rgba(255, 255, 255, 0.96);
           margin: 0;
-          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
           transition: opacity 0.35s ease, visibility 0.35s ease;
           display: -webkit-box;
-          -webkit-line-clamp: 6;
+          -webkit-line-clamp: 8;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
@@ -1296,20 +1299,20 @@ export default function TeamComputersServicesView({
           opacity: 0;
           visibility: hidden;
           background: linear-gradient(93.05deg, #1ec9f2 -14.26%, #0db16a 85.74%);
-          padding: 8px 20px;
+          padding: 10px 22px;
           border-radius: 40px;
-          font-size: 13.5px;
+          font-size: 14px;
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
           color: #ffffff;
-          line-height: 19px;
+          line-height: 20px;
           text-decoration: none;
           transition: all 0.35s ease;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           width: fit-content;
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
         }
 
         .tc-services-root .solution-box:hover figure figcaption .learn-more {
