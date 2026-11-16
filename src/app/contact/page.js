@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma';
+import { safeDbQuery } from '@/lib/safe-db';
 import Navbar from '@/components/public/Navbar';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
@@ -13,7 +14,7 @@ export const metadata = {
 };
 
 export default async function ContactPage() {
-  const settings = await prisma.siteSetting.findFirst();
+  const settings = await safeDbQuery(() => prisma.siteSetting.findFirst(), null);
 
   return (
     <main style={{ minHeight: '100vh', background: '#040612', color: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>

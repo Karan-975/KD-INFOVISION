@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma';
+import { safeDbQuery } from '@/lib/safe-db';
 import Navbar from '@/components/public/Navbar';
 import TeamComputersCaseStudiesView from '@/components/public/TeamComputersCaseStudiesView';
 import PartnersMarquee from '@/components/public/PartnersMarquee';
@@ -13,11 +14,15 @@ export const metadata = {
 };
 
 export default async function CaseStudiesPage() {
-  const [settings, caseStudies, partners] = await Promise.all([
-    prisma.siteSetting.findFirst(),
-    prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-    prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
-  ]);
+  const [settings, caseStudies, partners] = await safeDbQuery(
+    () =>
+      Promise.all([
+        prisma.siteSetting.findFirst(),
+        prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+        prisma.partner.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+      ]),
+    [null, [], []]
+  );
 
   return (
     <main style={{ minHeight: '100vh', background: '#01162e' }}>
