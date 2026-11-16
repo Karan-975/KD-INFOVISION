@@ -373,8 +373,8 @@ export default function TeamComputersAboutView({
       >
         <div className="container">
           <div className="head wow fadeInUp">
-            <span>RIGHT WHERE YOU NEED US</span>
-            <h2>Everywhere in India &amp; Global</h2>
+            <span style={{ color: '#008559', fontWeight: 700 }}>RIGHT WHERE YOU NEED US</span>
+            <h2 style={{ color: '#0A1629', fontWeight: 800 }}>Everywhere in India &amp; Global</h2>
           </div>
 
           <div className="every-where-main">
@@ -1042,6 +1042,32 @@ export default function TeamComputersAboutView({
           overflow: hidden;
         }
 
+        .tc-about-root .every-where-outer .head {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .tc-about-root .every-where-outer .head span {
+          color: #008559 !important;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 10px;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .tc-about-root .every-where-outer .head h2 {
+          color: #0A1629 !important;
+          font-size: clamp(34px, 4vw, 48px);
+          font-weight: 800;
+          line-height: 1.25;
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
+          letter-spacing: -0.02em;
+        }
+
         .tc-about-root .every-where-main {
           position: relative;
           min-height: 720px;
@@ -1059,7 +1085,7 @@ export default function TeamComputersAboutView({
           height: auto;
           display: block;
           margin: 0 auto;
-          filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+          filter: drop-shadow(0 10px 25px rgba(0, 70, 120, 0.15));
         }
 
         .tc-about-root .every-india-number {
@@ -1095,13 +1121,14 @@ export default function TeamComputersAboutView({
           margin: 0 0 8px 0;
         }
 
+        .tc-about-root .every-where-outer .every-bx p,
         .tc-about-root .every-bx p {
-          font-size: 20px;
+          font-size: 18px;
           font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          color: #ffffff;
+          font-weight: 600;
+          color: #1E293B !important;
           margin: 0;
-          opacity: 0.9;
+          opacity: 1 !important;
         }
 
         /* Exact Team Computers Desktop Coordinates */
