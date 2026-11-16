@@ -442,3 +442,169 @@ section {
     transform: scale(1) translateY(0);
   }
 }
+
+
+/* ==============================================================
+   VANI HQ EXACT ANIMATED CARD DECK (INDUSTRIES SECTION)
+   ============================================================== */
+
+.vi-so-much-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.vi-so-much-card-wrapper div.vi-redirect-URL,
+.vi-so-much-card-wrapper a.vi-redirect-URL {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 28px;
+  width: 375px;
+  flex: 1 1 340px;
+  min-height: 25rem; /* ~400px */
+  text-align: left;
+  padding: 38px 36px 32px 36px;
+  cursor: pointer;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              flex 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Active Expanded Card */
+.vi-so-much-card-wrapper div.vi-redirect-URL.vi-active,
+.vi-so-much-card-wrapper a.vi-redirect-URL.vi-active {
+  width: 660px;
+  flex: 2.2 1 580px;
+  transform: scale(1.01);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+/* Head & Title */
+.vi-so-much-card-wrapper .vi-section-head {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.vi-so-much-card-wrapper .vi-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+  max-width: 320px;
+  color: inherit;
+}
+
+/* Description paragraph: completely hidden & translated right on inactive; smoothly reveals on active */
+.vi-so-much-card-wrapper .vi-redirect-URL p {
+  width: 100%;
+  max-width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-in-out,
+              transform 0.6s ease-in-out,
+              visibility 0.6s ease-in-out;
+  position: relative;
+  z-index: 20;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 18px 0 0 0;
+  font-weight: 500;
+}
+
+.vi-so-much-card-wrapper .vi-redirect-URL.vi-active p {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Diagonal Open-link Arrow */
+.vi-redirect-icon {
+  display: block;
+  position: relative;
+  z-index: 4;
+}
+
+.vi-redirect-icon svg {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-top: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
+  position: relative;
+  right: 0;
+}
+
+.vi-so-much-card-wrapper .vi-redirect-URL.vi-active .vi-redirect-icon svg {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, -10px, 20px);
+  z-index: 2;
+}
+
+/* Watermark Illustration */
+.vi-bottom-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  z-index: 2;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  opacity: 0.75;
+}
+
+.vi-so-much-card-wrapper .vi-redirect-URL.vi-active .vi-bottom-image {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .vi-so-much-card-wrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vi-so-much-card-wrapper div.vi-redirect-URL,
+  .vi-so-much-card-wrapper a.vi-redirect-URL {
+    flex: none !important;
+    width: 100% !important;
+    min-height: 240px;
+    padding: 28px 24px;
+  }
+
+  .vi-so-much-card-wrapper .vi-redirect-URL.vi-active {
+    transform: none;
+  }
+
+  .vi-so-much-card-wrapper .vi-redirect-URL p {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .vi-redirect-icon svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    width: 36px;
+    height: 36px;
+  }
+}
