@@ -129,41 +129,41 @@ function LakehouseGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="crimsonGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FDA4AF" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#E11D48" stopOpacity="0.4" />
+        <linearGradient id="tealGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#0D9488" stopOpacity="0.45" />
         </linearGradient>
-        <filter id="glowCrimson" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowTeal" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#E11D48" opacity="0.18" filter="url(#glowCrimson)" />
+      <circle cx="80" cy="80" r="45" fill="#0D9488" opacity="0.18" filter="url(#glowTeal)" />
 
       {/* Center Main Cube */}
       <g transform="translate(0, -6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FFE4E6" strokeWidth="1.5" strokeOpacity="0.9" />
-        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#9F1239" opacity="0.65" stroke="#F43F5E" strokeWidth="1" strokeOpacity="0.5" />
-        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#4C0519" opacity="0.75" stroke="#E11D48" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#CCFBF1" strokeWidth="1.5" strokeOpacity="0.9" />
+        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#0F766E" opacity="0.65" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#115E59" opacity="0.75" stroke="#0D9488" strokeWidth="1" strokeOpacity="0.5" />
       </g>
 
       {/* Satellite Node 1 (Top Left) */}
       <g transform="translate(-32, -18) scale(0.6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FB7185" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
       </g>
-      <line x1="56" y1="52" x2="68" y2="60" stroke="#FDA4AF" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="56" y1="52" x2="68" y2="60" stroke="#99F6E4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Satellite Node 2 (Bottom Right) */}
       <g transform="translate(42, 34) scale(0.55)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FB7185" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
       </g>
-      <line x1="98" y1="92" x2="114" y2="102" stroke="#FDA4AF" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="98" y1="92" x2="114" y2="102" stroke="#99F6E4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Data Pulse Rings */}
-      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#F43F5E" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
-      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowCrimson)" />
+      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.45" strokeDasharray="4 4" />
+      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowTeal)" />
     </svg>
   );
 }
@@ -274,13 +274,13 @@ export default function WhyUsSection() {
         'Eliminating data silos and accelerating innovation',
       ],
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(74, 14, 32, 0.42) 0%, rgba(30, 4, 14, 0.72) 100%)',
-        borderColor: 'rgba(225, 29, 72, 0.22)',
-        hoverBorderColor: 'rgba(225, 29, 72, 0.55)',
-        accentColor: '#F43F5E',
-        glowColor: 'rgba(225, 29, 72, 0.16)',
-        iconBg: 'linear-gradient(135deg, #E11D48 0%, #9F1239 100%)',
-        iconShadow: '0 4px 14px rgba(225, 29, 72, 0.35)',
+        cardBg: 'linear-gradient(135deg, rgba(13, 78, 74, 0.42) 0%, rgba(4, 30, 28, 0.72) 100%)',
+        borderColor: 'rgba(45, 212, 191, 0.22)',
+        hoverBorderColor: 'rgba(45, 212, 191, 0.55)',
+        accentColor: '#2DD4BF',
+        glowColor: 'rgba(45, 212, 191, 0.16)',
+        iconBg: 'linear-gradient(135deg, #0D9488 0%, #044E49 100%)',
+        iconShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
         graphic: <LakehouseGraphic />,
       },
     },
