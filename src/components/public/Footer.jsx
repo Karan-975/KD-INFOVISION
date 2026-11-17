@@ -3,15 +3,45 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Linkedin,
-  Facebook,
-  Twitter,
-  Github,
   ArrowUp,
   Mail,
   MapPin,
   Phone,
 } from 'lucide-react';
+import FooterBackgroundAnimation from './FooterBackgroundAnimation';
+
+// Authentic Official Brand SVGs
+function LinkedInLogo({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32Z" />
+    </svg>
+  );
+}
+
+function FacebookLogo({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function XLogo({ size = 14 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function GithubLogo({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+    </svg>
+  );
+}
 
 export default function Footer({ settings }) {
   const scrollToTop = () => {
@@ -55,13 +85,8 @@ export default function Footer({ settings }) {
 
   return (
     <footer className="kd-footer">
-      {/* Background Ambient Animated Aurora (Subtle, sleek lighting inspired by Raycast & Contact Us theme) */}
-      <div className="footer-aurora-bg" aria-hidden="true">
-        <div className="aurora-orb aurora-1" />
-        <div className="aurora-orb aurora-2" />
-        <div className="aurora-orb aurora-3" />
-        <div className="aurora-grid" />
-      </div>
+      {/* Dynamic Professional Data & AI Constellation Canvas Animation */}
+      <FooterBackgroundAnimation />
 
       {/* Subtle Top Accent Divider */}
       <div className="footer-top-border" />
@@ -104,16 +129,17 @@ export default function Footer({ settings }) {
               </div>
             </div>
 
-            {/* Sleek Social Icon Buttons */}
+            {/* Authentic Social Brand Logos */}
             <div className="social-links-row">
               <a
                 href={settings?.socialLinkedin || 'https://www.linkedin.com/company/kd-infovision-consulting/about/'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="social-btn"
+                className="social-btn social-btn-linkedin"
+                title="LinkedIn"
               >
-                <Linkedin size={16} />
+                <LinkedInLogo size={16} />
               </a>
 
               <a
@@ -121,19 +147,21 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="social-btn"
+                className="social-btn social-btn-facebook"
+                title="Facebook"
               >
-                <Facebook size={16} />
+                <FacebookLogo size={16} />
               </a>
 
               <a
                 href={settings?.socialTwitter || 'https://twitter.com'}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Twitter"
-                className="social-btn"
+                aria-label="X (formerly Twitter)"
+                className="social-btn social-btn-x"
+                title="X"
               >
-                <Twitter size={16} />
+                <XLogo size={14} />
               </a>
 
               <a
@@ -141,9 +169,10 @@ export default function Footer({ settings }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className="social-btn"
+                className="social-btn social-btn-github"
+                title="GitHub"
               >
-                <Github size={16} />
+                <GithubLogo size={16} />
               </a>
             </div>
           </div>
@@ -264,70 +293,6 @@ export default function Footer({ settings }) {
           background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 75%, transparent 100%);
         }
 
-        /* Ambient Background */
-        .footer-aurora-bg {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        .aurora-orb {
-          display: none;
-        }
-
-        .aurora-grid {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-          background-size: 32px 32px;
-          opacity: 0.5;
-          mask-image: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
-          WebkitMaskImage: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
-        }
-
-        @keyframes auroraFloat1 {
-          0% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0.55;
-          }
-          50% {
-            transform: translate(35px, 25px) scale(1.12);
-            opacity: 0.75;
-          }
-          100% {
-            transform: translate(-30px, 12px) scale(0.96);
-            opacity: 0.58;
-          }
-        }
-
-        @keyframes auroraFloat2 {
-          0% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0.5;
-          }
-          50% {
-            transform: translate(-45px, 20px) scale(1.1);
-            opacity: 0.7;
-          }
-          100% {
-            transform: translate(25px, -15px) scale(0.92);
-            opacity: 0.52;
-          }
-        }
-
-        @keyframes auroraFloat3 {
-          0% {
-            transform: translate(0, 0) scale(0.95);
-            opacity: 0.45;
-          }
-          100% {
-            transform: translate(30px, -20px) scale(1.14);
-            opacity: 0.68;
-          }
-        }
-
         .container {
           max-width: 1280px;
           margin: 0 auto;
@@ -402,7 +367,7 @@ export default function Footer({ settings }) {
           color: #ffffff;
         }
 
-        /* Social Icons - Clean, Bold, Simple & Professional */
+        /* Social Icons - Clean, Bold, Real Platform Logos */
         .social-links-row {
           display: flex;
           align-items: center;
@@ -421,14 +386,39 @@ export default function Footer({ settings }) {
           color: #ffffff;
           text-decoration: none;
           transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
         }
 
         .social-btn:hover {
+          transform: translateY(-2px);
+        }
+
+        .social-btn-linkedin:hover {
+          background: #0A66C2;
+          border-color: #0A66C2;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(10, 102, 194, 0.45);
+        }
+
+        .social-btn-facebook:hover {
+          background: #1877F2;
+          border-color: #1877F2;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(24, 119, 242, 0.45);
+        }
+
+        .social-btn-x:hover {
           background: #ffffff;
           border-color: #ffffff;
-          color: #050811;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+          color: #000000;
+          box-shadow: 0 4px 14px rgba(255, 255, 255, 0.3);
+        }
+
+        .social-btn-github:hover {
+          background: #24292F;
+          border-color: rgba(255, 255, 255, 0.35);
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
         }
 
         /* Column Headers & Links */
