@@ -72,54 +72,54 @@ function StackGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="stackGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#0077ED" stopOpacity="0.4" />
+        <linearGradient id="violetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#E9D5FF" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#C084FC" stopOpacity="0.5" />
         </linearGradient>
-        <linearGradient id="stackGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0077ED" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#0056B3" stopOpacity="0.35" />
+        <linearGradient id="violetGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#C084FC" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.4" />
         </linearGradient>
-        <linearGradient id="stackGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0284C7" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#031E48" stopOpacity="0.3" />
+        <linearGradient id="violetGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#A855F7" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#6D28D9" stopOpacity="0.3" />
         </linearGradient>
-        <filter id="glowBlueStack" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowVioletStack" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#0077ED" opacity="0.15" filter="url(#glowBlueStack)" />
+      <circle cx="80" cy="80" r="45" fill="#8B5CF6" opacity="0.18" filter="url(#glowVioletStack)" />
 
       {/* Bottom Layer */}
       <g transform="translate(0, 36)">
-        <path d="M80 72 L128 92 L80 112 L32 92 Z" fill="url(#stackGrad3)" stroke="#0077ED" strokeWidth="1.2" strokeOpacity="0.6" />
-        <path d="M32 92 L80 112 L80 118 L32 98 Z" fill="#031E48" opacity="0.6" />
-        <path d="M128 92 L80 112 L80 118 L128 98 Z" fill="#02142B" opacity="0.6" />
+        <path d="M80 72 L128 92 L80 112 L32 92 Z" fill="url(#violetGrad3)" stroke="#A855F7" strokeWidth="1.2" strokeOpacity="0.6" />
+        <path d="M32 92 L80 112 L80 118 L32 98 Z" fill="#581C87" opacity="0.5" />
+        <path d="M128 92 L80 112 L80 118 L128 98 Z" fill="#3B0764" opacity="0.5" />
       </g>
 
       {/* Middle Layer */}
       <g transform="translate(0, 18)">
-        <path d="M80 62 L128 82 L80 102 L32 82 Z" fill="url(#stackGrad2)" stroke="#38BDF8" strokeWidth="1.4" strokeOpacity="0.7" />
-        <path d="M32 82 L80 102 L80 108 L32 88 Z" fill="#0056B3" opacity="0.6" />
-        <path d="M128 82 L80 102 L80 108 L128 88 Z" fill="#031E48" opacity="0.6" />
+        <path d="M80 62 L128 82 L80 102 L32 82 Z" fill="url(#violetGrad2)" stroke="#C084FC" strokeWidth="1.4" strokeOpacity="0.7" />
+        <path d="M32 82 L80 102 L80 108 L32 88 Z" fill="#6D28D9" opacity="0.5" />
+        <path d="M128 82 L80 102 L80 108 L128 88 Z" fill="#4C1D95" opacity="0.5" />
       </g>
 
       {/* Top Layer */}
       <g transform="translate(0, 0)">
-        <path d="M80 52 L128 72 L80 92 L32 72 Z" fill="url(#stackGrad1)" stroke="#BAE6FD" strokeWidth="1.6" strokeOpacity="0.9" />
-        <path d="M32 72 L80 92 L80 98 L32 78 Z" fill="#0077ED" opacity="0.7" />
-        <path d="M128 72 L80 92 L80 98 L128 78 Z" fill="#0056B3" opacity="0.7" />
+        <path d="M80 52 L128 72 L80 92 L32 72 Z" fill="url(#violetGrad1)" stroke="#F3E8FF" strokeWidth="1.6" strokeOpacity="0.9" />
+        <path d="M32 72 L80 92 L80 98 L32 78 Z" fill="#7C3AED" opacity="0.6" />
+        <path d="M128 72 L80 92 L80 98 L128 78 Z" fill="#6D28D9" opacity="0.6" />
       </g>
 
       {/* Vertical Data Beacons connecting layers */}
-      <line x1="80" y1="52" x2="80" y2="128" stroke="#E0F2FE" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.75" />
-      <circle cx="80" cy="52" r="3.5" fill="#FFFFFF" filter="url(#glowBlueStack)" />
-      <circle cx="80" cy="52" r="1.8" fill="#38BDF8" />
-      <circle cx="80" cy="80" r="2.5" fill="#BAE6FD" />
-      <circle cx="80" cy="108" r="2.5" fill="#0077ED" />
+      <line x1="80" y1="52" x2="80" y2="128" stroke="#F3E8FF" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.75" />
+      <circle cx="80" cy="52" r="3.5" fill="#FFFFFF" filter="url(#glowVioletStack)" />
+      <circle cx="80" cy="52" r="1.8" fill="#C084FC" />
+      <circle cx="80" cy="80" r="2.5" fill="#E9D5FF" />
+      <circle cx="80" cy="108" r="2.5" fill="#A855F7" />
     </svg>
   );
 }
@@ -129,41 +129,41 @@ function LakehouseGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="lakeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.75" />
-          <stop offset="100%" stopColor="#0056B3" stopOpacity="0.35" />
+        <linearGradient id="mintGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#0D9488" stopOpacity="0.4" />
         </linearGradient>
-        <filter id="glowLake" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowMint" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#0077ED" opacity="0.15" filter="url(#glowLake)" />
+      <circle cx="80" cy="80" r="45" fill="#0D9488" opacity="0.18" filter="url(#glowMint)" />
 
       {/* Center Main Cube */}
       <g transform="translate(0, -6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#lakeGrad1)" stroke="#BAE6FD" strokeWidth="1.5" strokeOpacity="0.9" />
-        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#0056B3" opacity="0.7" stroke="#38BDF8" strokeWidth="1" strokeOpacity="0.5" />
-        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#031E48" opacity="0.8" stroke="#0077ED" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#mintGrad1)" stroke="#A7F3D0" strokeWidth="1.5" strokeOpacity="0.9" />
+        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#0F766E" opacity="0.65" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#042F2E" opacity="0.75" stroke="#14B8A6" strokeWidth="1" strokeOpacity="0.5" />
       </g>
 
       {/* Satellite Node 1 (Top Left) */}
       <g transform="translate(-32, -18) scale(0.6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#lakeGrad1)" stroke="#38BDF8" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#mintGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
       </g>
-      <line x1="56" y1="52" x2="68" y2="60" stroke="#BAE6FD" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="56" y1="52" x2="68" y2="60" stroke="#5EEAD4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Satellite Node 2 (Bottom Right) */}
       <g transform="translate(42, 34) scale(0.55)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#lakeGrad1)" stroke="#38BDF8" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#mintGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
       </g>
-      <line x1="98" y1="92" x2="114" y2="102" stroke="#BAE6FD" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="98" y1="92" x2="114" y2="102" stroke="#5EEAD4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Data Pulse Rings */}
-      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#38BDF8" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
-      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowLake)" />
+      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
+      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowMint)" />
     </svg>
   );
 }
@@ -173,48 +173,48 @@ function AnalyticsGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="analyticsGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#0056B3" stopOpacity="0.35" />
+        <linearGradient id="amberGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FDBA74" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#EA580C" stopOpacity="0.4" />
         </linearGradient>
-        <filter id="glowAnalytics" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#0077ED" opacity="0.15" filter="url(#glowAnalytics)" />
+      <circle cx="80" cy="80" r="45" fill="#EA580C" opacity="0.18" filter="url(#glowAmber)" />
 
       {/* Isometric Floor Grid */}
-      <path d="M80 68 L130 94 L80 120 L30 94 Z" fill="rgba(0, 119, 237, 0.1)" stroke="#0077ED" strokeWidth="1" strokeOpacity="0.35" strokeDasharray="3 3" />
+      <path d="M80 68 L130 94 L80 120 L30 94 Z" fill="rgba(234, 88, 12, 0.1)" stroke="#FB923C" strokeWidth="1" strokeOpacity="0.35" strokeDasharray="3 3" />
 
       {/* Bar 1 (Left - Mid Height) */}
       <g transform="translate(48, 70)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#38BDF8" stroke="#BAE6FD" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 36 L0 30 Z" fill="#0056B3" opacity="0.8" />
-        <path d="M24 6 L12 12 L12 36 L24 30 Z" fill="#031E48" opacity="0.8" />
+        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FB923C" stroke="#FED7AA" strokeWidth="1" />
+        <path d="M0 6 L12 12 L12 36 L0 30 Z" fill="#C2410C" opacity="0.75" />
+        <path d="M24 6 L12 12 L12 36 L24 30 Z" fill="#7C2D12" opacity="0.75" />
       </g>
 
       {/* Bar 2 (Center - Tall Height) */}
       <g transform="translate(70, 48)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#BAE6FD" stroke="#FFFFFF" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 56 L0 50 Z" fill="#0077ED" opacity="0.85" />
-        <path d="M24 6 L12 12 L12 56 L24 50 Z" fill="#0056B3" opacity="0.85" />
+        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FED7AA" stroke="#FFFFFF" strokeWidth="1" />
+        <path d="M0 6 L12 12 L12 56 L0 50 Z" fill="#EA580C" opacity="0.8" />
+        <path d="M24 6 L12 12 L12 56 L24 50 Z" fill="#9A3412" opacity="0.8" />
       </g>
 
       {/* Bar 3 (Right - Small Height) */}
       <g transform="translate(92, 80)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#38BDF8" stroke="#BAE6FD" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 24 L0 18 Z" fill="#0077ED" opacity="0.75" />
-        <path d="M24 6 L12 12 L12 24 L24 18 Z" fill="#031E48" opacity="0.75" />
+        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FB923C" stroke="#FED7AA" strokeWidth="1" />
+        <path d="M0 6 L12 12 L12 24 L0 18 Z" fill="#C2410C" opacity="0.75" />
+        <path d="M24 6 L12 12 L12 24 L24 18 Z" fill="#7C2D12" opacity="0.75" />
       </g>
 
       {/* Floating Trend Line */}
-      <path d="M58 68 L82 44 L104 74" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" filter="url(#glowAnalytics)" />
-      <circle cx="58" cy="68" r="3" fill="#38BDF8" />
+      <path d="M58 68 L82 44 L104 74" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" filter="url(#glowAmber)" />
+      <circle cx="58" cy="68" r="3" fill="#FB923C" />
       <circle cx="82" cy="44" r="3.5" fill="#FFFFFF" />
-      <circle cx="104" cy="74" r="3" fill="#38BDF8" />
+      <circle cx="104" cy="74" r="3" fill="#FB923C" />
     </svg>
   );
 }
@@ -231,7 +231,16 @@ export default function WhyUsSection() {
         'Adhering to global standards & industry best practices',
         'Transparent delivery and predictable milestones',
       ],
-      graphic: <GlobeGraphic />,
+      theme: {
+        cardBg: 'linear-gradient(135deg, rgba(8, 38, 80, 0.42) 0%, rgba(3, 14, 34, 0.72) 100%)',
+        borderColor: 'rgba(56, 189, 248, 0.22)',
+        hoverBorderColor: 'rgba(56, 189, 248, 0.55)',
+        accentColor: '#38BDF8',
+        glowColor: 'rgba(56, 189, 248, 0.16)',
+        iconBg: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)',
+        iconShadow: '0 4px 14px rgba(2, 132, 199, 0.35)',
+        graphic: <GlobeGraphic />,
+      },
     },
     {
       icon: Cpu,
@@ -243,7 +252,16 @@ export default function WhyUsSection() {
         'Enterprise engineering pods adhering to strict SLAs',
         'Rapid ramp-up times with vetted architects',
       ],
-      graphic: <StackGraphic />,
+      theme: {
+        cardBg: 'linear-gradient(135deg, rgba(46, 20, 80, 0.42) 0%, rgba(16, 8, 34, 0.72) 100%)',
+        borderColor: 'rgba(192, 132, 252, 0.22)',
+        hoverBorderColor: 'rgba(192, 132, 252, 0.55)',
+        accentColor: '#C084FC',
+        glowColor: 'rgba(168, 85, 247, 0.16)',
+        iconBg: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
+        iconShadow: '0 4px 14px rgba(139, 92, 246, 0.35)',
+        graphic: <StackGraphic />,
+      },
     },
     {
       icon: Layers,
@@ -255,7 +273,16 @@ export default function WhyUsSection() {
         'Autonomous Agentic AI & machine learning',
         'Eliminating data silos and accelerating innovation',
       ],
-      graphic: <LakehouseGraphic />,
+      theme: {
+        cardBg: 'linear-gradient(135deg, rgba(8, 48, 42, 0.42) 0%, rgba(3, 20, 18, 0.72) 100%)',
+        borderColor: 'rgba(45, 212, 191, 0.22)',
+        hoverBorderColor: 'rgba(45, 212, 191, 0.55)',
+        accentColor: '#2DD4BF',
+        glowColor: 'rgba(45, 212, 191, 0.16)',
+        iconBg: 'linear-gradient(135deg, #0D9488 0%, #0F766E 100%)',
+        iconShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
+        graphic: <LakehouseGraphic />,
+      },
     },
     {
       icon: CheckCircle2,
@@ -267,7 +294,16 @@ export default function WhyUsSection() {
         'Associative discovery & self-service analytics',
         'Actionable KPI cockpits for leadership',
       ],
-      graphic: <AnalyticsGraphic />,
+      theme: {
+        cardBg: 'linear-gradient(135deg, rgba(64, 28, 16, 0.42) 0%, rgba(24, 10, 6, 0.72) 100%)',
+        borderColor: 'rgba(251, 146, 60, 0.22)',
+        hoverBorderColor: 'rgba(251, 146, 60, 0.55)',
+        accentColor: '#FB923C',
+        glowColor: 'rgba(251, 146, 60, 0.16)',
+        iconBg: 'linear-gradient(135deg, #F97316 0%, #C2410C 100%)',
+        iconShadow: '0 4px 14px rgba(249, 115, 22, 0.35)',
+        graphic: <AnalyticsGraphic />,
+      },
     },
   ];
 
@@ -341,6 +377,7 @@ export default function WhyUsSection() {
         >
           {pillars.map((item, idx) => {
             const IconComp = item.icon;
+            const t = item.theme;
 
             return (
               <div
@@ -354,12 +391,14 @@ export default function WhyUsSection() {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   borderRadius: '20px',
-                  background: 'linear-gradient(135deg, rgba(8, 22, 48, 0.6) 0%, rgba(3, 12, 28, 0.72) 100%)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  boxShadow: '0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
+                  background: t.cardBg,
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: `1px solid ${t.borderColor}`,
+                  boxShadow: '0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                  '--card-hover-border': t.hoverBorderColor,
+                  '--card-hover-glow': t.glowColor,
                 }}
               >
                 {/* Subtle Ambient Light behind 3D Graphic */}
@@ -370,10 +409,10 @@ export default function WhyUsSection() {
                     top: '10%',
                     width: '200px',
                     height: '200px',
-                    background: 'radial-gradient(circle, rgba(0, 119, 237, 0.1) 0%, transparent 70%)',
+                    background: `radial-gradient(circle, ${t.glowColor} 0%, transparent 70%)`,
                     filter: 'blur(25px)',
                     pointerEvents: 'none',
-                    opacity: 0.6,
+                    opacity: 0.8,
                   }}
                 />
 
@@ -391,7 +430,7 @@ export default function WhyUsSection() {
                     filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5))',
                   }}
                 >
-                  {item.graphic}
+                  {t.graphic}
                 </div>
 
                 {/* Left/Top Content */}
@@ -410,12 +449,12 @@ export default function WhyUsSection() {
                         width: '46px',
                         height: '46px',
                         borderRadius: '12px',
-                        background: 'linear-gradient(135deg, #0077ED 0%, #0056B3 100%)',
+                        background: t.iconBg,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         color: '#FFFFFF',
-                        boxShadow: '0 4px 14px rgba(0, 119, 237, 0.35)',
+                        boxShadow: t.iconShadow,
                       }}
                     >
                       <IconComp size={22} />
@@ -436,7 +475,7 @@ export default function WhyUsSection() {
                     className="pillar-title"
                   >
                     {item.titlePrefix}{' '}
-                    <span style={{ color: '#0077ED' }}>{item.titleHighlight}</span>
+                    <span style={{ color: t.accentColor }}>{item.titleHighlight}</span>
                   </h3>
 
                   {/* Description Text */}
@@ -476,7 +515,7 @@ export default function WhyUsSection() {
                           fontWeight: 500,
                         }}
                       >
-                        <CheckCircle2 size={16} style={{ color: '#0077ED', flexShrink: 0 }} />
+                        <CheckCircle2 size={16} style={{ color: t.accentColor, flexShrink: 0 }} />
                         <span>{point}</span>
                       </div>
                     ))}
@@ -575,12 +614,12 @@ export default function WhyUsSection() {
         }
         :global(.why-pillar-card:hover) {
           transform: translateY(-6px);
-          border-color: rgba(0, 119, 237, 0.45) !important;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 25px rgba(0, 119, 237, 0.12) !important;
+          border-color: var(--card-hover-border) !important;
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px var(--card-hover-glow) !important;
         }
         :global(.card-learn-more:hover) {
-          background: rgba(0, 119, 237, 0.15) !important;
-          border-color: rgba(0, 119, 237, 0.45) !important;
+          background: rgba(255, 255, 255, 0.12) !important;
+          border-color: rgba(255, 255, 255, 0.4) !important;
         }
         :global(.card-learn-more:hover .learn-arrow) {
           transform: translateX(3px);
