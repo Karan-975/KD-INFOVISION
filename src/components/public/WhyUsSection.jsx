@@ -72,54 +72,54 @@ function StackGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="copperGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FED7AA" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#FB923C" stopOpacity="0.5" />
+        <linearGradient id="roseGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFE4E6" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#FDA4AF" stopOpacity="0.5" />
         </linearGradient>
-        <linearGradient id="copperGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FB923C" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#EA580C" stopOpacity="0.4" />
+        <linearGradient id="roseGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FDA4AF" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#FB7185" stopOpacity="0.4" />
         </linearGradient>
-        <linearGradient id="copperGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#F97316" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#C2410C" stopOpacity="0.3" />
+        <linearGradient id="roseGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FB7185" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#E11D48" stopOpacity="0.3" />
         </linearGradient>
-        <filter id="glowCopperStack" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowRoseStack" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#EA580C" opacity="0.18" filter="url(#glowCopperStack)" />
+      <circle cx="80" cy="80" r="45" fill="#FB7185" opacity="0.18" filter="url(#glowRoseStack)" />
 
       {/* Bottom Layer */}
       <g transform="translate(0, 36)">
-        <path d="M80 72 L128 92 L80 112 L32 92 Z" fill="url(#copperGrad3)" stroke="#FB923C" strokeWidth="1.2" strokeOpacity="0.6" />
-        <path d="M32 92 L80 112 L80 118 L32 98 Z" fill="#9A3412" opacity="0.5" />
-        <path d="M128 92 L80 112 L80 118 L128 98 Z" fill="#7C2D12" opacity="0.5" />
+        <path d="M80 72 L128 92 L80 112 L32 92 Z" fill="url(#roseGrad3)" stroke="#FB7185" strokeWidth="1.2" strokeOpacity="0.6" />
+        <path d="M32 92 L80 112 L80 118 L32 98 Z" fill="#9F1239" opacity="0.5" />
+        <path d="M128 92 L80 112 L80 118 L128 98 Z" fill="#881337" opacity="0.5" />
       </g>
 
       {/* Middle Layer */}
       <g transform="translate(0, 18)">
-        <path d="M80 62 L128 82 L80 102 L32 82 Z" fill="url(#copperGrad2)" stroke="#FDBA74" strokeWidth="1.4" strokeOpacity="0.7" />
-        <path d="M32 82 L80 102 L80 108 L32 88 Z" fill="#C2410C" opacity="0.5" />
-        <path d="M128 82 L80 102 L80 108 L128 88 Z" fill="#9A3412" opacity="0.5" />
+        <path d="M80 62 L128 82 L80 102 L32 82 Z" fill="url(#roseGrad2)" stroke="#FDA4AF" strokeWidth="1.4" strokeOpacity="0.7" />
+        <path d="M32 82 L80 102 L80 108 L32 88 Z" fill="#E11D48" opacity="0.5" />
+        <path d="M128 82 L80 102 L80 108 L128 88 Z" fill="#9F1239" opacity="0.5" />
       </g>
 
       {/* Top Layer */}
       <g transform="translate(0, 0)">
-        <path d="M80 52 L128 72 L80 92 L32 72 Z" fill="url(#copperGrad1)" stroke="#FFEDD5" strokeWidth="1.6" strokeOpacity="0.9" />
-        <path d="M32 72 L80 92 L80 98 L32 78 Z" fill="#EA580C" opacity="0.6" />
-        <path d="M128 72 L80 92 L80 98 L128 78 Z" fill="#C2410C" opacity="0.6" />
+        <path d="M80 52 L128 72 L80 92 L32 72 Z" fill="url(#roseGrad1)" stroke="#FFF1F2" strokeWidth="1.6" strokeOpacity="0.9" />
+        <path d="M32 72 L80 92 L80 98 L32 78 Z" fill="#F43F5E" opacity="0.6" />
+        <path d="M128 72 L80 92 L80 98 L128 78 Z" fill="#E11D48" opacity="0.6" />
       </g>
 
       {/* Vertical Data Beacons connecting layers */}
-      <line x1="80" y1="52" x2="80" y2="128" stroke="#FFEDD5" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.75" />
-      <circle cx="80" cy="52" r="3.5" fill="#FFFFFF" filter="url(#glowCopperStack)" />
-      <circle cx="80" cy="52" r="1.8" fill="#FDBA74" />
-      <circle cx="80" cy="80" r="2.5" fill="#FFEDD5" />
-      <circle cx="80" cy="108" r="2.5" fill="#FB923C" />
+      <line x1="80" y1="52" x2="80" y2="128" stroke="#FFF1F2" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.75" />
+      <circle cx="80" cy="52" r="3.5" fill="#FFFFFF" filter="url(#glowRoseStack)" />
+      <circle cx="80" cy="52" r="1.8" fill="#FDA4AF" />
+      <circle cx="80" cy="80" r="2.5" fill="#FFE4E6" />
+      <circle cx="80" cy="108" r="2.5" fill="#FB7185" />
     </svg>
   );
 }
@@ -129,41 +129,41 @@ function LakehouseGraphic() {
   return (
     <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="honeyGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FDE68A" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#D97706" stopOpacity="0.4" />
+        <linearGradient id="crimsonGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FDA4AF" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#E11D48" stopOpacity="0.4" />
         </linearGradient>
-        <filter id="glowHoney" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="glowCrimson" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
       {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#D97706" opacity="0.18" filter="url(#glowHoney)" />
+      <circle cx="80" cy="80" r="45" fill="#E11D48" opacity="0.18" filter="url(#glowCrimson)" />
 
       {/* Center Main Cube */}
       <g transform="translate(0, -6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#honeyGrad1)" stroke="#FEF3C7" strokeWidth="1.5" strokeOpacity="0.9" />
-        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#B45309" opacity="0.65" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.5" />
-        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#78350F" opacity="0.75" stroke="#D97706" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FFE4E6" strokeWidth="1.5" strokeOpacity="0.9" />
+        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#9F1239" opacity="0.65" stroke="#F43F5E" strokeWidth="1" strokeOpacity="0.5" />
+        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#4C0519" opacity="0.75" stroke="#E11D48" strokeWidth="1" strokeOpacity="0.5" />
       </g>
 
       {/* Satellite Node 1 (Top Left) */}
       <g transform="translate(-32, -18) scale(0.6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#honeyGrad1)" stroke="#FBBF24" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FB7185" strokeWidth="1.5" />
       </g>
-      <line x1="56" y1="52" x2="68" y2="60" stroke="#FDE68A" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="56" y1="52" x2="68" y2="60" stroke="#FDA4AF" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Satellite Node 2 (Bottom Right) */}
       <g transform="translate(42, 34) scale(0.55)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#honeyGrad1)" stroke="#FBBF24" strokeWidth="1.5" />
+        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#crimsonGrad1)" stroke="#FB7185" strokeWidth="1.5" />
       </g>
-      <line x1="98" y1="92" x2="114" y2="102" stroke="#FDE68A" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
+      <line x1="98" y1="92" x2="114" y2="102" stroke="#FDA4AF" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
 
       {/* Data Pulse Rings */}
-      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
-      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowHoney)" />
+      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#F43F5E" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
+      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowCrimson)" />
     </svg>
   );
 }
@@ -253,13 +253,13 @@ export default function WhyUsSection() {
         'Rapid ramp-up times with vetted architects',
       ],
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(66, 30, 16, 0.42) 0%, rgba(26, 11, 6, 0.72) 100%)',
-        borderColor: 'rgba(251, 146, 60, 0.22)',
-        hoverBorderColor: 'rgba(251, 146, 60, 0.55)',
-        accentColor: '#FB923C',
-        glowColor: 'rgba(251, 146, 60, 0.16)',
-        iconBg: 'linear-gradient(135deg, #EA580C 0%, #C2410C 100%)',
-        iconShadow: '0 4px 14px rgba(234, 88, 12, 0.35)',
+        cardBg: 'linear-gradient(135deg, rgba(76, 24, 40, 0.42) 0%, rgba(30, 8, 16, 0.72) 100%)',
+        borderColor: 'rgba(251, 113, 133, 0.22)',
+        hoverBorderColor: 'rgba(251, 113, 133, 0.55)',
+        accentColor: '#FB7185',
+        glowColor: 'rgba(251, 113, 133, 0.16)',
+        iconBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
+        iconShadow: '0 4px 14px rgba(244, 63, 94, 0.35)',
         graphic: <StackGraphic />,
       },
     },
@@ -274,13 +274,13 @@ export default function WhyUsSection() {
         'Eliminating data silos and accelerating innovation',
       ],
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(64, 36, 12, 0.42) 0%, rgba(24, 13, 4, 0.72) 100%)',
-        borderColor: 'rgba(245, 158, 11, 0.22)',
-        hoverBorderColor: 'rgba(245, 158, 11, 0.55)',
-        accentColor: '#F59E0B',
-        glowColor: 'rgba(245, 158, 11, 0.16)',
-        iconBg: 'linear-gradient(135deg, #D97706 0%, #92400E 100%)',
-        iconShadow: '0 4px 14px rgba(217, 119, 6, 0.35)',
+        cardBg: 'linear-gradient(135deg, rgba(74, 14, 32, 0.42) 0%, rgba(30, 4, 14, 0.72) 100%)',
+        borderColor: 'rgba(225, 29, 72, 0.22)',
+        hoverBorderColor: 'rgba(225, 29, 72, 0.55)',
+        accentColor: '#F43F5E',
+        glowColor: 'rgba(225, 29, 72, 0.16)',
+        iconBg: 'linear-gradient(135deg, #E11D48 0%, #9F1239 100%)',
+        iconShadow: '0 4px 14px rgba(225, 29, 72, 0.35)',
         graphic: <LakehouseGraphic />,
       },
     },
