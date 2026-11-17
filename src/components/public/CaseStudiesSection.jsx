@@ -108,12 +108,57 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
       style={{
         position: 'relative',
         padding: '7rem 0',
-        background: '#020814',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+        background: 'linear-gradient(180deg, #071C38 0%, #0B2950 50%, #061832 100%)',
+        borderTop: '1px solid rgba(56, 189, 248, 0.22)',
+        borderBottom: '1px solid rgba(56, 189, 248, 0.15)',
         color: '#ffffff',
         overflow: 'hidden',
       }}
     >
+      {/* Ambient Radial Glow Top-Right */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-10%',
+          right: '-5%',
+          width: '650px',
+          height: '650px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+
+      {/* Ambient Radial Glow Bottom-Left */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-15%',
+          left: '-5%',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(45, 212, 191, 0.14) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+
+      {/* Subtle Micro-Grid Texture */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage:
+            'linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          pointerEvents: 'none',
+          zIndex: 1,
+          opacity: 0.6,
+        }}
+      />
+
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Header */}
         <div
@@ -401,13 +446,14 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
                     <span
                       key={sIdx}
                       style={{
-                        background: '#051020',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        color: '#CBD5E1',
+                        background: 'rgba(7, 28, 58, 0.75)',
+                        border: '1px solid rgba(56, 189, 248, 0.22)',
+                        color: '#E2E8F0',
                         fontSize: '12px',
                         fontWeight: 600,
                         padding: '5px 12px',
                         borderRadius: '6px',
+                        backdropFilter: 'blur(8px)',
                       }}
                     >
                       {t}
@@ -468,9 +514,9 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
                   overflow: 'hidden',
                   boxShadow:
                     idx === activeIndex
-                      ? '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08)'
+                      ? '0 25px 60px rgba(0, 8, 25, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.25), 0 0 35px rgba(56, 189, 248, 0.12)'
                       : 'none',
-                  background: '#051020',
+                  background: '#071A36',
                   cursor: 'pointer',
                   opacity: idx === activeIndex ? 1 : 0,
                   visibility: idx === activeIndex ? 'visible' : 'hidden',
