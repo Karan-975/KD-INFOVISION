@@ -72,7 +72,7 @@ export default function ServicesSection({ services = [] }) {
       title: 'Technology & Management Consulting',
       kicker: 'Strategic Value',
       icon: ShieldCheck,
-      image: '/images/service_consulting_real.jpg',
+      image: '/images/hero_realistic_analytics.jpg',
       alt: 'KD Infovision Technology Management & Enterprise Advisory Spec',
       desc: 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients.',
       capabilities: [
@@ -198,6 +198,11 @@ export default function ServicesSection({ services = [] }) {
                   <img
                     src={item.image}
                     alt={item.alt}
+                    onError={(e) => {
+                      if (!e.currentTarget.src.includes('hero_realistic_analytics.jpg')) {
+                        e.currentTarget.src = '/images/hero_realistic_analytics.jpg';
+                      }
+                    }}
                     style={{
                       width: '100%',
                       height: '100%',
