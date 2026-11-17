@@ -195,7 +195,7 @@ export default function Footer({ settings }) {
                     className={`nav-link ${item.isSpecial ? 'admin-cms-link' : ''}`}
                     style={
                       item.isSpecial
-                        ? { color: '#00E5FF', fontWeight: 600, textDecoration: 'none' }
+                        ? { color: '#FFFFFF', fontWeight: 700, textDecoration: 'none' }
                         : { color: 'rgba(255, 255, 255, 0.65)', textDecoration: 'none' }
                     }
                   >
@@ -246,7 +246,7 @@ export default function Footer({ settings }) {
       {/* Styled JSX: Clean, Simple, Professional (Matching Raycast Reference & Contact Us Obsidian Theme) */}
       <style jsx>{`
         .kd-footer {
-          background: radial-gradient(ellipse at top, #061030 0%, #040612 60%, #02030a 100%);
+          background: linear-gradient(180deg, #050811 0%, #020409 100%);
           color: #ffffff;
           font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           position: relative;
@@ -261,11 +261,10 @@ export default function Footer({ settings }) {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent 0%, rgba(45, 212, 191, 0.35) 25%, rgba(56, 189, 248, 0.35) 75%, transparent 100%);
-          box-shadow: 0 0 20px rgba(45, 212, 191, 0.2);
+          background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 75%, transparent 100%);
         }
 
-        /* Ambient Animated Aurora Background */
+        /* Ambient Background */
         .footer-aurora-bg {
           position: absolute;
           inset: 0;
@@ -275,48 +274,17 @@ export default function Footer({ settings }) {
         }
 
         .aurora-orb {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(95px);
-          opacity: 0.65;
-          will-change: transform, opacity;
-        }
-
-        .aurora-1 {
-          width: 520px;
-          height: 320px;
-          top: -40px;
-          left: 15%;
-          background: radial-gradient(circle, rgba(146, 102, 253, 0.16) 0%, rgba(124, 58, 237, 0.06) 50%, transparent 75%);
-          animation: auroraFloat1 15s ease-in-out infinite alternate;
-        }
-
-        .aurora-2 {
-          width: 480px;
-          height: 300px;
-          top: -20px;
-          right: 18%;
-          background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 75%);
-          animation: auroraFloat2 19s ease-in-out infinite alternate;
-        }
-
-        .aurora-3 {
-          width: 420px;
-          height: 240px;
-          bottom: 20px;
-          left: 42%;
-          background: radial-gradient(circle, rgba(157, 168, 251, 0.09) 0%, rgba(146, 102, 253, 0.03) 60%, transparent 75%);
-          animation: auroraFloat3 13s ease-in-out infinite alternate;
+          display: none;
         }
 
         .aurora-grid {
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
           background-size: 32px 32px;
-          opacity: 0.4;
-          mask-image: radial-gradient(circle at 50% 30%, black 40%, transparent 80%);
-          WebkitMaskImage: radial-gradient(circle at 50% 30%, black 40%, transparent 80%);
+          opacity: 0.5;
+          mask-image: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
+          WebkitMaskImage: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
         }
 
         @keyframes auroraFloat1 {
@@ -421,7 +389,7 @@ export default function Footer({ settings }) {
         .contact-item :global(.contact-icon) {
           flex-shrink: 0;
           margin-top: 2px;
-          color: #9DA8FB;
+          color: rgba(255, 255, 255, 0.75);
         }
 
         .contact-item a {
@@ -434,7 +402,7 @@ export default function Footer({ settings }) {
           color: #ffffff;
         }
 
-        /* Social Icons */
+        /* Social Icons - Clean, Bold, Simple & Professional */
         .social-links-row {
           display: flex;
           align-items: center;
@@ -445,28 +413,28 @@ export default function Footer({ settings }) {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
+          width: 38px;
+          height: 38px;
           border-radius: 9px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: rgba(255, 255, 255, 0.7);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          color: #ffffff;
           text-decoration: none;
           transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .social-btn:hover {
-          background: rgba(146, 102, 253, 0.15);
-          border-color: rgba(157, 168, 251, 0.4);
-          color: #ffffff;
+          background: #ffffff;
+          border-color: #ffffff;
+          color: #050811;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+          box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
         }
 
         /* Column Headers & Links */
         .col-heading {
           font-size: 0.95rem;
-          font-weight: 600;
+          font-weight: 700;
           color: #ffffff;
           letter-spacing: 0.02em;
           margin: 0 0 1.25rem 0;
@@ -513,12 +481,12 @@ export default function Footer({ settings }) {
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
         }
 
-        /* Admin CMS Portal: Unique distinct radiant color fitting our dark obsidian theme */
+        /* Admin CMS Portal: Bold in white color, simple & professional */
         .links-list li :global(.admin-cms-link),
         .links-list :global(.admin-cms-link),
         .footer-links-col :global(a.admin-cms-link) {
-          color: #00E5FF !important;
-          font-weight: 600 !important;
+          color: #ffffff !important;
+          font-weight: 700 !important;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -526,13 +494,13 @@ export default function Footer({ settings }) {
 
         .links-list li :global(.admin-cms-link:visited),
         .footer-links-col :global(a.admin-cms-link:visited) {
-          color: #00E5FF !important;
+          color: #ffffff !important;
         }
 
         .links-list li :global(.admin-cms-link:hover),
         .footer-links-col :global(a.admin-cms-link:hover) {
           color: #ffffff !important;
-          text-shadow: 0 0 14px rgba(0, 229, 255, 0.85);
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
           transform: translateX(4px);
         }
 
@@ -542,24 +510,24 @@ export default function Footer({ settings }) {
           letter-spacing: 0.8px;
           padding: 2px 7px;
           border-radius: 4px;
-          background: rgba(0, 229, 255, 0.16);
-          color: #00E5FF;
-          border: 1px solid rgba(0, 229, 255, 0.45);
-          box-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+          background: rgba(255, 255, 255, 0.12);
+          color: #ffffff;
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
           transition: all 0.2s ease;
         }
 
         .links-list li :global(.admin-cms-link:hover) .cms-badge,
         .footer-links-col :global(a.admin-cms-link:hover) .cms-badge {
-          background: #00E5FF;
-          color: #040612;
-          border-color: #00E5FF;
-          box-shadow: 0 0 14px rgba(0, 229, 255, 0.7);
+          background: #ffffff;
+          color: #050811;
+          border-color: #ffffff;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
         }
 
         /* Clean Bottom Bar */
         .bottom-bar {
-          border-top: 1px solid rgba(255, 255, 255, 0.07);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding-top: 2rem;
           display: flex;
           justify-content: space-between;
@@ -582,7 +550,7 @@ export default function Footer({ settings }) {
         }
 
         .tagline {
-          color: rgba(157, 168, 251, 0.7);
+          color: rgba(255, 255, 255, 0.6);
         }
 
         .bottom-actions {
