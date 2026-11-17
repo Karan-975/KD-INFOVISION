@@ -60,7 +60,7 @@ function CounterItem({ target, suffix, label, context }) {
           fontFamily: "'Montserrat', sans-serif",
           fontSize: 'clamp(2rem, 2.7vw, 2.85rem)',
           fontWeight: 800,
-          color: '#2DD4BF',
+          color: '#0077ED',
           lineHeight: 1,
           marginBottom: '0.45rem',
           letterSpacing: '-0.02em',
@@ -166,7 +166,7 @@ export default function AboutSection({ statCounters = [] }) {
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '2px',
-              color: '#00A389',
+              color: '#0077ED',
               marginBottom: '0.85rem',
               fontFamily: "'Montserrat', sans-serif",
             }}
@@ -174,7 +174,7 @@ export default function AboutSection({ statCounters = [] }) {
             WHO WE ARE &amp; WHY WE SUCCEED
           </div>
 
-          {/* Heading with BCG Emerald & Crisp White Gradient Accent */}
+          {/* Heading with Brand Corporate Accent */}
           <h2
             style={{
               fontFamily: "'Montserrat', sans-serif",
@@ -187,13 +187,7 @@ export default function AboutSection({ statCounters = [] }) {
             }}
           >
             We Know That Our Clients Are The Key To Our{' '}
-            <span
-              style={{
-                background: 'linear-gradient(90deg, #FFFFFF 15%, #2DD4BF 60%, #00A389 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
+            <span style={{ color: '#0077ED' }}>
               Success &amp; Triumph
             </span>
           </h2>
@@ -254,15 +248,15 @@ export default function AboutSection({ statCounters = [] }) {
                     width: '22px',
                     height: '22px',
                     borderRadius: '50%',
-                    background: 'rgba(0, 163, 137, 0.15)',
-                    border: '1px solid rgba(0, 163, 137, 0.35)',
+                    background: 'rgba(0, 119, 237, 0.12)',
+                    border: '1px solid rgba(0, 119, 237, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
                   }}
                 >
-                  <CheckCircle2 size={14} style={{ color: '#2DD4BF' }} />
+                  <CheckCircle2 size={14} style={{ color: '#0077ED' }} />
                 </div>
                 <span>{pillar}</span>
               </div>
@@ -275,7 +269,7 @@ export default function AboutSection({ statCounters = [] }) {
               href="/about"
               className="about-tc-learn-more"
               style={{
-                background: 'linear-gradient(93.05deg, #008559 0%, #00A389 100%)',
+                background: 'linear-gradient(93.05deg, #0077ED 0%, #0056B3 100%)',
                 padding: '14px 34px',
                 borderRadius: '8px',
                 display: 'inline-flex',
@@ -286,7 +280,7 @@ export default function AboutSection({ statCounters = [] }) {
                 fontWeight: 700,
                 fontFamily: "'Montserrat', sans-serif",
                 textDecoration: 'none',
-                boxShadow: '0 8px 24px rgba(0, 133, 89, 0.3)',
+                boxShadow: '0 8px 24px rgba(0, 119, 237, 0.3)',
                 transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
             >
@@ -369,21 +363,19 @@ export default function AboutSection({ statCounters = [] }) {
 
       <style jsx>{`
         .about-tc-learn-more:hover {
-          background: linear-gradient(93.05deg, #00A389 0%, #008559 50%, #2DD4BF 100%) !important;
-          background-size: 200% 100% !important;
-          background-position: 100% 0 !important;
+          background: linear-gradient(93.05deg, #0056B3 0%, #0077ED 100%) !important;
           transform: translateY(-3px);
-          box-shadow: 0 12px 35px rgba(0, 133, 89, 0.55), 0 0 25px rgba(45, 212, 191, 0.3) !important;
+          box-shadow: 0 12px 35px rgba(0, 119, 237, 0.5) !important;
         }
         .about-stat-counter-card:hover {
-          background: rgba(0, 163, 137, 0.08) !important;
-          border-color: rgba(0, 163, 137, 0.4) !important;
+          background: rgba(0, 119, 237, 0.08) !important;
+          border-color: rgba(0, 119, 237, 0.4) !important;
           transform: translateY(-3px);
           box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45) !important;
         }
         .about-value-pillar:hover {
-          background: rgba(0, 163, 137, 0.08) !important;
-          border-color: rgba(0, 163, 137, 0.35) !important;
+          background: rgba(0, 119, 237, 0.08) !important;
+          border-color: rgba(0, 119, 237, 0.35) !important;
           transform: translateX(4px);
         }
         .about-showcase-img:hover {
