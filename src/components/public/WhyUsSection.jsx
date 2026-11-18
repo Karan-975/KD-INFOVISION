@@ -2,9 +2,10 @@
 
 import React from 'react';
 import {
+  ShieldCheck,
   Cpu,
   Layers,
-  ShieldCheck,
+  BarChart3,
   CheckCircle2,
   Award,
   Zap,
@@ -13,220 +14,11 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
-/* -------------------------------------------------------------
-   3D Holographic Vector Graphics matching Reference Image-2
-   ------------------------------------------------------------- */
-
-// Card 1 Graphic: Glowing 3D Digital Globe with Orbital Data Ring
-function GlobeGraphic() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="goldGlobeGrad" cx="40%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#FDE68A" stopOpacity="0.45" />
-          <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#451A03" stopOpacity="0.08" />
-        </radialGradient>
-        <linearGradient id="goldOrbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FDE68A" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#FBBF24" stopOpacity="0.05" />
-        </linearGradient>
-        <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
-      {/* Ambient glow sphere */}
-      <circle cx="80" cy="80" r="45" fill="#F59E0B" opacity="0.16" filter="url(#glowGold)" />
-
-      {/* Globe Sphere Body */}
-      <circle cx="80" cy="80" r="48" fill="url(#goldGlobeGrad)" stroke="#FBBF24" strokeWidth="1.2" strokeOpacity="0.65" />
-
-      {/* Wireframe Meridians */}
-      <ellipse cx="80" cy="80" rx="36" ry="48" stroke="#FDE68A" strokeWidth="0.8" strokeOpacity="0.4" strokeDasharray="3 3" />
-      <ellipse cx="80" cy="80" rx="20" ry="48" stroke="#FBBF24" strokeWidth="0.85" strokeOpacity="0.55" />
-      <line x1="80" y1="32" x2="80" y2="128" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.6" />
-
-      {/* Wireframe Parallels */}
-      <ellipse cx="80" cy="60" rx="42" ry="12" stroke="#FDE68A" strokeWidth="0.75" strokeOpacity="0.4" />
-      <ellipse cx="80" cy="80" rx="48" ry="14" stroke="#FBBF24" strokeWidth="0.9" strokeOpacity="0.55" />
-      <ellipse cx="80" cy="100" rx="42" ry="12" stroke="#FDE68A" strokeWidth="0.75" strokeOpacity="0.4" />
-
-      {/* Surface Data Nodes */}
-      <circle cx="70" cy="65" r="2.5" fill="#FFFFFF" />
-      <circle cx="95" cy="74" r="2" fill="#FDE68A" />
-      <circle cx="68" cy="92" r="2" fill="#FBBF24" />
-      <circle cx="88" cy="98" r="2.5" fill="#FFFFFF" />
-      <circle cx="80" cy="50" r="1.8" fill="#F59E0B" />
-
-      {/* Tilted Orbital Ring */}
-      <g transform="rotate(-26 80 80)">
-        <ellipse cx="80" cy="80" rx="68" ry="22" stroke="url(#goldOrbitGrad)" strokeWidth="2.2" />
-        <circle cx="148" cy="80" r="4" fill="#FFFFFF" filter="url(#glowGold)" />
-        <circle cx="148" cy="80" r="2" fill="#F59E0B" />
-      </g>
-    </svg>
-  );
-}
-
-// Card 2 Graphic: Glowing 3D Isometric Layered Stack / Platform
-function StackGraphic() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="roseGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFE4E6" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#FDA4AF" stopOpacity="0.5" />
-        </linearGradient>
-        <linearGradient id="roseGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FDA4AF" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#FB7185" stopOpacity="0.4" />
-        </linearGradient>
-        <linearGradient id="roseGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FB7185" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#E11D48" stopOpacity="0.3" />
-        </linearGradient>
-        <filter id="glowRoseStack" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
-      {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#FB7185" opacity="0.18" filter="url(#glowRoseStack)" />
-
-      {/* Bottom Layer */}
-      <g transform="translate(0, 36)">
-        <path d="M80 72 L128 92 L80 112 L32 92 Z" fill="url(#roseGrad3)" stroke="#FB7185" strokeWidth="1.2" strokeOpacity="0.6" />
-        <path d="M32 92 L80 112 L80 118 L32 98 Z" fill="#9F1239" opacity="0.5" />
-        <path d="M128 92 L80 112 L80 118 L128 98 Z" fill="#881337" opacity="0.5" />
-      </g>
-
-      {/* Middle Layer */}
-      <g transform="translate(0, 18)">
-        <path d="M80 62 L128 82 L80 102 L32 82 Z" fill="url(#roseGrad2)" stroke="#FDA4AF" strokeWidth="1.4" strokeOpacity="0.7" />
-        <path d="M32 82 L80 102 L80 108 L32 88 Z" fill="#E11D48" opacity="0.5" />
-        <path d="M128 82 L80 102 L80 108 L128 88 Z" fill="#9F1239" opacity="0.5" />
-      </g>
-
-      {/* Top Layer */}
-      <g transform="translate(0, 0)">
-        <path d="M80 52 L128 72 L80 92 L32 72 Z" fill="url(#roseGrad1)" stroke="#FFF1F2" strokeWidth="1.6" strokeOpacity="0.9" />
-        <path d="M32 72 L80 92 L80 98 L32 78 Z" fill="#F43F5E" opacity="0.6" />
-        <path d="M128 72 L80 92 L80 98 L128 78 Z" fill="#E11D48" opacity="0.6" />
-      </g>
-
-      {/* Vertical Data Beacons connecting layers */}
-      <line x1="80" y1="52" x2="80" y2="128" stroke="#FFF1F2" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.75" />
-      <circle cx="80" cy="52" r="3.5" fill="#FFFFFF" filter="url(#glowRoseStack)" />
-      <circle cx="80" cy="52" r="1.8" fill="#FDA4AF" />
-      <circle cx="80" cy="80" r="2.5" fill="#FFE4E6" />
-      <circle cx="80" cy="108" r="2.5" fill="#FB7185" />
-    </svg>
-  );
-}
-
-// Card 3 Graphic: Glowing 3D Isometric Lakehouse Matrix
-function LakehouseGraphic() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="tealGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#0D9488" stopOpacity="0.45" />
-        </linearGradient>
-        <filter id="glowTeal" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
-      {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#0D9488" opacity="0.18" filter="url(#glowTeal)" />
-
-      {/* Center Main Cube */}
-      <g transform="translate(0, -6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#CCFBF1" strokeWidth="1.5" strokeOpacity="0.9" />
-        <path d="M46 62 L80 80 L80 114 L46 96 Z" fill="#0F766E" opacity="0.65" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.5" />
-        <path d="M114 62 L80 80 L80 114 L114 96 Z" fill="#115E59" opacity="0.75" stroke="#0D9488" strokeWidth="1" strokeOpacity="0.5" />
-      </g>
-
-      {/* Satellite Node 1 (Top Left) */}
-      <g transform="translate(-32, -18) scale(0.6)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
-      </g>
-      <line x1="56" y1="52" x2="68" y2="60" stroke="#99F6E4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
-
-      {/* Satellite Node 2 (Bottom Right) */}
-      <g transform="translate(42, 34) scale(0.55)">
-        <path d="M80 44 L114 62 L80 80 L46 62 Z" fill="url(#tealGrad1)" stroke="#2DD4BF" strokeWidth="1.5" />
-      </g>
-      <line x1="98" y1="92" x2="114" y2="102" stroke="#99F6E4" strokeWidth="1" strokeDasharray="2 2" opacity="0.8" />
-
-      {/* Data Pulse Rings */}
-      <ellipse cx="80" cy="74" rx="48" ry="16" stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.45" strokeDasharray="4 4" />
-      <circle cx="80" cy="44" r="3" fill="#FFFFFF" filter="url(#glowTeal)" />
-    </svg>
-  );
-}
-
-// Card 4 Graphic: Glowing 3D Holographic Analytics Dashboard
-function AnalyticsGraphic() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="amberGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FDBA74" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#EA580C" stopOpacity="0.4" />
-        </linearGradient>
-        <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
-      {/* Ambient glow */}
-      <circle cx="80" cy="80" r="45" fill="#EA580C" opacity="0.18" filter="url(#glowAmber)" />
-
-      {/* Isometric Floor Grid */}
-      <path d="M80 68 L130 94 L80 120 L30 94 Z" fill="rgba(234, 88, 12, 0.1)" stroke="#FB923C" strokeWidth="1" strokeOpacity="0.35" strokeDasharray="3 3" />
-
-      {/* Bar 1 (Left - Mid Height) */}
-      <g transform="translate(48, 70)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FB923C" stroke="#FED7AA" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 36 L0 30 Z" fill="#C2410C" opacity="0.75" />
-        <path d="M24 6 L12 12 L12 36 L24 30 Z" fill="#7C2D12" opacity="0.75" />
-      </g>
-
-      {/* Bar 2 (Center - Tall Height) */}
-      <g transform="translate(70, 48)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FED7AA" stroke="#FFFFFF" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 56 L0 50 Z" fill="#EA580C" opacity="0.8" />
-        <path d="M24 6 L12 12 L12 56 L24 50 Z" fill="#9A3412" opacity="0.8" />
-      </g>
-
-      {/* Bar 3 (Right - Small Height) */}
-      <g transform="translate(92, 80)">
-        <path d="M12 0 L24 6 L12 12 L0 6 Z" fill="#FB923C" stroke="#FED7AA" strokeWidth="1" />
-        <path d="M0 6 L12 12 L12 24 L0 18 Z" fill="#C2410C" opacity="0.75" />
-        <path d="M24 6 L12 12 L12 24 L24 18 Z" fill="#7C2D12" opacity="0.75" />
-      </g>
-
-      {/* Floating Trend Line */}
-      <path d="M58 68 L82 44 L104 74" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" filter="url(#glowAmber)" />
-      <circle cx="58" cy="68" r="3" fill="#FB923C" />
-      <circle cx="82" cy="44" r="3.5" fill="#FFFFFF" />
-      <circle cx="104" cy="74" r="3" fill="#FB923C" />
-    </svg>
-  );
-}
-
 const iconMap = {
   ShieldCheck,
   Cpu,
   Layers,
+  BarChart3,
   CheckCircle2,
   Award,
   Zap,
@@ -234,78 +26,63 @@ const iconMap = {
   Lock,
 };
 
-function resolveGraphic(type) {
-  switch (type) {
-    case 'globe':
-      return <GlobeGraphic />;
-    case 'stack':
-      return <StackGraphic />;
-    case 'lakehouse':
-      return <LakehouseGraphic />;
-    case 'analytics':
-      return <AnalyticsGraphic />;
-    default:
-      return <GlobeGraphic />;
-  }
-}
+function resolvePillarTheme(item, idx) {
+  const accent = item.accentColor || (idx === 0 ? '#D97706' : idx === 1 ? '#E11D48' : idx === 2 ? '#0D9488' : '#6D48D7');
 
-function resolvePillarTheme(item) {
-  const accent = item.accentColor || '#FBBF24';
-
-  if (accent === '#FBBF24') {
+  if (accent === '#FBBF24' || accent === '#F59E0B' || accent === '#D97706') {
     return {
-      cardBg: 'linear-gradient(135deg, rgba(62, 42, 12, 0.42) 0%, rgba(24, 16, 4, 0.72) 100%)',
-      borderColor: 'rgba(251, 191, 36, 0.22)',
-      hoverBorderColor: 'rgba(251, 191, 36, 0.55)',
-      accentColor: '#FBBF24',
-      glowColor: 'rgba(251, 191, 36, 0.16)',
-      iconBg: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
-      iconShadow: '0 4px 14px rgba(245, 158, 11, 0.35)',
+      defaultBg: '#FFFDF7',
+      defaultBorder: 'rgba(245, 158, 11, 0.22)',
+      hoverBg: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+      hoverShadow: '0 24px 50px rgba(217, 119, 6, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+      accentColor: '#D97706',
+      iconDefaultBg: 'rgba(245, 158, 11, 0.12)',
+      iconDefaultColor: '#D97706',
     };
   }
-  if (accent === '#FB7185') {
+  if (accent === '#FB7185' || accent === '#F43F5E' || accent === '#E11D48') {
     return {
-      cardBg: 'linear-gradient(135deg, rgba(76, 24, 40, 0.42) 0%, rgba(30, 8, 16, 0.72) 100%)',
-      borderColor: 'rgba(251, 113, 133, 0.22)',
-      hoverBorderColor: 'rgba(251, 113, 133, 0.55)',
-      accentColor: '#FB7185',
-      glowColor: 'rgba(251, 113, 133, 0.16)',
-      iconBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
-      iconShadow: '0 4px 14px rgba(244, 63, 94, 0.35)',
+      defaultBg: '#FFFDFC',
+      defaultBorder: 'rgba(244, 63, 94, 0.22)',
+      hoverBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
+      hoverShadow: '0 24px 50px rgba(225, 29, 72, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+      accentColor: '#E11D48',
+      iconDefaultBg: 'rgba(244, 63, 94, 0.12)',
+      iconDefaultColor: '#E11D48',
     };
   }
-  if (accent === '#2DD4BF' || accent === '#14B8A6') {
+  if (accent === '#2DD4BF' || accent === '#14B8A6' || accent === '#0D9488') {
     return {
-      cardBg: 'linear-gradient(135deg, rgba(13, 78, 74, 0.42) 0%, rgba(4, 30, 28, 0.72) 100%)',
-      borderColor: 'rgba(45, 212, 191, 0.22)',
-      hoverBorderColor: 'rgba(45, 212, 191, 0.55)',
-      accentColor: '#2DD4BF',
-      glowColor: 'rgba(45, 212, 191, 0.16)',
-      iconBg: 'linear-gradient(135deg, #0D9488 0%, #044E49 100%)',
-      iconShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
+      defaultBg: '#F7FEFD',
+      defaultBorder: 'rgba(13, 148, 136, 0.22)',
+      hoverBg: 'linear-gradient(135deg, #14B8A6 0%, #0D9488 100%)',
+      hoverShadow: '0 24px 50px rgba(13, 148, 136, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+      accentColor: '#0D9488',
+      iconDefaultBg: 'rgba(13, 148, 136, 0.12)',
+      iconDefaultColor: '#0D9488',
     };
   }
-  if (accent === '#FB923C') {
+  if (accent === '#8B5CF6' || accent === '#7C3AED' || accent === '#6D48D7' || accent === '#FB923C' || accent === '#EA580C') {
     return {
-      cardBg: 'linear-gradient(135deg, rgba(64, 28, 16, 0.42) 0%, rgba(24, 10, 6, 0.72) 100%)',
-      borderColor: 'rgba(251, 146, 60, 0.22)',
-      hoverBorderColor: 'rgba(251, 146, 60, 0.55)',
-      accentColor: '#FB923C',
-      glowColor: 'rgba(251, 146, 60, 0.16)',
-      iconBg: 'linear-gradient(135deg, #F97316 0%, #C2410C 100%)',
-      iconShadow: '0 4px 14px rgba(249, 115, 22, 0.35)',
+      defaultBg: '#F5F3FF', // Matching Image-1's soft lilac "Templates" card
+      defaultBorder: 'rgba(109, 72, 215, 0.22)',
+      hoverBg: 'linear-gradient(135deg, #7C3AED 0%, #6D48D7 100%)', // Matching Image-1's hovered solid purple "Assets" card
+      hoverShadow: '0 24px 50px rgba(109, 72, 215, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+      accentColor: '#6D48D7',
+      iconDefaultBg: 'rgba(109, 72, 215, 0.12)',
+      iconDefaultColor: '#6D48D7',
     };
   }
 
-  // Dynamic fallback for any custom hex code from the CMS color picker:
+  // Fallback for custom CMS colors
   return {
-    cardBg: `linear-gradient(135deg, ${accent}26 0%, rgba(10, 15, 28, 0.85) 100%)`,
-    borderColor: `${accent}40`,
-    hoverBorderColor: `${accent}88`,
+    defaultBg: '#FFFFFF',
+    defaultBorder: `${accent}33`,
+    hoverBg: `linear-gradient(135deg, ${accent} 0%, ${accent}dd 100%)`,
+    hoverShadow: `0 24px 50px ${accent}50, 0 8px 20px rgba(0, 0, 0, 0.3)`,
     accentColor: accent,
-    glowColor: `${accent}25`,
-    iconBg: `linear-gradient(135deg, ${accent} 0%, rgba(15, 23, 42, 0.95) 100%)`,
-    iconShadow: `0 4px 14px ${accent}40`,
+    iconDefaultBg: `${accent}18`,
+    iconDefaultColor: accent,
   };
 }
 
@@ -334,14 +111,13 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
       ctaText: 'Learn More',
       ctaUrl: '#contact',
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(62, 42, 12, 0.42) 0%, rgba(24, 16, 4, 0.72) 100%)',
-        borderColor: 'rgba(251, 191, 36, 0.22)',
-        hoverBorderColor: 'rgba(251, 191, 36, 0.55)',
-        accentColor: '#FBBF24',
-        glowColor: 'rgba(251, 191, 36, 0.16)',
-        iconBg: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
-        iconShadow: '0 4px 14px rgba(245, 158, 11, 0.35)',
-        graphic: <GlobeGraphic />,
+        defaultBg: '#FFFDF7',
+        defaultBorder: 'rgba(245, 158, 11, 0.22)',
+        hoverBg: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+        hoverShadow: '0 24px 50px rgba(217, 119, 6, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+        accentColor: '#D97706',
+        iconDefaultBg: 'rgba(245, 158, 11, 0.12)',
+        iconDefaultColor: '#D97706',
       },
     },
     {
@@ -357,14 +133,13 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
       ctaText: 'Learn More',
       ctaUrl: '#contact',
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(76, 24, 40, 0.42) 0%, rgba(30, 8, 16, 0.72) 100%)',
-        borderColor: 'rgba(251, 113, 133, 0.22)',
-        hoverBorderColor: 'rgba(251, 113, 133, 0.55)',
-        accentColor: '#FB7185',
-        glowColor: 'rgba(251, 113, 133, 0.16)',
-        iconBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
-        iconShadow: '0 4px 14px rgba(244, 63, 94, 0.35)',
-        graphic: <StackGraphic />,
+        defaultBg: '#FFFDFC',
+        defaultBorder: 'rgba(244, 63, 94, 0.22)',
+        hoverBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
+        hoverShadow: '0 24px 50px rgba(225, 29, 72, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+        accentColor: '#E11D48',
+        iconDefaultBg: 'rgba(244, 63, 94, 0.12)',
+        iconDefaultColor: '#E11D48',
       },
     },
     {
@@ -380,18 +155,17 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
       ctaText: 'Learn More',
       ctaUrl: '#contact',
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(13, 78, 74, 0.42) 0%, rgba(4, 30, 28, 0.72) 100%)',
-        borderColor: 'rgba(45, 212, 191, 0.22)',
-        hoverBorderColor: 'rgba(45, 212, 191, 0.55)',
-        accentColor: '#2DD4BF',
-        glowColor: 'rgba(45, 212, 191, 0.16)',
-        iconBg: 'linear-gradient(135deg, #0D9488 0%, #044E49 100%)',
-        iconShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
-        graphic: <LakehouseGraphic />,
+        defaultBg: '#F7FEFD',
+        defaultBorder: 'rgba(13, 148, 136, 0.22)',
+        hoverBg: 'linear-gradient(135deg, #14B8A6 0%, #0D9488 100%)',
+        hoverShadow: '0 24px 50px rgba(13, 148, 136, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+        accentColor: '#0D9488',
+        iconDefaultBg: 'rgba(13, 148, 136, 0.12)',
+        iconDefaultColor: '#0D9488',
       },
     },
     {
-      icon: CheckCircle2,
+      icon: BarChart3,
       titlePrefix: 'Real-Time BI &',
       titleHighlight: 'Dashboards',
       desc: 'You do not need to create your reports and dashboards from scratch. Just upload your data and get executive-ready solutions in real time.',
@@ -403,23 +177,21 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
       ctaText: 'Learn More',
       ctaUrl: '#contact',
       theme: {
-        cardBg: 'linear-gradient(135deg, rgba(64, 28, 16, 0.42) 0%, rgba(24, 10, 6, 0.72) 100%)',
-        borderColor: 'rgba(251, 146, 60, 0.22)',
-        hoverBorderColor: 'rgba(251, 146, 60, 0.55)',
-        accentColor: '#FB923C',
-        glowColor: 'rgba(251, 146, 60, 0.16)',
-        iconBg: 'linear-gradient(135deg, #F97316 0%, #C2410C 100%)',
-        iconShadow: '0 4px 14px rgba(249, 115, 22, 0.35)',
-        graphic: <AnalyticsGraphic />,
+        defaultBg: '#F5F3FF', // Matching Image-1's soft lilac
+        defaultBorder: 'rgba(109, 72, 215, 0.22)',
+        hoverBg: 'linear-gradient(135deg, #7C3AED 0%, #6D48D7 100%)', // Matching Image-1's solid purple hover
+        hoverShadow: '0 24px 50px rgba(109, 72, 215, 0.42), 0 8px 20px rgba(0, 0, 0, 0.3)',
+        accentColor: '#6D48D7',
+        iconDefaultBg: 'rgba(109, 72, 215, 0.12)',
+        iconDefaultColor: '#6D48D7',
       },
     },
   ];
 
   const pillars = (dynamicPillars && dynamicPillars.length > 0)
-    ? dynamicPillars.map((p) => {
-        const theme = resolvePillarTheme(p);
+    ? dynamicPillars.map((p, idx) => {
+        const theme = resolvePillarTheme(p, idx);
         const IconComp = iconMap[p.icon] || ShieldCheck;
-        const graphic = resolveGraphic(p.graphicType);
         return {
           icon: IconComp,
           titlePrefix: p.titlePrefix,
@@ -428,10 +200,7 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
           points: parsePoints(p.points),
           ctaText: p.ctaText || 'Learn More',
           ctaUrl: p.ctaUrl || '#contact',
-          theme: {
-            ...theme,
-            graphic,
-          },
+          theme,
         };
       })
     : defaultPillars;
@@ -439,7 +208,9 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
   const sectionTag = settings?.whyTag || 'ENGINEERING EXCELLENCE & TRUST';
   const sectionTitle = settings?.whyTitle || 'Start Your Data & AI Journey with KD Infovision for';
   const sectionHighlight = settings?.whyHighlight || 'Quick & Quality Delivery';
-  const sectionDesc = settings?.whyDesc || 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.';
+  const sectionDesc =
+    settings?.whyDesc ||
+    'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.';
 
   return (
     <section
@@ -500,7 +271,7 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
           </p>
         </div>
 
-        {/* 4 Pillars Grid (2x2) - Keeping exact dimensions */}
+        {/* 4 Pillars Grid (2x2) - Keeping exact dimensions from Image-2 */}
         <div
           style={{
             display: 'grid',
@@ -514,127 +285,107 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
             const t = item.theme;
 
             return (
-              <div
+              <a
                 key={idx}
-                className="why-pillar-card"
+                href={item.ctaUrl || '#contact'}
+                className="flowbase-pillar-card"
                 style={{
                   position: 'relative',
                   overflow: 'hidden',
-                  padding: '2.25rem',
+                  padding: '2.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  borderRadius: '20px',
-                  background: t.cardBg,
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: `1px solid ${t.borderColor}`,
-                  boxShadow: '0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
-                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
-                  '--card-hover-border': t.hoverBorderColor,
-                  '--card-hover-glow': t.glowColor,
+                  borderRadius: '24px',
+                  minHeight: '390px',
+                  background: t.defaultBg,
+                  border: `1.5px solid ${t.defaultBorder}`,
+                  boxShadow: '0 12px 35px rgba(0, 0, 0, 0.35)',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  '--card-hover-bg': t.hoverBg,
+                  '--card-hover-shadow': t.hoverShadow,
+                  '--card-accent': t.accentColor,
+                  '--card-icon-default-bg': t.iconDefaultBg,
+                  '--card-icon-default-color': t.iconDefaultColor,
                 }}
               >
-                {/* Subtle Ambient Light behind 3D Graphic */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: '-10px',
-                    top: '10%',
-                    width: '200px',
-                    height: '200px',
-                    background: `radial-gradient(circle, ${t.glowColor} 0%, transparent 70%)`,
-                    filter: 'blur(25px)',
-                    pointerEvents: 'none',
-                    opacity: 0.8,
-                  }}
-                />
-
-                {/* 3D Holographic Graphic on the Right Side (matching Image-2) */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: '18px',
-                    top: '40px',
-                    width: '145px',
-                    height: '145px',
-                    pointerEvents: 'none',
-                    zIndex: 1,
-                    opacity: 0.95,
-                    filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5))',
-                  }}
-                >
-                  {t.graphic}
-                </div>
-
-                {/* Left/Top Content */}
-                <div style={{ position: 'relative', zIndex: 2 }}>
-                  {/* Glowing Icon Container (NO top-right flag/badge as requested) */}
+                {/* Top/Main Content Area */}
+                <div>
+                  {/* Clean Icon Badge (Image-1 Style) */}
                   <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      marginBottom: '1.5rem',
+                      marginBottom: '1.65rem',
                     }}
                   >
                     <div
+                      className="card-icon-box"
                       style={{
-                        width: '46px',
-                        height: '46px',
-                        borderRadius: '12px',
-                        background: t.iconBg,
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '16px',
+                        background: t.iconDefaultBg,
+                        color: t.iconDefaultColor,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#FFFFFF',
-                        boxShadow: t.iconShadow,
+                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                     >
-                      <IconComp size={22} />
+                      <IconComp size={26} strokeWidth={2.2} />
                     </div>
                   </div>
 
-                  {/* Two-Tone Title */}
+                  {/* Card Title (Bold, modern typography matching Image-1) */}
                   <h3
+                    className="card-title"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
-                      fontSize: '1.3rem',
+                      fontSize: '1.45rem',
                       fontWeight: 800,
-                      color: '#FFFFFF',
-                      marginBottom: '0.85rem',
+                      color: '#0F172A',
+                      marginBottom: '0.95rem',
                       lineHeight: 1.3,
-                      letterSpacing: '-0.015em',
+                      letterSpacing: '-0.02em',
+                      transition: 'color 0.3s ease',
                     }}
-                    className="pillar-title"
                   >
-                    {item.titlePrefix}{' '}
-                    <span style={{ color: t.accentColor }}>{item.titleHighlight}</span>
+                    <span>{item.titlePrefix} </span>
+                    <span className="card-title-highlight" style={{ color: t.accentColor }}>
+                      {item.titleHighlight}
+                    </span>
                   </h3>
 
-                  {/* Description Text */}
+                  {/* Description Paragraph */}
                   <p
+                    className="card-desc"
                     style={{
-                      fontSize: '0.93rem',
-                      color: 'rgba(255, 255, 255, 0.75)',
-                      lineHeight: 1.65,
-                      marginBottom: '1.5rem',
-                      maxWidth: '82%',
+                      fontSize: '0.96rem',
+                      color: '#475569',
+                      lineHeight: 1.68,
+                      marginBottom: '1.75rem',
+                      transition: 'color 0.3s ease',
                     }}
                   >
                     {item.desc}
                   </p>
                 </div>
 
-                {/* Bottom Content: Bullet Points and Learn More CTA Button */}
-                <div style={{ position: 'relative', zIndex: 2 }}>
+                {/* Bottom Content Area: Highlights & Action Arrow */}
+                <div>
+                  {/* Bullet Points */}
                   <div
+                    className="card-divider"
                     style={{
-                      paddingTop: '1.25rem',
-                      borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                      paddingTop: '1.4rem',
+                      borderTop: '1px solid rgba(15, 23, 42, 0.08)',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '10px',
+                      gap: '11px',
+                      transition: 'border-color 0.3s ease',
                     }}
                   >
                     {item.points.map((point, pIdx) => (
@@ -644,44 +395,64 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '10px',
-                          fontSize: '0.88rem',
-                          color: '#E2E8F0',
+                          fontSize: '0.9rem',
                           fontWeight: 500,
                         }}
                       >
-                        <CheckCircle2 size={16} style={{ color: t.accentColor, flexShrink: 0 }} />
-                        <span>{point}</span>
+                        <CheckCircle2
+                          size={17}
+                          className="card-check-icon"
+                          style={{
+                            color: t.accentColor,
+                            flexShrink: 0,
+                            transition: 'color 0.3s ease',
+                          }}
+                        />
+                        <span
+                          className="card-point-text"
+                          style={{
+                            color: '#334155',
+                            transition: 'color 0.3s ease',
+                          }}
+                        >
+                          {point}
+                        </span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Learn More Outline Pill Button (matching Image-2) */}
-                  <div style={{ marginTop: '1.4rem' }}>
-                    <a
-                      href={item.ctaUrl || '#contact'}
-                      className="card-learn-more"
+                  {/* Bottom Action Arrow matching Image-1 */}
+                  <div
+                    style={{
+                      marginTop: '1.75rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <div
+                      className="card-cta-btn"
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '6px',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.18)',
+                        gap: '8px',
+                        background: 'rgba(15, 23, 42, 0.05)',
+                        border: '1px solid rgba(15, 23, 42, 0.10)',
                         borderRadius: '9999px',
-                        padding: '6px 16px',
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        color: '#FFFFFF',
-                        textDecoration: 'none',
-                        transition: 'all 0.25s ease',
+                        padding: '7px 18px',
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        color: '#0F172A',
+                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                         fontFamily: "'Montserrat', sans-serif",
                       }}
                     >
                       <span>{item.ctaText || 'Learn More'}</span>
-                      <ArrowRight size={13} className="learn-arrow" />
-                    </a>
+                      <ArrowRight size={15} className="card-cta-arrow" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -743,21 +514,63 @@ export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
       </div>
 
       <style jsx>{`
-        :global(.why-pillar-card) {
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        :global(.flowbase-pillar-card) {
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        :global(.why-pillar-card:hover) {
-          transform: translateY(-6px);
-          border-color: var(--card-hover-border) !important;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px var(--card-hover-glow) !important;
+
+        /* Hover State matching Image-1 */
+        :global(.flowbase-pillar-card:hover) {
+          transform: translateY(-8px);
+          background: var(--card-hover-bg) !important;
+          border-color: transparent !important;
+          box-shadow: var(--card-hover-shadow) !important;
         }
-        :global(.card-learn-more:hover) {
-          background: rgba(255, 255, 255, 0.12) !important;
-          border-color: rgba(255, 255, 255, 0.4) !important;
+
+        :global(.flowbase-pillar-card:hover .card-title),
+        :global(.flowbase-pillar-card:hover .card-title span),
+        :global(.flowbase-pillar-card:hover .card-title-highlight) {
+          color: #FFFFFF !important;
         }
-        :global(.card-learn-more:hover .learn-arrow) {
-          transform: translateX(3px);
+
+        :global(.flowbase-pillar-card:hover .card-desc) {
+          color: rgba(255, 255, 255, 0.92) !important;
         }
+
+        :global(.flowbase-pillar-card:hover .card-point-text) {
+          color: #FFFFFF !important;
+        }
+
+        :global(.flowbase-pillar-card:hover .card-check-icon) {
+          color: #FFFFFF !important;
+        }
+
+        :global(.flowbase-pillar-card:hover .card-divider) {
+          border-color: rgba(255, 255, 255, 0.22) !important;
+        }
+
+        :global(.flowbase-pillar-card:hover .card-icon-box) {
+          background: rgba(255, 255, 255, 0.22) !important;
+          color: #FFFFFF !important;
+        }
+
+        :global(.flowbase-pillar-card:hover .card-cta-btn) {
+          background: rgba(255, 255, 255, 0.22) !important;
+          border-color: rgba(255, 255, 255, 0.45) !important;
+          color: #FFFFFF !important;
+        }
+
+        :global(.flowbase-pillar-card:hover .card-cta-arrow) {
+          color: #FFFFFF !important;
+          transform: translateX(6px);
+        }
+
+        :global(.card-cta-arrow) {
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         @media (max-width: 960px) {
           :global(.why-grid) {
             grid-template-columns: 1fr !important;
