@@ -5,6 +5,34 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection({ slides = [] }) {
+  const slide = slides && slides.length > 0 ? slides[0] : null;
+
+  // Extract dynamic fields with pristine fallbacks
+  const rawTag = slide?.tag || 'Consulting | Solutioning | Digital';
+  const headline = slide?.headline || 'Your Partner For';
+
+  const rawEmp =
+    slide?.headlineEmp ||
+    'Empowering Your Enterprise with Intelligent Data & Next-Gen Autonomous Agents';
+
+  // Strip literal and curly quotes completely
+  const cleanEmp = rawEmp
+    .replace(/^[“"']+|[”"']+$/g, '')
+    .replace(/[“”"]/g, '')
+    .trim();
+
+  // Split into optical tiers: Line 1 (White) and Line 2 (Luminous Twilight Gradient)
+  let line1 = cleanEmp;
+  let line2 = '';
+  const withMatch = cleanEmp.match(/(.*?\bwith\b\s*)(.*)/i);
+  if (withMatch) {
+    line1 = withMatch[1].trim(); // "Empowering Your Enterprise with"
+    line2 = withMatch[2].trim(); // "Intelligent Data & Next-Gen Autonomous Agents"
+  }
+
+  const ctaText = slide?.primaryBtn || 'Get Started';
+  const ctaUrl = slide?.primaryUrl || '/contact';
+
   const handlePointerMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`);
@@ -119,7 +147,18 @@ export default function HeroSection({ slides = [] }) {
               textShadow: '0 2px 12px rgba(0, 0, 0, 0.9)',
             }}
           >
-            Consulting <span style={{ color: '#38BDF8', margin: '0 8px' }}>|</span> Solutioning <span style={{ color: '#38BDF8', margin: '0 8px' }}>|</span> Digital
+            {rawTag.includes('|') ? (
+              rawTag.split('|').map((segment, idx, arr) => (
+                <React.Fragment key={idx}>
+                  <span>{segment.trim()}</span>
+                  {idx < arr.length - 1 && (
+                    <span style={{ color: '#38BDF8', margin: '0 8px' }}>|</span>
+                  )}
+                </React.Fragment>
+              ))
+            ) : (
+              <span>{rawTag}</span>
+            )}
           </div>
 
           {/* Headline: Spread horizontally across hero section, authentic enterprise data analytics typography */}
@@ -133,6 +172,7 @@ export default function HeroSection({ slides = [] }) {
               width: '100%',
             }}
           >
+            {/* "YOUR PARTNER FOR" Subtitle */}
             <span
               style={{
                 display: 'block',
@@ -145,28 +185,73 @@ export default function HeroSection({ slides = [] }) {
                 textShadow: '0 2px 14px rgba(0, 0, 0, 0.95)',
               }}
             >
-              Your Partner For
+              {headline}
             </span>
-            <span
-              style={{
-                display: 'block',
-                fontSize: 'clamp(2.35rem, 3.8vw, 3.65rem)',
-                fontWeight: 800,
-                lineHeight: 1.2,
-                letterSpacing: '-0.025em',
-                color: '#FFFFFF',
-                textShadow:
-                  '0 2px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(2, 12, 32, 0.9)',
-              }}
-            >
-              “Empowering Your Enterprise with Intelligent Data & Next-Gen Autonomous Agents”
-            </span>
+
+            {/* Redesigned & Recolored Headline without Quotes */}
+            {line2 ? (
+              <>
+                {/* Part 1: "Empowering Your Enterprise with" in crisp radiant white */}
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: 'clamp(2.15rem, 3.5vw, 3.45rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.22,
+                    letterSpacing: '-0.02em',
+                    color: '#FFFFFF',
+                    textShadow:
+                      '0 2px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(2, 12, 32, 0.9)',
+                  }}
+                >
+                  {line1}
+                </span>
+
+                {/* Part 2: "Intelligent Data & Next-Gen Autonomous Agents" in luminous twilight gradient */}
+                <span
+                  style={{
+                    display: 'block',
+                    marginTop: '0.35rem',
+                    fontSize: 'clamp(2.35rem, 3.8vw, 3.75rem)',
+                    fontWeight: 800,
+                    lineHeight: 1.2,
+                    letterSpacing: '-0.025em',
+                    background:
+                      'linear-gradient(135deg, #67E8F9 0%, #38BDF8 35%, #818CF8 70%, #C084FC 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter:
+                      'drop-shadow(0 4px 24px rgba(56, 189, 248, 0.40)) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95))',
+                  }}
+                >
+                  {line2}
+                </span>
+              </>
+            ) : (
+              <span
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(2.35rem, 3.8vw, 3.65rem)',
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.025em',
+                  background:
+                    'linear-gradient(135deg, #FFFFFF 10%, #67E8F9 45%, #38BDF8 75%, #818CF8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter:
+                    'drop-shadow(0 4px 24px rgba(56, 189, 248, 0.35)) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.95))',
+                }}
+              >
+                {line1}
+              </span>
+            )}
           </h1>
 
           {/* Centered Transparent Outline Pill Button with Hover Shine Sweep */}
           <div style={{ marginTop: '3.6rem', display: 'flex', justifyContent: 'center' }}>
             <Link
-              href="/contact"
+              href={ctaUrl}
               className="hero-cta-btn"
               id="hero-cta-button"
               style={{
@@ -214,7 +299,7 @@ export default function HeroSection({ slides = [] }) {
                   zIndex: 2,
                 }}
               >
-                Get Started
+                {ctaText}
               </span>
               <ArrowRight
                 size={17}
