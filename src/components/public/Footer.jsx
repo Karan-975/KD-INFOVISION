@@ -143,7 +143,7 @@ export default function Footer({ settings }) {
               </a>
 
               <a
-                href="https://www.facebook.com/kdinfovision"
+                href={settings?.socialFacebook || 'https://www.facebook.com/kdinfovision'}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"

@@ -23,6 +23,7 @@ export default async function HomePage() {
     services,
     industries,
     caseStudies,
+    whyUsPillars,
   ] = await safeDbQuery(
     () =>
       Promise.all([
@@ -33,8 +34,9 @@ export default async function HomePage() {
         prisma.service.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
         prisma.industry.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
         prisma.caseStudy.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+        prisma.whyUsPillar.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
       ]),
-    [null, [], [], [], [], [], []]
+    [null, [], [], [], [], [], [], []]
   );
 
   return (
@@ -62,7 +64,7 @@ export default async function HomePage() {
       <IndustriesSection industries={industries} />
 
       {/* Engineering Excellence & Why Us */}
-      <WhyUsSection />
+      <WhyUsSection pillars={whyUsPillars} settings={settings} />
 
       {/* Featured Proven Enterprise Case Studies */}
       <CaseStudiesSection caseStudies={caseStudies.slice(0, 3)} />

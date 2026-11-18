@@ -16,6 +16,7 @@ export async function GET() {
       processSteps,
       testimonials,
       insights,
+      whyUsPillars,
     ] = await Promise.all([
       prisma.siteSetting.findFirst(),
       prisma.heroSlide.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
@@ -27,6 +28,7 @@ export async function GET() {
       prisma.processStep.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
       prisma.testimonial.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
       prisma.insight.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
+      prisma.whyUsPillar.findMany({ where: { isActive: true }, orderBy: { order: 'asc' } }),
     ]);
 
     return NextResponse.json({
@@ -50,6 +52,7 @@ export async function GET() {
         processSteps,
         testimonials,
         insights,
+        whyUsPillars,
       },
     });
   } catch (error) {

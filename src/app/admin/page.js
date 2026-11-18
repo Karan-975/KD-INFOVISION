@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
+  ShieldCheck,
   Settings,
   Sliders,
   Cpu,
@@ -57,6 +58,14 @@ export default function AdminDashboardPage() {
   const [partners, setPartners] = useState([]);
   const [insights, setInsights] = useState([]);
   const [inquiries, setInquiries] = useState([]);
+  const [whyUsPillars, setWhyUsPillars] = useState([]);
+  const [whyUsHeaders, setWhyUsHeaders] = useState({
+    whyTag: 'ENGINEERING EXCELLENCE & TRUST',
+    whyTitle: 'Start Your Data & AI Journey with KD Infovision for',
+    whyHighlight: 'Quick & Quality Delivery',
+    whyDesc: 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.',
+  });
+  const [savingWhyHeaders, setSavingWhyHeaders] = useState(false);
 
   // Inquiry filters
   const [inquirySearch, setInquirySearch] = useState('');
@@ -105,6 +114,7 @@ export default function AdminDashboardPage() {
         parRes,
         insRes,
         inqRes,
+        whyRes,
       ] = await Promise.all([
         fetch('/api/admin/settings', { headers: getAuthHeaders() }).then((r) => r.json()),
         fetch('/api/admin/slides', { headers: getAuthHeaders() }).then((r) => r.json()),
@@ -117,6 +127,7 @@ export default function AdminDashboardPage() {
         fetch('/api/admin/partners', { headers: getAuthHeaders() }).then((r) => r.json()),
         fetch('/api/admin/insights', { headers: getAuthHeaders() }).then((r) => r.json()),
         fetch('/api/admin/inquiries', { headers: getAuthHeaders() }).then((r) => r.json()),
+        fetch('/api/admin/why-us', { headers: getAuthHeaders() }).then((r) => r.json()),
       ]);
 
       if (setRes.success) setSettings(setRes.settings || {});
@@ -130,6 +141,17 @@ export default function AdminDashboardPage() {
       if (parRes.success) setPartners(parRes.partners || []);
       if (insRes.success) setInsights(insRes.insights || []);
       if (inqRes.success) setInquiries(inqRes.inquiries || []);
+      if (whyRes && whyRes.success) {
+        setWhyUsPillars(whyRes.pillars || []);
+        if (whyRes.sectionHeaders) {
+          setWhyUsHeaders({
+            whyTag: whyRes.sectionHeaders.whyTag || 'ENGINEERING EXCELLENCE & TRUST',
+            whyTitle: whyRes.sectionHeaders.whyTitle || 'Start Your Data & AI Journey with KD Infovision for',
+            whyHighlight: whyRes.sectionHeaders.whyHighlight || 'Quick & Quality Delivery',
+            whyDesc: whyRes.sectionHeaders.whyDesc || 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.',
+          });
+        }
+      }
     } catch (err) {
       console.error('Error fetching admin data:', err);
     } finally {
@@ -147,6 +169,30 @@ export default function AdminDashboardPage() {
     } catch (e) {}
     await fetch('/api/auth/me', { method: 'POST', headers: getAuthHeaders() });
     router.push('/admin/login');
+  };
+
+  // --- SAVE WHY US SECTION HEADERS ---
+  const handleSaveWhyHeaders = async (e) => {
+    if (e) e.preventDefault();
+    setSavingWhyHeaders(true);
+    try {
+      const res = await fetch('/api/admin/why-us', {
+        method: 'PUT',
+        headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ isHeaderUpdate: true, ...whyUsHeaders }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showNotification('Why Us section headers updated successfully!');
+        checkAuthAndFetchData();
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (err) {
+      showNotification(err.message, 'error');
+    } finally {
+      setSavingWhyHeaders(false);
+    }
   };
 
   // --- SAVE SETTINGS ---
@@ -275,6 +321,7 @@ export default function AdminDashboardPage() {
     { id: 'settings', label: 'Site Settings & Branding', icon: Settings },
     { id: 'slides', label: 'Hero Banner Slider', icon: Sliders, badge: heroSlides.length },
     { id: 'services', label: 'Services & Solutions', icon: Cpu, badge: services.length },
+    { id: 'why-us', label: 'Why Choose Us (Pillars)', icon: ShieldCheck, badge: whyUsPillars.length },
     { id: 'cases', label: 'Case Studies & Metrics', icon: BarChart2, badge: caseStudies.length },
     { id: 'industries', label: 'Industry Reach', icon: Building, badge: industries.length },
     { id: 'process', label: 'Process Steps', icon: GitBranch, badge: processSteps.length },
@@ -626,7 +673,16 @@ export default function AdminDashboardPage() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>Facebook URL</label>
+                    <input
+                      type="text"
+                      value={settings.socialFacebook || ''}
+                      onChange={(e) => setSettings({ ...settings, socialFacebook: e.target.value })}
+                      style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.95rem' }}
+                    />
+                  </div>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>LinkedIn URL</label>
                     <input
@@ -836,6 +892,191 @@ export default function AdminDashboardPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: WHY CHOOSE US (PILLARS) */}
+          {activeTab === 'why-us' && (
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--navy)' }}>Why Choose Us / Engineering Excellence</h3>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Manage section editorial copy and the 4 interactive holographic pillar cards</p>
+                </div>
+                <button
+                  onClick={() => {
+                    setEditingType('why-us');
+                    setEditingItem({
+                      order: whyUsPillars.length + 1,
+                      icon: 'ShieldCheck',
+                      titlePrefix: 'New Enterprise Pillar &',
+                      titleHighlight: 'Solution',
+                      desc: 'Enterprise description of this solution capability...',
+                      points: 'Strategic alignment with enterprise business goals\nAdhering to global standards & industry best practices\nTransparent delivery and predictable milestones',
+                      accentColor: '#FBBF24',
+                      graphicType: 'globe',
+                      ctaText: 'Learn More',
+                      ctaUrl: '#contact',
+                      isActive: true,
+                    });
+                  }}
+                  className="btn-primary"
+                >
+                  <Plus size={18} /> Add New Pillar
+                </button>
+              </div>
+
+              {/* SECTION HEADERS CARD */}
+              <div style={{ background: '#FFFFFF', borderRadius: 'var(--radius-lg)', border: '1.5px solid var(--gray-200)', padding: '2rem', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                  <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--navy)' }}>Section Headline &amp; Editorial Copy</h4>
+                  <button
+                    type="button"
+                    onClick={handleSaveWhyHeaders}
+                    disabled={savingWhyHeaders}
+                    className="btn-primary"
+                    style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}
+                  >
+                    {savingWhyHeaders ? <Loader2 size={15} className="spin" /> : <Save size={15} />} Save Section Headers
+                  </button>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1.5fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '4px' }}>Tagline / Badge</label>
+                    <input
+                      type="text"
+                      value={whyUsHeaders.whyTag || ''}
+                      onChange={(e) => setWhyUsHeaders({ ...whyUsHeaders, whyTag: e.target.value })}
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.88rem' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '4px' }}>Headline Prefix</label>
+                    <input
+                      type="text"
+                      value={whyUsHeaders.whyTitle || ''}
+                      onChange={(e) => setWhyUsHeaders({ ...whyUsHeaders, whyTitle: e.target.value })}
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.88rem' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '4px' }}>Headline Highlight (Gold)</label>
+                    <input
+                      type="text"
+                      value={whyUsHeaders.whyHighlight || ''}
+                      onChange={(e) => setWhyUsHeaders({ ...whyUsHeaders, whyHighlight: e.target.value })}
+                      style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.88rem' }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '4px' }}>Section Summary Paragraph</label>
+                  <textarea
+                    rows={2}
+                    value={whyUsHeaders.whyDesc || ''}
+                    onChange={(e) => setWhyUsHeaders({ ...whyUsHeaders, whyDesc: e.target.value })}
+                    style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.88rem', resize: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* PILLAR CARDS GRID */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.75rem' }}>
+                {whyUsPillars.map((pillar) => {
+                  let pointsArr = [];
+                  try {
+                    pointsArr = Array.isArray(pillar.points) ? pillar.points : JSON.parse(pillar.points);
+                  } catch (e) {
+                    pointsArr = String(pillar.points || '').split('\n').filter(Boolean);
+                  }
+
+                  return (
+                    <div
+                      key={pillar.id}
+                      style={{
+                        background: '#0B1120',
+                        borderRadius: '16px',
+                        border: `1.5px solid ${pillar.accentColor || '#FBBF24'}40`,
+                        padding: '1.75rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.85rem',
+                        color: '#FFFFFF',
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.4)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {/* Accent Top Bar */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: '4px',
+                          background: pillar.accentColor || '#FBBF24',
+                        }}
+                      />
+
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', background: `${pillar.accentColor || '#FBBF24'}22`, color: pillar.accentColor || '#FBBF24' }}>
+                          ORDER: {pillar.order}
+                        </span>
+                        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                          <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}>Icon: {pillar.icon}</span>
+                          <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}>&bull; Graphic: {pillar.graphicType}</span>
+                        </div>
+                      </div>
+
+                      <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#FFFFFF', margin: 0 }}>
+                        {pillar.titlePrefix}{' '}
+                        <span style={{ color: pillar.accentColor || '#FBBF24' }}>{pillar.titleHighlight}</span>
+                      </h4>
+
+                      <p style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.72)', lineHeight: 1.6, margin: 0, flex: 1 }}>
+                        {pillar.desc}
+                      </p>
+
+                      <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: pillar.accentColor || '#FBBF24', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          Key Bullet Points ({pointsArr.length}):
+                        </span>
+                        {pointsArr.slice(0, 3).map((pt, pIdx) => (
+                          <div key={pIdx} style={{ fontSize: '0.8rem', color: '#CBD5E1', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ color: pillar.accentColor || '#FBBF24' }}>✓</span> {pt}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div style={{ display: 'flex', gap: '8px', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1rem', marginTop: 'auto' }}>
+                        <button
+                          onClick={() => {
+                            setEditingType('why-us');
+                            setEditingItem({
+                              ...pillar,
+                              points: Array.isArray(pointsArr) ? pointsArr.join('\n') : pillar.points,
+                            });
+                          }}
+                          className="btn-secondary"
+                          style={{ flex: 1, padding: '0.5rem', fontSize: '0.85rem', background: 'rgba(255, 255, 255, 0.08)', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                        >
+                          <Edit2 size={14} /> Edit Pillar
+                        </button>
+                        <button
+                          onClick={() => handleDeleteGeneric('why-us', pillar.id)}
+                          style={{ padding: '0.5rem 0.85rem', borderRadius: '8px', background: '#FEE2E2', color: '#DC2626', border: 'none', cursor: 'pointer' }}
+                          title="Delete Pillar"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -1490,6 +1731,91 @@ export default function AdminDashboardPage() {
                         <option value="true">Active (Yes)</option>
                         <option value="false">Inactive (No)</option>
                       </select>
+                    ) : key === 'graphicType' ? (
+                      <select
+                        value={editingItem[key] || 'globe'}
+                        onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                        style={{ width: '100%', padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem' }}
+                      >
+                        <option value="globe">3D Digital Globe (Advisory)</option>
+                        <option value="stack">3D Glowing Multi-Layer Stack (Resources)</option>
+                        <option value="lakehouse">3D Isometric Lakehouse Matrix (AI Architecture)</option>
+                        <option value="analytics">3D Holographic Analytics Dashboard (BI)</option>
+                      </select>
+                    ) : key === 'icon' && editingType === 'why-us' ? (
+                      <select
+                        value={editingItem[key] || 'ShieldCheck'}
+                        onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                        style={{ width: '100%', padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem' }}
+                      >
+                        <option value="ShieldCheck">ShieldCheck (Advisory & Security)</option>
+                        <option value="Cpu">Cpu (Technical Talent & Compute)</option>
+                        <option value="Layers">Layers (Data Architecture & Lakehouses)</option>
+                        <option value="CheckCircle2">CheckCircle2 (BI & Analytics Delivery)</option>
+                        <option value="Award">Award (Certifications & Standards)</option>
+                        <option value="Zap">Zap (Performance & Acceleration)</option>
+                        <option value="Database">Database (Data Engineering)</option>
+                        <option value="Lock">Lock (Enterprise Governance)</option>
+                      </select>
+                    ) : key === 'accentColor' ? (
+                      <div>
+                        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                          <input
+                            type="color"
+                            value={editingItem[key] || '#FBBF24'}
+                            onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                            style={{ width: '48px', height: '42px', padding: '2px', borderRadius: '6px', border: '1.5px solid var(--gray-300)', cursor: 'pointer' }}
+                          />
+                          <input
+                            type="text"
+                            value={editingItem[key] || '#FBBF24'}
+                            onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                            style={{ flex: 1, padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem' }}
+                          />
+                        </div>
+                        <div style={{ display: 'flex', gap: '6px', marginTop: '6px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '0.75rem', color: 'var(--muted)', alignSelf: 'center', fontWeight: 600 }}>Presets:</span>
+                          {[
+                            { label: 'Gold', color: '#FBBF24' },
+                            { label: 'Rose Gold', color: '#FB7185' },
+                            { label: 'Emerald Teal', color: '#2DD4BF' },
+                            { label: 'Sunset Orange', color: '#FB923C' },
+                            { label: 'Sapphire Blue', color: '#38BDF8' },
+                            { label: 'Royal Violet', color: '#A855F7' },
+                          ].map((preset) => (
+                            <button
+                              key={preset.color}
+                              type="button"
+                              onClick={() => setEditingItem({ ...editingItem, [key]: preset.color })}
+                              style={{
+                                padding: '3px 8px',
+                                borderRadius: '4px',
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                background: `${preset.color}22`,
+                                color: preset.color,
+                                border: `1px solid ${preset.color}55`,
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {preset.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ) : key === 'points' ? (
+                      <div>
+                        <textarea
+                          rows={4}
+                          placeholder="Enter bullet points, one per line"
+                          value={editingItem[key] || ''}
+                          onChange={(e) => setEditingItem({ ...editingItem, [key]: e.target.value })}
+                          style={{ width: '100%', padding: '0.7rem 1rem', borderRadius: '8px', border: '1.5px solid var(--gray-300)', fontSize: '0.9rem' }}
+                        />
+                        <span style={{ fontSize: '0.72rem', color: 'var(--muted)', display: 'block', marginTop: '4px' }}>
+                          Enter bullet points separated by new lines (one point per line).
+                        </span>
+                      </div>
                     ) : key === 'svgType' ? (
                       <select
                         value={editingItem[key] || 'analytics'}

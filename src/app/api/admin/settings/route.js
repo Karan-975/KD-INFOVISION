@@ -39,6 +39,11 @@ export async function PUT(request) {
           socialLinkedin: body.socialLinkedin,
           socialTwitter: body.socialTwitter,
           socialGithub: body.socialGithub,
+          socialFacebook: body.socialFacebook,
+          whyTag: body.whyTag,
+          whyTitle: body.whyTitle,
+          whyHighlight: body.whyHighlight,
+          whyDesc: body.whyDesc,
         },
       });
     } else {

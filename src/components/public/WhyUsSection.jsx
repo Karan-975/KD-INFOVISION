@@ -6,6 +6,10 @@ import {
   Layers,
   ShieldCheck,
   CheckCircle2,
+  Award,
+  Zap,
+  Database,
+  Lock,
   ArrowRight,
 } from 'lucide-react';
 
@@ -219,8 +223,104 @@ function AnalyticsGraphic() {
   );
 }
 
-export default function WhyUsSection() {
-  const pillars = [
+const iconMap = {
+  ShieldCheck,
+  Cpu,
+  Layers,
+  CheckCircle2,
+  Award,
+  Zap,
+  Database,
+  Lock,
+};
+
+function resolveGraphic(type) {
+  switch (type) {
+    case 'globe':
+      return <GlobeGraphic />;
+    case 'stack':
+      return <StackGraphic />;
+    case 'lakehouse':
+      return <LakehouseGraphic />;
+    case 'analytics':
+      return <AnalyticsGraphic />;
+    default:
+      return <GlobeGraphic />;
+  }
+}
+
+function resolvePillarTheme(item) {
+  const accent = item.accentColor || '#FBBF24';
+
+  if (accent === '#FBBF24') {
+    return {
+      cardBg: 'linear-gradient(135deg, rgba(62, 42, 12, 0.42) 0%, rgba(24, 16, 4, 0.72) 100%)',
+      borderColor: 'rgba(251, 191, 36, 0.22)',
+      hoverBorderColor: 'rgba(251, 191, 36, 0.55)',
+      accentColor: '#FBBF24',
+      glowColor: 'rgba(251, 191, 36, 0.16)',
+      iconBg: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+      iconShadow: '0 4px 14px rgba(245, 158, 11, 0.35)',
+    };
+  }
+  if (accent === '#FB7185') {
+    return {
+      cardBg: 'linear-gradient(135deg, rgba(76, 24, 40, 0.42) 0%, rgba(30, 8, 16, 0.72) 100%)',
+      borderColor: 'rgba(251, 113, 133, 0.22)',
+      hoverBorderColor: 'rgba(251, 113, 133, 0.55)',
+      accentColor: '#FB7185',
+      glowColor: 'rgba(251, 113, 133, 0.16)',
+      iconBg: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)',
+      iconShadow: '0 4px 14px rgba(244, 63, 94, 0.35)',
+    };
+  }
+  if (accent === '#2DD4BF' || accent === '#14B8A6') {
+    return {
+      cardBg: 'linear-gradient(135deg, rgba(13, 78, 74, 0.42) 0%, rgba(4, 30, 28, 0.72) 100%)',
+      borderColor: 'rgba(45, 212, 191, 0.22)',
+      hoverBorderColor: 'rgba(45, 212, 191, 0.55)',
+      accentColor: '#2DD4BF',
+      glowColor: 'rgba(45, 212, 191, 0.16)',
+      iconBg: 'linear-gradient(135deg, #0D9488 0%, #044E49 100%)',
+      iconShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
+    };
+  }
+  if (accent === '#FB923C') {
+    return {
+      cardBg: 'linear-gradient(135deg, rgba(64, 28, 16, 0.42) 0%, rgba(24, 10, 6, 0.72) 100%)',
+      borderColor: 'rgba(251, 146, 60, 0.22)',
+      hoverBorderColor: 'rgba(251, 146, 60, 0.55)',
+      accentColor: '#FB923C',
+      glowColor: 'rgba(251, 146, 60, 0.16)',
+      iconBg: 'linear-gradient(135deg, #F97316 0%, #C2410C 100%)',
+      iconShadow: '0 4px 14px rgba(249, 115, 22, 0.35)',
+    };
+  }
+
+  // Dynamic fallback for any custom hex code from the CMS color picker:
+  return {
+    cardBg: `linear-gradient(135deg, ${accent}26 0%, rgba(10, 15, 28, 0.85) 100%)`,
+    borderColor: `${accent}40`,
+    hoverBorderColor: `${accent}88`,
+    accentColor: accent,
+    glowColor: `${accent}25`,
+    iconBg: `linear-gradient(135deg, ${accent} 0%, rgba(15, 23, 42, 0.95) 100%)`,
+    iconShadow: `0 4px 14px ${accent}40`,
+  };
+}
+
+function parsePoints(points) {
+  if (Array.isArray(points)) return points;
+  if (!points) return [];
+  try {
+    const parsed = JSON.parse(points);
+    if (Array.isArray(parsed)) return parsed;
+  } catch (e) {}
+  return String(points).split('\n').map((s) => s.trim()).filter(Boolean);
+}
+
+export default function WhyUsSection({ pillars: dynamicPillars, settings }) {
+  const defaultPillars = [
     {
       icon: ShieldCheck,
       titlePrefix: 'The KDI Framework &',
@@ -231,6 +331,8 @@ export default function WhyUsSection() {
         'Adhering to global standards & industry best practices',
         'Transparent delivery and predictable milestones',
       ],
+      ctaText: 'Learn More',
+      ctaUrl: '#contact',
       theme: {
         cardBg: 'linear-gradient(135deg, rgba(62, 42, 12, 0.42) 0%, rgba(24, 16, 4, 0.72) 100%)',
         borderColor: 'rgba(251, 191, 36, 0.22)',
@@ -252,6 +354,8 @@ export default function WhyUsSection() {
         'Enterprise engineering pods adhering to strict SLAs',
         'Rapid ramp-up times with vetted architects',
       ],
+      ctaText: 'Learn More',
+      ctaUrl: '#contact',
       theme: {
         cardBg: 'linear-gradient(135deg, rgba(76, 24, 40, 0.42) 0%, rgba(30, 8, 16, 0.72) 100%)',
         borderColor: 'rgba(251, 113, 133, 0.22)',
@@ -273,6 +377,8 @@ export default function WhyUsSection() {
         'Autonomous Agentic AI & machine learning',
         'Eliminating data silos and accelerating innovation',
       ],
+      ctaText: 'Learn More',
+      ctaUrl: '#contact',
       theme: {
         cardBg: 'linear-gradient(135deg, rgba(13, 78, 74, 0.42) 0%, rgba(4, 30, 28, 0.72) 100%)',
         borderColor: 'rgba(45, 212, 191, 0.22)',
@@ -294,6 +400,8 @@ export default function WhyUsSection() {
         'Associative discovery & self-service analytics',
         'Actionable KPI cockpits for leadership',
       ],
+      ctaText: 'Learn More',
+      ctaUrl: '#contact',
       theme: {
         cardBg: 'linear-gradient(135deg, rgba(64, 28, 16, 0.42) 0%, rgba(24, 10, 6, 0.72) 100%)',
         borderColor: 'rgba(251, 146, 60, 0.22)',
@@ -306,6 +414,32 @@ export default function WhyUsSection() {
       },
     },
   ];
+
+  const pillars = (dynamicPillars && dynamicPillars.length > 0)
+    ? dynamicPillars.map((p) => {
+        const theme = resolvePillarTheme(p);
+        const IconComp = iconMap[p.icon] || ShieldCheck;
+        const graphic = resolveGraphic(p.graphicType);
+        return {
+          icon: IconComp,
+          titlePrefix: p.titlePrefix,
+          titleHighlight: p.titleHighlight,
+          desc: p.desc,
+          points: parsePoints(p.points),
+          ctaText: p.ctaText || 'Learn More',
+          ctaUrl: p.ctaUrl || '#contact',
+          theme: {
+            ...theme,
+            graphic,
+          },
+        };
+      })
+    : defaultPillars;
+
+  const sectionTag = settings?.whyTag || 'ENGINEERING EXCELLENCE & TRUST';
+  const sectionTitle = settings?.whyTitle || 'Start Your Data & AI Journey with KD Infovision for';
+  const sectionHighlight = settings?.whyHighlight || 'Quick & Quality Delivery';
+  const sectionDesc = settings?.whyDesc || 'The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.';
 
   return (
     <section
@@ -333,7 +467,7 @@ export default function WhyUsSection() {
               fontFamily: "'Montserrat', sans-serif",
             }}
           >
-            ENGINEERING EXCELLENCE &amp; TRUST
+            {sectionTag}
           </div>
 
           <h2
@@ -347,9 +481,9 @@ export default function WhyUsSection() {
               marginBottom: '1.15rem',
             }}
           >
-            Start Your Data &amp; AI Journey with KD Infovision for{' '}
+            {sectionTitle}{' '}
             <span style={{ color: '#F59E0B' }}>
-              Quick &amp; Quality Delivery
+              {sectionHighlight}
             </span>
           </h2>
 
@@ -362,7 +496,7 @@ export default function WhyUsSection() {
               maxWidth: '680px',
             }}
           >
-            The KDI Framework provides efficient, high-quality solutions designed to meet the unique needs of our clients. With our domain expertise, we make complex data transformations predictable, secure, and fast.
+            {sectionDesc}
           </p>
         </div>
 
@@ -524,7 +658,7 @@ export default function WhyUsSection() {
                   {/* Learn More Outline Pill Button (matching Image-2) */}
                   <div style={{ marginTop: '1.4rem' }}>
                     <a
-                      href="#contact"
+                      href={item.ctaUrl || '#contact'}
                       className="card-learn-more"
                       style={{
                         display: 'inline-flex',
@@ -542,7 +676,7 @@ export default function WhyUsSection() {
                         fontFamily: "'Montserrat', sans-serif",
                       }}
                     >
-                      <span>Learn More</span>
+                      <span>{item.ctaText || 'Learn More'}</span>
                       <ArrowRight size={13} className="learn-arrow" />
                     </a>
                   </div>

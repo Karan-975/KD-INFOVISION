@@ -15,6 +15,7 @@ model SiteSetting {
   email          String   @default("hello@kdinfovision.com")
   phone          String   @default("+91 98765 43210")
   address        String?  @db.Text
+  mapUrl         String?  @db.Text
   primaryColor   String   @default("#1B3A6B")
   accentColor    String   @default("#3D9BE9")
   metaTitle      String?  @db.Text
@@ -22,6 +23,28 @@ model SiteSetting {
   socialLinkedin String?  @default("#")
   socialTwitter  String?  @default("#")
   socialGithub   String?  @default("#")
+  socialFacebook String?  @default("https://www.facebook.com/kdinfovision")
+  whyTag         String?  @default("ENGINEERING EXCELLENCE & TRUST")
+  whyTitle       String?  @default("Start Your Data & AI Journey with KD Infovision for")
+  whyHighlight   String?  @default("Quick & Quality Delivery")
+  whyDesc        String?  @db.Text
+  updatedAt      DateTime @updatedAt
+}
+
+model WhyUsPillar {
+  id             Int      @id @default(autoincrement())
+  order          Int      @default(0)
+  icon           String   @default("ShieldCheck")
+  titlePrefix    String
+  titleHighlight String
+  desc           String   @db.Text
+  points         String   @db.Text
+  accentColor    String   @default("#FBBF24")
+  graphicType    String   @default("globe")
+  ctaText        String   @default("Learn More")
+  ctaUrl         String   @default("#contact")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
 
