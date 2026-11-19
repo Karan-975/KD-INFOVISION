@@ -43,7 +43,7 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, ...data } = body;
+    const { id, createdAt, updatedAt, ...data } = body;
 
     const partner = await prisma.partner.update({
       where: { id: Number(id) },
@@ -52,6 +52,7 @@ export async function PUT(request) {
 
     return NextResponse.json({ success: true, partner });
   } catch (error) {
+    console.error('Update partner error:', error);
     return NextResponse.json({ success: false, error: 'Failed to update partner' }, { status: 500 });
   }
 }

@@ -48,7 +48,7 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, ...data } = body;
+    const { id, createdAt, updatedAt, ...data } = body;
 
     const service = await prisma.service.update({
       where: { id: Number(id) },

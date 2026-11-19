@@ -119,8 +119,16 @@ export default function IndustriesSection({ industries = [] }) {
   const [activeRow1, setActiveRow1] = useState(1);
   const [activeRow2, setActiveRow2] = useState(0);
 
-  const row1Sectors = defaultSectors.slice(0, 3);
-  const row2Sectors = defaultSectors.slice(3, 6);
+  const sectors = (industries && industries.length > 0)
+    ? defaultSectors.map((def, idx) => ({
+        ...def,
+        name: industries[idx]?.title || def.name,
+        desc: industries[idx]?.description || def.desc,
+      }))
+    : defaultSectors;
+
+  const row1Sectors = sectors.slice(0, 3);
+  const row2Sectors = sectors.slice(3, 6);
 
   // Exact Vani HQ direct DOM event listeners for instantaneous 60 FPS transitions
   useEffect(() => {

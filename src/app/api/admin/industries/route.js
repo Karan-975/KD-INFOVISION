@@ -44,7 +44,7 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, ...data } = body;
+    const { id, createdAt, updatedAt, ...data } = body;
 
     const industry = await prisma.industry.update({
       where: { id: Number(id) },
@@ -53,6 +53,7 @@ export async function PUT(request) {
 
     return NextResponse.json({ success: true, industry });
   } catch (error) {
+    console.error('Update industry error:', error);
     return NextResponse.json({ success: false, error: 'Failed to update industry' }, { status: 500 });
   }
 }

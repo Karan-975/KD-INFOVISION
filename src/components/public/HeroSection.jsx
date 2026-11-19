@@ -79,7 +79,7 @@ export default function HeroSection({ slides = [] }) {
           zIndex: 0,
           pointerEvents: 'none',
           overflow: 'hidden',
-          backgroundImage: "url('/images/hero_skyline.jpg')",
+          backgroundImage: `url('${slide?.imageUrl || '/images/hero_skyline.jpg'}')`,
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',

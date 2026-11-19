@@ -158,20 +158,31 @@ export default function ServicesSection({ services = [] }) {
     },
   ];
 
+  const iconLookup = {
+    BrainCircuit,
+    BarChart3,
+    ShieldCheck,
+    Layers,
+  };
+
   // Merge with dynamic Prisma services if present
-  const practices = services.length >= 4
-    ? services.slice(0, 4).map((s, idx) => ({
-        id: `service-${s.id}`,
-        title: s.title,
-        kicker: defaultPractices[idx % defaultPractices.length].kicker,
-        icon: defaultPractices[idx % defaultPractices.length].icon,
-        image: s.image || defaultPractices[idx % defaultPractices.length].image,
-        alt: s.title,
-        desc: s.description || defaultPractices[idx % defaultPractices.length].desc,
-        capabilities: defaultPractices[idx % defaultPractices.length].capabilities,
-        detail: s.content || defaultPractices[idx % defaultPractices.length].detail,
-        theme: defaultPractices[idx % defaultPractices.length].theme,
-      }))
+  const practices = (services && services.length > 0)
+    ? services.slice(0, 4).map((s, idx) => {
+        const fallback = defaultPractices[idx % defaultPractices.length];
+        const IconComp = (s.icon && iconLookup[s.icon]) ? iconLookup[s.icon] : fallback.icon;
+        return {
+          id: `service-${s.id}`,
+          title: s.title || fallback.title,
+          kicker: fallback.kicker,
+          icon: IconComp,
+          image: s.image || fallback.image,
+          alt: s.title || fallback.title,
+          desc: s.description || s.desc || fallback.desc,
+          capabilities: fallback.capabilities,
+          detail: s.details || s.content || fallback.detail,
+          theme: fallback.theme,
+        };
+      })
     : defaultPractices;
 
   // Track scroll progress to drive the scroll-snapping card animation

@@ -10,7 +10,7 @@ export async function GET(request) {
     const cases = await prisma.caseStudy.findMany({ orderBy: { order: 'asc' } });
     return NextResponse.json({ success: true, cases });
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to fetch case studies' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Failed to fetch cases' }, { status: 500 });
   }
 }
 
@@ -25,11 +25,11 @@ export async function POST(request) {
     const caseItem = await prisma.caseStudy.create({
       data: {
         order: body.order ?? count,
-        tag: body.tag || 'BFSI',
-        resultNum: body.resultNum || '50%',
-        resultLabel: body.resultLabel || 'Efficiency Boost',
+        tag: body.tag || 'Enterprise',
+        resultNum: body.resultNum || '99.9%',
+        resultLabel: body.resultLabel || 'Efficiency',
         title: body.title,
-        summary: body.summary,
+        summary: body.summary || '',
         fullStory: body.fullStory || '',
         isActive: body.isActive !== undefined ? body.isActive : true,
       },
@@ -48,7 +48,7 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, ...data } = body;
+    const { id, createdAt, updatedAt, ...data } = body;
 
     const caseItem = await prisma.caseStudy.update({
       where: { id: Number(id) },

@@ -44,7 +44,7 @@ export async function PUT(request) {
     if (!user) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
 
     const body = await request.json();
-    const { id, target, ...rest } = body;
+    const { id, target, createdAt, updatedAt, ...rest } = body;
 
     const stat = await prisma.statCounter.update({
       where: { id: Number(id) },
@@ -56,6 +56,7 @@ export async function PUT(request) {
 
     return NextResponse.json({ success: true, stat });
   } catch (error) {
+    console.error('Update stat error:', error);
     return NextResponse.json({ success: false, error: 'Failed to update stat' }, { status: 500 });
   }
 }

@@ -75,17 +75,23 @@ export default function CaseStudiesSection({ caseStudies = [] }) {
   ];
 
   const items =
-    caseStudies && caseStudies.length >= 3
-      ? caseStudies.slice(0, 3).map((c, idx) => ({
-          ...c,
-          image: c.image || defaultCases[idx].image,
-          metricNum: c.metricNum || defaultCases[idx].metricNum,
-          metricLabel: c.metricLabel || defaultCases[idx].metricLabel,
-          stack: c.stack || defaultCases[idx].stack,
-          problem: c.problem || defaultCases[idx].problem,
-          solution: c.solution || defaultCases[idx].solution,
-          fullStory: c.fullStory || defaultCases[idx].fullStory,
-        }))
+    caseStudies && caseStudies.length > 0
+      ? caseStudies.map((c, idx) => {
+          const fallback = defaultCases[idx % defaultCases.length];
+          return {
+            ...c,
+            title: c.title || fallback.title,
+            summary: c.summary || fallback.summary,
+            tag: c.tag || fallback.tag,
+            image: c.image || fallback.image,
+            metricNum: c.resultNum || c.metricNum || fallback.metricNum,
+            metricLabel: c.resultLabel || c.metricLabel || fallback.metricLabel,
+            stack: c.stack || fallback.stack,
+            problem: c.problem || fallback.problem,
+            solution: c.solution || fallback.solution,
+            fullStory: c.fullStory || fallback.fullStory,
+          };
+        })
       : defaultCases;
 
   // Auto-advance every 6s unless hovered
